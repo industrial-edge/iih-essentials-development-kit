@@ -1,0 +1,25 @@
+# Copyright 2021 Siemens AG
+# This file is subject to the terms and conditions of the MIT License.  
+# See LICENSE file in the top-level directory
+
+# docker-compose file used by IEAP import functionality
+version: '2.4'
+
+services:
+  hello-world:
+    build: ./src
+    image: 'hello-world:1.0.0'
+    ports:
+      - '8080:80'
+    mem_limit: 50mb
+    restart: always
+    logging: 
+      driver: "json-file"
+      options: 
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  proxy-redirect:
+    external:
+      name: proxy-redirect
