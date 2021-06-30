@@ -30,7 +30,7 @@ This image is part of the Data Service Development Kit application and needs to 
 
 By running the docker compose configuration, an API instance of the Data Service will be started on your machine. This can be used to easily develop and test your application during development.
 
-Additionally please check the [Getting Started How To](https://github.com/industrial-edge/data-service-getting-started)
+Additionally please check the [Getting Started How To](https://github.com/industrial-edge/data-service-device-kit-getting-started)
 
 ## Quick Start
 
