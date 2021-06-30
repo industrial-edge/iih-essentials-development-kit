@@ -5,7 +5,7 @@
 
 ## Supported Tags
 
-- tbd
+- `1.2.0`, `latest`
 
 ## Quick reference (cont.)
 
