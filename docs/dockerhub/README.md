@@ -15,7 +15,7 @@
 
 ## What is Data Service Development Kit for Industrial Edge
 
-The Data Service Development Kit offers you the possibility to make your app quickly and easily fit for Industrial Edge. Using the integrated API interface, you save your app's data to the Data Service database structure and retrieve it when needed. This means that other apps, such as Performance Insight or Notifier, can easily access the data and use it for themselves.
+The Data Service Development Kit offers you the possibility to make your app quickly and easily fit for Industrial Edge. Using the integrated API, you save your app's data to the Data Service database structure and retrieve it when needed. This means that other apps, such as Performance Insight or Notifier, can easily access the data and use it for themselves.
 
 After the development phase, your app can be handed over to your customer together with the Data Service. In a few simple steps, the customer connects the Data Service with the already available connectors and thus creates a quick link to his plant.
 
