@@ -10,7 +10,7 @@
 ## Quick reference (cont.)
 
 - Where to file issues: Issues can be filed in the [Industrial Edge Forum](https://www.siemens.com/industrial-edge-forum) or [Github](https://github.com/industrial-edge/data-service-device-kit/issues)
-- Supported architectures: amd64
+- Supported architectures: `amd64`
 - Source of the description: [docs repo's siemensindustrialedge/dataservicedevelopmentkit](https://github.com/industrial-edge/data-service-development-kit/tree/main/docs/dockerhub)
 
 ## What is Data Service Development Kit for Industrial Edge
