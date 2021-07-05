@@ -34,7 +34,11 @@ Additionally please check the [Getting Started How To](https://github.com/indust
 
 ## Quick Start
 
-Download and execute the the [Docker Compose file](https://github.com/industrial-edge/data-service-development-kit/blob/main/docker-compose.yml) using the `docker-compose up` command.
+Download the [Docker Compose file](https://github.com/industrial-edge/data-service-development-kit/blob/main/docker-compose.yml) and execute it using the following command:
+
+```
+docker-compose up
+```
 
 Use the Simulation UI to create tags with simulated data that can be connected to Data Service variables. To access the Simulation UI open the following URL in a web browser
 
