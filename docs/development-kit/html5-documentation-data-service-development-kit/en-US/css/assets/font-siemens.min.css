@@ -1,0 +1,32 @@
+/*!
+ *  Siemens Global Sans 2.0.0 by Siemens
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+    font-family: 'Siemens Sans Global';
+    src: url('../../fonts/SiemensSans_Global_Roman.ttf?v=2.0.0') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Siemens Sans Global Bold';
+    src: url('../../fonts/SiemensSans_Global_Bold.ttf?v=2.0.0') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Siemens Sans Global BoldItalic';
+    src: url('../../fonts/SiemensSans_Global_BoldItalic.ttf?v=2.0.0') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Siemens Sans Global Italic';
+    src: url('../../fonts/SiemensSans_Global_Italic.ttf?v=2.0.0') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}

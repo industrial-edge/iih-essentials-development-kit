@@ -1,0 +1,17 @@
+version: '2.4'
+
+networks:
+  proxy-redirect:
+    external: true
+    name: proxy-redirect
+    driver: bridge
+
+services:
+  example-client:
+    build: ./
+    image: 'example-client:1.0.0'
+    ports:
+      - '5200:5200'
+    restart: always
+    networks:
+      - proxy-redirect
