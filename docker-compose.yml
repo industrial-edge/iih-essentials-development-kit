@@ -42,7 +42,7 @@ services:
     restart: unless-stopped
 
 # Services
-edgeappdataservice:
+  edgeappdataservice:
     image: siemensindustrialedge/dataservicedevelopmentkit:1.2.0
     environment:
       - EXTENDED_ERRORS=true
