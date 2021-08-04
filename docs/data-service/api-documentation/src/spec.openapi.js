@@ -15,7 +15,7 @@ function specData() {
                         "default": "localhost"
                     },
                     "port": {
-                        "default": "34203"
+                        "default": "4203"
                     }
                 }
             }
