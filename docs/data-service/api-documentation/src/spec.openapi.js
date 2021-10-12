@@ -3,7 +3,7 @@ function specData() {
         "openapi": "3.0.1",
         "info": {
             "description": "Public REST API of the Data Service.",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "title": "Data Service"
         },
         "servers": [
@@ -15,7 +15,11 @@ function specData() {
                         "default": "localhost"
                     },
                     "port": {
-                        "default": "4203"
+                        "default": "4203",
+                        "enum": [
+                            "4203",
+                            "4519"
+                        ]
                     }
                 }
             }
