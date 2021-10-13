@@ -67,19 +67,65 @@ The Data Service in the Development Kit is a limited version of the Data Service
 It shows how to create a user, request a token and get assets, tags and time series data from the the Data Service. ​It is available [here: ExampleClient](./examples/ExampleClient). More details can be found inside the ExampleClient folder.
 
 ## What's new
-## V1.2.0 - 2021-05-21
-### Added
-- New Aggregates: standard deviation, variance, count (number of datapoints), first
-- custom adapters
-- multi variable picker
-- string support
-### Changed
-- Optimized calculation algorithm
-- Values with bad quality code are not considered in calculation
+<details>
+  <summary>
+    <h2 style="display: inline">v1.3.0 - 2021-10-11</h2>
+  </summary>
+  <h3>Added</h3>
+  <ul>
+    <li>Predefined aspect types</li>
+    <li>Create aspects from aspect types</li>
+    <li>Backup/Recovery</li>
+    <li>Preview chart</li>
+    <ul>
+      <li>Auto-refresh</li>
+      <li>Select aggregation</li>
+      <li>Select time range</li>
+    </ul>
+    <li>Better state/debug information</li>
+      <ul>
+        <li>Show variable errors</li>
+        <li>Show adapter errors</li>
+        <li>Show connection state of variable</li>
+      </ul>
+    <li>Create simple variables (variables without connector)</li>
+    <li>Data retention per variable</li>
+  </ul>
+  <h3>Fixed</h3>
+  <ul>
+    <li>Delete dialog layout fixes</li>
+    <li>Documentation of Data Service System Info Adapter</li>
+    <li>Data gap after Zooming</li>
+    <li>Missing variable information in "Add multiple variables" dialog</li>
+  </ul>
+</details>
 
+<details>
+  <summary>
+    <h2 style="display: inline">v1.2.0 - 2021-05-21</h2>
+  </summary>
+  <h3>Added</h3>
+  <ul>
+    <li>New Aggregates: standard deviation, variance, count (number of datapoints), first</li>
+    <li>custom adapters</li>
+    <li>multi variable picker</li>
+    <li>string support</li>
+  </ul>
+  <h3>Changed</h3>
+  <ul>
+    <li>Optimized calculation algorithm</li>
+    <li>Values with bad quality code are not considered in calculation</li>
+  </ul>
+</details>
 
-### V1.1.0 - 2021-04-19
-Initial release of Data Service Development Kit.
+<details>
+  <summary>
+    <h2 style="display: inline">v1.1.0 - 2021-04-19</h2>
+  </summary>
+  Initial release of Data Service Development Kit.
+</details>
+
+<br>
 
 ## Community
 You can ask questions in the [Industrial Edge support forum](support.industry.siemens.com/tf/ww/de/threads/337/).
