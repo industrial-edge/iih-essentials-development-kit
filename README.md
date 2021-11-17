@@ -39,7 +39,7 @@ cd ./<repository_name>
 ```
 Extract the zip file and load the Data Service Development Kit image:
 ```
-docker load -i ./data-service-development-kit_1.3.0
+docker load -i ./data-service-development-kit_1.3.0.img
 ```
 Run the docker compose start command:
 ```
