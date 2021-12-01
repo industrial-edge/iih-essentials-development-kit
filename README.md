@@ -6,8 +6,11 @@
         <br> data sources available on the platform.</i>
     <br>
 </div>
-
-<hr>
+<br><hr><br>
+<div align="center">
+    <img src="./docs/graphics/ds-overview.png" alt="data-service-development-kit-logo" width="1000px" />
+</div>
+<br><hr><br>
 
 ## Documentation
 Using the ​Data Service Development Kit​ you can develop apps based on the Data Service and integrate them into Siemens Industrial Edge.
