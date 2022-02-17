@@ -42,7 +42,7 @@ cd ./<repository_name>
 ```
 Extract the zip file and load the Data Service Development Kit image:
 ```
-docker load -i ./data-service-development-kit_1.3.0.img
+docker load -i ./data-service-development-kit_1.3.3.img
 ```
 Run the docker compose start command:
 ```
@@ -70,6 +70,16 @@ The Data Service in the Development Kit is a limited version of the Data Service
 It shows how to create a user, request a token and get assets, tags and time series data from the the Data Service. ​It is available [here: ExampleClient](./examples/ExampleClient). More details can be found inside the ExampleClient folder.
 
 ## What's new
+<details>
+  <summary>
+    <h2 style="display: inline">v1.3.3 - 2022-02-25</h2>
+  </summary>
+  <h3>Fixed</h3>
+  <ul>
+    <li>Booleans are sent in an unexpected format for some apps</li>
+  </ul>
+</details>
+
 <details>
   <summary>
     <h2 style="display: inline">v1.3.0 - 2021-10-11</h2>
