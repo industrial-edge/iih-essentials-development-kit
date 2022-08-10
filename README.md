@@ -141,7 +141,8 @@ You can ask questions in the [Industrial Edge support forum](https://support.ind
 
 ## Contact us
 
-[SIOS Produktmitteilung: 109792717, Data Service Development Kit for Industrial Edge](https://support.industry.siemens.com/cs/gb/en/view/109792717)
+[SIOS Data Service for Industrial Edge](https://support.industry.siemens.com/cs/document/109784426)
+[SIOS Data Service Development Kit for Industrial Edge](https://support.industry.siemens.com/cs/document/109792717)
 
 For support requests contact your regional contact person.
 They take care of your concerns and give you feedback.
