@@ -137,7 +137,7 @@ It shows how to create a user, request a token and get assets, tags and time ser
 <br>
 
 ## Community
-You can ask questions in the [Industrial Edge support forum](support.industry.siemens.com/tf/ww/de/threads/337/).
+You can ask questions in the [Industrial Edge support forum](https://support.industry.siemens.com/tf/ww/de/threads/337/).
 
 ## Contact us
 
