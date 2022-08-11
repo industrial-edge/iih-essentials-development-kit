@@ -73,13 +73,13 @@ docker-compose up
 
 Use the Simulation UI to create tags with simulated data that can be connected to Data Service variables. To access the Simulation UI open this address in a browser:
 
-``` http
+``` browser
 http://localhost:4519
 ```
 
 Use the Data Service UI to configure data connections and structure your data. You can connect simulated tags to variables. This will store the data and offer it through the API, making it available for 3rd party apps to use. To access the Data Service UI open this address in a browser:
 
-``` http
+``` browser
 http://localhost:4203​
 ```
 
