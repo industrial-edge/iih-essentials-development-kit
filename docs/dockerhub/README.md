@@ -61,4 +61,4 @@ The Data Service in the Development Kit is a limited version of the Data Service
 
 ## License
 
-View [license information](https://github.com/industrial-edge/data-service-development-kit/blob/main/LICENSE.md) for the software contained in this image.
+View [license information](https://github.com/industrial-edge/data-service-development-kit/blob/main/docs/dockerhub/LICENSE.md) for the software contained in this image.
