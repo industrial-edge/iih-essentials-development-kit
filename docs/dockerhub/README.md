@@ -5,7 +5,7 @@
 
 ## Supported Tags
 
-- `1.2.0`, `latest`
+- `1.3.3`, `latest`
 
 ## Quick reference (cont.)
 
