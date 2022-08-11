@@ -43,20 +43,20 @@ docker-compose up
 Use the Simulation UI to create tags with simulated data that can be connected to Data Service variables. To access the Simulation UI open the following URL in a web browser
 
 ```
-http://localhost:34519
+http://localhost:4519
 ```
 
 Use the Data Service UI to configure data connections and structure your data. You can connect simulated tags, which had been created in the previous step, to your variables. The data will be stored in the Data Service and offer it through the API for making it available for 3rd party apps. To access the Data Service UI open the following URL in a web browser:
 
 ```
-http://localhost:34203​
+http://localhost:4203
 ```
 
 ## Limitations
 
 The Data Service in the Development Kit is a limited version of the Data Service:
 
-- Data retention: ​By default, the data is kept for one week. This cannot be changed.
+- Data retention: By default, the data is kept for one week. This cannot be changed.
 - Adapters/Connectors: Existing adapters/connectors cannot be modified or deleted. No new adapters/connectors can be added.
 
 ## License
