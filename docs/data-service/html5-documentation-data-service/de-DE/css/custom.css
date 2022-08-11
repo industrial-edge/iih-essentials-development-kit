@@ -1,0 +1,15 @@
+﻿/*!
+* Copyright (C) Siemens AG 2015-2021. All rights reserved.
+*/
+
+/* Landscape (Default) */ 
+.home-view {
+background-image:url('../img/landscape_entrypage.png');
+background-size:cover;
+}
+/* Portrait */
+@media screen and (orientation:portrait) {
+.home-view {
+background-image:url('../img/portrait_entrypage.png');
+}
+}

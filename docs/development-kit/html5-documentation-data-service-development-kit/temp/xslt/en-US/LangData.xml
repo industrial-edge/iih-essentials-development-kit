@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items lang="en-US">
+    <category name="Common">
+        <item key="xmlLang" xml:space="preserve"><value>en</value></item>
+        <item key="ISO6391Code" xml:space="preserve"><value>en</value></item>
+        <item key="RFK-2LetterId" xml:space="preserve"><value>en</value></item>
+        <item key="MSWord-Locale" xml:space="preserve"><value>1033</value></item>
+        <item key="GERMANY" xml:space="preserve"><value>GERMANY</value></item>
+        <item key="SWITZERLAND" xml:space="preserve"><value>SWITZERLAND</value></item>
+        <item key="TURKEY" xml:space="preserve"><value>TURKEY</value></item>
+        <item key="USA" xml:space="preserve"><value>UNITED STATES</value></item>
+        <item key="languagename" xml:space="preserve"><value>English</value></item>
+        <item key="characteristics" xml:space="preserve"><value>Characteristics</value></item>
+        <item key="condition" xml:space="preserve"><value>Requirement</value></item>
+        <item key="definition" xml:space="preserve"><value>Definition</value></item>
+        <item key="diagnosis" xml:space="preserve"><value>Diagnostics</value></item>
+        <item key="dimensiondiagram" xml:space="preserve"><value>Dimension diagram</value></item>
+        <item key="directhelp" xml:space="preserve"><value>Direct help</value></item>
+        <item key="example" xml:space="preserve"><value>Example</value></item>
+        <item key="fact" xml:space="preserve"><value>Fact</value></item>
+        <item key="guideline" xml:space="preserve"><value>Instructions</value></item>
+        <item key="instruction" xml:space="preserve"><value>Instruction</value></item>
+        <item key="introduction" xml:space="preserve"><value>Introduction</value></item>
+        <item key="principle" xml:space="preserve"><value>Principle</value></item>
+        <item key="prolog" xml:space="preserve"><value>Prolog</value></item>
+        <item key="query" xml:space="preserve"><value>Query</value></item>
+        <item key="quintessence" xml:space="preserve"><value>Quintessence</value></item>
+        <item key="reference" xml:space="preserve"><value>Reference</value></item>
+        <item key="referencetable" xml:space="preserve"><value>Reference table</value></item>
+        <item key="result" xml:space="preserve"><value>Result</value></item>
+        <item key="rule" xml:space="preserve"><value>Rule</value></item>
+        <item key="sequence" xml:space="preserve"><value>Sequence</value></item>
+        <item key="tip" xml:space="preserve"><value>Tip</value></item>
+        <item key="info" xml:space="preserve"><value>Additional information</value></item>
+        <item key="title" xml:space="preserve"><value>Title</value></item>
+        <item key="block" xml:space="preserve"><value>Block</value></item>
+        <item key="topic" xml:space="preserve"><value>Topic</value></item>
+        <item key="description" xml:space="preserve"><value>Description</value></item>
+        <item key="telegram" xml:space="preserve"><value>Telegram</value></item>
+        <item key="overview" xml:space="preserve"><value>Overview</value></item>
+        <item key="sales" xml:space="preserve"><value>Sales</value></item>
+        <item key="factual" xml:space="preserve"><value>Factual</value></item>
+        <item key="caution" xml:space="preserve"><value>Caution</value></item>
+        <item key="danger" xml:space="preserve"><value>Danger</value></item>
+        <item key="note" xml:space="preserve"><value>Note</value></item>
+        <item key="notice" xml:space="preserve"><value>Notice</value></item>
+        <item key="warning" xml:space="preserve"><value>Warning</value></item>
+        <item key="seq.images" xml:space="preserve"><value>Figure</value></item>
+        <item key="seq.tables" xml:space="preserve"><value>Table</value></item>
+        <item key="page" xml:space="preserve"><value>Page</value></item>
+        <item key="images" xml:space="preserve"><value>Figures</value></item>
+        <item key="tables" xml:space="preserve"><value>Tables</value></item>
+        <item key="toc" xml:space="preserve"><value>Table of contents</value></item>
+        <item key="index" xml:space="preserve"><value>Index</value></item>
+        <item key="glossary" xml:space="preserve"><value>Glossary</value></item>
+        <item key="glossaryentry" xml:space="preserve"><value>Glossary entry</value></item>
+        <item key="expandingglossaryentry" xml:space="preserve"><value>Expanding text</value></item>
+        <item key="edition" xml:space="preserve"><value>Edition</value></item>
+        <item key="xref" xml:space="preserve"><value>This information can be found in the document on page </value></item>
+        <item key="xreftoc" xml:space="preserve"><value>(re-use)</value></item>
+        <item key="seealsolink" xml:space="preserve"><value>See also</value></item>
+        <item key="menu.section" xml:space="preserve"><value>In section</value></item>
+        <item key="menu.steps" xml:space="preserve"><value>Instructions</value></item>
+        <item key="menu.examples" xml:space="preserve"><value>Examples</value></item>
+        <item key="menu.see" xml:space="preserve"><value>Basics</value></item>
+        <item key="menu.extra" xml:space="preserve"><value>Extra</value></item>
+        <item key="menu.history" xml:space="preserve"><value>History</value></item>
+        <item key="menu.function.properties" xml:space="preserve"><value>Properties</value></item>
+        <item key="menu.function.methods" xml:space="preserve"><value>Methods</value></item>
+        <item key="menu.function.events" xml:space="preserve"><value>Events</value></item>
+        <item key="menu.function.objects" xml:space="preserve"><value>Objects</value></item>
+        <item key="menu.toggleDynamicBlocks" xml:space="preserve"><value>Open/collapse all dynamic blocks</value></item>
+        <item key="menu.openDynamicBlocks" xml:space="preserve"><value>Open all</value></item>
+        <item key="menu.closeDynamicBlocks" xml:space="preserve"><value>Collapse all</value></item>
+        <item key="menu.relatedTopics" xml:space="preserve"><value>Related topics</value></item>
+        <item key="menu.showPDF" xml:space="preserve"><value>Open PDF</value></item>
+        <item key="menu.next" xml:space="preserve"><value>Next</value></item>
+        <item key="menu.previous" xml:space="preserve"><value>Previous</value></item>
+        <item key="menu.start" xml:space="preserve"><value>Start</value></item>
+        <item key="block.condition" xml:space="preserve"><value>Requirement</value></item>
+        <item key="block.instruction" xml:space="preserve"><value>Procedure</value></item>
+        <item key="block.instruction.th" xml:space="preserve"><value>Instruction</value></item>
+        <item key="missing.image" xml:space="preserve"><value>Missing image</value></item>
+        <item key="missing.header" xml:space="preserve"><value>Missing block title</value></item>
+        <item key="missing.dropdown-text" xml:space="preserve"><value>Missing drop-down text!</value></item>
+        <item key="missing.keyquestion" xml:space="preserve"><value>No key question set!</value></item>
+        <item key="dynamic.all-tables" xml:space="preserve"><value>All tables</value></item>
+        <item key="infobutton" xml:space="preserve"><value>Info button</value></item>
+        <item key="codebutton" xml:space="preserve"><value>&lt;Button "Copy"&gt;</value></item>
+        <item key="internet" xml:space="preserve"><value>You can find additional information on the Internet at</value></item>
+        <item key="catalog.topictitle01" xml:space="preserve"><value>Overview/short description</value></item>
+        <item key="catalog.topictitle02" xml:space="preserve"><value>Characteristics/customer benefits</value></item>
+        <item key="catalog.topictitle03" xml:space="preserve"><value>Field of application</value></item>
+        <item key="catalog.topictitle04" xml:space="preserve"><value>Structure</value></item>
+        <item key="catalog.topictitle05" xml:space="preserve"><value>Function</value></item>
+        <item key="catalog.topictitle06" xml:space="preserve"><value>Integration</value></item>
+        <item key="catalog.topictitle07" xml:space="preserve"><value>Technical specifications</value></item>
+        <item key="catalog.topictitle08" xml:space="preserve"><value>Selection and ordering data</value></item>
+        <item key="catalog.topictitle09" xml:space="preserve"><value>Order number-determining additional information</value></item>
+        <item key="LifeCycle_1" xml:space="preserve"><value>Usage phase</value></item>
+        <item key="LifeCycle_2" xml:space="preserve"><value>Installation/commissioning phase</value></item>
+        <item key="LifeCycle_3" xml:space="preserve"><value>Selection/order phase</value></item>
+        <item key="LifeCycle_4" xml:space="preserve"><value>Maintenance/service phase</value></item>
+        <item key="LifeCycle_5" xml:space="preserve"><value>Orientation phase</value></item>
+        <item key="LifeCycle_6" xml:space="preserve"><value>Planning/configuration phase</value></item>
+        <item key="LifeCycle_7" xml:space="preserve"><value>Implementation phase</value></item>
+        <item key="LifeCycle_8" xml:space="preserve"><value>Retrofit phase</value></item>
+        <item key="DocumentSearchClass_1" xml:space="preserve"><value>Offer overview</value></item>
+        <item key="DocumentSearchClass_2" xml:space="preserve"><value>Application examples</value></item>
+        <item key="DocumentSearchClass_3" xml:space="preserve"><value>Compact User Manual</value></item>
+        <item key="DocumentSearchClass_4" xml:space="preserve"><value>Operating Manual</value></item>
+        <item key="DocumentSearchClass_5" xml:space="preserve"><value>Operating Instructions</value></item>
+        <item key="DocumentSearchClass_6" xml:space="preserve"><value>Compact Operating Instructions</value></item>
+        <item key="DocumentSearchClass_7" xml:space="preserve"><value>Diagnostics Manual</value></item>
+        <item key="DocumentSearchClass_8" xml:space="preserve"><value>Function Manual</value></item>
+        <item key="DocumentSearchClass_9" xml:space="preserve"><value>Equipment Manual</value></item>
+        <item key="DocumentSearchClass_10" xml:space="preserve"><value>Getting Started</value></item>
+        <item key="DocumentSearchClass_11" xml:space="preserve"><value>Commissioning and Hardware Installation Manual</value></item>
+        <item key="DocumentSearchClass_12" xml:space="preserve"><value>Commissioning Manual</value></item>
+        <item key="DocumentSearchClass_13" xml:space="preserve"><value>Installation Manual</value></item>
+        <item key="DocumentSearchClass_14" xml:space="preserve"><value>Catalog</value></item>
+        <item key="DocumentSearchClass_15" xml:space="preserve"><value>Country-specific Documentation</value></item>
+        <item key="DocumentSearchClass_16" xml:space="preserve"><value>Readme</value></item>
+        <item key="DocumentSearchClass_17" xml:space="preserve"><value>List Manual</value></item>
+        <item key="DocumentSearchClass_18" xml:space="preserve"><value>Market Entry Guide</value></item>
+        <item key="DocumentSearchClass_19" xml:space="preserve"><value>Compact Hardware Installation and User Manual</value></item>
+        <item key="DocumentSearchClass_20" xml:space="preserve"><value>Hardware Installation and Operating Manual</value></item>
+        <item key="DocumentSearchClass_21" xml:space="preserve"><value>Compact Hardware Installation Instructions</value></item>
+        <item key="DocumentSearchClass_22" xml:space="preserve"><value>Hardware Installation Manual</value></item>
+        <item key="DocumentSearchClass_23" xml:space="preserve"><value>Reference Manual</value></item>
+        <item key="DocumentSearchClass_24" xml:space="preserve"><value>Product Information</value></item>
+        <item key="DocumentSearchClass_25" xml:space="preserve"><value>Programming and Operating Manual</value></item>
+        <item key="DocumentSearchClass_26" xml:space="preserve"><value>Programming Manual</value></item>
+        <item key="DocumentSearchClass_27" xml:space="preserve"><value>Configuration Manual</value></item>
+        <item key="DocumentSearchClass_28" xml:space="preserve"><value>Service Manual</value></item>
+        <item key="DocumentSearchClass_29" xml:space="preserve"><value>System Manual</value></item>
+        <item key="DocumentSearchClass_30" xml:space="preserve"><value>Tooltips</value></item>
+        <item key="DocumentSearchClass_31" xml:space="preserve"><value>Training Documents</value></item>
+        <item key="DocumentSearchClass_32" xml:space="preserve"><value>Brochure</value></item>
+        <item key="DocumentSearchClass_33" xml:space="preserve"><value>Application Manual</value></item>
+        <item key="DocumentSearchClass_34" xml:space="preserve"><value>Multimedia publication</value></item>
+        <item key="MRL.Original" xml:space="preserve"><value>Original instructions</value></item>
+        <item key="MRL.Translation" xml:space="preserve"><value>Translation of the original instructions</value></item>
+        <item key="MRL.PartOfOriginal" xml:space="preserve"><value>Part of the original instructions</value></item>
+        <item key="MRL.PartOfTranslation" xml:space="preserve"><value>Part of the translation of the original instructions</value></item>
+        <item key="VersionState_Work" doNotTranslate="true" xml:space="preserve"><value>Working state</value></item>
+        <item key="VersionState_IE" doNotTranslate="true" xml:space="preserve"><value>Release by editor</value></item>
+        <item key="VersionState_ST" doNotTranslate="true" xml:space="preserve"><value>Release for systemtest</value></item>
+        <item key="VersionState_PLM" doNotTranslate="true" xml:space="preserve"><value>Release for publication</value></item>
+        <item key="ChapterType_1" doNotTranslate="true" xml:space="preserve"><value>Appendix</value></item>
+        <item key="ChapterType_2" doNotTranslate="true" xml:space="preserve"><value>Back cover</value></item>
+        <item key="ChapterType_3" doNotTranslate="true" xml:space="preserve"><value>Front cover</value></item>
+        <item key="ChapterType_4" doNotTranslate="true" xml:space="preserve"><value>Glossary</value></item>
+        <item key="ChapterType_5" doNotTranslate="true" xml:space="preserve"><value>Index</value></item>
+        <item key="ChapterType_6" doNotTranslate="true" xml:space="preserve"><value>Preface</value></item>
+        <item key="ChapterType_7" doNotTranslate="true" xml:space="preserve"><value>Chapter</value></item>
+        <item key="ChapterType_8" doNotTranslate="true" xml:space="preserve"><value>Table of contents</value></item>
+        <item key="ChapterType_9" doNotTranslate="true" xml:space="preserve"><value>Resources</value></item>
+        <item key="TopicClass_0" doNotTranslate="true" xml:space="preserve"><value>Business data</value></item>
+        <item key="TopicClass_1" doNotTranslate="true" xml:space="preserve"><value>Technical data</value></item>
+        <item key="TopicClass_2" doNotTranslate="true" xml:space="preserve"><value>Structure</value></item>
+        <item key="TopicClass_3" doNotTranslate="true" xml:space="preserve"><value>Content</value></item>
+        <item key="TopicClass_4" doNotTranslate="true" xml:space="preserve"><value>Facts</value></item>
+        <item key="TopicClass_5" doNotTranslate="true" xml:space="preserve"><value>Area</value></item>
+        <item key="TopicClass_6" doNotTranslate="true" xml:space="preserve"><value>Action</value></item>
+        <item key="TopicClass_7" doNotTranslate="true" xml:space="preserve"><value>Function</value></item>
+        <item key="TopicClass_8" doNotTranslate="true" xml:space="preserve"><value>Process</value></item>
+        <item key="TopicClass_9" doNotTranslate="true" xml:space="preserve"><value>Sample</value></item>
+        <item key="TopicClass_10" doNotTranslate="true" xml:space="preserve"><value>Scene</value></item>
+        <item key="TopicFunctionType_0" doNotTranslate="true" xml:space="preserve"><value>Unspecified</value></item>
+        <item key="TopicFunctionType_1" doNotTranslate="true" xml:space="preserve"><value>Default</value></item>
+        <item key="TopicFunctionType_2" doNotTranslate="true" xml:space="preserve"><value>Event</value></item>
+        <item key="TopicFunctionType_3" doNotTranslate="true" xml:space="preserve"><value>Method</value></item>
+        <item key="TopicFunctionType_4" doNotTranslate="true" xml:space="preserve"><value>Object</value></item>
+        <item key="TopicFunctionType_5" doNotTranslate="true" xml:space="preserve"><value>Property</value></item>
+        <item key="Flavor_0" doNotTranslate="true" xml:space="preserve"><value>Telegram, sales</value></item>
+        <item key="Flavor_1" doNotTranslate="true" xml:space="preserve"><value>Telegram, factual</value></item>
+        <item key="Flavor_2" doNotTranslate="true" xml:space="preserve"><value>Overview, sales</value></item>
+        <item key="Flavor_3" doNotTranslate="true" xml:space="preserve"><value>Overview, factual</value></item>
+        <item key="Flavor_4" doNotTranslate="true" xml:space="preserve"><value>Description, sales</value></item>
+        <item key="Flavor_5" doNotTranslate="true" xml:space="preserve"><value>Description, factual</value></item>
+        <item key="FlashRuntime_0" doNotTranslate="true" xml:space="preserve"><value>2D-ShowMe</value></item>
+        <item key="FlashRuntime_1" doNotTranslate="true" xml:space="preserve"><value>3D-ShowMe</value></item>
+        <item key="FlashRuntime_2" doNotTranslate="true" xml:space="preserve"><value>Explore</value></item>
+        <item key="FlashRuntime_3" doNotTranslate="true" xml:space="preserve"><value>Hotspot explore</value></item>
+        <item key="FlashRuntime_4" doNotTranslate="true" xml:space="preserve"><value>Software ShowMe</value></item>
+        <item key="FlashRuntime_5" doNotTranslate="true" xml:space="preserve"><value>Software TryIt</value></item>
+        <item key="FlashRuntime_6" doNotTranslate="true" xml:space="preserve"><value>Advance organizer</value></item>
+        <item key="FlashRuntime_7" doNotTranslate="true" xml:space="preserve"><value>SlideShow</value></item>
+        <item key="FlashRuntime_8" doNotTranslate="true" xml:space="preserve"><value>TellMe</value></item>
+        <item key="FlashRuntime_9" doNotTranslate="true" xml:space="preserve"><value>Video</value></item>
+        <item key="Visibility_ALL" doNotTranslate="true" xml:space="preserve"><value>All media</value></item>
+        <item key="Visibility_ONLINE" doNotTranslate="true" xml:space="preserve"><value>Online media</value></item>
+        <item key="Visibility_PRINT" doNotTranslate="true" xml:space="preserve"><value>Print media</value></item>
+        <item key="ExtContentLayoutType_1" doNotTranslate="true" xml:space="preserve"><value>Full page</value></item>
+        <item key="ExtContentLayoutType_2" doNotTranslate="true" xml:space="preserve"><value>Normal</value></item>
+        <item key="ExtContentLayoutType_3" doNotTranslate="true" xml:space="preserve"><value>Without header</value></item>
+        <item key="PictureClassification_1" doNotTranslate="true" xml:space="preserve"><value>Connection image</value></item>
+        <item key="PictureClassification_2" doNotTranslate="true" xml:space="preserve"><value>Clipart</value></item>
+        <item key="PictureClassification_3" doNotTranslate="true" xml:space="preserve"><value>Flowchart</value></item>
+        <item key="PictureClassification_4" doNotTranslate="true" xml:space="preserve"><value>Photo</value></item>
+        <item key="PictureClassification_5" doNotTranslate="true" xml:space="preserve"><value>Function plan</value></item>
+        <item key="PictureClassification_6" doNotTranslate="true" xml:space="preserve"><value>Illustration</value></item>
+        <item key="PictureClassification_7" doNotTranslate="true" xml:space="preserve"><value>Graph</value></item>
+        <item key="PictureClassification_8" doNotTranslate="true" xml:space="preserve"><value>Configuration image</value></item>
+        <item key="PictureClassification_9" doNotTranslate="true" xml:space="preserve"><value>Symbol</value></item>
+        <item key="PictureClassification_10" doNotTranslate="true" xml:space="preserve"><value>Dimensioned drawing</value></item>
+        <item key="PictureClassification_11" doNotTranslate="true" xml:space="preserve"><value>Diagram</value></item>
+        <item key="PictureClassification_12" doNotTranslate="true" xml:space="preserve"><value>Screenshot</value></item>
+        <item key="PictureClassification_13" doNotTranslate="true" xml:space="preserve"><value>Screenshot with addition</value></item>
+        <item key="PictureClassification_14" doNotTranslate="true" xml:space="preserve"><value>Painting</value></item>
+        <item key="PictureClassification_15" doNotTranslate="true" xml:space="preserve"><value>Formula</value></item>
+        <item key="LanguageSelection_Single" doNotTranslate="true" xml:space="preserve"><value>single</value></item>
+        <item key="LanguageSelection_Multiple" doNotTranslate="true" xml:space="preserve"><value>multiple</value></item>
+        <item key="LanguagesOutputType_Serial" doNotTranslate="true" xml:space="preserve"><value>serial</value></item>
+        <item key="LanguagesOutputType_Parallel" doNotTranslate="true" xml:space="preserve"><value>parallel</value></item>
+        <item key="LanguagesOutputType_Tooltip" doNotTranslate="true" xml:space="preserve"><value>tooltip</value></item>
+        <item key="PaperSize_A4" doNotTranslate="true" xml:space="preserve"><value>A4 hybrid</value></item>
+        <item key="PaperSize_A3Landscape" doNotTranslate="true" xml:space="preserve"><value>A3 landscpae</value></item>
+        <item key="PaperSize_A5" doNotTranslate="true" xml:space="preserve"><value>A5 hybrid</value></item>
+        <item key="PaperSize_A6" doNotTranslate="true" xml:space="preserve"><value>A6 hybrid</value></item>
+        <item key="TextColumns_1" doNotTranslate="true" xml:space="preserve"><value>in one column</value></item>
+        <item key="TextColumns_2" doNotTranslate="true" xml:space="preserve"><value>in two columns</value></item>
+        <item key="TextColumns_3" doNotTranslate="true" xml:space="preserve"><value>in three columns</value></item>
+        <item key="TextColumns_4" doNotTranslate="true" xml:space="preserve"><value>in four columns</value></item>
+        <item key="TextColumns_5" doNotTranslate="true" xml:space="preserve"><value>in five columns</value></item>
+        <item key="countExternalTopics" doNotTranslate="true" xml:space="preserve"><value>Count external topics</value></item>
+        <item key="CopyFirstColumnToClipboard" xml:space="preserve"><value>Copies the following program code to clipboard.</value></item>
+        <item key="ClosePopup" xml:space="preserve"><value>Close window</value></item>
+        <item key="Show" xml:space="preserve"><value>Display</value></item>
+        <item key="Term" xml:space="preserve"><value>Term</value></item>
+        <item key="ContentNodeList" xml:space="preserve"><value>This section contains information on the following topics:</value></item>
+        <item key="review" xml:space="preserve"><value>REVIEW</value></item>
+        <item key="ordernumber" xml:space="preserve"><value>Document order number</value></item>
+        <item key="docproperties" xml:space="preserve"><value>Document properties</value></item>
+        <item key="summaryofmodifications" xml:space="preserve"><value>Summary of modifications</value></item>
+        <item key="ToBeContinued" xml:space="preserve"><value>Continued on next page</value></item>
+        <item key="Continuation" xml:space="preserve"><value>Continued</value></item>
+        <item key="SourceLanguage" xml:space="preserve"><value>Source language</value></item>
+        <item key="TargetLanguage" xml:space="preserve"><value>Target language</value></item>
+        <item key="PDFConcomitant" xml:space="preserve"><value>Explanatory PDF</value></item>
+        <item key="PDFLocalizableGrafics" xml:space="preserve"><value>MPM localizable images</value></item>
+        <item key="OnlyForTranslation" xml:space="preserve"><value>For translation purposes only</value></item>
+        <item key="PDFConcomitantLegend" xml:space="preserve"><value>Explanatory PDF key</value></item>
+        <item key="LegendText" xml:space="preserve"><value>Text markings</value></item>
+        <item key="LegendImage" xml:space="preserve"><value>Graphics markings</value></item>
+        <item key="LegendObjectIcons" xml:space="preserve"><value>SIPS+ object icons</value></item>
+        <item key="DoNotTranslate" xml:space="preserve"><value>untranslatable text</value></item>
+        <item key="TranslateSpecial" xml:space="preserve"><value>localizable text</value></item>
+        <item key="InheritsFrom" xml:space="preserve"><value>Inherits from language</value></item>
+        <item key="ToTranslate.neutral" xml:space="preserve"><value>untranslatable</value></item>
+        <item key="ToTranslate.localizable" xml:space="preserve"><value>localizable</value></item>
+        <item key="ToTranslate.translatable" xml:space="preserve"><value>translatable</value></item>
+        <item key="Object.Folder" xml:space="preserve"><value>Folder</value></item>
+        <item key="Object.Document" xml:space="preserve"><value>Document</value></item>
+        <item key="Object.DocumentVariant" xml:space="preserve"><value>Document variant</value></item>
+        <item key="Object.Frontcover" xml:space="preserve"><value>Cover page (U1)</value></item>
+        <item key="Object.Backcover" xml:space="preserve"><value>Cover page (U4)</value></item>
+        <item key="Object.ResourceChapter" xml:space="preserve"><value>Resources folder</value></item>
+        <item key="Object.Resource" xml:space="preserve"><value>Resource</value></item>
+        <item key="Object.Image" xml:space="preserve"><value>Graphic</value></item>
+        <item key="Object.HeaderFile" xml:space="preserve"><value>Header file</value></item>
+        <item key="Object.AliasFile" xml:space="preserve"><value>Alias file</value></item>
+        <item key="Object.SoundFile" xml:space="preserve"><value>Sound file</value></item>
+        <item key="Object.FlashFile" xml:space="preserve"><value>Flash file</value></item>
+        <item key="Object.Scene" xml:space="preserve"><value>Scene</value></item>
+        <item key="Object.Fragment" xml:space="preserve"><value>Fragment</value></item>
+        <item key="Object.CadimTopic" xml:space="preserve"><value>CADIM reference</value></item>
+        <item key="Object.ExternalTopic" xml:space="preserve"><value>External topic</value></item>
+        <item key="Object.DataTableReference" xml:space="preserve"><value>TED reference</value></item>
+        <item key="AllRightsReserved" xml:space="preserve"><value>All rights reserved</value></item>
+        <item key="Production.MultimediaScreenplay" xml:space="preserve"><value>Multimedia screenplay</value></item>
+    </category>
+    <category name="Production.HTML5">
+        <item key="LocalizationControl._CultureInfo_" xml:space="preserve"><value>en-US</value></item>
+        <item key="LocalizationControl._Language_" xml:space="preserve"><value>en</value></item>
+        <item key="lblISO" xml:space="preserve"><value>ISO</value></item>
+        <item key="lblLangBG" xml:space="preserve"><value>Bulgarian</value></item>
+        <item key="lblLangCS" xml:space="preserve"><value>Czech</value></item>
+        <item key="lblLangDA" xml:space="preserve"><value>Danish</value></item>
+        <item key="lblLangDE" xml:space="preserve"><value>German</value></item>
+        <item key="lblLangEL" xml:space="preserve"><value>Greek</value></item>
+        <item key="lblLangEN" xml:space="preserve"><value>English</value></item>
+        <item key="lblLangES" xml:space="preserve"><value>Spanish</value></item>
+        <item key="lblLangFI" xml:space="preserve"><value>Finnish</value></item>
+        <item key="lblLangFR" xml:space="preserve"><value>French</value></item>
+        <item key="lblLangHR" xml:space="preserve"><value>Croatian</value></item>
+        <item key="lblLangHU" xml:space="preserve"><value>Hungarian</value></item>
+        <item key="lblLangID" xml:space="preserve"><value>Indonesian</value></item>
+        <item key="lblLangIT" xml:space="preserve"><value>Italian</value></item>
+        <item key="lblLangJA" xml:space="preserve"><value>Japanese</value></item>
+        <item key="lblLangKO" xml:space="preserve"><value>Korean</value></item>
+        <item key="lblLangNB" xml:space="preserve"><value>Norwegian</value></item>
+        <item key="lblLangNL" xml:space="preserve"><value>Dutch</value></item>
+        <item key="lblLangPL" xml:space="preserve"><value>Polish</value></item>
+        <item key="lblLangPT" xml:space="preserve"><value>Portuguese</value></item>
+        <item key="lblLangRU" xml:space="preserve"><value>Russian</value></item>
+        <item key="lblLangSK" xml:space="preserve"><value>Slovakian</value></item>
+        <item key="lblLangSL" xml:space="preserve"><value>Slovenian</value></item>
+        <item key="lblLangSV" xml:space="preserve"><value>Swedish</value></item>
+        <item key="lblLangTC" xml:space="preserve"><value>Taiwanese</value></item>
+        <item key="lblLangTR" xml:space="preserve"><value>Turkish</value></item>
+        <item key="lblLangZH" xml:space="preserve"><value>Chinese</value></item>
+        <item key="Common.Language" xml:space="preserve"><value>Sprache</value></item>
+        <item key="Common.All" xml:space="preserve"><value>All</value></item>
+        <item key="Common.PleaseSelect" xml:space="preserve"><value>Select</value></item>
+        <item key="Common.PleaseEnter" xml:space="preserve"><value>Enter</value></item>
+        <item key="Common.Reset" xml:space="preserve"><value>Reset</value></item>
+        <item key="Common.Show" xml:space="preserve"><value>Show</value></item>
+        <item key="Common.ShowMore" xml:space="preserve"><value>Show more</value></item>
+        <item key="Common.Input.InsertText" xml:space="preserve"><value>Enter search term</value></item>
+        <item key="Common.Input.InsertText.Glossary" xml:space="preserve"><value>Enter glossary search term</value></item>
+        <item key="Common.Input.InsertText.Index" xml:space="preserve"><value>Enter index search term</value></item>
+        <item key="Common.Button.Search" xml:space="preserve"><value>Search</value></item>
+        <item key="Common.Button.Start" xml:space="preserve"><value>Begin</value></item>
+        <item key="Common.Language.de-DE" xml:space="preserve"><value>German</value></item>
+        <item key="Common.Language.en-US" xml:space="preserve"><value>English</value></item>
+        <item key="Common.Language.Modal.Title" xml:space="preserve"><value>Language selection</value></item>
+        <item key="Common.Language.Modal.Info" xml:space="preserve"><value>There is no document in the language you selected, please select another language.</value></item>
+        <item key="Common.NoDocument.Modal.Title" xml:space="preserve"><value>Document information</value></item>
+        <item key="Common.NoDocument.Modal.Info" xml:space="preserve"><value>No documents have been imported into PUD Manager.</value></item>
+        <item key="Common.SearchResult.HeaderSearchIndexNotInitialized" xml:space="preserve"><value>Indexing...</value></item>
+        <item key="Common.ModalDialog.Title" xml:space="preserve"><value>Note</value></item>
+        <item key="Common.ModalDialog.Button.OK" xml:space="preserve"><value>OK</value></item>
+        <item key="Common.Yes" xml:space="preserve"><value>Yes</value></item>
+        <item key="Common.No" xml:space="preserve"><value>No</value></item>
+        <item key="Common.Topic.NodeType.Directory" xml:space="preserve"><value>Folder</value></item>
+        <item key="Common.Topic.NodeType.Document" xml:space="preserve"><value>Document</value></item>
+        <item key="Common.Topic.NodeType.Chapter" xml:space="preserve"><value>Chapter</value></item>
+        <item key="Common.Topic.NodeType.Topic" xml:space="preserve"><value>Topic</value></item>
+        <item key="Common.Topic.NodeType.GlossarDescription" xml:space="preserve"><value>Glossary Description</value></item>
+        <item key="Common.Loading" xml:space="preserve"><value>Loading...</value></item>
+        <item key="Navigation.Item.Home" xml:space="preserve"><value>Home</value></item>
+        <item key="Navigation.Item.Menu" xml:space="preserve"><value>Menu</value></item>
+        <item key="Navigation.Item.Glossary" xml:space="preserve"><value>Glossary</value></item>
+        <item key="Navigation.Item.Search" xml:space="preserve"><value>Search</value></item>
+        <item key="Navigation.Item.Settings" xml:space="preserve"><value>Settings</value></item>
+        <item key="Navigation.Item.Favorites" xml:space="preserve"><value>Favorites</value></item>
+        <item key="Navigation.Item.Navigation" xml:space="preserve"><value>Content</value></item>
+        <item key="Navigation.Item.Language" xml:space="preserve"><value>EN</value></item>
+        <item key="Navigation.Item.Language.Caption" xml:space="preserve"><value>Language</value></item>
+        <item key="Navigation.Item.Index" xml:space="preserve"><value>Index</value></item>
+        <item key="Navigation.Item.Repository" xml:space="preserve"><value>Document overview</value></item>
+        <item key="Navigation.Item.Administration" xml:space="preserve"><value>Administration</value></item>
+        <item key="Navigation.Item.About" xml:space="preserve"><value>Management</value></item>
+        <item key="Navigation.Item.Next" xml:space="preserve"><value>next</value></item>
+        <item key="Navigation.Item.Prev" xml:space="preserve"><value>prev</value></item>
+        <item key="Navigation.Item.History.Back.TT" xml:space="preserve"><value>History back</value></item>
+        <item key="Navigation.Item.History.Next.TT" xml:space="preserve"><value>History next</value></item>
+        <item key="Navigation.Item.Search.TT" xml:space="preserve"><value>Search</value></item>
+        <item key="Navigation.Item.Settings.TT" xml:space="preserve"><value>Settings</value></item>
+        <item key="Navigation.Item.Language.TT" xml:space="preserve"><value>Language</value></item>
+        <item key="Navigation.Item.Next.TT" xml:space="preserve"><value>Scroll forward</value></item>
+        <item key="Navigation.Item.Prev.TT" xml:space="preserve"><value>Scroll back</value></item>
+        <item key="Navigation.Item.System.TT" xml:space="preserve"><value>Management</value></item>
+        <item key="Navigation.Item.IMeta.TT.Off" xml:space="preserve"><value>Show metadata</value></item>
+        <item key="Navigation.Item.IMeta.TT.On" xml:space="preserve"><value>Hide metadata</value></item>
+        <item key="Navigation.Item.Anchor.TT.Off" xml:space="preserve"><value>Show headers</value></item>
+        <item key="Navigation.Item.Anchor.TT.On" xml:space="preserve"><value>Hide headers</value></item>
+        <item key="Navigation.Item.SimilarContents.TT.Off" xml:space="preserve"><value>Related subjects</value></item>
+        <item key="Navigation.Item.SimilarContents.TT.On" xml:space="preserve"><value>Related subjects</value></item>
+        <item key="Navigation.Item.ProductModel.TT.Off" xml:space="preserve"><value>Show product model</value></item>
+        <item key="Navigation.Item.ProductModel.TT.On" xml:space="preserve"><value>Hide product model</value></item>
+        <item key="Navigation.Item.Searching.TT" xml:space="preserve"><value>Search</value></item>
+        <item key="Navigation.Item.ExtendedSearch.TT.Off" xml:space="preserve"><value>Advanced search</value></item>
+        <item key="Navigation.Item.ExtendedSearch.TT.On" xml:space="preserve"><value>Hide advanced search</value></item>
+        <item key="Navigation.Item.TipsSearch.TT.Off" xml:space="preserve"><value>Tips on searching</value></item>
+        <item key="Navigation.Item.TipsSearch.TT.On" xml:space="preserve"><value>Hide tips for search</value></item>
+        <item key="Navigation.Item.ExpandContent.TT.Off" xml:space="preserve"><value>Expand display area</value></item>
+        <item key="Navigation.Item.ExpandContent.TT.On" xml:space="preserve"><value>Reset display area</value></item>
+        <item key="Navigation.Item.Close.TT" xml:space="preserve"><value>Close</value></item>
+        <item key="Navigation.Item.Back.TT" xml:space="preserve"><value>Back</value></item>
+        <item key="Navigation.Item.Legend.TT.Off" xml:space="preserve"><value>Show legend</value></item>
+        <item key="Navigation.Item.Legend.TT.On" xml:space="preserve"><value>Hide legend</value></item>
+        <item key="Navigation.Item.OriginalSize.TT.Off" xml:space="preserve"><value>Original size</value></item>
+        <item key="Navigation.Item.Expand.TT.Off" xml:space="preserve"><value>Expand picture</value></item>
+        <item key="Navigation.Item.ZoomIn.TT.Off" xml:space="preserve"><value>Zoom in</value></item>
+        <item key="Navigation.Item.ZoomOut.TT.Off" xml:space="preserve"><value>Zoom out</value></item>
+        <item key="Startpage.Label.Edition" xml:space="preserve"><value>Edition</value></item>
+        <item key="Index.Title" xml:space="preserve"><value>Help from A to Z</value></item>
+        <item key="Index.SubTitle" xml:space="preserve"><value>Find a topic from A to Z</value></item>
+        <item key="Index.ResultTitle" xml:space="preserve"><value>Result for</value></item>
+        <item key="Index.ResultHeader">
+            <value>{0}-{1} of {2} for "{3}"</value>
+        </item>
+        <item key="Index.Result.HeaderSearch" xml:space="preserve"><value>{0}-{1} of {2}</value></item>
+        <item key="Index.Result.HeaderNoResult" xml:space="preserve"><value>No hits</value></item>
+        <item key="PageIndex.Title" xml:space="preserve"><value>Table of contents</value></item>
+        <item key="Settings.Header" xml:space="preserve"><value>User settings</value></item>
+        <item key="Settings.Property.FixedMenu" xml:space="preserve"><value>Anchor "Menu" area</value></item>
+        <item key="Settings.Property.ShowChapterNumber" xml:space="preserve"><value>Display section numbers</value></item>
+        <item key="Settings.Property.CollapseContentBlocks" xml:space="preserve"><value>Expand only quintessence</value></item>
+        <item key="Settings.Property.ShowValidity" xml:space="preserve"><value>Show validity</value></item>
+        <item key="Settings.Property.ShowMetaInfo" xml:space="preserve"><value>Show metainfo button</value></item>
+        <item key="Settings.Property.UseDesktopTheme" xml:space="preserve"><value>Desktop theme</value></item>
+        <item key="Settings.Property.FitContent" xml:space="preserve"><value>Fit content</value></item>
+        <item key="Settings.SubHeader" xml:space="preserve"><value>Advanced properties</value></item>
+        <item key="ApplicationHelp.Button" xml:space="preserve"><value>Show help</value></item>
+        <item key="ApplicationInfo.Button" xml:space="preserve"><value>About the PUD Manager</value></item>
+        <item key="RepositoryRestart.Button" xml:space="preserve"><value>Restart PUD Manager</value></item>
+        <item key="RepositoryRestart.Button.TT" xml:space="preserve"><value>Restart PUD Manager</value></item>
+        <item key="RepositoryInfo.Button" xml:space="preserve"><value>Show document overview</value></item>
+        <item key="RepositoryInfo.Headline" xml:space="preserve"><value>Document overview</value></item>
+        <item key="RepositoryInfo.Loading" xml:space="preserve"><value>Loading ...</value></item>
+        <item key="RepositoryInfo.SHead.Repository" xml:space="preserve"><value>Installed documentation</value></item>
+        <item key="RepositoryInfo.SHead.Pending" xml:space="preserve"><value>Available updates</value></item>
+        <item key="RepositoryInfo.Btn.Import" xml:space="preserve"><value>Update</value></item>
+        <item key="RepositoryInfo.Btn.Remove" xml:space="preserve"><value>Remove</value></item>
+        <item key="RepositoryInfo.TblHead.DocumentId" xml:space="preserve"><value>Document ID</value></item>
+        <item key="RepositoryInfo.TblHead.DocumentVersionId" xml:space="preserve"><value>Version ID</value></item>
+        <item key="RepositoryInfo.TblHead.Language" xml:space="preserve"><value>Language</value></item>
+        <item key="RepositoryInfo.TblHead.Title" xml:space="preserve"><value>Title</value></item>
+        <item key="RepositoryInfo.TblHead.Version" xml:space="preserve"><value>Version</value></item>
+        <item key="RepositoryInfo.TblHead.State" xml:space="preserve"><value>Status</value></item>
+        <item key="RepositoryInfo.TblHead.Active" xml:space="preserve"><value>Active</value></item>
+        <item key="RepositoryInfo.TblHead.ExportId" xml:space="preserve"><value>Export ID</value></item>
+        <item key="RepositoryInfo.TblHead.FileName" xml:space="preserve"><value>File name</value></item>
+        <item key="RepositoryInfo.TblHead.DocumentPublishEdition" xml:space="preserve"><value>Issue status</value></item>
+        <item key="RepositoryInfo.TblHead.DocumentPublishDrawingNumber" xml:space="preserve"><value>Identification Number</value></item>
+        <item key="RepositoryInfo.Repository.NoDocuments" xml:space="preserve"><value>No documents available.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.NoDocuments" xml:space="preserve"><value>No documents available for import.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Message.AsAdmin" xml:space="preserve"><value>Please start the help viewer as administrator if you want to import the available documents.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Message.NoUpdateInWeb" xml:space="preserve"><value>Updating or importing the documents cannot be executed here in the Web.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Message.UpdateInWebOnlyWithRights" xml:space="preserve"><value>Documents cannot be updated or installed. You do not have the necessary rights.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectAll" xml:space="preserve"><value>Select all</value></item>
+        <item key="RepositoryInfo.PendingUpdate.DeSelectAll" xml:space="preserve"><value>Deselect all</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Select" xml:space="preserve"><value>Select</value></item>
+        <item key="RepositoryInfo.PendingUpdate.DeSelect" xml:space="preserve"><value>Clear</value></item>
+        <item key="RepositoryInfo.PendingUpdate.UpdateAll" xml:space="preserve"><value>Update selection</value></item>
+        <item key="RepositoryInfo.PendingUpdate.RemoveAll" xml:space="preserve"><value>Remove selection</value></item>
+        <item key="RepositoryInfo.PendingUpdate.DisableAll" xml:space="preserve"><value>Apply selection</value></item>
+        <item key="RepositoryInfo.PendingUpdate.UpdateAll.TT" xml:space="preserve"><value>Update selection - the selected documents are imported.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.RemoveAll.TT" xml:space="preserve"><value>Remove selection -  the selected documents are deleted from the import folder.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.DisableAll.TT" xml:space="preserve"><value>Apply selection - the selected documents are activated or deactivated according to the selection.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectForImport.TT" xml:space="preserve"><value>Select for import</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectForRemove.TT" xml:space="preserve"><value>Select to delete the ZIP file from the import folder.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectForDisable.TT" xml:space="preserve"><value>Select to activate or deactivate the document.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectAllForImport.TT" xml:space="preserve"><value>Select all - for import</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectAllForRemove.TT" xml:space="preserve"><value>Select all - to delete the repository from the pending update folder.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectAllForDisable.TT" xml:space="preserve"><value>Select all - to deactivate from the display</value></item>
+        <item key="RepositoryInfo.Document.Disable" xml:space="preserve"><value>Deactivate</value></item>
+        <item key="RepositoryInfo.Document.Enable" xml:space="preserve"><value>Activate</value></item>
+        <item key="RepositoryInfo.Message.Import.Documents.Succeeded" xml:space="preserve"><value>All selected documents were successfully imported.\n Restart the viewer to show all documents.</value></item>
+        <item key="RepositoryInfo.Message.Import.Web.Documents.Succeeded" xml:space="preserve"><value>The selected documents have been successfully imported.
+	Use the button " to restart the application and view all documents.</value></item>
+        <item key="RepositoryInfo.Message.Remove.Documents.Succeeded" xml:space="preserve"><value>The selected documents were successfully removed from the folder 'PendingUpdate'.</value></item>
+        <item key="RepositoryInfo.Message.NoRight" xml:space="preserve"><value>You do not have permission for this action.</value></item>
+        <item key="RepositoryInfo.Message.Error" xml:space="preserve"><value>An error occurred.</value></item>
+        <item key="RepositoryInfo.Message.Disable.Documents.Succeeded" xml:space="preserve"><value>The selected documents were activated or deactivated successfully.\n The application will now be reloaded.</value></item>
+        <item key="RepositoryInfo.Message.Disable.Web.Documents.Succeeded" xml:space="preserve"><value>The selected documents were activated or deactivated successfully.\n The application will now be reloaded!</value></item>
+        <item key="RepositoryInfo.Info.Loading" xml:space="preserve"><value>Loading... {0}%</value></item>
+        <item key="RepositoryInfo.Import.Message" xml:space="preserve"><value>Documents imported by the PUD Manager</value></item>
+        <item key="RepositoryInfo.Import.Waiting.Message" xml:space="preserve"><value>Importing... {0}%</value></item>
+        <item key="RepositoryInfo.Initializing.Message" xml:space="preserve"><value>PUD Manager initialized</value></item>
+        <item key="RepositoryInfo.Initializing.Failed.Message" xml:space="preserve"><value>The initialization of the documents failed.</value></item>
+        <item key="RepositoryInfo.Initializing.Succeeded.Message" xml:space="preserve"><value>Initialization of the PUD Manager finished</value></item>
+        <item key="RepositoryInfo.Restart.Initializing" xml:space="preserve"><value>Documents are being reinitialized.</value></item>
+        <item key="RepositoryInfo.Restart.Initializing.Succeeded" xml:space="preserve"><value>The reinitialization of the documents has completed.</value></item>
+        <item key="RepositoryInfo.DisableEnabled.Documents.Succeeded" xml:space="preserve"><value>Showing and hiding the documents has completed.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Document.State.new" xml:space="preserve"><value>New</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Document.State.changed" xml:space="preserve"><value>Modified</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Document.State.uptodate" xml:space="preserve"><value>Current</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Document.State.deleted" xml:space="preserve"><value>Deleted</value></item>
+        <item key="System.Restart.Finished.ReloadApp" xml:space="preserve"><value>The restart completed successfully. The application will now be reloaded.</value></item>
+        <item key="System.About.Headline" xml:space="preserve"><value>About</value></item>
+        <item key="System.Restart.UserMessage" xml:space="preserve"><value>The PUD manager has been updated and the application has to be restarted.</value></item>
+        <item key="IMeta.Document.HideInToc" xml:space="preserve"><value>Hide in the table of contents</value></item>
+        <item key="IMeta.Document.PublishEdition" xml:space="preserve"><value>Revision State</value></item>
+        <item key="IMeta.Document.PublishDrawingNumber" xml:space="preserve"><value>Document Number</value></item>
+        <item key="Search.Header" xml:space="preserve"><value>Search</value></item>
+        <item key="Search.DidYouMean" xml:space="preserve"><value>Did you mean</value></item>
+        <item key="Search.Options.Repository" xml:space="preserve"><value>Total document storage</value></item>
+        <item key="Search.Options.AllSelectedDocuments" xml:space="preserve"><value>Selected documents</value></item>
+        <item key="Search.Options.Document" xml:space="preserve"><value>Entire document</value></item>
+        <item key="Search.Options.Section" xml:space="preserve"><value>Current structure</value></item>
+        <item key="Search.Options.UseWhitespace" xml:space="preserve"><value>Combine search queries with whitespace</value></item>
+        <item key="Search.Options.Info.SearchInDocument" xml:space="preserve"><value>Search in the document '{0}'.</value></item>
+        <item key="Search.Options.Info.SearchInAllDocuments" xml:space="preserve"><value>Search in '{0}all{1}' documents.</value></item>
+        <item key="Search.Options.Info.SearchInAllSelectedDocuments" xml:space="preserve"><value>Search in '{0}all selected{1}' documents.</value></item>
+        <item key="Search.Options.Info.SearchInTopicOfDocument" xml:space="preserve"><value>Search in the topic '{0}' of the document '{1}'.</value></item>
+        <item key="Search.Options.Info.SearchInChapterOfDocument" xml:space="preserve"><value>Search in the chapter '{0}' of the document '{1}'.</value></item>
+        <item key="Search.Result.Header" xml:space="preserve"><value>{0}-{1} of {2} hits</value></item>
+        <item key="Search.Result.HeaderMoreItems" xml:space="preserve"><value>{0} hits</value></item>
+        <item key="Search.Result.HeaderOneItem" xml:space="preserve"><value>{0} hits</value></item>
+        <item key="Search.Result.HeaderNoResult" xml:space="preserve"><value>No hits</value></item>
+        <item key="Search.Result.SearchXMore" xml:space="preserve"><value>Continue to show {0}</value></item>
+        <item key="Search.Result.ItemType.Glossary" xml:space="preserve"><value>Glossaryentry</value></item>
+        <item key="Search.Result.ItemType.Index" xml:space="preserve"><value>Indexentry</value></item>
+        <item key="Search.Result.ItemType.HideInToc" xml:space="preserve"><value>Hide in the table of contents</value></item>
+        <item key="Search.NoSuggestions" xml:space="preserve"><value>No suggestions</value></item>
+        <item key="Search.Suggestion" xml:space="preserve"><value>Search for</value></item>
+        <item key="Search.Documents" xml:space="preserve"><value>Documents</value></item>
+        <item key="Search.Model" xml:space="preserve"><value>Product model</value></item>
+        <item key="Search.PlaceHolder" xml:space="preserve"><value>Enter search term</value></item>
+        <item key="Search.PlaceHolder.Toc" xml:space="preserve"><value>Search in table of contents</value></item>
+        <item key="Search.PlaceHolder.PM" xml:space="preserve"><value>Search in product model</value></item>
+        <item key="Search.Metadata.Filter" xml:space="preserve"><value>Filter</value></item>
+        <item key="Search.Metadata.Headline" xml:space="preserve"><value>Filter</value></item>
+        <item key="Search.Information.Headline" xml:space="preserve"><value>Search information</value></item>
+        <item key="Search.Information.Description" xml:space="preserve"><value>Limit search
+	                Enter what to search for: Total document storage, complete document, current structure.
+            
+	                Search with operators
+            
+	                Use operators to achieve the required search results.
+	                If you enter two terms without an operator, all hits are shown which contain both terms (corresponds to AND). This is the default search setting.
+	               Note: When using + or – there no space between the operator and term.
+	            AND = +
+	                                Hits which contain all terms. E.g.: Data AND Block; Data +Block
+	                            OR 
+	                                Hits which have at least one of the entered terms. E.g.: Data OR Block; Data Block
+                            
+	                        NOT = -
+	                                Hits which do not contain the negated term . E.g.: Data NOT Block; Data -Block
+	                             EXACT = “ “ 
+	                                Hits which contain exactly the entered term. E.g.: “smart card“
+                            
+	                        Integrated Terminology
+	                If you receive unexpected search results for the term entered, it is due to a searched term being deprecated. The PUD Manager automatically searched for the new term and delivers search results which correspond to the new terminology.
+	            </value></item>
+        <item key="Glossary.Header" xml:space="preserve"><value>Glossary</value></item>
+        <item key="Glossary.Search.Result.Header" xml:space="preserve"><value>Glossary</value></item>
+        <item key="Glossary.Entry.Header" xml:space="preserve"><value>Glossaryentry</value></item>
+        <item key="Glossary.Search.Result.NoResult" xml:space="preserve"><value>No hits</value></item>
+        <item key="Document.Info.Header" xml:space="preserve"><value>Documentinfo</value></item>
+        <item key="Document.Info.Ordernumber" xml:space="preserve"><value>Document order number</value></item>
+        <item key="Document.Info.Drawingnumber" xml:space="preserve"><value>Document identification number</value></item>
+        <item key="Document.Info.ProducedWith" xml:space="preserve"><value>Produced with:</value></item>
+        <item key="Document.Info.Version" xml:space="preserve"><value>Version:</value></item>
+        <item key="LegalInfo.Header" xml:space="preserve"><value>Legal information</value></item>
+        <item key="Content.Summary" xml:space="preserve"><value>Content</value></item>
+        <item key="Content.Seealso" xml:space="preserve"><value>See also</value></item>
+        <item key="Content.Similarcontents" xml:space="preserve"><value>Related subjects</value></item>
+        <item key="Content.TopicInTopic.MaxCountOpenTopics" xml:space="preserve"><value>The maximum number of topics that can be opened in a topic has been reached!</value></item>
+        <item key="Content.TopicInTopic.TopicIsOpen" xml:space="preserve"><value>The topic '{0}' is already displayed!</value></item>
+        <item key="Content.DynamicTables.ShowAll" xml:space="preserve"><value>All tables</value></item>
+        <item key="Content.Table.Link" xml:space="preserve"><value>Table</value></item>
+        <item key="Content.Image.Link" xml:space="preserve"><value>Figure</value></item>
+        <item key="Content.Tables.LabelCopyTitle" xml:space="preserve"><value>Copies the following program code to clipboard.</value></item>
+        <item key="Content.Tables.LabelMissingTable" xml:space="preserve"><value>- missing table -</value></item>
+        <item key="Content.Code.CopyToClipboard" xml:space="preserve"><value>Your browser does not support access to the clipboard.  Please copy the text from here.</value></item>
+        <item key="Content.Tabs.Message.MaxPinnedTabs" xml:space="preserve"><value>The max. Number of pinable tabs '{0}' has been reached!</value></item>
+        <item key="Content.Tabs.Cannot.Close.Last.Tab" xml:space="preserve"><value>The last tab cannot be closed!</value></item>
+        <item key="Content.Tabs.SwitchSizeToMobile.Title" xml:space="preserve"><value>Note on changing the view</value></item>
+        <item key="Content.Tabs.SwitchSizeToMobile.Content" xml:space="preserve"><value>You switch from the standard view to the mobile view. {0} Some functions are deactivated in the small view (e.g. tabs)</value></item>
+        <item key="Content.Tabs.TopicOpenInOtherTab" xml:space="preserve"><value>The topic is already open in another tab. It is now switched to this tab.</value></item>
+        <item key="Chapter.Title" xml:space="preserve"><value>This chapter describes the following contents:</value></item>
+        <item key="Footer.Link.GlobalWebsiteLabel" doNotTranslate="true" xml:space="preserve"><value>Siemens Global Website</value></item>
+        <item key="Footer.Link.GlobalWebsiteLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com</value></item>
+        <item key="Footer.Link.PDFVersionLabel" xml:space="preserve"><value>PDF version</value></item>
+        <item key="Footer.Link.PDFVersionLink" doNotTranslate="true" xml:space="preserve"><value>https://www.automation.siemens.com/pdf/</value></item>
+        <item key="Footer.Link.TermsOfUseLabel" xml:space="preserve"><value>Terms of use</value></item>
+        <item key="Footer.Link.TermsOfUseLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/terms_of_use</value></item>
+        <item key="Footer.Link.ImprintLabel" xml:space="preserve"><value>Imprint</value></item>
+        <item key="Footer.Link.ImprintLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/corporate_info</value></item>
+        <item key="Footer.Link.PrivacyPolicyLabel" xml:space="preserve"><value>Privacy policy</value></item>
+        <item key="Footer.Link.PrivacyPolicyLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/privacy</value></item>
+        <item key="Footer.Link.LegalNotesLabel" xml:space="preserve"><value>Legal notes</value></item>
+        <item key="Footer.Link.LegalInfoLabel" xml:space="preserve"><value>Legal information</value></item>
+        <item key="Footer.Link.LegalNotesLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/terms_of_use</value></item>
+        <item key="Footer.Link.CookiePolicyLabel" xml:space="preserve"><value>Cookie policy</value></item>
+        <item key="Footer.Link.CookiePolicyLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/cookie-policy-en</value></item>
+        <item key="Footer.Link.DigitalIDLabel" xml:space="preserve"><value>Digital ID</value></item>
+        <item key="Footer.Link.DigitalIDLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/digital_id_en</value></item>
+        <item key="Footer.Link.DocumentPropertiesLabel" xml:space="preserve"><value>Document information</value></item>
+        <item key="Footer.Link.UserSettingsLabel" xml:space="preserve"><value>User settings</value></item>
+        <item key="About.AllRightsReserved" xml:space="preserve"><value>All rights reserved</value></item>
+        <item key="ModelSearchColumns.Category.ModelInfo" xml:space="preserve"><value>Model</value></item>
+        <item key="ModelSearchColumns.Category.NodeInfo" xml:space="preserve"><value>Nodes</value></item>
+        <item key="ModelSearchColumns.Category.MetaData" xml:space="preserve"><value>Node properties</value></item>
+        <item key="ModelSearchColumns.LinkClass" xml:space="preserve"><value>Link class</value></item>
+        <item key="ModelSearchColumns.LinkClass.Tooltip" xml:space="preserve"><value>Link class</value></item>
+        <item key="ModelSearchColumns.NodeClass" xml:space="preserve"><value>Node class</value></item>
+        <item key="ModelSearchColumns.NodeClass.Tooltip" xml:space="preserve"><value>Node class</value></item>
+        <item key="ModelSearchColumns.UserFormatting" xml:space="preserve"><value>User formatting</value></item>
+        <item key="ModelSearchColumns.UserFormatting.Tooltip" xml:space="preserve"><value>User formatting</value></item>
+        <item key="ModelSearchColumns.NodeName" xml:space="preserve"><value>Name</value></item>
+        <item key="ModelSearchColumns.NodeName.Tooltip" xml:space="preserve"><value>Node name</value></item>
+    </category>
+</items>

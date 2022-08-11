@@ -1,9 +1,0 @@
- {
-    "Scannertype": "Siemens AG MV320", 
-    "Mqtt_Broker_Server": "ie-databus",
-    "User": "edge",
-    "Password": "edge",
-    "Metadata": "ie/m/j/simatic/v1/s7c1/dp",
-    "Topic": "ie/d/j/simatic/v1/s7c1/dp/w/PLC_S7",
-    "Variable": "GDB_appSignals_APP_QRCode"
-}

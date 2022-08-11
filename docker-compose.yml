@@ -1,14 +1,60 @@
-# Copyright 2021 Siemens AG
-# This file is subject to the terms and conditions of the MIT License.  
-# See LICENSE file in the top-level directory.
-
-# Minimalistic docker-compose file to be used in development enviroment. Running docker-compose up should start the app.
 version: '2.4'
 
+networks:
+  dataservicedevelopmentkit_default:
+    name: dataservicedevelopmentkit_default
+  proxy-redirect:
+    name: proxy-redirect
+
+volumes:
+  db-edge-apps-dataservicedevelopmentkit-volume:
+
 services:
-  hello-world:
-    build: ./src
-    image: 'hello-world:1.0.0'
+# Database
+  db-edge-apps-dataservicedevelopmentkit:
+    image: postgres:9.6.16-alpine
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - type: volume
+        source: db-edge-apps-dataservicedevelopmentkit-volume
+        target: /var/lib/postgresql/data
+    mem_limit: 128mb
+    networks:
+      - dataservicedevelopmentkit_default
+    restart: unless-stopped
+
+# MQTT Broker
+  simulation-broker:
+    image: eclipse-mosquitto:1.6.10
+    networks:
+      - dataservicedevelopmentkit_default
     ports:
-      - '8080:80'
-    restart: always
+      - 11883:1883
+    mem_limit: 128mb
+    restart: unless-stopped
+
+# Services
+  edgeappdataservice:
+    image: siemensindustrialedge/dataservicedevelopmentkit:1.3.3
+    environment:
+      - EXTENDED_ERRORS=true
+      - LOG_DEBUG_INFO=true
+    ports:
+      - 4203:4203
+      - 4519:4519
+    networks:
+      - dataservicedevelopmentkit_default
+      - proxy-redirect
+    depends_on:
+      db-edge-apps-dataservicedevelopmentkit:
+        condition: service_healthy
+    mem_limit: 256mb
+    restart: unless-stopped
