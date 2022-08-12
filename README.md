@@ -53,6 +53,14 @@ An image is loaded from Docker Hub, containing these components:
 
 - Install Docker
 - Install NodeJS (only for running examples)
+- Install an MQTT broker
+
+In order to run the data service development kit you need to have an MQTT broker of your choice running:
+- on port 1883
+- available from docker network dataservicedevelopmentkit_default
+- e.g. this broker: eclipse-mosquitto:1.6.10
+
+You can add your broker to the docker-compose file. An example is already commented in docker-compose.yml -> simulation-broker.
 
 ### Setting up
 
