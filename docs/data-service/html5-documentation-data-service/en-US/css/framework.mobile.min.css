@@ -1,6 +1,6 @@
 ﻿/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2021. All rights reserved.
   *
  * CSS: mobile.reset
  *
@@ -13,7 +13,7 @@ blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
 table{border-collapse:collapse;border-spacing:0}
 input::-ms-clear{display:none}/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2021. All rights reserved.
  *
  * CSS: mobile.base
  *
@@ -192,7 +192,7 @@ to{transform:rotate(90deg)}
 .header_confidential .text-confidential{font-size:8px}
 }/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2021. All rights reserved.
  *
  * CSS: mobile.startpage
  *
@@ -295,7 +295,7 @@ html.no-touch .home-view #startButton:hover{background-color:#005f87;cursor:poin
 .home-view .home-content-overlay{bottom:0}
 }/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2021. All rights reserved.
  *
  * CSS: mobile.header
  *
@@ -311,19 +311,19 @@ html.no-touch .home-view #startButton:hover{background-color:#005f87;cursor:poin
 }
 @media all and (max-width:470px){.logoContainer{width:30%}
 .header div.headerTitle{width:55%}
-.header div.headerTitle span{margin-top:14px;font-size:.9rem;text-align:left}
+.header div.headerTitle span{display:inline-block;white-space:normal;font-size:.9rem;text-align:left}
 }
 @media all and (max-width:370px){.logoContainer{width:30%}
 .header div.headerTitle{width:55%}
-.header div.headerTitle span{margin-top:14px;font-size:.8rem;text-align:left}
+.header div.headerTitle span{display:inline-block;white-space:normal;font-size:.8rem;text-align:left}
 }
-@media all and (max-width:270px){.header{height:20px}
+@media all and (max-width:270px){.header{height:101px}
 .buttonGroup,.buttonGroupHeader{float:right;padding-top:50px;padding-left:0}
-.header div.headerTitle{padding-top:50px;padding-left:0}
-.header div.headerTitle span{display:block;position:absolute;top:0;margin-top:14px;font-size:.7rem;text-align:left}
+.header div.headerTitle{float:right;padding-top:50px;padding-left:0}
+.header div.headerTitle span{display:inline-block;margin-top:9px;white-space:normal;font-size:.7rem;text-align:left}
 }/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2021. All rights reserved.
  *
  * CSS: mobile.footer
  *
@@ -347,7 +347,7 @@ html.no-touch .footer .footerColumn a:hover,.footer .footerColumn a:active{color
 .footer #siemensIncorporatedContainer div{text-align:center}
 .footer #siemensIncorporatedContainer div i{overflow:hidden;-ms-text-overflow:ellipsis;-o-text-overflow:ellipsis;text-overflow:ellipsis;white-space:nowrap;font-style:italic}/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2021. All rights reserved.
  *
  * CSS: mobile.panels
  *
@@ -451,7 +451,7 @@ div.modal-backdrop{z-index:10040}
 100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
 }/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2021. All rights reserved.
  *
  * CSS: mobile.tree
  *
@@ -580,7 +580,7 @@ html.no-touch .cd-accordion-menu label:hover,html.no-touch .cd-accordion-menu a:
 .hasno-children label{text-indent:25px}
 .hasno-children label::before{content:none}/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2021. All rights reserved.
  *
  * Creator: Betz
  *
@@ -613,7 +613,7 @@ html.no-touch .xNavigationPanel .xNavigationListContainer .xNavigationList li:ho
 .xNavigationPanel .xNavigationListContainer .xNavigationList .xEmptyItem{display:block}
 html.no-touch .xNavigationPanel .xNavigationListContainer .xNavigationList .section:hover{background-color:#f3f2f3!important;color:#000!important}/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2021. All rights reserved.
  *
  * CSS: mobile.widget
  *
