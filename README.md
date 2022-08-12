@@ -53,6 +53,14 @@ An image is loaded from Docker Hub, containing these components:
 
 - Install Docker
 - Install NodeJS (only for running examples)
+- Install an MQTT broker
+
+In order to run the data service development kit you need to have an MQTT broker of your choice running:
+- on port 1883
+- available from docker network dataservicedevelopmentkit_default
+- e.g. this broker: eclipse-mosquitto:1.6.10
+
+You can add your broker to the docker-compose file. An example is already commented in docker-compose.yml -> simulation-broker.
 
 ### Setting up
 
@@ -105,6 +113,7 @@ It shows how to create a user, request a token and get assets, tags and time ser
   <h3>Fixed</h3>
   <ul>
     <li>Booleans are sent in an unexpected format for some apps</li>
+    <li>1197005 Bug Booleans are sent in an unexpected format for some apps</li>
   </ul>
 </details>
 
@@ -138,6 +147,21 @@ It shows how to create a user, request a token and get assets, tags and time ser
     <li>Documentation of Data Service System Info Adapter</li>
     <li>Data gap after Zooming</li>
     <li>Missing variable information in "Add multiple variables" dialog</li>
+    <li>344913 Bug SWT Data Service: In Delete asset window text overlapped with warning Icon</li>
+    <li>345182 Bug Delete Icon wrong positioning</li>
+    <li>345203 Bug Dataservice in UCPF:-unctionality for Add multiple variable is not properly defined</li>
+    <li>345210 Bug SWT Data service:In custom adapter page required field mark is missing</li>
+    <li>345217 Bug Swt Dataservice:-Support document is not updated with New UI Feature</li>
+    <li>406023 Bug Decoupling of adapters and variables</li>
+    <li>486194 Bug Documentation Data Service System Info Adapter for Metrics</li>
+    <li>553071 Bug Data Service V1.2 cannot connect to Modbus Connector</li>
+    <li>950629 Bug Data gap after Zooming</li>
+    <li>955465 Bug Average bug</li>
+    <li>955488 Bug Wrong calculated timers</li>
+    <li>955496 Bug Coca Cola customer issue</li>
+    <li>998383 Bug TRA tracking: EDGE Apps: DataService V1.3</li>
+    <li>1024028 Bug Time series data is not getting imported</li>
+    <li>1031160 Bug Time series backup is empty for large files</li>
   </ul>
 </details>
 

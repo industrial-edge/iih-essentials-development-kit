@@ -32,14 +32,14 @@ services:
     restart: unless-stopped
 
 # MQTT Broker
-  simulation-broker:
-    image: eclipse-mosquitto:1.6.10
-    networks:
-      - dataservicedevelopmentkit_default
-    ports:
-      - 11883:1883
-    mem_limit: 128mb
-    restart: unless-stopped
+#  simulation-broker:
+#    image: <your MQTT Broker Image e.g. eclipse-mosquitto:1.6.10>
+#    networks:
+#      - dataservicedevelopmentkit_default
+#    ports:
+#      - 11883:1883
+#    mem_limit: 128mb
+#    restart: unless-stopped
 
 # Services
   edgeappdataservice:
