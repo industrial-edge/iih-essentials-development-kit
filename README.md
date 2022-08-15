@@ -39,7 +39,7 @@ In this repository you can find the following components:
   - <a href="./docs/development-kit">Development Kit documentation</a>
 - <a href="./examples">Examples</a>
 
-By running the docker compose configuration, an API instance of the Data Service will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](./docs/data-service/api-documentation/data-service-api-specification.html). This file needs to be opened locally in a browser.
+By running the docker compose configuration, an API instance of the Data Service will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](./docs/data-service/api-documentation/data-service-api-specification.html). This file needs to be opened locally in a browser or check the API specification on the [documenation website](https://industrial-edge.io/developer/systemapps/data-processing/data-service/definitions/data-service-1.3.3.html)
 
 An image is loaded from Docker Hub, containing these components:
 
