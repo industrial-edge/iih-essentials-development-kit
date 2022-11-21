@@ -1,5 +1,5 @@
 ﻿/*!
-* Copyright (C) Siemens AG 2015-2021. All rights reserved.
+* Copyright (C) Siemens AG 2015-2022. All rights reserved.
 */
 
 // Es stehen keine Daten für das kontextsensitive Mapping zur Verfügung.
