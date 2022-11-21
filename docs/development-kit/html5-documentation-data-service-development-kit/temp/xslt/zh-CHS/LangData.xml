@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<items lang="zh-CHS">
+    <category name="Common">
+        <item key="xmlLang" xml:space="preserve"><value>zh-chs</value></item>
+        <item key="ISO6391Code" xml:space="preserve"><value>zh</value></item>
+        <item key="RFK-2LetterId" xml:space="preserve"><value>zh</value></item>
+        <item key="MSWord-Locale" xml:space="preserve"><value>2052</value></item>
+        <item key="GERMANY" xml:space="preserve"><value>德国</value></item>
+        <item key="SWITZERLAND" xml:space="preserve"><value>瑞士</value></item>
+        <item key="TURKEY" xml:space="preserve"><value>土耳其</value></item>
+        <item key="USA" xml:space="preserve"><value>美國</value></item>
+        <item key="CHINA" xml:space="preserve"><value>中华人民共和国</value></item>
+        <item key="languagename" xml:space="preserve"><value>简体中文</value></item>
+        <item key="characteristics" xml:space="preserve"><value>特征曲线</value></item>
+        <item key="condition" xml:space="preserve"><value>前提条件</value></item>
+        <item key="definition" xml:space="preserve"><value>定义</value></item>
+        <item key="diagnosis" xml:space="preserve"><value>诊断</value></item>
+        <item key="dimensiondiagram" xml:space="preserve"><value>尺寸图</value></item>
+        <item key="directhelp" xml:space="preserve"><value>直接帮助</value></item>
+        <item key="example" xml:space="preserve"><value>实例</value></item>
+        <item key="fact" xml:space="preserve"><value>事实</value></item>
+        <item key="guideline" xml:space="preserve"><value>说明</value></item>
+        <item key="instruction" xml:space="preserve"><value>指南</value></item>
+        <item key="introduction" xml:space="preserve"><value>引言</value></item>
+        <item key="principle" xml:space="preserve"><value>原理</value></item>
+        <item key="prolog" xml:space="preserve"><value>序言</value></item>
+        <item key="query" xml:space="preserve"><value>询问</value></item>
+        <item key="quintessence" xml:space="preserve"><value>核心内容</value></item>
+        <item key="reference" xml:space="preserve"><value>参照</value></item>
+        <item key="referencetable" xml:space="preserve"><value>参照表格</value></item>
+        <item key="result" xml:space="preserve"><value>结果</value></item>
+        <item key="rule" xml:space="preserve"><value>规则</value></item>
+        <item key="sequence" xml:space="preserve"><value>顺序</value></item>
+        <item key="tip" xml:space="preserve"><value>提示</value></item>
+        <item key="info" xml:space="preserve"><value>其它信息</value></item>
+        <item key="title" xml:space="preserve"><value>标题</value></item>
+        <item key="block" xml:space="preserve"><value>块</value></item>
+        <item key="topic" xml:space="preserve"><value>主题</value></item>
+        <item key="description" xml:space="preserve"><value>说明</value></item>
+        <item key="telegram" xml:space="preserve"><value>电报</value></item>
+        <item key="overview" xml:space="preserve"><value>概述</value></item>
+        <item key="sales" xml:space="preserve"><value>宣传</value></item>
+        <item key="factual" xml:space="preserve"><value>事实</value></item>
+        <item key="caution" xml:space="preserve"><value>小心</value></item>
+        <item key="danger" xml:space="preserve"><value>危险</value></item>
+        <item key="note" xml:space="preserve"><value>说明</value></item>
+        <item key="notice" xml:space="preserve"><value>注意</value></item>
+        <item key="warning" xml:space="preserve"><value>警告</value></item>
+        <item key="seq.images" xml:space="preserve"><value>图</value></item>
+        <item key="seq.tables" xml:space="preserve"><value>表格</value></item>
+        <item key="page" xml:space="preserve"><value>页</value></item>
+        <item key="images" xml:space="preserve"><value>图形</value></item>
+        <item key="tables" xml:space="preserve"><value>表格</value></item>
+        <item key="toc" xml:space="preserve"><value>目录</value></item>
+        <item key="index" xml:space="preserve"><value>索引</value></item>
+        <item key="glossary" xml:space="preserve"><value>词汇表</value></item>
+        <item key="glossaryentry" xml:space="preserve"><value>词汇表词条</value></item>
+        <item key="expandingglossaryentry" xml:space="preserve"><value>扩展文本</value></item>
+        <item key="edition" xml:space="preserve"><value>版本</value></item>
+        <item key="xref" xml:space="preserve"><value>在文档的下列页中查询信息： </value></item>
+        <item key="xreftoc" xml:space="preserve"><value>（再次使用）</value></item>
+        <item key="seealsolink" xml:space="preserve"><value>参见</value></item>
+        <item key="menu.section" xml:space="preserve"><value>章节中</value></item>
+        <item key="menu.steps" xml:space="preserve"><value>说明</value></item>
+        <item key="menu.examples" xml:space="preserve"><value>示例</value></item>
+        <item key="menu.see" xml:space="preserve"><value>基础知识</value></item>
+        <item key="menu.extra" xml:space="preserve"><value>其它</value></item>
+        <item key="menu.history" xml:space="preserve"><value>过程</value></item>
+        <item key="menu.function.properties" xml:space="preserve"><value>属性</value></item>
+        <item key="menu.function.methods" xml:space="preserve"><value>方法</value></item>
+        <item key="menu.function.events" xml:space="preserve"><value>事件</value></item>
+        <item key="menu.function.objects" xml:space="preserve"><value>对象</value></item>
+        <item key="menu.toggleDynamicBlocks" xml:space="preserve"><value>打开/闭合所有动态块</value></item>
+        <item key="menu.openDynamicBlocks" xml:space="preserve"><value>打开所有内容</value></item>
+        <item key="menu.closeDynamicBlocks" xml:space="preserve"><value>闭合所有内容</value></item>
+        <item key="menu.relatedTopics" xml:space="preserve"><value>所使用的主题</value></item>
+        <item key="menu.showPDF" xml:space="preserve"><value>打开 PDF</value></item>
+        <item key="menu.next" xml:space="preserve"><value>继续</value></item>
+        <item key="menu.previous" xml:space="preserve"><value>返回</value></item>
+        <item key="menu.start" xml:space="preserve"><value>启动</value></item>
+        <item key="block.condition" xml:space="preserve"><value>前提条件</value></item>
+        <item key="block.instruction" xml:space="preserve"><value>操作方法</value></item>
+        <item key="block.instruction.th" xml:space="preserve"><value>步骤</value></item>
+        <item key="missing.image" xml:space="preserve"><value>缺少的图像</value></item>
+        <item key="missing.header" xml:space="preserve"><value>缺少的块标题</value></item>
+        <item key="missing.dropdown-text" xml:space="preserve"><value>缺少的下拉文本！</value></item>
+        <item key="missing.keyquestion" xml:space="preserve"><value>未设置密码问题！</value></item>
+        <item key="dynamic.all-tables" xml:space="preserve"><value>所有表格</value></item>
+        <item key="infobutton" xml:space="preserve"><value>信息按钮</value></item>
+        <item key="codebutton" xml:space="preserve"><value>&lt;"复制"按钮&gt;</value></item>
+        <item key="internet" xml:space="preserve"><value>在下列网址中查看其它信息:</value></item>
+        <item key="catalog.topictitle01" xml:space="preserve"><value>概述/产品概述</value></item>
+        <item key="catalog.topictitle02" xml:space="preserve"><value>特征/优势</value></item>
+        <item key="catalog.topictitle03" xml:space="preserve"><value>应用范围</value></item>
+        <item key="catalog.topictitle04" xml:space="preserve"><value>结构</value></item>
+        <item key="catalog.topictitle05" xml:space="preserve"><value>功能</value></item>
+        <item key="catalog.topictitle06" xml:space="preserve"><value>集成</value></item>
+        <item key="catalog.topictitle07" xml:space="preserve"><value>规格参数</value></item>
+        <item key="catalog.topictitle08" xml:space="preserve"><value>选择和订货数据</value></item>
+        <item key="catalog.topictitle09" xml:space="preserve"><value>由订货号确定的附加信息</value></item>
+        <item key="LifeCycle_1" xml:space="preserve"><value>应用阶段</value></item>
+        <item key="LifeCycle_2" xml:space="preserve"><value>安装/调试阶段</value></item>
+        <item key="LifeCycle_3" xml:space="preserve"><value>选择/订购阶段</value></item>
+        <item key="LifeCycle_4" xml:space="preserve"><value>保养/维护阶段</value></item>
+        <item key="LifeCycle_5" xml:space="preserve"><value>定位阶段</value></item>
+        <item key="LifeCycle_6" xml:space="preserve"><value>规划/配置阶段</value></item>
+        <item key="LifeCycle_7" xml:space="preserve"><value>实现阶段</value></item>
+        <item key="LifeCycle_8" xml:space="preserve"><value>改造阶段</value></item>
+        <item key="DocumentSearchClass_1" xml:space="preserve"><value>目录一览</value></item>
+        <item key="DocumentSearchClass_2" xml:space="preserve"><value>应用实例</value></item>
+        <item key="DocumentSearchClass_3" xml:space="preserve"><value>精简版用户手册</value></item>
+        <item key="DocumentSearchClass_4" xml:space="preserve"><value>操作手册</value></item>
+        <item key="DocumentSearchClass_5" xml:space="preserve"><value>操作说明</value></item>
+        <item key="DocumentSearchClass_6" xml:space="preserve"><value>精简版操作说明</value></item>
+        <item key="DocumentSearchClass_7" xml:space="preserve"><value>诊断手册</value></item>
+        <item key="DocumentSearchClass_8" xml:space="preserve"><value>功能手册</value></item>
+        <item key="DocumentSearchClass_9" xml:space="preserve"><value>设备手册</value></item>
+        <item key="DocumentSearchClass_10" xml:space="preserve"><value>入门指南</value></item>
+        <item key="DocumentSearchClass_11" xml:space="preserve"><value>调试和硬件安装手册</value></item>
+        <item key="DocumentSearchClass_12" xml:space="preserve"><value>开机调试手册</value></item>
+        <item key="DocumentSearchClass_13" xml:space="preserve"><value>软件安装手册</value></item>
+        <item key="DocumentSearchClass_14" xml:space="preserve"><value>目录</value></item>
+        <item key="DocumentSearchClass_15" xml:space="preserve"><value>特定国家文件</value></item>
+        <item key="DocumentSearchClass_16" xml:space="preserve"><value>自述文件</value></item>
+        <item key="DocumentSearchClass_17" xml:space="preserve"><value>参数手册</value></item>
+        <item key="DocumentSearchClass_18" xml:space="preserve"><value>新产品市场投放手册</value></item>
+        <item key="DocumentSearchClass_19" xml:space="preserve"><value>精简版硬件安装说明和精简版用户手册</value></item>
+        <item key="DocumentSearchClass_20" xml:space="preserve"><value>硬件安装和操作手册</value></item>
+        <item key="DocumentSearchClass_21" xml:space="preserve"><value>精简版硬件安装说明</value></item>
+        <item key="DocumentSearchClass_22" xml:space="preserve"><value>硬件安装手册</value></item>
+        <item key="DocumentSearchClass_23" xml:space="preserve"><value>参考手册</value></item>
+        <item key="DocumentSearchClass_24" xml:space="preserve"><value>产品信息</value></item>
+        <item key="DocumentSearchClass_25" xml:space="preserve"><value>编程和操作手册</value></item>
+        <item key="DocumentSearchClass_26" xml:space="preserve"><value>编程手册</value></item>
+        <item key="DocumentSearchClass_27" xml:space="preserve"><value>配置手册</value></item>
+        <item key="DocumentSearchClass_28" xml:space="preserve"><value>维修手册</value></item>
+        <item key="DocumentSearchClass_29" xml:space="preserve"><value>系统手册</value></item>
+        <item key="DocumentSearchClass_30" xml:space="preserve"><value>工具提示</value></item>
+        <item key="DocumentSearchClass_31" xml:space="preserve"><value>培训文档</value></item>
+        <item key="DocumentSearchClass_32" xml:space="preserve"><value>手册</value></item>
+        <item key="DocumentSearchClass_33" xml:space="preserve"><value>应用手册</value></item>
+        <item key="DocumentSearchClass_34" xml:space="preserve"><value>Multimedia Publication</value></item>
+        <item key="MRL.Original" xml:space="preserve"><value>原始操作说明</value></item>
+        <item key="MRL.Translation" xml:space="preserve"><value>原始操作说明翻译</value></item>
+        <item key="MRL.PartOfOriginal" xml:space="preserve"><value>原始操作说明部分章节</value></item>
+        <item key="MRL.PartOfTranslation" xml:space="preserve"><value>原始操作说明翻译部分章节</value></item>
+        <item key="CopyFirstColumnToClipboard" xml:space="preserve"><value>将以下程序代码复制到剪贴板。</value></item>
+        <item key="ClosePopup" xml:space="preserve"><value>关闭窗口</value></item>
+        <item key="Show" xml:space="preserve"><value>广告</value></item>
+        <item key="Term" xml:space="preserve"><value>概念</value></item>
+        <item key="ContentNodeList" xml:space="preserve"><value>该章节包括以下主题的信息:</value></item>
+        <item key="review" xml:space="preserve"><value>查看</value></item>
+        <item key="ordernumber" xml:space="preserve"><value>文件订购号</value></item>
+        <item key="docproperties" xml:space="preserve"><value>文档属性</value></item>
+        <item key="summaryofmodifications" xml:space="preserve"><value>更改目录</value></item>
+        <item key="ToBeContinued" xml:space="preserve"><value>转下页</value></item>
+        <item key="Continuation" xml:space="preserve"><value>续</value></item>
+        <item key="SourceLanguage" xml:space="preserve"><value>源语言</value></item>
+        <item key="TargetLanguage" xml:space="preserve"><value>目标语言</value></item>
+        <item key="PDFConcomitant" xml:space="preserve"><value>附带的 PDF 文档</value></item>
+        <item key="PDFLocalizableGrafics" xml:space="preserve"><value>附带的本地化图像</value></item>
+        <item key="OnlyForTranslation" xml:space="preserve"><value>仅用于翻译用途</value></item>
+        <item key="PDFConcomitantLegend" xml:space="preserve"><value>附带的 PDF 文档图例</value></item>
+        <item key="LegendText" xml:space="preserve"><value>文章标记</value></item>
+        <item key="LegendImage" xml:space="preserve"><value>图像标记</value></item>
+        <item key="LegendObjectIcons" xml:space="preserve"><value>SIPS+ 对象按钮</value></item>
+        <item key="DoNotTranslate" xml:space="preserve"><value>不翻译</value></item>
+        <item key="TranslateSpecial" xml:space="preserve"><value>特殊翻译</value></item>
+        <item key="InheritsFrom" xml:space="preserve"><value>来自原文</value></item>
+        <item key="ToTranslate.neutral" xml:space="preserve"><value>语言中性</value></item>
+        <item key="ToTranslate.localizable" xml:space="preserve"><value>可本地化</value></item>
+        <item key="ToTranslate.translatable" xml:space="preserve"><value>可翻译</value></item>
+        <item key="Object.Folder" xml:space="preserve"><value>文件夹</value></item>
+        <item key="Object.Document" xml:space="preserve"><value>文档</value></item>
+        <item key="Object.DocumentVariant" xml:space="preserve"><value>Document variant</value></item>
+        <item key="Object.Frontcover" xml:space="preserve"><value>封面 （U1）</value></item>
+        <item key="Object.Backcover" xml:space="preserve"><value>封面 （U4）</value></item>
+        <item key="Object.ResourceChapter" xml:space="preserve"><value>资源文件夹</value></item>
+        <item key="Object.Resource" xml:space="preserve"><value>资源</value></item>
+        <item key="Object.Image" xml:space="preserve"><value>图像</value></item>
+        <item key="Object.HeaderFile" xml:space="preserve"><value>页眉文件</value></item>
+        <item key="Object.AliasFile" xml:space="preserve"><value>Alias 文件</value></item>
+        <item key="Object.SoundFile" xml:space="preserve"><value>声音文件</value></item>
+        <item key="Object.FlashFile" xml:space="preserve"><value>Flash 文件</value></item>
+        <item key="Object.Scene" xml:space="preserve"><value>Scene</value></item>
+        <item key="Object.Fragment" xml:space="preserve"><value>Fragment</value></item>
+        <item key="Object.CadimTopic" xml:space="preserve"><value>CADIM 参考</value></item>
+        <item key="Object.ExternalTopic" xml:space="preserve"><value>外部参考</value></item>
+        <item key="Object.DataTableReference" xml:space="preserve"><value>TED reference</value></item>
+        <item key="AllRightsReserved" xml:space="preserve"><value>保留所有权利</value></item>
+        <item key="Production.MultimediaScreenplay" xml:space="preserve"><value>Multimedia screenplay</value></item>
+    <item key="seealsolink.showall" xml:space="preserve"><value>[en-US] Display all incoming see-also-links</value></item><item key="seealsolink.restricted" xml:space="preserve"><value>[en-US] Only 20 incoming see-also-links are displayed.</value></item><item key="VersionState_Work" doNotTranslate="true" xml:space="preserve"><value>[en-US] Working state</value></item><item key="VersionState_IE" doNotTranslate="true" xml:space="preserve"><value>[en-US] Release by editor</value></item><item key="VersionState_ST" doNotTranslate="true" xml:space="preserve"><value>[en-US] Release for systemtest</value></item><item key="VersionState_PLM" doNotTranslate="true" xml:space="preserve"><value>[en-US] Release for publication</value></item><item key="ChapterType_1" doNotTranslate="true" xml:space="preserve"><value>[en-US] Appendix</value></item><item key="ChapterType_2" doNotTranslate="true" xml:space="preserve"><value>[en-US] Back cover</value></item><item key="ChapterType_3" doNotTranslate="true" xml:space="preserve"><value>[en-US] Front cover</value></item><item key="ChapterType_4" doNotTranslate="true" xml:space="preserve"><value>[en-US] Glossary</value></item><item key="ChapterType_5" doNotTranslate="true" xml:space="preserve"><value>[en-US] Index</value></item><item key="ChapterType_6" doNotTranslate="true" xml:space="preserve"><value>[en-US] Preface</value></item><item key="ChapterType_7" doNotTranslate="true" xml:space="preserve"><value>[en-US] Chapter</value></item><item key="ChapterType_8" doNotTranslate="true" xml:space="preserve"><value>[en-US] Table of contents</value></item><item key="ChapterType_9" doNotTranslate="true" xml:space="preserve"><value>[en-US] Resources</value></item><item key="TopicClass_0" doNotTranslate="true" xml:space="preserve"><value>[en-US] Business data</value></item><item key="TopicClass_1" doNotTranslate="true" xml:space="preserve"><value>[en-US] Technical data</value></item><item key="TopicClass_2" doNotTranslate="true" xml:space="preserve"><value>[en-US] Structure</value></item><item key="TopicClass_3" doNotTranslate="true" xml:space="preserve"><value>[en-US] Content</value></item><item key="TopicClass_4" doNotTranslate="true" xml:space="preserve"><value>[en-US] Facts</value></item><item key="TopicClass_5" doNotTranslate="true" xml:space="preserve"><value>[en-US] Area</value></item><item key="TopicClass_6" doNotTranslate="true" xml:space="preserve"><value>[en-US] Action</value></item><item key="TopicClass_7" doNotTranslate="true" xml:space="preserve"><value>[en-US] Function</value></item><item key="TopicClass_8" doNotTranslate="true" xml:space="preserve"><value>[en-US] Process</value></item><item key="TopicClass_9" doNotTranslate="true" xml:space="preserve"><value>[en-US] Sample</value></item><item key="TopicClass_10" doNotTranslate="true" xml:space="preserve"><value>[en-US] Scene</value></item><item key="TopicFunctionType_0" doNotTranslate="true" xml:space="preserve"><value>[en-US] Unspecified</value></item><item key="TopicFunctionType_1" doNotTranslate="true" xml:space="preserve"><value>[en-US] Default</value></item><item key="TopicFunctionType_2" doNotTranslate="true" xml:space="preserve"><value>[en-US] Event</value></item><item key="TopicFunctionType_3" doNotTranslate="true" xml:space="preserve"><value>[en-US] Method</value></item><item key="TopicFunctionType_4" doNotTranslate="true" xml:space="preserve"><value>[en-US] Object</value></item><item key="TopicFunctionType_5" doNotTranslate="true" xml:space="preserve"><value>[en-US] Property</value></item><item key="Flavor_0" doNotTranslate="true" xml:space="preserve"><value>[en-US] Telegram, sales</value></item><item key="Flavor_1" doNotTranslate="true" xml:space="preserve"><value>[en-US] Telegram, factual</value></item><item key="Flavor_2" doNotTranslate="true" xml:space="preserve"><value>[en-US] Overview, sales</value></item><item key="Flavor_3" doNotTranslate="true" xml:space="preserve"><value>[en-US] Overview, factual</value></item><item key="Flavor_4" doNotTranslate="true" xml:space="preserve"><value>[en-US] Description, sales</value></item><item key="Flavor_5" doNotTranslate="true" xml:space="preserve"><value>[en-US] Description, factual</value></item><item key="FlashRuntime_0" doNotTranslate="true" xml:space="preserve"><value>[en-US] 2D-ShowMe</value></item><item key="FlashRuntime_1" doNotTranslate="true" xml:space="preserve"><value>[en-US] 3D-ShowMe</value></item><item key="FlashRuntime_2" doNotTranslate="true" xml:space="preserve"><value>[en-US] Explore</value></item><item key="FlashRuntime_3" doNotTranslate="true" xml:space="preserve"><value>[en-US] Hotspot explore</value></item><item key="FlashRuntime_4" doNotTranslate="true" xml:space="preserve"><value>[en-US] Software ShowMe</value></item><item key="FlashRuntime_5" doNotTranslate="true" xml:space="preserve"><value>[en-US] Software TryIt</value></item><item key="FlashRuntime_6" doNotTranslate="true" xml:space="preserve"><value>[en-US] Advance organizer</value></item><item key="FlashRuntime_7" doNotTranslate="true" xml:space="preserve"><value>[en-US] SlideShow</value></item><item key="FlashRuntime_8" doNotTranslate="true" xml:space="preserve"><value>[en-US] TellMe</value></item><item key="FlashRuntime_9" doNotTranslate="true" xml:space="preserve"><value>[en-US] Video</value></item><item key="Visibility_ALL" doNotTranslate="true" xml:space="preserve"><value>[en-US] All media</value></item><item key="Visibility_ONLINE" doNotTranslate="true" xml:space="preserve"><value>[en-US] Online media</value></item><item key="Visibility_PRINT" doNotTranslate="true" xml:space="preserve"><value>[en-US] Print media</value></item><item key="ExtContentLayoutType_1" doNotTranslate="true" xml:space="preserve"><value>[en-US] Full page</value></item><item key="ExtContentLayoutType_2" doNotTranslate="true" xml:space="preserve"><value>[en-US] Normal</value></item><item key="ExtContentLayoutType_3" doNotTranslate="true" xml:space="preserve"><value>[en-US] Without header</value></item><item key="PictureClassification_1" doNotTranslate="true" xml:space="preserve"><value>[en-US] Connection image</value></item><item key="PictureClassification_2" doNotTranslate="true" xml:space="preserve"><value>[en-US] Clipart</value></item><item key="PictureClassification_3" doNotTranslate="true" xml:space="preserve"><value>[en-US] Flowchart</value></item><item key="PictureClassification_4" doNotTranslate="true" xml:space="preserve"><value>[en-US] Photo</value></item><item key="PictureClassification_5" doNotTranslate="true" xml:space="preserve"><value>[en-US] Function plan</value></item><item key="PictureClassification_6" doNotTranslate="true" xml:space="preserve"><value>[en-US] Illustration</value></item><item key="PictureClassification_7" doNotTranslate="true" xml:space="preserve"><value>[en-US] Graph</value></item><item key="PictureClassification_8" doNotTranslate="true" xml:space="preserve"><value>[en-US] Configuration image</value></item><item key="PictureClassification_9" doNotTranslate="true" xml:space="preserve"><value>[en-US] Symbol</value></item><item key="PictureClassification_10" doNotTranslate="true" xml:space="preserve"><value>[en-US] Dimensioned drawing</value></item><item key="PictureClassification_11" doNotTranslate="true" xml:space="preserve"><value>[en-US] Diagram</value></item><item key="PictureClassification_12" doNotTranslate="true" xml:space="preserve"><value>[en-US] Screenshot</value></item><item key="PictureClassification_13" doNotTranslate="true" xml:space="preserve"><value>[en-US] Screenshot with addition</value></item><item key="PictureClassification_14" doNotTranslate="true" xml:space="preserve"><value>[en-US] Painting</value></item><item key="PictureClassification_15" doNotTranslate="true" xml:space="preserve"><value>[en-US] Formula</value></item><item key="LanguageSelection_Single" doNotTranslate="true" xml:space="preserve"><value>[en-US] single</value></item><item key="LanguageSelection_Multiple" doNotTranslate="true" xml:space="preserve"><value>[en-US] multiple</value></item><item key="LanguagesOutputType_Serial" doNotTranslate="true" xml:space="preserve"><value>[en-US] serial</value></item><item key="LanguagesOutputType_Parallel" doNotTranslate="true" xml:space="preserve"><value>[en-US] parallel</value></item><item key="LanguagesOutputType_Tooltip" doNotTranslate="true" xml:space="preserve"><value>[en-US] tooltip</value></item><item key="PaperSize_A4" doNotTranslate="true" xml:space="preserve"><value>[en-US] A4 hybrid</value></item><item key="PaperSize_A3Landscape" doNotTranslate="true" xml:space="preserve"><value>[en-US] A3 landscpae</value></item><item key="PaperSize_A5" doNotTranslate="true" xml:space="preserve"><value>[en-US] A5 hybrid</value></item><item key="PaperSize_A6" doNotTranslate="true" xml:space="preserve"><value>[en-US] A6 hybrid</value></item><item key="TextColumns_1" doNotTranslate="true" xml:space="preserve"><value>[en-US] in one column</value></item><item key="TextColumns_2" doNotTranslate="true" xml:space="preserve"><value>[en-US] in two columns</value></item><item key="TextColumns_3" doNotTranslate="true" xml:space="preserve"><value>[en-US] in three columns</value></item><item key="TextColumns_4" doNotTranslate="true" xml:space="preserve"><value>[en-US] in four columns</value></item><item key="TextColumns_5" doNotTranslate="true" xml:space="preserve"><value>[en-US] in five columns</value></item><item key="countExternalTopics" doNotTranslate="true" xml:space="preserve"><value>[en-US] Count external topics</value></item></category>
+    <category name="Production.HTML5">
+        <item key="LocalizationControl._CultureInfo_" xml:space="preserve"><value>德语（德国）</value></item>
+        <item key="LocalizationControl._Language_" xml:space="preserve"><value>zh</value></item>
+        <item key="lblISO" xml:space="preserve"><value>ISO</value></item>
+        <item key="lblLangBG" xml:space="preserve"><value>保加利亚语</value></item>
+        <item key="lblLangCS" xml:space="preserve"><value>捷克语</value></item>
+        <item key="lblLangDA" xml:space="preserve"><value>丹麦语</value></item>
+        <item key="lblLangDE" xml:space="preserve"><value>简体中文</value></item>
+        <item key="lblLangEL" xml:space="preserve"><value>希腊语</value></item>
+        <item key="lblLangEN" xml:space="preserve"><value>英语</value></item>
+        <item key="lblLangES" xml:space="preserve"><value>西班牙语</value></item>
+        <item key="lblLangFI" xml:space="preserve"><value>芬兰语</value></item>
+        <item key="lblLangFR" xml:space="preserve"><value>法语</value></item>
+        <item key="lblLangHR" xml:space="preserve"><value>克罗地亚语</value></item>
+        <item key="lblLangHU" xml:space="preserve"><value>匈牙利语</value></item>
+        <item key="lblLangID" xml:space="preserve"><value>印尼语</value></item>
+        <item key="lblLangIT" xml:space="preserve"><value>意大利语</value></item>
+        <item key="lblLangJA" xml:space="preserve"><value>日语</value></item>
+        <item key="lblLangKO" xml:space="preserve"><value>韩语</value></item>
+        <item key="lblLangNB" xml:space="preserve"><value>挪威语</value></item>
+        <item key="lblLangNL" xml:space="preserve"><value>荷兰语</value></item>
+        <item key="lblLangPL" xml:space="preserve"><value>波兰语</value></item>
+        <item key="lblLangPT" xml:space="preserve"><value>葡萄牙语</value></item>
+        <item key="lblLangRU" xml:space="preserve"><value>俄语</value></item>
+        <item key="lblLangSK" xml:space="preserve"><value>斯洛伐克语</value></item>
+        <item key="lblLangSL" xml:space="preserve"><value>斯洛文尼亚语</value></item>
+        <item key="lblLangSV" xml:space="preserve"><value>瑞典语</value></item>
+        <item key="lblLangTC" xml:space="preserve"><value>繁体中文</value></item>
+        <item key="lblLangTR" xml:space="preserve"><value>土耳其语</value></item>
+        <item key="lblLangZH" xml:space="preserve"><value>中文</value></item>
+        <item key="Common.Language" xml:space="preserve"><value>语言</value></item>
+        <item key="Common.All" xml:space="preserve"><value>全部</value></item>
+        <item key="Common.PleaseSelect" xml:space="preserve"><value>请选择</value></item>
+        <item key="Common.PleaseEnter" xml:space="preserve"><value>请输入</value></item>
+        <item key="Common.Reset" xml:space="preserve"><value>复位</value></item>
+        <item key="Common.Show" xml:space="preserve"><value>显示</value></item>
+        <item key="Common.ShowMore" xml:space="preserve"><value>显示更多</value></item>
+        <item key="Common.Input.InsertText" xml:space="preserve"><value>输入搜索关键字</value></item>
+        <item key="Common.Input.InsertText.Glossary" xml:space="preserve"><value>输入词汇表搜索关键字</value></item>
+        <item key="Common.Input.InsertText.Index" xml:space="preserve"><value>输入目录搜索关键字</value></item>
+        <item key="Common.Button.Search" xml:space="preserve"><value>搜索</value></item>
+        <item key="Common.Button.Start" xml:space="preserve"><value>启动</value></item>
+        <item key="Common.Language.de-DE" xml:space="preserve"><value>德语</value></item>
+        <item key="Common.Language.en-US" xml:space="preserve"><value>英语</value></item>
+        <item key="Common.Language.Modal.Title" xml:space="preserve"><value>语言选择</value></item>
+        <item key="Common.Language.Modal.Info" xml:space="preserve"><value>不存在所选语言的文档，请选择其它语言。</value></item>
+        <item key="Common.NoDocument.Modal.Title" xml:space="preserve"><value>文档信息</value></item>
+        <item key="Common.NoDocument.Modal.Info" xml:space="preserve"><value>PUD Manager 中未导入任何文档。</value></item>
+        <item key="Common.SearchResult.HeaderSearchIndexNotInitialized" xml:space="preserve"><value>正在索引...</value></item>
+        <item key="Common.ModalDialog.Title" xml:space="preserve"><value>说明</value></item>
+        <item key="Common.ModalDialog.Button.OK" xml:space="preserve"><value>确定</value></item>
+        <item key="Common.Yes" xml:space="preserve"><value>是</value></item>
+        <item key="Common.No" xml:space="preserve"><value>否</value></item>
+        <item key="Common.Topic.NodeType.Directory" xml:space="preserve"><value>文件夹</value></item>
+        <item key="Common.Topic.NodeType.Document" xml:space="preserve"><value>文档</value></item>
+        <item key="Common.Topic.NodeType.Chapter" xml:space="preserve"><value>章节</value></item>
+        <item key="Common.Topic.NodeType.Topic" xml:space="preserve"><value>主题</value></item>
+        <item key="Common.Topic.NodeType.GlossarDescription" xml:space="preserve"><value>词汇表描述</value></item>
+        <item key="Common.Loading" xml:space="preserve"><value>正在加载 ...</value></item>
+        <item key="Navigation.Item.Home" xml:space="preserve"><value>主页</value></item>
+        <item key="Navigation.Item.Menu" xml:space="preserve"><value>菜单</value></item>
+        <item key="Navigation.Item.Glossary" xml:space="preserve"><value>词汇表</value></item>
+        <item key="Navigation.Item.Search" xml:space="preserve"><value>搜索</value></item>
+        <item key="Navigation.Item.Settings" xml:space="preserve"><value>设置</value></item>
+        <item key="Navigation.Item.Favorites" xml:space="preserve"><value>收藏夹</value></item>
+        <item key="Navigation.Item.Navigation" xml:space="preserve"><value>内容</value></item>
+        <item key="Navigation.Item.Language" xml:space="preserve"><value>zh-chs</value></item>
+        <item key="Navigation.Item.Language.Caption" xml:space="preserve"><value>语言</value></item>
+        <item key="Navigation.Item.Index" xml:space="preserve"><value>索引</value></item>
+        <item key="Navigation.Item.Repository" xml:space="preserve"><value>文档概述</value></item>
+        <item key="Navigation.Item.Administration" xml:space="preserve"><value>管理员</value></item>
+        <item key="Navigation.Item.About" xml:space="preserve"><value>管理</value></item>
+        <item key="Navigation.Item.Next" xml:space="preserve"><value>下一步</value></item>
+        <item key="Navigation.Item.Prev" xml:space="preserve"><value>上一步</value></item>
+        <item key="Navigation.Item.History.Back.TT" xml:space="preserve"><value>上一条历史记录</value></item>
+        <item key="Navigation.Item.History.Next.TT" xml:space="preserve"><value>下一条历史记录</value></item>
+        <item key="Navigation.Item.Search.TT" xml:space="preserve"><value>搜索</value></item>
+        <item key="Navigation.Item.Settings.TT" xml:space="preserve"><value>设置</value></item>
+        <item key="Navigation.Item.Language.TT" xml:space="preserve"><value>语言</value></item>
+        <item key="Navigation.Item.Next.TT" xml:space="preserve"><value>向前翻页</value></item>
+        <item key="Navigation.Item.Prev.TT" xml:space="preserve"><value>向后翻页</value></item>
+        <item key="Navigation.Item.System.TT" xml:space="preserve"><value>管理</value></item>
+        <item key="Navigation.Item.IMeta.TT.Off" xml:space="preserve"><value>显示元数据</value></item>
+        <item key="Navigation.Item.IMeta.TT.On" xml:space="preserve"><value>隐藏元数据</value></item>
+        <item key="Navigation.Item.Anchor.TT.Off" xml:space="preserve"><value>显示标题</value></item>
+        <item key="Navigation.Item.Anchor.TT.On" xml:space="preserve"><value>隐藏标题</value></item>
+        <item key="Navigation.Item.SimilarContents.TT.Off" xml:space="preserve"><value>使用的主题</value></item>
+        <item key="Navigation.Item.SimilarContents.TT.On" xml:space="preserve"><value>使用的主题</value></item>
+        <item key="Navigation.Item.ProductModel.TT.Off" xml:space="preserve"><value>显示产品型号</value></item>
+        <item key="Navigation.Item.ProductModel.TT.On" xml:space="preserve"><value>隐藏产品型号</value></item>
+        <item key="Navigation.Item.Searching.TT" xml:space="preserve"><value>搜索</value></item>
+        <item key="Navigation.Item.ExtendedSearch.TT.Off" xml:space="preserve"><value>高级搜索</value></item>
+        <item key="Navigation.Item.ExtendedSearch.TT.On" xml:space="preserve"><value>隐藏高级搜索</value></item>
+        <item key="Navigation.Item.TipsSearch.TT.Off" xml:space="preserve"><value>搜索提示</value></item>
+        <item key="Navigation.Item.TipsSearch.TT.On" xml:space="preserve"><value>隐藏搜索提示</value></item>
+        <item key="Navigation.Item.ExpandContent.TT.Off" xml:space="preserve"><value>增大显示范围</value></item>
+        <item key="Navigation.Item.ExpandContent.TT.On" xml:space="preserve"><value>复位显示范围</value></item>
+        <item key="Navigation.Item.Close.TT" xml:space="preserve"><value>关闭</value></item>
+        <item key="Navigation.Item.Back.TT" xml:space="preserve"><value>返回</value></item>
+        <item key="Navigation.Item.Legend.TT.Off" xml:space="preserve"><value>显示图例</value></item>
+        <item key="Navigation.Item.Legend.TT.On" xml:space="preserve"><value>隐藏图例</value></item>
+        <item key="Navigation.Item.OriginalSize.TT.Off" xml:space="preserve"><value>原始大小</value></item>
+        <item key="Navigation.Item.Expand.TT.Off" xml:space="preserve"><value>增大画面</value></item>
+        <item key="Navigation.Item.ZoomIn.TT.Off" xml:space="preserve"><value>放大</value></item>
+        <item key="Navigation.Item.ZoomOut.TT.Off" xml:space="preserve"><value>缩小</value></item>
+        <item key="Startpage.Label.Edition" xml:space="preserve"><value>版本</value></item>
+        <item key="Index.Title" xml:space="preserve"><value>所有帮助主题</value></item>
+        <item key="Index.SubTitle" xml:space="preserve"><value>查找主题或显示所有帮助主题</value></item>
+        <item key="Index.ResultTitle" xml:space="preserve"><value>搜索结果</value></item>
+        <item key="Index.ResultHeader">
+            <value>{0}-{1}，共 {2} 条， 主题 "{3}"</value>
+        </item>
+        <item key="Index.Result.HeaderSearch" xml:space="preserve"><value>{0}-{1}，共 {2} 条</value></item>
+        <item key="Index.Result.HeaderNoResult" xml:space="preserve"><value>未找到相关内容</value></item>
+        <item key="PageIndex.Title" xml:space="preserve"><value>目录</value></item>
+        <item key="Settings.Header" xml:space="preserve"><value>用户设置</value></item>
+        <item key="Settings.Property.FixedMenu" xml:space="preserve"><value>固定"菜单"区域</value></item>
+        <item key="Settings.Property.ShowChapterNumber" xml:space="preserve"><value>显示章节编号</value></item>
+        <item key="Settings.Property.CollapseContentBlocks" xml:space="preserve"><value>只显示打开的核心信息</value></item>
+        <item key="Settings.Property.ShowValidity" xml:space="preserve"><value>显示有效性</value></item>
+        <item key="Settings.Property.ShowMetaInfo" xml:space="preserve"><value>显示元信息按钮</value></item>
+        <item key="Settings.Property.UseDesktopTheme" xml:space="preserve"><value>桌面主题</value></item>
+        <item key="Settings.Property.FitContent" xml:space="preserve"><value>适应内容</value></item>
+        <item key="Settings.SubHeader" xml:space="preserve"><value>高级属性</value></item>
+        <item key="ApplicationHelp.Button" xml:space="preserve"><value>显示帮助</value></item>
+        <item key="ApplicationInfo.Button" xml:space="preserve"><value>About the PUD Manager</value></item>
+        <item key="RepositoryRestart.Button" xml:space="preserve"><value>Restart PUD Manager</value></item>
+        <item key="RepositoryRestart.Button.TT" xml:space="preserve"><value>Restart PUD Manager</value></item>
+        <item key="RepositoryInfo.Button" xml:space="preserve"><value>显示文档概述</value></item>
+        <item key="RepositoryInfo.Headline" xml:space="preserve"><value>文档概述</value></item>
+        <item key="RepositoryInfo.Loading" xml:space="preserve"><value>正在加载 ...</value></item>
+        <item key="RepositoryInfo.SHead.Repository" xml:space="preserve"><value>已安装文档</value></item>
+        <item key="RepositoryInfo.SHead.Pending" xml:space="preserve"><value>可用更新</value></item>
+        <item key="RepositoryInfo.Btn.Import" xml:space="preserve"><value>更新</value></item>
+        <item key="RepositoryInfo.Btn.Remove" xml:space="preserve"><value>移除</value></item>
+        <item key="RepositoryInfo.TblHead.DocumentId" xml:space="preserve"><value>文档 ID</value></item>
+        <item key="RepositoryInfo.TblHead.DocumentVersionId" xml:space="preserve"><value>版本 ID</value></item>
+        <item key="RepositoryInfo.TblHead.Language" xml:space="preserve"><value>语言</value></item>
+        <item key="RepositoryInfo.TblHead.Title" xml:space="preserve"><value>标题</value></item>
+        <item key="RepositoryInfo.TblHead.Version" xml:space="preserve"><value>版本</value></item>
+        <item key="RepositoryInfo.TblHead.State" xml:space="preserve"><value>状态</value></item>
+        <item key="RepositoryInfo.TblHead.Active" xml:space="preserve"><value>Active</value></item>
+        <item key="RepositoryInfo.TblHead.ExportId" xml:space="preserve"><value>导出 ID</value></item>
+        <item key="RepositoryInfo.TblHead.FileName" xml:space="preserve"><value>文件名</value></item>
+        <item key="RepositoryInfo.TblHead.DocumentPublishEdition" xml:space="preserve"><value>Issue status</value></item>
+        <item key="RepositoryInfo.TblHead.DocumentPublishDrawingNumber" xml:space="preserve"><value>Identification Number</value></item>
+        <item key="RepositoryInfo.Repository.NoDocuments" xml:space="preserve"><value>无可用的文档。</value></item>
+        <item key="RepositoryInfo.PendingUpdate.NoDocuments" xml:space="preserve"><value>没有可导入的文件。</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Message.AsAdmin" xml:space="preserve"><value>如果要导入可用文档，请以管理员身份启动帮助查看器。</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Message.NoUpdateInWeb" xml:space="preserve"><value>此时无法在 Web 中执行更新或导入文档操作。</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Message.UpdateInWebOnlyWithRights" xml:space="preserve"><value>Documents cannot be updated or installed. You do not have the necessary rights.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectAll" xml:space="preserve"><value>全选</value></item>
+        <item key="RepositoryInfo.PendingUpdate.DeSelectAll" xml:space="preserve"><value>取消全选</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Select" xml:space="preserve"><value>Select</value></item>
+        <item key="RepositoryInfo.PendingUpdate.DeSelect" xml:space="preserve"><value>Clear</value></item>
+        <item key="RepositoryInfo.PendingUpdate.UpdateAll" xml:space="preserve"><value>更新选定部分</value></item>
+        <item key="RepositoryInfo.PendingUpdate.RemoveAll" xml:space="preserve"><value>移除选定部分</value></item>
+        <item key="RepositoryInfo.PendingUpdate.DisableAll" xml:space="preserve"><value>Apply selection</value></item>
+        <item key="RepositoryInfo.PendingUpdate.UpdateAll.TT" xml:space="preserve"><value>Update selection - the selected documents are imported.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.RemoveAll.TT" xml:space="preserve"><value>Remove selection -  the selected documents are deleted from the import folder.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.DisableAll.TT" xml:space="preserve"><value>Apply selection - the selected documents are activated or deactivated according to the selection.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectForImport.TT" xml:space="preserve"><value>Select for import</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectForRemove.TT" xml:space="preserve"><value>Select to delete the ZIP file from the import folder.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectForDisable.TT" xml:space="preserve"><value>Select to activate or deactivate the document.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectAllForImport.TT" xml:space="preserve"><value>Select all - for import</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectAllForRemove.TT" xml:space="preserve"><value>Select all - to delete the repository from the pending update folder.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.SelectAllForDisable.TT" xml:space="preserve"><value>Select all - to deactivate from the display</value></item>
+        <item key="RepositoryInfo.Document.Disable" xml:space="preserve"><value>Deactivate</value></item>
+        <item key="RepositoryInfo.Document.Enable" xml:space="preserve"><value>Activate</value></item>
+        <item key="RepositoryInfo.Message.Import.Documents.Succeeded" xml:space="preserve"><value>已成功导入所有选择的文档。\n 重启查看器来显示所有文档。</value></item>
+        <item key="RepositoryInfo.Message.Import.Web.Documents.Succeeded" xml:space="preserve"><value>The selected documents have been successfully imported.
+	Use the button " to restart the application and view all documents.</value></item>
+        <item key="RepositoryInfo.Message.Remove.Documents.Succeeded" xml:space="preserve"><value>所选文档已从文件夹 'PendingUpdate' 中成功移除。</value></item>
+        <item key="RepositoryInfo.Message.NoRight" xml:space="preserve"><value>您无权执行此操作。</value></item>
+        <item key="RepositoryInfo.Message.Error" xml:space="preserve"><value>发生错误。</value></item>
+        <item key="RepositoryInfo.Message.Disable.Documents.Succeeded" xml:space="preserve"><value>The selected documents were activated or deactivated successfully.\n The application will now be reloaded.</value></item>
+        <item key="RepositoryInfo.Message.Disable.Web.Documents.Succeeded" xml:space="preserve"><value>The selected documents were activated or deactivated successfully.\n The application will now be reloaded!</value></item>
+        <item key="RepositoryInfo.Info.Loading" xml:space="preserve"><value>Loading... {0}%</value></item>
+        <item key="RepositoryInfo.Import.Message" xml:space="preserve"><value>Documents imported by the PUD Manager</value></item>
+        <item key="RepositoryInfo.Import.Waiting.Message" xml:space="preserve"><value>Importing... {0}%</value></item>
+        <item key="RepositoryInfo.Initializing.Message" xml:space="preserve"><value>PUD Manager initialized</value></item>
+        <item key="RepositoryInfo.Initializing.Failed.Message" xml:space="preserve"><value>The initialization of the documents failed.</value></item>
+        <item key="RepositoryInfo.Initializing.Succeeded.Message" xml:space="preserve"><value>Initialization of the PUD Manager finished</value></item>
+        <item key="RepositoryInfo.Restart.Initializing" xml:space="preserve"><value>Documents are being reinitialized.</value></item>
+        <item key="RepositoryInfo.Restart.Initializing.Succeeded" xml:space="preserve"><value>The reinitialization of the documents has completed.</value></item>
+        <item key="RepositoryInfo.DisableEnabled.Documents.Succeeded" xml:space="preserve"><value>Showing and hiding the documents has completed.</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Document.State.new" xml:space="preserve"><value>新建</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Document.State.changed" xml:space="preserve"><value>已修改</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Document.State.uptodate" xml:space="preserve"><value>当前</value></item>
+        <item key="RepositoryInfo.PendingUpdate.Document.State.deleted" xml:space="preserve"><value>已删除</value></item>
+        <item key="System.Restart.Finished.ReloadApp" xml:space="preserve"><value>The restart completed successfully. The application will now be reloaded.</value></item>
+        <item key="System.About.Headline" xml:space="preserve"><value>关于</value></item>
+        <item key="System.Restart.UserMessage" xml:space="preserve"><value>The PUD manager has been updated and the application has to be restarted.</value></item>
+        <item key="IMeta.Document.HideInToc" xml:space="preserve"><value>在目录中隐藏</value></item>
+        <item key="IMeta.Document.PublishEdition" xml:space="preserve"><value>版本</value></item>
+        <item key="IMeta.Document.PublishDrawingNumber" xml:space="preserve"><value>文档标识号</value></item>
+        <item key="Search.Header" xml:space="preserve"><value>搜索</value></item>
+        <item key="Search.DidYouMean" xml:space="preserve"><value>您的意思</value></item>
+        <item key="Search.Options.Repository" xml:space="preserve"><value>全部文档存放位置</value></item>
+        <item key="Search.Options.AllSelectedDocuments" xml:space="preserve"><value>选中的文档</value></item>
+        <item key="Search.Options.Document" xml:space="preserve"><value>整个文档</value></item>
+        <item key="Search.Options.Section" xml:space="preserve"><value>当前结构</value></item>
+        <item key="Search.Options.UseWhitespace" xml:space="preserve"><value>将搜索字符串与空格结合</value></item>
+        <item key="Search.Options.Info.SearchInDocument" xml:space="preserve"><value>在文档'{0}'中搜索。</value></item>
+        <item key="Search.Options.Info.SearchInAllDocuments" xml:space="preserve"><value>在'{0}所有{1}'文档中搜索。</value></item>
+        <item key="Search.Options.Info.SearchInAllSelectedDocuments" xml:space="preserve"><value>在'{0}所有选中{1}'的文档中搜索。</value></item>
+        <item key="Search.Options.Info.SearchInTopicOfDocument" xml:space="preserve"><value>在文档'{1}'的主题'{0}'中搜索。</value></item>
+        <item key="Search.Options.Info.SearchInChapterOfDocument" xml:space="preserve"><value>在文档'{1}'的章节'{0}'中搜索。</value></item>
+        <item key="Search.Result.Header" xml:space="preserve"><value>{0}-{1} ，共 {2} 条</value></item>
+        <item key="Search.Result.HeaderMoreItems" xml:space="preserve"><value>{0} 个匹配条目</value></item>
+        <item key="Search.Result.HeaderOneItem" xml:space="preserve"><value>{0} 个匹配条目</value></item>
+        <item key="Search.Result.HeaderNoResult" xml:space="preserve"><value>未找到相关内容</value></item>
+        <item key="Search.Result.SearchXMore" xml:space="preserve"><value>继续显示 {0} 条</value></item>
+        <item key="Search.Result.ItemType.Glossary" xml:space="preserve"><value>词汇表词条</value></item>
+        <item key="Search.Result.ItemType.Index" xml:space="preserve"><value>索引条目</value></item>
+        <item key="Search.Result.ItemType.HideInToc" xml:space="preserve"><value>在目录中隐藏</value></item>
+        <item key="Search.Info" xml:space="preserve"><value>用空格组合搜索字串</value></item>
+        <item key="Search.NoSuggestions" xml:space="preserve"><value>没有搜索建议</value></item>
+        <item key="Search.Suggestion" xml:space="preserve"><value>搜索</value></item>
+        <item key="Search.Documents" xml:space="preserve"><value>文档</value></item>
+        <item key="Search.Model" xml:space="preserve"><value>产品型号</value></item>
+        <item key="Search.PlaceHolder" xml:space="preserve"><value>输入搜索关键词</value></item>
+        <item key="Search.PlaceHolder.Toc" xml:space="preserve"><value>在目录中搜索</value></item>
+        <item key="Search.PlaceHolder.PM" xml:space="preserve"><value>在产品型号中搜索</value></item>
+        <item key="Search.Metadata.Filter" xml:space="preserve"><value>筛选</value></item>
+        <item key="Search.Metadata.Headline" xml:space="preserve"><value>筛选</value></item>
+        <item key="Search.Information.Headline" xml:space="preserve"><value>搜索说明</value></item>
+        <item key="Search.Information.Description" xml:space="preserve"><value>界定搜索范围
+	                请说明要搜索的内容：整个文档，当前章节。
+            
+	                使用运算符搜索
+            
+	                请使用运算符，获取需要的搜索结果。
+	                如果输入了不带运算符的两个关键字，则会显示同时包含这两个关键字的所有匹配条目（即与 (AND) 运算）。此为标准搜索设置。
+	               说明：使用 + 或 – 时，请勿在运算符与关键字之间添加空格！
+	            与 = AND = +
+	                                同时包含全部关键字的匹配条目。示例：数据 AND 模块; 数据 +模块
+	                            或 = OR 
+	                                至少包含其中一个关键字的匹配条目。示例：数据 OR 模块; 数据 模块
+                            
+	                        非 = NOT = -
+	                                不包含此关键字的条目。示例：数据 NOT 模块; 数据 -模块
+	                             EXAKT = “ “ 
+	                                与关键字完全一致的条目。示例: “smart card“
+	            </value></item>
+        <item key="Glossary.Header" xml:space="preserve"><value>词汇表</value></item>
+        <item key="Glossary.Search.Result.Header" xml:space="preserve"><value>词汇表</value></item>
+        <item key="Glossary.Entry.Header" xml:space="preserve"><value>词汇表词条</value></item>
+        <item key="Glossary.Search.Result.NoResult" xml:space="preserve"><value>未找到相关内容</value></item>
+        <item key="Document.Info.Header" xml:space="preserve"><value>文档信息</value></item>
+        <item key="Document.Info.Ordernumber" xml:space="preserve"><value>文档订购号</value></item>
+        <item key="Document.Info.Drawingnumber" xml:space="preserve"><value>文档标识号</value></item>
+        <item key="Document.Info.ProducedWith" xml:space="preserve"><value>使用以下元素创建：</value></item>
+        <item key="Document.Info.Version" xml:space="preserve"><value>Version:</value></item>
+        <item key="LegalInfo.Header" xml:space="preserve"><value>法律声明</value></item>
+        <item key="Content.Summary" xml:space="preserve"><value>内容</value></item>
+        <item key="Content.Seealso" xml:space="preserve"><value>另见</value></item>
+        <item key="Content.Similarcontents" xml:space="preserve"><value>使用的主题</value></item>
+        <item key="Content.TopicInTopic.MaxCountOpenTopics" xml:space="preserve"><value>已达到一个主题中可打开的最大主题数！</value></item>
+        <item key="Content.TopicInTopic.TopicIsOpen" xml:space="preserve"><value>主题'{0}'已显示！</value></item>
+        <item key="Content.DynamicTables.ShowAll" xml:space="preserve"><value>所有表格</value></item>
+        <item key="Content.Table.Link" xml:space="preserve"><value>表格</value></item>
+        <item key="Content.Image.Link" xml:space="preserve"><value>图</value></item>
+        <item key="Content.Tables.LabelCopyTitle" xml:space="preserve"><value>将以下程序代码复制到剪贴板。</value></item>
+        <item key="Content.Tables.LabelMissingTable" xml:space="preserve"><value>- 缺少的表格 -</value></item>
+        <item key="Content.Code.CopyToClipboard" xml:space="preserve"><value>您的浏览器不支持访问剪贴板。请在此处复制文本。</value></item>
+        <item key="Content.Tabs.Message.MaxPinnedTabs" xml:space="preserve"><value>已达到可固定选项卡的最大数量'{0}'！</value></item>
+        <item key="Content.Tabs.Cannot.Close.Last.Tab" xml:space="preserve"><value>上一个选项卡无法关闭！</value></item>
+        <item key="Content.Tabs.SwitchSizeToMobile.Title" xml:space="preserve"><value>视图切换说明</value></item>
+        <item key="Content.Tabs.SwitchSizeToMobile.Content" xml:space="preserve"><value>您已从标准视图切换至移动视图。{0}视图区域较小时将关闭一些功能（例如选项卡）。</value></item>
+        <item key="Content.Tabs.TopicOpenInOtherTab" xml:space="preserve"><value>此主题已在另一个选项卡中打开。现将切换到该选项卡。</value></item>
+        <item key="Chapter.Title" xml:space="preserve"><value>本章内容如下：</value></item>
+        <item key="Footer.Link.GlobalWebsiteLabel" doNotTranslate="true" xml:space="preserve"><value>Siemens Global Website</value></item>
+        <item key="Footer.Link.GlobalWebsiteLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com</value></item>
+        <item key="Footer.Link.PDFVersionLabel" xml:space="preserve"><value>PDF 版本</value></item>
+        <item key="Footer.Link.PDFVersionLink" doNotTranslate="true" xml:space="preserve"><value>https://www.automation.siemens.com/pdf/</value></item>
+        <item key="Footer.Link.TermsOfUseLabel" xml:space="preserve"><value>使用条款</value></item>
+        <item key="Footer.Link.TermsOfUseLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/corp/en/index/terms_of_use.htm</value></item>
+        <item key="Footer.Link.ImprintLabel" xml:space="preserve"><value>版本说明</value></item>
+        <item key="Footer.Link.ImprintLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/corp/en/index/corporate_info.htm</value></item>
+        <item key="Footer.Link.PrivacyPolicyLabel" xml:space="preserve"><value>隐私声明</value></item>
+        <item key="Footer.Link.PrivacyPolicyLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/corp/en/index/privacy.htm</value></item>
+        <item key="Footer.Link.LegalNotesLabel" xml:space="preserve"><value>法律信息</value></item>
+        <item key="Footer.Link.LegalInfoLabel" xml:space="preserve"><value>法律资讯</value></item>
+        <item key="Footer.Link.LegalNotesLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/corp/en/index/terms_of_use.htm</value></item>
+        <item key="Footer.Link.CookiePolicyLabel" xml:space="preserve"><value>Cookie 政策</value></item>
+        <item key="Footer.Link.CookiePolicyLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/global/en/general/cookie-notice.html</value></item>
+        <item key="Footer.Link.DigitalIDLabel" xml:space="preserve"><value>数字 ID</value></item>
+        <item key="Footer.Link.DigitalIDLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/corp/en/index/digital_id.htm</value></item>
+        <item key="Footer.Link.DocumentPropertiesLabel" xml:space="preserve"><value>文档信息</value></item>
+        <item key="Footer.Link.UserSettingsLabel" xml:space="preserve"><value>用户设置</value></item>
+        <item key="About.AllRightsReserved" xml:space="preserve"><value>版权所有</value></item>
+        <item key="ModelSearchColumns.Category.ModelInfo" xml:space="preserve"><value>Model</value></item>
+        <item key="ModelSearchColumns.Category.NodeInfo" xml:space="preserve"><value>Nodes</value></item>
+        <item key="ModelSearchColumns.Category.MetaData" xml:space="preserve"><value>Node properties</value></item>
+        <item key="ModelSearchColumns.LinkClass" xml:space="preserve"><value>Link class</value></item>
+        <item key="ModelSearchColumns.LinkClass.Tooltip" xml:space="preserve"><value>Link class</value></item>
+        <item key="ModelSearchColumns.NodeClass" xml:space="preserve"><value>Node class</value></item>
+        <item key="ModelSearchColumns.NodeClass.Tooltip" xml:space="preserve"><value>Node class</value></item>
+        <item key="ModelSearchColumns.UserFormatting" xml:space="preserve"><value>User formatting</value></item>
+        <item key="ModelSearchColumns.UserFormatting.Tooltip" xml:space="preserve"><value>User formatting</value></item>
+        <item key="ModelSearchColumns.NodeName" xml:space="preserve"><value>Name</value></item>
+        <item key="ModelSearchColumns.NodeName.Tooltip" xml:space="preserve"><value>Node name</value></item>
+    </category>
+</items>

@@ -8,53 +8,73 @@ networks:
 
 volumes:
   db-edge-apps-dataservicedevelopmentkit-volume:
+  db-edge-apps-simulation-volume:
+
 
 services:
-# Database
-  db-edge-apps-dataservicedevelopmentkit:
-    image: postgres:9.6.16-alpine
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-    volumes:
-      - type: volume
-        source: db-edge-apps-dataservicedevelopmentkit-volume
-        target: /var/lib/postgresql/data
-    mem_limit: 128mb
+  # MQTT Broker
+  simulation-broker:
+    image: eclipse-mosquitto:1.6.10
     networks:
       - dataservicedevelopmentkit_default
+    ports:
+      - 11883:1883
+    mem_limit: 128mb
     restart: unless-stopped
 
-# MQTT Broker
-#  simulation-broker:
-#    image: <your MQTT Broker Image e.g. eclipse-mosquitto:1.6.10>
-#    networks:
-#      - dataservicedevelopmentkit_default
-#    ports:
-#      - 11883:1883
-#    mem_limit: 128mb
-#    restart: unless-stopped
-
-# Services
+  # Services
   edgeappdataservice:
-    image: siemensindustrialedge/dataservicedevelopmentkit:1.3.3
+    image: captain.rtf.siemens.net:8443/mindedge/dataservice/dataservice-standalone/developmentkit:dev-latest
     environment:
       - EXTENDED_ERRORS=true
       - LOG_DEBUG_INFO=true
     ports:
       - 4203:4203
+    networks:
+      - dataservicedevelopmentkit_default
+      - proxy-redirect
+    volumes:
+      - '/tmp/siemens/automation:/tmp/siemens/automation'
+      - type: volume
+        source: db-edge-apps-dataservicedevelopmentkit-volume
+        target: /home/edge/filedb
+    mem_limit: 128mb
+    restart: unless-stopped
+
+  simulation:
+    image: captain.rtf.siemens.net:8443/mindedge/dataservice/simulationui/simulationui:dev-latest
+    environment:
+      - PLATFORM=edge
+      - OPERATOR_PLAN=edge
+      - DBSERVICETYPE=postgres
+      - DBSERVICE=Edge
+      - EXTENDED_ERRORS=true
+      - LOG_DEBUG_INFO=true
+      - MQTT_BROKER_URL=tcp://simulation-broker:1883
+      - MQTT_BROKER_USR=
+      - MQTT_BROKER_PSW=
+      - SIM_MODE=MQTT
+      - AUTHENTICATION_MODE=sim-edge
+      - APPLICATION_NAME=edgeappdataservice
+      - POSTGRES_DB_FILE=/run/postgres-db
+      - POSTGRES_USER_FILE=/run/postgres-user
+      - POSTGRES_PASSWORD_FILE=/run/postgres-passwd
+      - START_POSTGRES=1
+      - POSTGRES_START_ARGS=-B 1MB
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
       - 4519:4519
     networks:
       - dataservicedevelopmentkit_default
       - proxy-redirect
-    depends_on:
-      db-edge-apps-dataservicedevelopmentkit:
-        condition: service_healthy
-    mem_limit: 256mb
+    mem_limit: 128mb
+    volumes:
+      - '/tmp/siemens/automation:/tmp/siemens/automation'
+      - type: volume
+        source: db-edge-apps-simulation-volume
+        target: /var/lib/postgresql/data
     restart: unless-stopped

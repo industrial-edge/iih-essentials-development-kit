@@ -10,8 +10,9 @@ services:
   example-client:
     build: ./
     image: 'example-client:1.0.0'
-    ports:
-      - '5200:5200'
     restart: always
     networks:
       - proxy-redirect
+    volumes:
+      - './auth/appsecrets.json:/src/app/appsecrets.json'
+    mem_limit: 128mb

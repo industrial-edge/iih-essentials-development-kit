@@ -1,8 +1,6 @@
 ﻿/*!
  *
- * (Copyright (c) 2016 Siemens AG
- *
- * Creator: Betz AG 2016
+ * Copyright (C) Siemens AG 2015-2022. All rights reserved.
  *
  * Lib: Base Tracking Interface
  *

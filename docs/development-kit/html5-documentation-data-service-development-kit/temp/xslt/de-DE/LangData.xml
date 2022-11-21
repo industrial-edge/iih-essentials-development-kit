@@ -9,6 +9,7 @@
         <item key="SWITZERLAND" xml:space="preserve"><value>SCHWEIZ</value></item>
         <item key="TURKEY" xml:space="preserve"><value>TÜRKEI</value></item>
         <item key="USA" xml:space="preserve"><value>VEREINIGTE STAATEN</value></item>
+        <item key="CHINA" xml:space="preserve"><value>VR CHINA</value></item>
         <item key="languagename" xml:space="preserve"><value>Deutsch</value></item>
         <item key="characteristics" xml:space="preserve"><value>Kennlinie</value></item>
         <item key="condition" xml:space="preserve"><value>Voraussetzung</value></item>
@@ -59,6 +60,8 @@
         <item key="xref" xml:space="preserve"><value>Die Informationen finden Sie im Dokument auf Seite&#160;</value></item>
         <item key="xreftoc" xml:space="preserve"><value>(Wiederverwendung)</value></item>
         <item key="seealsolink" xml:space="preserve"><value>Siehe auch</value></item>
+        <item key="seealsolink.showall" xml:space="preserve"><value>Alle eingehenden Siehe-auch-Links anzeigen</value></item>
+        <item key="seealsolink.restricted" xml:space="preserve"><value>Es werden nur 20 eingehende Siehe-auch-Links angezeigt.</value></item>
         <item key="menu.section" xml:space="preserve"><value>Im&#160;Abschnitt</value></item>
         <item key="menu.steps" xml:space="preserve"><value>Anleitungen</value></item>
         <item key="menu.examples" xml:space="preserve"><value>Beispiele</value></item>
@@ -487,6 +490,7 @@
         <item key="Search.Result.ItemType.Glossary" xml:space="preserve"><value>Glossareintrag</value></item>
         <item key="Search.Result.ItemType.Index" xml:space="preserve"><value>Indexeintrag</value></item>
         <item key="Search.Result.ItemType.HideInToc" xml:space="preserve"><value>Im Inhaltsverzeichnis verbergen</value></item>
+        <item key="Search.Info" xml:space="preserve"><value>Suchstrings mit Leerzeichen kombinieren</value></item>
         <item key="Search.NoSuggestions" xml:space="preserve"><value>Keine Vorschläge</value></item>
         <item key="Search.Suggestion" xml:space="preserve"><value>Suche nach</value></item>
         <item key="Search.Documents" xml:space="preserve"><value>Dokumente</value></item>
@@ -559,7 +563,7 @@
         <item key="Footer.Link.LegalInfoLabel" xml:space="preserve"><value>Rechtliche Hinweise</value></item>
         <item key="Footer.Link.LegalNotesLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/nutzungsbedingungen</value></item>
         <item key="Footer.Link.CookiePolicyLabel" xml:space="preserve"><value>Cookie Policy</value></item>
-        <item key="Footer.Link.CookiePolicyLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/cookie-policy-de</value></item>
+        <item key="Footer.Link.CookiePolicyLink" doNotTranslate="true" xml:space="preserve"><value>https://new.siemens.com/de/de/general/cookie-richtlinien.html</value></item>
         <item key="Footer.Link.DigitalIDLabel" xml:space="preserve"><value>Digital ID</value></item>
         <item key="Footer.Link.DigitalIDLink" doNotTranslate="true" xml:space="preserve"><value>https://www.siemens.com/digital_id_de</value></item>
         <item key="Footer.Link.DocumentPropertiesLabel" xml:space="preserve"><value>Dokumentinfo</value></item>

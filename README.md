@@ -39,7 +39,7 @@ In this repository you can find the following components:
   - <a href="./docs/development-kit">Development Kit documentation</a>
 - <a href="./examples">Examples</a>
 
-By running the docker compose configuration, an API instance of the Data Service will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](./docs/data-service/api-documentation/data-service-api-specification.html). This file needs to be opened locally in a browser or check the API specification on the [documenation website](https://industrial-edge.io/developer/systemapps/data-processing/data-service/definitions/data-service-1.3.3.html)
+By running the docker compose configuration, an API instance of the Data Service will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](./docs/data-service/api-documentation/data-service-api-specification.html). This file needs to be opened locally in a browser.
 
 An image is loaded from Docker Hub, containing these components:
 
@@ -53,7 +53,7 @@ An image is loaded from Docker Hub, containing these components:
 
 - Install Docker
 - Install NodeJS (only for running examples)
-- Install a MQTT broker
+- Install an MQTT broker
 
 In order to run the data service development kit you need to have an MQTT broker of your choice running:
 - on port 1883
@@ -108,11 +108,140 @@ It shows how to create a user, request a token and get assets, tags and time ser
 ## What's new
 <details>
   <summary>
+    <h2 style="display: inline">v1.5.0 - 2022-11-08</h2>
+  </summary>
+  <h3>Added</h3>
+  <ul>
+    <li>Epic 841389: automatic migration to IIH mode</li>
+    <li>Epic 1291958: OpenPipe browsing</li>
+    <li>Epic 1341337: configuration fullscreen dialogs</li>
+    <li>Epic 1444942: Enable/disable storing of variable</li>
+    <li>Epic 1684997: Model mutation via API in IIH mode</li>
+  </ul>
+  <h3>Fixed</h3>
+  <ul>
+    <li>Bug 1081843: Data Service Backup configuration exposes credentials</li>
+    <li>Bug 1399404: cURL, libcurl 7.16.1 ≤ 7.83.0 - Multiple Vulnerabilities - 7.83.1</li>
+    <li>Bug 1612836: cURL, libcurl 7.16.4 ≤ 7.83.1 - Multiple Vulnerabilities - 7.84.0</li>
+    <li>Bug 1626932: Node.js Package: moment < 2.29.4 - Remote Regular Expression Denial of Service Vulnerability - GHSA-wc69-rhjr-hc9g</li>
+    <li>Bug 1652672: No confirmation message after restoring data backup</li>
+    <li>Bug 1770507: Data Service: can't delete Asset which contains Aspects derived from AspectType</li>
+    <li>Bug 1844550: EnergyManager: EnergyAnalysis with SubAsset leads to error</li>
+    <li>Bug 1846613: Route AssetService/Assets/<id>/Decendants is missing</li>
+    <li>Bug 1847314: IIH: Configuring additional data source leads to issues</li>
+    <li>Bug 1858366: Create: Sporadical error when restoring configuration</li>
+    <li>Bug 1859833: Clicking on Reset variable of Aggregated variable results in error</li>
+    <li>Bug 1859856: Unable to remove aggregated variables from Aspect</li>
+    <li>Bug 1861022: Passwords stored in DB are downloadable in plain text</li>
+    <li>Bug 1868419: Unchecking archive checkbox of aggregated variable displays error</li>
+  </ul>
+</details>
+
+<details>
+  <summary>
+    <h2 style="display: inline">v1.4.0 - 2022-08-15</h2>
+  </summary>
+  <h3>Added</h3>
+  <ul>
+    <li>1152241 Epic Data Service C++: Major performance improvements</li>
+    <li>599109 Epic System info dashboard: Monitor the system with using the system info dashboard</li>
+    <li>Pre-aggregate variables to reduce calculation response times</li>
+    <ul>
+      <li>955990 Epic Pre-calculated aggregation</li>
+      <li>1032684 Epic Improve calculation performance using pre-aggregated data</li>
+    </ul>
+    <li>IIH integration: Run Data Service in IIH Mode</li>
+    <ul>
+      <li>1392382 Epic Running modes: Standalone and IIH</li>
+      <li>1121415 Epic IIH frontend adaptions</li>
+      <li>Connectivity Suite compatibility</li>
+    </ul>
+    <li>1024587 Epic Optimized UI for mobile</li>
+    <li>1024592 Epic Optimized UI keyboard handling</li>
+    <li>1028323 Epic New Simulation UI</li>
+    <li>1389681 Epic Add new default adapters: New default adapters: SLMP, OPC UA, S7+</li>
+    <li>1392451 Epic Migration of DS standalone 1.3 to 1.4</li>
+  </ul>
+  <h3>Fixed</h3>
+  <ul>
+    <li>1467230 Bug Edit variable dialog displays connection status of a variable without adapter</li>
+    <li>1212027 Bug Dataservice App V1.2.0 HmiRuntime conenctor does not work with HMI Tags typ bool</li>
+    <li>1063409 Bug Error when same timestamp is sent multiple times</li>
+    <li>1678693 Bug Different response than in node version when data is not found</li>
+    <li>1371927 Bug DS C++: Add variable dialog not displaying Datatype and Unit fields</li>
+    <li>1397442 Bug Select all checkbox in Add multiple variable selects all the variables under a connector</li>
+    <li>1383697 Bug Delete confirmation message for variable containing aggregated variables should be changed</li>
+    <li>1678676 Bug Error when creating variable with same name in different aspects (UI + backend)</li>
+    <li>1678663 Bug Error when creating variable with space at end of name (ui + backend)</li>
+    <li>1397449 Bug An error occurred is getting displayed when user clicks on edit variable icon</li>
+    <li>1373521 Bug Variable connected state does not go back to normal after connection is reestablished</li>
+    <li>1492599 Bug Warning symbol is clickable in variable table</li>
+    <li>1696695 Bug Aspect assets filter returns all aspects</li>
+    <li>1661199 Bug Variable list is taking long to load</li>
+    <li>1341356 Bug Data retention 1 second crashes database</li>
+    <li>1641327 Bug Deleting child asset is causing an error</li>
+    <li>1378117 Bug Backup json is not getting downloaded when include time series data toggle is on</li>
+    <li>1656922 Bug Different aggregation is created than the selected</li>
+    <li>1383680 Bug Deleting variable which has an aggregated variable results in stuck screen</li>
+    <li>1656923 Bug Add variable button is getting disabled upon adding aggregation</li>
+    <li>1664436 Bug Moving child assets with same name into an asset is not displaying any error </li>
+    <li>1428317 Bug Unable to browse tags from System info adapter even after its connected</li>
+    <li>1661155 Bug Unknown error gets displayed when adding variables to aspect</li>
+    <li>1475717 Bug Error while try to add 2nd variable aggregation</li>
+    <li>1634706 Bug Changing aggregation settings fails and deletes existing aggregation</li>
+    <li>1322117 Bug Data Service failed to restore configuration because duplicate variables can be created</li>
+    <li>1397433 Bug No Uniqueness in creation of child asset names</li>
+    <li>1505139 Bug Dataservice app icon is not displaying in tab name</li>
+    <li>1640664 Bug Child assets can not be expanded, when current asset is selected</li>
+    <li>1191639 Bug REST API POST DataService/Data SQL Injection</li>
+    <li>1529300 Bug TRA tracker: DataService v1.4</li>
+    <li>1489368 Bug Heap size stats are not displaying in system info adapter</li>
+    <li>1138791 Bug SWT: IIH:Organize data-No functionality give to the No limit  button in storage window</li>
+    <li>1138790 Bug SWT: IIH:Organize data-No functionality given to the create Add aspect(+)  button in aspect window</li>
+    <li>1138789 Bug SWT: IIH:Organize data- No functionality given to the create first aspect  button in aspect window</li>
+    <li>1208366 Bug SWT: IIH:Storage:- Description need to improved ,when adding the asset in the storage page</li>
+    <li>1176389 Bug SWT: IIH:Provide information - UI for the filter field is getting disturbed on clicking on the text.</li>
+    <li>1421916 Bug Incorrect description for data retention in Edit variable and data retention dialogs</li>
+    <li>1374452 Bug Mobile UI: Text is displayed outside the container in settings tab</li>
+    <li>1379866 Bug Incorrect connection status is displayed for Aggregated variables</li>
+    <li>1359984 Bug Drop textfile button is not clickable while creating value type simulation</li>
+    <li>1063790 Bug Data Service - Preview chart auto refresh resets zoom</li>
+    <li>1405186 Bug Reordering of assets is taking more time</li>
+    <li>1342763 Bug Reset simulation data option is missing in Simulation group</li>
+    <li>1393139 Bug Delete button is present when no retention is set for parent asset</li>
+    <li>1341062 Bug Newly created variable is not displayed under simulation group</li>
+    <li>1286990 Bug Mobile UI: Improper display of Adapter view</li>
+    <li>1340688 Bug No Character limit for Simulation group name</li>
+    <li>1340701 Bug No character limit for variable name under a simulation group</li>
+    <li>1192029 Bug Data Service: After editing a variable on page 2 of the "connectivity" tab, page number is bugged</li>
+    <li>1349180 Bug Unable to delete the aggregation variables </li>
+    <li>1349648 Bug Mobile UI: Adapters are not displayed in adapters view</li>
+    <li>1341351 Bug Delete button is displayed also if retention is not set</li>
+    <li>1292945 Bug Mobile UI: Tag and Variable name displayed outside the container in edit variable dialog</li>
+    <li>1018288 Bug Pagination issue - after deleting a variable in 2nd page the screen displays 1st page but shows page number as 2</li>
+    <li>1018293 Bug Unable to delete Aspect from Connectivity screen</li>
+    <li>1287070 Bug Wrong connection status is displayed in Edit variable dialog</li>
+    <li>1294438 Bug Variable toggle button in Pre-calculated aggregation is not working as expected</li>
+    <li>1294462 Bug Headers are missing in Pre-calculated aggregation section</li>
+    <li>1303506 Bug Mobile UI: Sidebar is not closing after the selection</li>
+    <li>1294483 Bug Adapters image is not loading</li>
+    <li>1293357 Bug Delete confirmation message for variable deletion doesn't contain variable name</li>
+    <li>1286870 Bug Data retention is blocking the UI if too many variables</li>
+    <li>1275328 Bug Data retention field is revised to on for all variables </li>
+    <li>1018123 Bug Pagination goes off after increasing the number</li>
+    <li>1286910 Bug OpenPipe variables cannot be created in the UI</li>
+    <li>1606837 Bug SWT: IIH: Buffered values are not updated to the mindsphere but stored in the data service</li>
+    <li>1723683 Bug Adapter error is not updated on edit</li>
+    <li>1233449 Bug SWT: IIH: Storage:-  Created asset model in provide information is not reflecting in the storage page</li>
+  </ul>
+</details>
+
+<details>
+  <summary>
     <h2 style="display: inline">v1.3.3 - 2022-02-25</h2>
   </summary>
   <h3>Fixed</h3>
   <ul>
-    <li>Booleans are sent in an unexpected format for some apps</li>
     <li>1197005 Bug Booleans are sent in an unexpected format for some apps</li>
   </ul>
 </details>

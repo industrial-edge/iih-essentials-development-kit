@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ExampleClient - Data Service Development Kit</title>
+    <style>
+        .header {
+            font-size: 1.40rem;
+            font-weight: 900;
+        }
+        .intro {
+            font-size: 1.30rem;
+        }
+        .route {
+            font-size: 1.20rem;
+            margin-bottom: 0px;
+        }
+        .route_desc {
+            margin-top: 5px;
+            font-size: 1.10rem;
+        }
+    </style>
+</head>
+<body style="font-family: Siemens Sans,Arial,sans-serif;">
+    <p class="header">
+        ExampleClient - Data Service Development Kit
+    </p>
+    <p class="intro">
+        The ExampleClient of the Data Service Development Kit implements the following REST API. The
+        different endpoints can directly be accessed by clicking at the route names. You immediately
+        see the JSON response in the browser.
+    </p>
+    <p class="intro">
+        For routes which require an assetId or a variableId in the path initially you will see the
+        error JSON response. Replace the :assetId or :variableId placeholder in the browsers address
+        bar with the id of an existing object and execute the endpoint again.  
+    </p>
+    <p class="route"><a href="./Assets">
+        Assets
+    </a></p>
+    <p class="route_desc">
+        Read the configuration of all existing assets.
+    </p>
+    <p class="route"><a href="./Assets/:assetId">
+        Assets/:assetId
+    </a></p>
+    <p class="route_desc">
+        Read the configuration of a single asset selected via its id.
+    </p>
+    <p class="route"><a href="./Variables">
+        Variables
+    </a></p>
+    <p class="route_desc">
+        Read the configuration of all existing variables.
+    </p>
+    <p class="route"><a href="./Variables/:variableId">
+        Variables/:variableId
+    </a></p>
+    <p class="route_desc">
+        Read the configuration of a single variable selected via its id.
+    </p>
+    <p class="route"><a href="./Variables/:variableId/DataOfLastHour">
+        Variables/:variableId/DataOfLastHour
+    </a></p>
+    <p class="route_desc">
+        Read the raw timeseries data of a single variable selected via its id. The data
+        is read from the last hour.
+        This example demonstrates the usage of the Data API of the Data Service.
+    </p>
+    <p class="route"><a href="./Variables/:variableId/AverageOfLastHour">
+        Variables/:variableId/AverageOfLastHour
+    </a></p>
+    <p class="route_desc">
+        Calculate the average of a single variable selected via its id. The average is
+        calculated over the last hour. The requested timerange is aligned to full minutes.
+        This example demonstrates the usage of the Calculate API of the Data Service.
+    </p>
+    <p class="route"><a href="./Variables/:variableId/AverageTrendOfLastHour">
+        Variables/:variableId/AverageTrendOfLastHour
+        </a></p>
+    <p class="route_desc">
+        Calculate the average trend of a single variable selected via its id. The average trend is
+        calculated over the last hour. The requested timerange is aligned to full minutes. The
+        calculation period is 10 minutes.
+        This example demonstrates the usage of the CalculateTrend API of the Data Service.
+    </p>
+    <p class="route"><a href="./Variables/:variableId/LatestValue">
+        Variables/:variableId/LatestValue
+    </a></p>
+    <p class="route_desc">
+        Read the latest value of a single variable selected via its id. This example demonstrates
+        the usage of the Data/Delta API of the Data Service. 
+    </p>
+    <p class="route"><a href="./Variables/:variableId/Monitor">
+        Variables/:variableId/Monitor
+    </a></p>
+    <p class="route_desc">
+        Read cyclically each 5 seconds all new values of a single variable selected via its id.
+        The execution is running in the background and the values are logged to the console. This
+        example demonstrates how to run background tasks and how to call the API of the Data Service
+        without the credentials of the interactive user. 
+    </p>
+    <p class="route"><a href="./Variables/StopMonitor">
+        Variables/StopMonitor
+    </a></p>
+    <p class="route_desc">
+        Stop the background task started with Monitor. 
+    </p>
+</body>
+</html>

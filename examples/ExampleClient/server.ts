@@ -1,19 +1,20 @@
 import * as express from 'express';
 import * as http from 'http';
-import { Request, Response ,Router} from 'express';
 import * as bodyParser from 'body-parser';
+import * as cookieParser from 'cookie-parser';
 import { Feature } from './feature';
 
-var port = 5200;
-var app = express();
-var router = express.Router();
-var server = http.createServer(app)
+const port = 5200;
+const app = express();
+const router = express.Router();
+const server = http.createServer(app);
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(router);
 
-let feature : Feature = new Feature();
+const feature = new Feature();
 feature.setRoutes(router);
 
 server.listen(port, () => {
-    console.log('server running at ', port);
-})
+    console.log(`ExampleClient running at port ${port}.`);
+});
