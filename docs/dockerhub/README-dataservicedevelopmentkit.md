@@ -2,10 +2,12 @@
 
 - Where to get help: [Industrial Edge Forum](https://www.siemens.com/industrial-edge-forum)
 - Also see the [Data Service Device Kit Manual](https://github.com/industrial-edge/data-service-device-kit) as well as the [Getting Stared](https://github.com/industrial-edge/data-service-device-kit-getting-started)
+- Also see the [Data Service Simulation](https://hub.docker.com/r/siemensindustrialedge/dataservicesimulation) 
 
 ## Supported Tags
 
-- `1.3.3`, `latest`
+- `1.5.0`
+- `1.3.3`
 
 ## Quick reference (cont.)
 
