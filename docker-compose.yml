@@ -42,7 +42,7 @@ services:
     restart: unless-stopped
 
   simulation:
-    image: siemensindustrialedge/simulationui:1.5.0
+    image: siemensindustrialedge/dataservicesimulation:1.5.0
     environment:
       - PLATFORM=edge
       - OPERATOR_PLAN=edge
