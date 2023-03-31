@@ -14,7 +14,7 @@ volumes:
 services:
   # MQTT Broker
   #simulation-broker:
-  #  image: eclipse-mosquitto:1.6.10
+  #  image: <your MQTT Broker Image e.g. eclipse-mosquitto:1.6.10>
   #  networks:
   #    - dataservicedevelopmentkit_default
   #  ports:
