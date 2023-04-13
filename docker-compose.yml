@@ -12,19 +12,19 @@ volumes:
 
 
 services:
-# MQTT Broker
-#  simulation-broker:
-#    image: <your MQTT Broker Image e.g. eclipse-mosquitto:1.6.10>
-#    networks:
-#      - dataservicedevelopmentkit_default
-#    ports:
-#      - 11883:1883
-#    mem_limit: 128mb
-#    restart: unless-stopped
+  # MQTT Broker
+  #simulation-broker:
+  #  image: <your MQTT Broker Image e.g. eclipse-mosquitto:1.6.10>
+  #  networks:
+  #    - dataservicedevelopmentkit_default
+  #  ports:
+  #    - 11883:1883
+  #  mem_limit: 128mb
+  #  restart: unless-stopped
 
   # Services
   edgeappdataservice:
-    image: siemensindustrialedge/dataservicedevelopmentkit:1.5.0
+    image: siemensindustrialedge/dataservicedevelopmentkit:1.6.0
     environment:
       - EXTENDED_ERRORS=true
       - LOG_DEBUG_INFO=true
@@ -42,7 +42,7 @@ services:
     restart: unless-stopped
 
   simulation:
-    image: siemensindustrialedge/dataservicesimulation:1.5.0
+    image: siemensindustrialedge/dataservicesimulation:1.5.2
     environment:
       - PLATFORM=edge
       - OPERATOR_PLAN=edge
@@ -78,4 +78,3 @@ services:
         source: db-edge-apps-simulation-volume
         target: /var/lib/postgresql/data
     restart: unless-stopped
-

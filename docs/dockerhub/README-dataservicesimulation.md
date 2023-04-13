@@ -6,6 +6,7 @@
 
 ## Supported Tags
 
+- `1.5.2`
 - `1.5.0`
 
 ## License

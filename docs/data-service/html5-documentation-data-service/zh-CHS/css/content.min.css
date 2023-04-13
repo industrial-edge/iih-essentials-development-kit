@@ -2,8 +2,6 @@
  *
  * Copyright (C) Siemens AG 2015-2022. All rights reserved.
  *
- * Creator: Betz
- *
  * Lib: styles for topic
  *
  */body{font-family:'Siemens Sans Global','Lucida Sans Unicode',Arial,'Sans-Serif';font-size:10.5pt}
@@ -20,7 +18,7 @@ body.applanguage-ja-jp{font-family:'Gulim','Siemens Sans Global','Lucida Sans Un
 .topicclass .table-overflow-container{padding:5px 0;overflow:auto}
 .topicclass .table-overflow-container table{overflow:auto}
 .topicclass table{border-collapse:collapse;border-spacing:0}
-.topicclass fieldset,.topicclass img{max-width:100%;border:0}
+.topicclass fieldset,.topicclass img,.topicclass video{max-width:100%;border:0}
 html.no-touch .topicclass img.img_free:hover{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .topicclass address,.topicclass caption,.topicclass cite,.topicclass code,.topicclass dfn,.topicclass em,.topicclass strong,.topicclass th,.topicclass var{font-style:normal;font-weight:normal}
 .topicclass ul{list-style:disc}
@@ -132,7 +130,7 @@ span.search-result-text-emphasis.search-result-level2,.topicclass span.search-re
 .topicclass .img_margin{margin-top:12px}
 .topicclass table.margin-table{border:0}
 .topicclass table.margin-table+.floating-text,.topicclass table.margin-table+.floating-text-top,.topicclass .floating-text-bottom+div.margin-table,.topicclass .floating-text+div.margin-table{margin-top:4pt}
-.topicclass span.img_free{display:block}
+.topicclass span.video_free,.topicclass span.img_free{display:block}
 .topicclass .image-container-p>.outdated-notice,.topicclass .imagecontainer>.outdated-notice{margin-top:3px;font-weight:bold}
 .topicclass .image-container-p>.outdated-notice>span,.topicclass .imagecontainer>.outdated-notice>span{color:#F00!important}
 .topicclass div.outdated-notice>span+span{margin-left:10pt}
@@ -225,8 +223,18 @@ span.search-result-text-emphasis.search-result-level2,.topicclass span.search-re
 .topicclass table.table_default,.topicclass table.table_technical_data{line-height:.975rem;font-size:.775rem}
 .topicclass .table_invisible,.table_invisible tr,.table_invisible td{border:none!important;border-style:none!important;padding:2px 2px 2px 2px;margin:0}
 .topicclass table.table_invisible,.topicclass .table_invisible th.default_Cell,.topicclass .table_invisible td.default_Cell,.topicclass .table_invisible th.default_Cell div.p,.topicclass .table_invisible td.default_Cell div.p,.topicclass .table_invisible th.default_Cell div span,.topicclass .table_invisible td.default_Cell div span{font-size:.875rem;line-height:1rem}
+.topicclass table.table_default tr.first-content td,.topicclass table.table_ordering_data tr.first-content td{border-top-width:2px}
+.topicclass table.table_extxml_listing tr.first th.default_Cell{border-style:none}
+.topicclass table.table_extxml_listing tr.first th.default_Cell{border-top-style:solid;border-top-width:2px}
 .topicclass .table_extxml_listing,.table_extxml_listing tr,.table_extxml_listing td{border:none!important;border-style:none!important;padding:2px 2px 2px 2px;margin:0}
 .topicclass table.table_extxml_listing,.topicclass .table_extxml_listing th.default_Cell,.topicclass .table_extxml_listing td.default_Cell,.topicclass .table_extxml_listing th.default_Cell div.p,.topicclass .table_extxml_listing td.default_Cell div.p,.topicclass .table_extxml_listing th.default_Cell div span,.topicclass .table_extxml_listing td.default_Cell div span{font-size:.875rem;line-height:1rem}
+.topicclass .table_extxml_listing2{border-color:black}
+.topicclass .table_extxml_listing2 tr,.topicclass .table_extxml_listing2 td{border:none!important;border-style:none!important;padding:2px 2px 2px 2px;margin:0}
+.topicclass table.table_extxml_listing2 tr.first-content td{border-top-width:2px!important;border-top-style:solid!important}
+.topicclass table.table_extxml_listing2{border-bottom-width:1px;border-bottom-style:solid}
+.topicclass table.table_extxml_listing2 tr.first th.default_Cell{border-style:none}
+.topicclass table.table_extxml_listing2 tr.first th.default_Cell{border-top-style:solid;border-top-width:1px}
+.topicclass table.table_extxml_listing2,.topicclass table.table_extxml_listing2 th.default_Cell,.topicclass table.table_extxml_listing2 td.default_Cell,.topicclass table.table_extxml_listing2 th.default_Cell div.p,.topicclass table.table_extxml_listing2 td.default_Cell div.p,.topicclass table.table_extxml_listing2 th.default_Cell div span,.topicclass table.table_extxml_listing2 td.default_Cell div span{font-size:.875rem;line-height:1rem}
 .topicclass table.table_ordering_data tr.first{background-color:#d4dee5}
 .topicclass table.table_ordering_data tr.second{background-color:#ecf0f3}
 .topicclass p.p_table_lb{text-align:left;font-weight:bold}
@@ -310,9 +318,10 @@ html.no-touch body.app-pud .topicclass.mobile span.externalhotspot>a:before{disp
 .topicclass span.document-info-title{margin-right:5px;white-space:nowrap}
 .topicclass span.document-info-header{font-size:.95rem;font-weight:bold;color:#333;margin-right:5px;float:left}
 .topicclass div.document-info-publishinfo{clear:both;padding-top:5px}
+.topicclass .document-info-table div.document-edition,.topicclass .document-info-table div.document-summary{margin-top:3px}
 .topicclass .document-info-version-spacer{margin-bottom:7px}
 .topicclass table.footer-table p{margin-bottom:0}
-.topicclass img.img_free+table.table_legend{margin-top:2pt}
+.topicclass img.img_free+table.table_legend,.topicclass video.video_free+table.table_legend{margin-top:2pt}
 .topicclass div.expandable-container>div.h4+div.expandable-content{margin-top:0;margin-bottom:20px}
 .topicclass div.safetycontainer{margin-top:12pt;margin-bottom:12pt}
 .topicclass .floating-text-bottom+.floating-text-top,.topicclass .floating-text-bottom+.floating-text,.topicclass .floating-text+.floating-text-top,.topicclass .floating-text+.floating-text{margin-top:8pt}
@@ -327,7 +336,7 @@ html.no-touch body.app-pud .topicclass.mobile span.externalhotspot>a:before{disp
 .topicclass div.has-table-footer+div.has-table-title{margin-top:9px}
 .topicclass div.table-dynamic>div.tableTitleNarrow{margin-top:0}
 .topicclass .floating-text-bottom+.inserted-object,.topicclass .floating-text+.inserted-object-top,.topicclass .floating-text-bottom+.inserted-object-top,.topicclass .floating-text+.inserted-object{margin-top:15pt}
-.topicclass .floating-text-bottom+span.img_free,.topicclass .floating-text+span.img_free{margin-top:12px}
+.topicclass .floating-text-bottom+span.video_free,.topicclass .floating-text+span.video_free,.topicclass .floating-text-bottom+span.img_free,.topicclass .floating-text+span.img_free{margin-top:12px}
 .topicclass .floating-text-bottom+div.has-table-title,.topicclass .floating-text+div.has-table-title{margin-top:12pt}
 .topicclass .inserted-object+div.block-title-top,.topicclass div.inserted-object-bottom+div.block-title-top{margin-top:30pt}
 .topicclass .floating-text-bottom+div.subheading,.topicclass .floating-text+div.subheading{margin-top:18pt}
@@ -336,7 +345,7 @@ html.no-touch body.app-pud .topicclass.mobile span.externalhotspot>a:before{disp
 .topicclass div.expandable-content>div.has-table-title:first-child,.topicclass .header-object+div.has-table-title{margin-top:8pt}
 .topicclass .inserted-object-bottom+.floating-text-top,.topicclass .inserted-object-bottom+.floating-text,.topicclass .inserted-object+.floating-text-top,.topicclass .inserted-object+.floating-text{margin-top:15pt}
 .topicclass .has-table-footer+.floating-text-top,.topicclass .has-table-footer+.floating-text{margin-top:12pt}
-.topicclass span.img_free+.floating-text-top,.topicclass span.img_free+.floating-text{margin-top:21px}
+.topicclass span.video_free+.floating-text-top,.topicclass span.video_free+.floating-text,.topicclass span.img_free+.floating-text-top,.topicclass span.img_free+.floating-text{margin-top:21px}
 .topicclass span.has-image-title+.floating-text-top,.topicclass span.has-image-title+.floating-text{margin-top:16px}
 .topicclass .inserted-object-bottom+div.subheading,.topicclass .inserted-object+div.subheading{margin-top:18pt}
 .topicclass span.has-image-legend+div.subheading{margin-top:27px}
@@ -351,9 +360,9 @@ html.no-touch body.app-pud .topicclass.mobile span.externalhotspot>a:before{disp
 .topicclass .aLink-title+.aLink-title{margin-top:2pt}
 .topicclass div.safetycontainer .floating-text+.floating-text{margin-top:4pt}
 .topicclass table .floating-text+.floating-text,.topicclass table li+li{margin-top:6px}
-.topicclass table .floating-text+span.img_free{margin-top:8pt}
+.topicclass table .floating-text+span.video_free,.topicclass table .floating-text+span.img_free{margin-top:8pt}
 .widget-image table.table_legend .floating-text{text-align:left}
-.topicclass table span.img_free+.floating-text{margin-top:8pt}
+.topicclass table span.video_free+.floating-text,.topicclass table span.img_free+.floating-text{margin-top:8pt}
 .topicclass ul.floating-text+.inserted-object{margin-top:8pt}
 .topicclass ol.floating-text+.inserted-object{margin-top:15pt}
 .topicclass ol.floating-text+div.has-table-title{margin-top:12pt}
@@ -392,7 +401,7 @@ html.no-touch body.app-pud .topicclass.mobile span.externalhotspot>a:before{disp
 #glossary.topicclass div.glossary-entry ul{margin-left:20px;margin-top:10px;margin-bottom:10px}
 #glossary.topicclass div.glossary-entry ul li{margin-left:20px;margin-top:5px;list-style-type:disc}
 #content.topicclass div.glossary-entry p.glossaryContent,#glossary.topicclass div.glossary-entry p.glossaryContent{margin-left:20px}
-.topicclass img{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;max-width:100%}
+.topicclass img,.topicclass video{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;max-width:100%}
 .topicclass img.pagewide{width:100%;border:1px solid #c8c8b9}
 .topicclass img.rasterwide{width:33.33%}
 .topicclass img[usemap]{border:0;height:auto;width:100%;max-width:819px}

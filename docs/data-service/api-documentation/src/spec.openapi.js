@@ -4,7 +4,7 @@ function specData() {
         "info": {
             "title": "DataService API",
             "description": "Description of the REST API of DataService. <br>The maximum size limit for a single request (no file) is 4 MB.<br>The connection timeout is 10 seconds.<br>The routes starting with \"/TokenManagerService/*\" are also available at port 4521.<br>This is deprecated and will be supported until 2023-09-07.",
-            "version": "1.5.0"
+            "version": "1.6.0"
         },
         "servers": [
             {
@@ -326,7 +326,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "InvalidParameter": {
@@ -636,242 +635,89 @@ function specData() {
                     }
                 }
             },
-            "/DataService/Adapters/{id}/RawMetaData": {
+            "/DataService/AdapterDiscovery": {
                 "get": {
                     "tags": [
                         "Adapters"
                     ],
-                    "summary": "Get raw meta data.",
-                    "description": "Get raw meta data from an active adapter that supports browsing. The meta data is dependent on the used adapter.",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "example": "1432dae06c5f4008a4caa192cba073a6",
-                            "in": "path",
-                            "description": "adapter id to search for",
-                            "schema": {
-                                "type": "string"
-                            },
-                            "required": true
+                    "summary": "Get all available adapters.",
+                    "description": "Search and return all available adapters. Only returns available mqtt (simaticadapter) and grpc (connectivitysuite). If the adapter already exists, the current adapter is returned.",
+                    "parameters": [],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Adapter"
+                                        }
+                                    },
+                                    "examples": {
+                                        "Empty": {
+                                            "value": [],
+                                            "description": "No available adapters found."
+                                        },
+                                        "Existing": {
+                                            "value": [
+                                                {
+                                                    "id": "profinet",
+                                                    "name": "Profinet IO Connector",
+                                                    "type": "simaticadapter",
+                                                    "locked": true,
+                                                    "active": false,
+                                                    "isDefault": false,
+                                                    "canBrowse": true,
+                                                    "config": {
+                                                        "brokerURL": "tcp://ie-databus:1883",
+                                                        "username": "",
+                                                        "browseURL": "ie/m/j/simatic/v1/pnhs1/dp/r"
+                                                    }
+                                                }
+                                            ],
+                                            "description": "An existing adapter was found."
+                                        },
+                                        "New": {
+                                            "value": [
+                                                {
+                                                    "id": "",
+                                                    "name": "Profinet IO Connector",
+                                                    "type": "simaticadapter",
+                                                    "locked": true,
+                                                    "active": false,
+                                                    "isDefault": false,
+                                                    "canBrowse": true,
+                                                    "config": {
+                                                        "brokerURL": "tcp://ie-databus:1883",
+                                                        "username": "",
+                                                        "browseURL": "ie/m/j/simatic/v1/pnhs1/dp/r"
+                                                    }
+                                                }
+                                            ],
+                                            "description": "An unknown adapter was found."
+                                        }
+                                    }
+                                }
+                            }
                         }
+                    }
+                }
+            },
+            "/DataService/Adapters/Size": {
+                "get": {
+                    "summary": "Get used disk space by adapters.",
+                    "description": "Return the size of the adapters folder.",
+                    "tags": [
+                        "Adapters"
                     ],
                     "responses": {
                         "200": {
                             "description": "Success",
                             "content": {
-                                "text/plain": {
-                                    "schema": {
-                                        "oneOf": [
-                                            {
-                                                "type": "string",
-                                                "example": "Adapter is not active.",
-                                                "description": "If the selected adapter is not enabled."
-                                            },
-                                            {
-                                                "type": "string",
-                                                "example": "Adapter does not support browsing.",
-                                                "description": "If the selected adapter does not support browsing."
-                                            },
-                                            {
-                                                "type": "string",
-                                                "example": "Active adapter not found.",
-                                                "description": "If the selected adapter is not connected."
-                                            },
-                                            {
-                                                "type": "string",
-                                                "example": "System Info",
-                                                "description": "System Info has no meta data."
-                                            },
-                                            {
-                                                "type": "object",
-                                                "description": "Schema of profinet adapter.",
-                                                "properties": {
-                                                    "seq": {
-                                                        "type": "integer",
-                                                        "example": 1
-                                                    },
-                                                    "connections": {
-                                                        "type": "array",
-                                                        "items": {
-                                                            "type": "object",
-                                                            "properties": {
-                                                                "name": {
-                                                                    "type": "string",
-                                                                    "example": "profinet"
-                                                                },
-                                                                "type": {
-                                                                    "type": "string",
-                                                                    "example": "pn"
-                                                                },
-                                                                "dataPoints": {
-                                                                    "type": "array",
-                                                                    "items": {
-                                                                        "type": "object",
-                                                                        "properties": {
-                                                                            "topic": {
-                                                                                "type": "string",
-                                                                                "example": "ie/d/b/simatic/v1/pnhs1/dp/r"
-                                                                            },
-                                                                            "publishType": {
-                                                                                "type": "string",
-                                                                                "example": "binarytimeseries"
-                                                                            },
-                                                                            "dataPointDefinitions": {
-                                                                                "type": "array",
-                                                                                "items": {
-                                                                                    "type": "object",
-                                                                                    "properties": {
-                                                                                        "name": {
-                                                                                            "type": "string",
-                                                                                            "example": "WriteInt1"
-                                                                                        },
-                                                                                        "id": {
-                                                                                            "type": "string",
-                                                                                            "example": "w0"
-                                                                                        },
-                                                                                        "dataType": {
-                                                                                            "type": "string",
-                                                                                            "example": "DInt"
-                                                                                        },
-                                                                                        "accessMode": {
-                                                                                            "type": "string",
-                                                                                            "example": "w"
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "type": "object",
-                                                "description": "Schema of grpc adapter.",
-                                                "properties": {
-                                                    "message_sequence": {
-                                                        "type": "integer",
-                                                        "example": 54
-                                                    },
-                                                    "connections": {
-                                                        "type": "array",
-                                                        "items": {
-                                                            "type": "object",
-                                                            "properties": {
-                                                                "name": {
-                                                                    "type": "string",
-                                                                    "example": "CS-Simulation-Connector"
-                                                                },
-                                                                "type": {
-                                                                    "type": "string",
-                                                                    "example": "CS-Simulation-Driver"
-                                                                },
-                                                                "dataPoints": {
-                                                                    "type": "array",
-                                                                    "items": {
-                                                                        "type": "object",
-                                                                        "properties": {
-                                                                            "name": {
-                                                                                "type": "string",
-                                                                                "example": "RawValue"
-                                                                            },
-                                                                            "id": {
-                                                                                "type": "integer",
-                                                                                "example": 1
-                                                                            },
-                                                                            "type": {
-                                                                                "type": "string",
-                                                                                "example": "DT_RAW"
-                                                                            },
-                                                                            "access_mode": {
-                                                                                "type": "string",
-                                                                                "example": "AM_READ"
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        ]
-                                    },
-                                    "examples": {
-                                        "Profinet": {
-                                            "value": {
-                                                "seq": 1,
-                                                "connections": [
-                                                    {
-                                                        "name": "profinet",
-                                                        "type": "pn",
-                                                        "dataPoints": [
-                                                            {
-                                                                "topic": "ie/d/b/simatic/v1/pnhs1/dp/r",
-                                                                "publishType": "binarytimeseries",
-                                                                "dataPointDefinitions": [
-                                                                    {
-                                                                        "name": "WriteInt1",
-                                                                        "id": "w0",
-                                                                        "dataType": "DInt",
-                                                                        "accessMode": "w"
-                                                                    }
-                                                                ]
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            }
-                                        },
-                                        "Grpc": {
-                                            "value": {
-                                                "message_sequence": 54,
-                                                "connections": [
-                                                    {
-                                                        "name": "CS-Simulation-Connector",
-                                                        "type": "CS-Simulation-Driver",
-                                                        "datapoints": [
-                                                            {
-                                                                "name": "RawValue",
-                                                                "id": 1,
-                                                                "type": "DT_RAW",
-                                                                "access_mode": "AM_READ"
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            }
-                                        },
-                                        "SystemInfo": {
-                                            "value": "System Info"
-                                        },
-                                        "Not active": {
-                                            "value": "Adapter is not active."
-                                        },
-                                        "No browsing": {
-                                            "value": "Adapter does not support browsing."
-                                        },
-                                        "Not found": {
-                                            "value": "Active adapter not found."
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "404": {
-                            "description": "Not Found",
-                            "content": {
                                 "application/json": {
                                     "schema": {
-                                        "$ref": "#/components/schemas/Exception"
-                                    },
-                                    "examples": {
-                                        "NotFound": {
-                                            "$ref": "#/components/examples/AdapterNotFoundExample"
-                                        }
+                                        "$ref": "#/components/schemas/Size"
                                     }
                                 }
                             }
@@ -963,7 +809,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "InvalidParameter": {
@@ -1235,7 +1080,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "InvalidParameter": {
@@ -1395,6 +1239,27 @@ function specData() {
                     }
                 }
             },
+            "/DataService/Aggregations/Size": {
+                "get": {
+                    "summary": "Get used disk space by aggregations.",
+                    "description": "Return the size of the aggregation folder.",
+                    "tags": [
+                        "Aggregations"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Size"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "/DataService/Aspects": {
                 "get": {
                     "tags": [
@@ -1517,7 +1382,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "NameInUse": {
@@ -1703,7 +1567,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "InvalidParameter": {
@@ -1845,6 +1708,27 @@ function specData() {
                     }
                 }
             },
+            "/DataService/Aspects/Size": {
+                "get": {
+                    "summary": "Get used disk space by aspects.",
+                    "description": "Return the size of the aspects folder.",
+                    "tags": [
+                        "Aspects"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Size"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "/DataService/AspectTypes": {
                 "get": {
                     "tags": [
@@ -1930,7 +1814,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "NameInUse": {
@@ -2118,7 +2001,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "InvalidParameter": {
@@ -2260,6 +2142,27 @@ function specData() {
                                         "NotFound": {
                                             "$ref": "#/components/examples/AspectTypeNotFoundExample"
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/DataService/AspectTypes/Size": {
+                "get": {
+                    "summary": "Get used disk space by aspect types.",
+                    "description": "Return the size of the aspectTypes folder.",
+                    "tags": [
+                        "AspectTypes"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Size"
                                     }
                                 }
                             }
@@ -2473,7 +2376,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "NameInUse": {
@@ -2687,7 +2589,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "NameInUse": {
@@ -3091,6 +2992,27 @@ function specData() {
                     }
                 }
             },
+            "/AssetService/Assets/Size": {
+                "get": {
+                    "summary": "Get used disk space by assets.",
+                    "description": "Return the size of the assets folder.",
+                    "tags": [
+                        "Assets"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Size"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "/DataService/Backup/Config": {
                 "get": {
                     "tags": [
@@ -3098,21 +3020,54 @@ function specData() {
                     ],
                     "summary": "Get the configuration backup.",
                     "description": "Download the whole configuration backup. This includes Adapters, Aspects, AspectTypes, Assets, Aggregations, DataRetentions and Variables. This is configured as an automatic file download",
-                    "parameters": [],
+                    "parameters": [
+                        {
+                            "name": "encrypted",
+                            "in": "query",
+                            "description": "Specifies if the backup should be encrypted.",
+                            "schema": {
+                                "type": "boolean",
+                                "default": false
+                            }
+                        },
+                        {
+                            "name": "password",
+                            "in": "query",
+                            "description": "Required if the backup should be encrypted. This password is needed when restoring the backup.",
+                            "schema": {
+                                "type": "string",
+                                "example": "1234"
+                            }
+                        }
+                    ],
                     "responses": {
                         "200": {
                             "description": "Configuration as json file",
                             "content": {
                                 "application/json": {
-                                    "example": {
-                                        "adapters": [],
-                                        "assets": [],
-                                        "aspects": [],
-                                        "variables": [],
-                                        "dataRetentions": [],
-                                        "aggregations": [],
-                                        "aspectTypes": [],
-                                        "aspectTypeVariables": []
+                                    "examples": {
+                                        "Readable": {
+                                            "value": {
+                                                "dataBusCredentials": {
+                                                    "url": "tcp:://ie-databus:1883",
+                                                    "username": "edge",
+                                                    "usercode": "ZWRnZQ=="
+                                                },
+                                                "adapters": [],
+                                                "assets": [],
+                                                "aspects": [],
+                                                "variables": [],
+                                                "dataRetentions": [],
+                                                "aggregations": [],
+                                                "aspectTypes": [],
+                                                "aspectTypeVariables": []
+                                            }
+                                        },
+                                        "Encrypted": {
+                                            "value": {
+                                                "data": "ABCDEFGHIJKLMNOPQRST"
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -3125,7 +3080,26 @@ function specData() {
                     ],
                     "summary": "Restore the configuration backup.",
                     "description": "Restore the whole configuration, this means every current configuration will be deleted, except system types, those are updated. If an error occurs, the existing setup will be restored.",
-                    "parameters": [],
+                    "parameters": [
+                        {
+                            "name": "fromIIH",
+                            "in": "query",
+                            "description": "This indicates that the restore call is coming from IIH. Only IIH should use this parameter.",
+                            "schema": {
+                                "type": "boolean",
+                                "default": false
+                            }
+                        },
+                        {
+                            "name": "password",
+                            "in": "query",
+                            "description": "Required if the backup is encrypted.",
+                            "schema": {
+                                "type": "string",
+                                "example": "1234"
+                            }
+                        }
+                    ],
                     "requestBody": {
                         "required": true,
                         "description": "This is the file download with GET",
@@ -3153,7 +3127,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "InvalidParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionInvalidParameterExample"
                                         },
                                         "RootAssetNotFound": {
@@ -3264,6 +3237,176 @@ function specData() {
                                             "Line 500: Failed to convert XXX to qualitycode",
                                             "Line 600: Failed to convert double value X.X into a int8 value: Out of range (overflow)."
                                         ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/DataService/Backup/Data/{id}": {
+                "get": {
+                    "tags": [
+                        "Backup"
+                    ],
+                    "summary": "Get the txt export of a single variable.",
+                    "description": "Download the txt file of a variable or an aggregation variable. This is configured as an automatic file download",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "example": "1432dae06c5f4008a4caa192cba073a6",
+                            "in": "path",
+                            "description": "variable id to search for",
+                            "schema": {
+                                "type": "string"
+                            },
+                            "required": true
+                        },
+                        {
+                            "name": "from",
+                            "description": "Begin timestamp of the data query. A value stored with a timestamp exactly of 'from' is included in the result.",
+                            "example": "2020-01-01T00:00:00.000Z",
+                            "required": false,
+                            "in": "query",
+                            "schema": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        },
+                        {
+                            "name": "to",
+                            "description": "End timestamp of the data query. A value with a timestamp exactly of 'to' is included in the result. Has to be greater than from.",
+                            "example": "2020-01-02T00:00:00.000Z",
+                            "required": false,
+                            "in": "query",
+                            "schema": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        },
+                        {
+                            "name": "includeAggregations",
+                            "description": "If it is true, exported file includes data of aggregation variables.",
+                            "required": false,
+                            "in": "query",
+                            "schema": {
+                                "type": "boolean",
+                                "default": false
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Data as txt file which contains one variable data and optionally its aggregation data.",
+                            "content": {
+                                "text/plain": {}
+                            }
+                        },
+                        "400": {
+                            "description": "Bad Request",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "InvalidTimeRange": {
+                                            "$ref": "#/components/examples/DataInvalidTimeRangeExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Not Found",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "NotFound": {
+                                            "$ref": "#/components/examples/DataNotFoundExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "post": {
+                    "tags": [
+                        "Backup"
+                    ],
+                    "summary": "Restore the exported txt file into a variable.",
+                    "description": "Restore the txt file downloaded with variable export.",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "example": "1432dae06c5f4008a4caa192cba073a6",
+                            "in": "path",
+                            "description": "variable id to search for",
+                            "schema": {
+                                "type": "string"
+                            },
+                            "required": true
+                        }
+                    ],
+                    "requestBody": {
+                        "required": true,
+                        "description": "This is the txt file download with GET.",
+                        "content": {
+                            "multipart/form-data": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string",
+                                            "format": "text/plain"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success,<br>The possible errors are listet in the errors array, in the example are only a few possible errors listed.",
+                            "content": {
+                                "application/json": {
+                                    "example": {
+                                        "variables": [
+                                            {
+                                                "id": "75f4aa369aef4c4a8332e8bbe5ae57bf",
+                                                "name": "Variable1",
+                                                "type": "Double",
+                                                "path": "edge/TopAsset",
+                                                "count": 200
+                                            }
+                                        ],
+                                        "errors": [
+                                            "Line 100: Variable header shouldn't exist in variable data file.",
+                                            "Line 200: Missing or wrong aggregation type.",
+                                            "Line 300: Failed to convert XXXXXXX to timestamp.",
+                                            "Line 400: Tab delimited timestamp and value expected.",
+                                            "Line 500: Failed to convert XXX to qualitycode.",
+                                            "Line 600: Failed to convert double value X.X into a int8 value: Out of range (overflow)."
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Not Found",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "NotFound": {
+                                            "$ref": "#/components/examples/DataNotFoundExample"
+                                        }
                                     }
                                 }
                             }
@@ -3683,8 +3826,7 @@ function specData() {
                             "name": "fetchMode",
                             "in": "query",
                             "schema": {
-                                "$ref": "#/components/schemas/FetchMode",
-                                "default": "state"
+                                "$ref": "#/components/schemas/FetchMode"
                             }
                         }
                     ],
@@ -5282,6 +5424,27 @@ function specData() {
                     }
                 }
             },
+            "/DataService/DataRetentions/Size": {
+                "get": {
+                    "summary": "Get used disk space by data retentions.",
+                    "description": "Return the size of the data-retention folder.",
+                    "tags": [
+                        "DataRetention"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Size"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "/DataService/DataSources": {
                 "get": {
                     "tags": [
@@ -6535,7 +6698,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "InvalidParameter": {
@@ -6572,6 +6734,27 @@ function specData() {
                                 "application/json": {
                                     "schema": {
                                         "$ref": "#/components/schemas/VariableConfiguration"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/DataService/VariableConfigurations/Size": {
+                "get": {
+                    "summary": "Get used disk space by variable configurations.",
+                    "description": "Return the size of the variableConfigurations folder.",
+                    "tags": [
+                        "VariableConfigurations"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Size"
                                     }
                                 }
                             }
@@ -6749,11 +6932,9 @@ function specData() {
                                     },
                                     "examples": {
                                         "InvalidParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionInvalidParameterExample"
                                         },
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "NameInUse": {
@@ -6992,7 +7173,6 @@ function specData() {
                                     },
                                     "examples": {
                                         "MissingParameter": {
-                                            "description": "Test",
                                             "$ref": "#/components/examples/ExceptionMissingParameterExample"
                                         },
                                         "InvalidParameter": {
@@ -7177,6 +7357,27 @@ function specData() {
                         }
                     }
                 }
+            },
+            "/DataService/Variables/Size": {
+                "get": {
+                    "summary": "Get used disk space by variable variables.",
+                    "description": "Return the size of the variables folder.",
+                    "tags": [
+                        "Variables"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Size"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "components": {
@@ -7231,7 +7432,7 @@ function specData() {
                         },
                         "config": {
                             "type": "object",
-                            "description": "configuration, dependent on adapter type.",
+                            "description": "Adapter type specific configuration.",
                             "oneOf": [
                                 {
                                     "$ref": "#/components/schemas/AdapterMqttConfig"
@@ -7244,6 +7445,30 @@ function specData() {
                                 },
                                 {
                                     "$ref": "#/components/schemas/AdapterSystemInfoConfig"
+                                }
+                            ]
+                        },
+                        "error": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/components/schemas/Exception"
+                                },
+                                {
+                                    "readOnly": true,
+                                    "nullable": true,
+                                    "description": "Error informations it there are problems with the adapter."
+                                }
+                            ]
+                        },
+                        "connectorInfo": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/components/schemas/ConnectorState"
+                                },
+                                {
+                                    "readOnly": true,
+                                    "nullable": true,
+                                    "description": "Detailed info about the internal state of the connector. Not all connectors provide this information."
                                 }
                             ]
                         }
@@ -7824,6 +8049,87 @@ function specData() {
                         }
                     }
                 },
+                "ConnectorStateEnum": {
+                    "type": "string",
+                    "enum": [
+                        "available",
+                        "good",
+                        "bad",
+                        "unavailable"
+                    ]
+                },
+                "ConnectionStateEnum": {
+                    "type": "string",
+                    "enum": [
+                        "good",
+                        "stopped",
+                        "bad"
+                    ]
+                },
+                "ConnectionState": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "Name of the connection."
+                        },
+                        "state": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/components/schemas/ConnectionStateEnum"
+                                },
+                                {
+                                    "description": "Current state of the connection."
+                                }
+                            ]
+                        },
+                        "reason": {
+                            "type": "string",
+                            "description": "Reason of the state if available.",
+                            "nullable": true
+                        },
+                        "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Timestamp of the state if available.",
+                            "nullable": true
+                        }
+                    }
+                },
+                "ConnectorState": {
+                    "type": "object",
+                    "properties": {
+                        "state": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/components/schemas/ConnectorStateEnum"
+                                },
+                                {
+                                    "description": "Current state of the connector."
+                                }
+                            ]
+                        },
+                        "reason": {
+                            "type": "string",
+                            "description": "Reason of the state if available.",
+                            "nullable": true
+                        },
+                        "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Timestamp of the state if available.",
+                            "nullable": true
+                        },
+                        "connections": {
+                            "type": "array",
+                            "description": "Connection specific state information.",
+                            "items": {
+                                "$ref": "#/components/schemas/ConnectionState"
+                            },
+                            "nullable": true
+                        }
+                    }
+                },
                 "CounterType": {
                     "type": "string",
                     "enum": [
@@ -7999,8 +8305,7 @@ function specData() {
                             "readOnly": true
                         },
                         "dataType": {
-                            "$ref": "#/components/schemas/DataType",
-                            "example": "Double"
+                            "$ref": "#/components/schemas/DataType"
                         },
                         "path": {
                             "type": "array",
@@ -8086,9 +8391,10 @@ function specData() {
                         "Double",
                         "String",
                         "Date",
-                        "TimeSpan"
+                        "TimeSpan",
+                        "Blob"
                     ],
-                    "description": "String does currently not have a size limition.<br>The expected format for type ’Date’ is ’2022-02-22T22:00:00.000Z’.<br>The expected format for type 'TimeSpan' is a 64-bit integer."
+                    "description": "The type 'String' has currently no size limition.<br>The expected format for the type 'Date' is ISO8601: '2022-02-22T22:00:00.000Z'. The maximum number of decimal places is 7. UTC is always expected.<br>The expected format for the type 'TimeSpan' is a 64-bit signed integer.<br>The expected format for the type 'Blob' is base64 encoded string data."
                 },
                 "Exception": {
                     "type": "object",
@@ -8419,6 +8725,12 @@ function specData() {
                         "dataType": {
                             "$ref": "#/components/schemas/DataType"
                         },
+                        "blobType": {
+                            "type": "string",
+                            "example": "image/png",
+                            "nullable": true,
+                            "description": "Intended to describe the content of a variable of type 'Blob'."
+                        },
                         "assetId": {
                             "type": "string",
                             "example": "0"
@@ -8493,8 +8805,7 @@ function specData() {
                             "example": false
                         },
                         "acquisitionCategory": {
-                            "$ref": "#/components/schemas/AcquisitionCategory",
-                            "example": "None"
+                            "$ref": "#/components/schemas/AcquisitionCategory"
                         },
                         "acquisitionCycle": {
                             "$ref": "#/components/schemas/TimeRange"

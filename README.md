@@ -108,6 +108,122 @@ It shows how to create a user, request a token and get assets, tags and time ser
 ## What's new
 <details>
   <summary>
+    <h2 style="display: inline">v1.6.0 - 2023-03-31</h2>
+  </summary>
+  <h3>Added</h3>
+  <ul>
+    <li>Epic 599113: Datatype blob</li>
+    <li>Epic 1445051: Debugging view</li>
+    <li>Epic 1445127: Add available connectors</li>
+    <li>Epic 1445141: Aggregations UI improvements</li>
+    <li>Epic 1538556: 1.4.0 migration cleanup</li>
+    <li>Epic 1682750: Extend errors and translation in UI</li>
+    <li>Epic 1684984: Variable and counter configuration in Data Service</li>
+    <li>Epic 1685823: CSV export of variable data</li>
+    <li>Epic 1772094: Add databus settings</li>
+    <li>Epic 1864384: Encrypted/secured config store</li>
+    <li>Epic 1928463: Optimize panel performance</li>
+  </ul>
+  <h3>Fixed</h3>
+  <ul>
+    <li>Bug 345213: Swt Dataservice:-BACKEND UI is geeting Overlapped when user try to perform such operation(Add,Delete,Edit,Move)</li>
+    <li>Bug 1054490: Pagination should be displayed irrespective of number of variables added to asset</li>
+    <li>Bug 1063799: Data Service - Preview chart data points are not visible</li>
+    <li>Bug 1111798: PostgreSQL 9.6.x, 10.x, 11.x, 12.x, 13.x, 14.x - Multiple Vulnerabilities - 9.6.24, 10.19, 11.14, 12.9, 13.5, 14.1</li>
+    <li>Bug 1111808: PostgreSQL 9.6.x, 10.x, 11.x, 12.x, 13.x, 14.x - Multiple Vulnerabilities - 9.6.24, 10.19, 11.14, 12.9, 13.5, 14.1</li>
+    <li>Bug 1208364: SWT: IIH: Storage:-  Updating the asset in the storage page takes more time than expected</li>
+    <li>Bug 1245345: New variables from S7C not appearing in Data Service</li>
+    <li>Bug 1333382: SWT: IIH:Storage-  Editing the asset in the storage part takes more time to reflect</li>
+    <li>Bug 1342769: Variables with same name but from different simulation group cant be seen while adding to asset</li>
+    <li>Bug 1349173: Adapter dropdown in Add variable is open by default</li>
+    <li>Bug 1472146: RAM load in system information page shows infinity</li>
+    <li>Bug 1472160: Chart values get overlapped with x axis unit in all the graphs</li>
+    <li>Bug 1594425: IIH: store data Assets gone after reboot, Performance Insight Dashboards lost</li>
+    <li>Bug 1645331: TC: Data Service - Not all tags are added as variables. Out of 2000 tags only around 1300 /850 are added.</li>
+    <li>Bug 1649580: Both Select a connector and Edit variable without a connector options are enabled</li>
+    <li>Bug 1726699: Debian GNU/Linux 11 - curl Multiple Vulnerabilities - DSA-5197-1</li>
+    <li>Bug 1736176: Update aspect with changed aspect type does not return an exception</li>
+    <li>Bug 1761878: UI crash if asset data retention is changed in dev kit</li>
+    <li>Bug 1767604: Can't import Data Service V1.3 backup into Data Service V1.4 if step time analysis Aspects are configured</li>
+    <li>Bug 1770341: Step time analysis in Performance Insight is not detecting product type</li>
+    <li>Bug 1826187: Step Time Analysis Get Error HTTPS </li>
+    <li>Bug 1835370: SWT  IIH : Able to see Standalone ( Data service) data after IIH mode  integration</li>
+    <li>Bug 1837132: SWT IIH : Mismatch in label names</li>
+    <li>Bug 1841563: SWT : Data Service : In Stand alone mode Restore backup of the configuration field is not working properly.</li>
+    <li>Bug 1841582: SWT : Data Service : In Standalone mode no message after Restore of of time series data.</li>
+    <li>Bug 1841600: IIH : Store Data : While integrating Data Service, pop-up shows wrong message - all data of the data service will be lost.</li>
+    <li>Bug 1843308: Dataservice: variable not displayed after adding other variable with same name.</li>
+    <li>Bug 1856806: Creation of variable without connector is having adapter connection</li>
+    <li>Bug 1858438: Data Service does not work when disk full</li>
+    <li>Bug 1885808: SWT IIH : Getting Not enough memory to open this page  error in all IED , Data service(Stand alone)  and IIH configurator  when 8K tags are configured in S7 Plus connector</li>
+    <li>Bug 1885830: Dataservice: High CPU load of IED227E</li>
+    <li>Bug 1889868: Long variable names not readable</li>
+    <li>Bug 1896045: Data Service Language continuity</li>
+    <li>Bug 1904115: Data Service crash when HMIRuntime connector is activated but not present</li>
+    <li>Bug 1916473: Dataservice in IIH mode - Dataservice stops receiving new data after power off restart of device</li>
+    <li>Bug 1918640: Backup restore data wont get displayed until refresh</li>
+    <li>Bug 1919872: Corrupted files if disk is full</li>
+    <li>Bug 1924106: Aspect type field should be mandatory while creating defined type aspect</li>
+    <li>Bug 1925140: cURL 7.7.x ≤ 7.85.0 - Multiple Vulnerabilities - 7.86.0</li>
+    <li>Bug 1925421: libxml2 2.9.10 ≤ 2.9.14 - Remote Denial of Service Vulnerability - 2.10.0</li>
+    <li>Bug 1925425: cURL 7.7.x ≤ 7.85.0 - Multiple Vulnerabilities - 7.86.0</li>
+    <li>Bug 1927843: Node.js Package: core-js ≤ 3.23.2 - End of Life Notification (EOL)</li>
+    <li>Bug 1932696: Initialization fails if disk is full</li>
+    <li>Bug 1935592: DataService: Socket hang up when getting data for a month</li>
+    <li>Bug 1936078: CS connectors can not be added because name is missing</li>
+    <li>Bug 1936079: Already added connectors still visible in add view</li>
+    <li>Bug 1939004: IIH: Restoring backup before integrating Data Service leads to duplicate Assets</li>
+    <li>Bug 1939285: Add variable to aspect is inefficient</li>
+    <li>Bug 1939538: IIH: variables not connected to S7C tags from Databus after mapping</li>
+    <li>Bug 1939633: Full variable name not visible</li>
+    <li>Bug 1940733: Select all in Add multiple variables displays error when any one of the variable is already present</li>
+    <li>Bug 1940768: Aggregations are getting erased in Edit variable dialog</li>
+    <li>Bug 1941283: Store property ignored when an adapter restarted or dataservice app restarted</li>
+    <li>Bug 1941334: Data API returns one value in case from and to parameters are before the first data point</li>
+    <li>Bug 1943864: Data retention doesn't work for aggregation variables</li>
+    <li>Bug 1947070: DataService: Filter still shown after variable deletion, but page is refreshed </li>
+    <li>Bug 1949087: Backup restore can not handle string values which have new line characters</li>
+    <li>Bug 1968889: Data retention is not inherited from variable for aggregations</li>
+    <li>Bug 1971917: Debian GNU/Linux 10 - krb5 Remote Denial of Service Vulnerability - DLA-3213-1</li>
+    <li>Bug 1975286: Factor field in Add variable dialog allows negative values to save</li>
+    <li>Bug 1993784: Data retention error for large retention values</li>
+    <li>Bug 1993788: Variable configuration fields are made mandatory while adding a variable</li>
+    <li>Bug 2041574: TRA tracker: DataService v1.6</li>
+    <li>Bug 2041989: Error message is not correct while moving an asset with same name into another asset</li>
+    <li>Bug 2041998: Wrong error message for variables with long name</li>
+    <li>Bug 2042049: Asset moving functionality is not getting stopped even after error</li>
+    <li>Bug 2048520: Performance Insight Warning HTTP request</li>
+    <li>Bug 2049650: IIH: variable store option checked by default after mapping</li>
+    <li>Bug 2051210: Dev kit: Data retention gets erased when user tries changing it</li>
+    <li>Bug 2051566: Adapter errors are still displayed after fixing the adapter config</li>
+    <li>Bug 2056086: Assets can be created with case sensitive names</li>
+    <li>Bug 2057278: IIH: root asset not reselectable</li>
+    <li>Bug 2057294: IIH: Layout resizing on navigate</li>
+    <li>Bug 2058387: Step time analysis: connecting product variable in Data Service leads to various issues</li>
+    <li>Bug 2059985: Unable to Edit asset after adding aggregated variables</li>
+    <li>Bug 2065639: Full topic name is not displayed</li>
+    <li>Bug 2068303: Topic value is overlapped on preview data icon</li>
+    <li>Bug 2068319: Time range is not selectable in data export dialog</li>
+    <li>Bug 2072552: Creating aggregation directly with data retention does not work</li>
+    <li>Bug 2073084: Export variable data: Timerange is ignored when only from field is provided</li>
+    <li>Bug 2079215: Unable to edit an asset which has child assets</li>
+    <li>Bug 2082473: Password is visible in Databus settings</li>
+    <li>Bug 2089240: Unable to add child asset from asset edit screen</li>
+    <li>Bug 2089285: Databus settings missing in backup</li>
+    <li>Bug 2090241: Variables created in IIH mode via Data Service API are not connecting</li>
+    <li>Bug 2103157: Energy Manager - Wrong results with aggregation 'Counter'</li>
+    <li>Bug 2167303: TC: IIH -Store Data tab does not open</li>
+    <li>Bug 2175185: Unable to rename asset to old name</li>
+    <li>Bug 2175454: Unable to see edit asset icon for assets with long names</li>
+    <li>Bug 2180370: PdmCoreChanges check gets called multiple time parallel</li>
+    <li>Bug 2187230: An error is getting displayed when user adds aggregation without data retention</li>
+    <li>Bug 2187249: IIH Configurator variable configuration advanced tab is empty</li>
+    <li>Bug 2216089: Data Service crashes with 20 000 variables on one asset</li>
+  </ul>
+</details>
+
+<details>
+  <summary>
     <h2 style="display: inline">v1.5.0 - 2022-11-08</h2>
   </summary>
   <h3>Added</h3>
