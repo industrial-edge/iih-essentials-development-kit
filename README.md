@@ -53,14 +53,10 @@ An image is loaded from Docker Hub, containing these components:
 
 - Install Docker
 - Install NodeJS (only for running examples)
-- Install an MQTT broker
+- Create Docker-Compose file
 
-In order to run the data service development kit you need to have an MQTT broker of your choice running:
-- on port 1883
-- available from docker network dataservicedevelopmentkit_default
-- e.g. this broker: eclipse-mosquitto:1.6.10
-
-You can add your broker to the docker-compose file. An example is already commented in docker-compose.yml -> simulation-broker.
+In order to run the data service development kit you need  to define and execute a Docker-Compose file.
+The docker-compose.example.yml is an example Docker-Compose file that can be used to download and run the required docker image(s) of the service(s) that runs in this application example. If you choose to use these, rename the file to docker-compose.yml before proceeding
 
 ### Setting up
 
@@ -106,6 +102,56 @@ The Data Service in the Development Kit is a limited version of the Data Service
 It shows how to create a user, request a token and get assets, tags and time series data from the the Data Service. ​It is available [here: ExampleClient](./examples/ExampleClient). More details can be found inside the ExampleClient folder.
 
 ## What's new
+
+<details>
+  <summary>
+    <h2 style="display: inline">v1.7.0 - 2023-06-22</h2>
+  </summary>
+  <h3>Added</h3>
+  <ul>
+    <li>Feature 1478167: Encrypted backups</li>
+    <li>Feature 1733570: MindSphere connectivity</li>
+    <li>Feature 1977721: Bulk API</li>
+  </ul>
+  <h3>Fixed</h3>
+  <ul>
+    <li>Bug 1018113: On Asset & Connectivity view the splitter handle is displayed above open dialogs if mouse cursor hovers over the splitter handle</li>
+    <li>Bug 1211347: Dataservice App V1.2.0 HmiRuntime conenctor does not work with HMI Tags typ bool</li>
+    <li>Bug 1422222: Child assets are not getting displayed when user has more parent child related assets</li>
+    <li>Bug 1422336: Horizontal scroll bar is not expanding when user has more parent child assets</li>
+    <li>Bug 1833547: SWT: IIH: Storage- Graph is not getting plotted in preview chart with respective of Seconds</li>
+    <li>Bug 1846806: IIH : Data Service : mindsphere credentials are visible as plaintext in mdsp-config.json file in edge-box</li>
+    <li>Bug 1851732: SWT: IIH:Internet is not working in the edge box,eventhough proxy is set</li>
+    <li>Bug 1921811: Unable to change the name of defined type aspect</li>
+    <li>Bug 1925994: Data Service - Wrong display of bool values in data preview</li>
+    <li>Bug 1937427: IIH: MindSphere Sync data upload stops after adding variable to aspect</li>
+    <li>Bug 2065657: Connection status of variables remains in connected state even if connector is deactivated</li>
+    <li>Bug 2088890: TC : Store data : System information parameter values are not displaying properly except CPU load</li>
+    <li>Bug 2175400: Data retention of child asset remains unchanged when moved from one parent asset to other</li>
+    <li>Bug 2186597: No validation while restoring time series data</li>
+    <li>Bug 2189867: IIH MindSphere Sync: Confusing error message when device has no connection to Mindsphere</li>
+    <li>Bug 2189944: IIH MindSphere Sync: Confusing error message when MQTT connection is blocked</li>
+    <li>Bug 2217030: Energy Manager: Diagram widget doesn't show any data if calculation period set to >24 days</li>
+    <li>Bug 2236092: IIH Integration: "Retention policy" instead of "Store Data" is shown in bread crumb on the Store Data page</li>
+    <li>Bug 2248213: An error is displayed when user adds aggregations to a variable</li>
+    <li>Bug 2257814: Clicking on cancel button results in switching Retention policy toggle on</li>
+    <li>Bug 2260350: TC : Data is not syncing for newly added variable in existing asset-aspect tree</li>
+    <li>Bug 2263220: Tenant technical user not able to login to CloudSync</li>
+    <li>Bug 2306875: Tree closes on each page switch</li>
+    <li>Bug 2306886: No redirection when deleting a parent asset of the selected asset</li>
+    <li>Bug 2308562: Moving the parent asset into its child makes DS unusable</li>
+    <li>Bug 2369032: IIH MindSphere Sync: Error message misleading when no connection to MindSphere</li>
+    <li>Bug 2376960: Data loss in Mindsphere while in Data Service data is complete</li>
+    <li>Bug 2384198: TC : Data loss is seen for newly added variable in new asset-aspect tree in the MDSP.</li>
+    <li>Bug 2393885: TC : Dataservice container getting stopped frequently when variable load of 1000 added to the Asset tree.</li>
+    <li>Bug 2395477: IIH Cloud Sync doesn't accept app credential format</li>
+    <li>Bug 2402728: An unknown error is getting displayed for asset mindsphere sync</li>
+    <li>Bug 2404395: Data destination is not getting saved for variable aggregation for the first time</li>
+    <li>Bug 2404430: DataRetention call with invalid combination in aspect edit</li>
+    <li>Bug 2404463: Edit asset name to old name is blocked</li>
+  </ul>
+</details>
+
 <details>
   <summary>
     <h2 style="display: inline">v1.6.0 - 2023-03-31</h2>

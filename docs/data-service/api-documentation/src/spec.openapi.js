@@ -4,7 +4,7 @@ function specData() {
         "info": {
             "title": "DataService API",
             "description": "Description of the REST API of DataService. <br>The maximum size limit for a single request (no file) is 4 MB.<br>The connection timeout is 10 seconds.<br>The routes starting with \"/TokenManagerService/*\" are also available at port 4521.<br>This is deprecated and will be supported until 2023-09-07.",
-            "version": "1.6.0"
+            "version": "1.7.0"
         },
         "servers": [
             {
@@ -46,10 +46,16 @@ function specData() {
                 "name": "Data"
             },
             {
+                "name": "DataDestination"
+            },
+            {
                 "name": "DataRetention"
             },
             {
                 "name": "DataSource"
+            },
+            {
+                "name": "DataSync"
             },
             {
                 "name": "Service",
@@ -778,7 +784,7 @@ function specData() {
                                         "base": "hour",
                                         "factor": 4
                                     },
-                                    "provideAsVariable": true,
+                                    "provideAsVariable": false,
                                     "publishMqtt": false
                                 }
                             }
@@ -1049,7 +1055,7 @@ function specData() {
                                         "base": "hour",
                                         "factor": 4
                                     },
-                                    "provideAsVariable": true,
+                                    "provideAsVariable": false,
                                     "publishMqtt": false
                                 }
                             }
@@ -1722,6 +1728,153 @@ function specData() {
                                 "application/json": {
                                     "schema": {
                                         "$ref": "#/components/schemas/Size"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/DataService/Aspects/Bulk/Create": {
+                "post": {
+                    "tags": [
+                        "Aspects"
+                    ],
+                    "summary": "Create a set of aspects.",
+                    "description": "Create a set of new aspects. If the aspectTypeId is set, the according variables will be created. Name must be unique in the provided assets and not empty.",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Aspect"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "aspectName": "AspectName1",
+                                        "assetId": "0",
+                                        "aspectTypeId": ""
+                                    },
+                                    {
+                                        "aspectName": "AspectName2",
+                                        "assetId": "0",
+                                        "aspectTypeId": ""
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/AspectBulkResponse"
+                                    },
+                                    "examples": {
+                                        "Aspect": {
+                                            "$ref": "#/components/examples/AspectBulkResponseExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/DataService/Aspects/Bulk/Update": {
+                "post": {
+                    "tags": [
+                        "Aspects"
+                    ],
+                    "summary": "Update a set of aspects.",
+                    "description": "Update a set of aspects.",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Aspect"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "aspectId": "53abb2fdc0da4c24b84b735930c7b9c8",
+                                        "aspectName": "AspectName1",
+                                        "assetId": "0",
+                                        "aspectTypeId": ""
+                                    },
+                                    {
+                                        "aspectId": "099fdb1ca4fd4829a7afdeff7091ee02",
+                                        "aspectName": "AspectName2",
+                                        "assetId": "0",
+                                        "aspectTypeId": ""
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/AspectBulkResponse"
+                                    },
+                                    "examples": {
+                                        "Aspect": {
+                                            "$ref": "#/components/examples/AspectBulkResponseExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/DataService/Aspects/Bulk/Delete": {
+                "post": {
+                    "tags": [
+                        "Aspects"
+                    ],
+                    "summary": "Delete a set of aspects.",
+                    "description": "Delete a set of aspects.",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": [
+                                    "53abb2fdc0da4c24b84b735930c7b9c8",
+                                    "099fdb1ca4fd4829a7afdeff7091ee02"
+                                ]
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/AspectBulkResponse"
+                                    },
+                                    "examples": {
+                                        "Aspect": {
+                                            "$ref": "#/components/examples/AspectBulkResponseExample"
+                                        }
                                     }
                                 }
                             }
@@ -3013,6 +3166,153 @@ function specData() {
                     }
                 }
             },
+            "/AssetService/Assets/Bulk/Create": {
+                "post": {
+                    "tags": [
+                        "Assets"
+                    ],
+                    "summary": "Create a set of assets.",
+                    "description": "Create a set of new assets. If the aspectTypeId is set, the according variables will be created. Name must be unique in the provided assets and not empty.",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Asset"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "name": "AssetName1",
+                                        "parentId": "0"
+                                    },
+                                    {
+                                        "name": "AssetName2",
+                                        "parentId": "0"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/AssetBulkResponse"
+                                    },
+                                    "examples": {
+                                        "Aspect": {
+                                            "$ref": "#/components/examples/AssetBulkResponseExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/AssetService/Assets/Bulk/Update": {
+                "post": {
+                    "tags": [
+                        "Assets"
+                    ],
+                    "summary": "Update a set of assets.",
+                    "description": "Update a set of assets.",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Asset"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "id": "d0df2a40afd64671bda7b53ce8f08ef8",
+                                        "name": "AssetName1",
+                                        "parentId": "0",
+                                        "sortOrder": 0,
+                                        "hasChildren": false
+                                    },
+                                    {
+                                        "id": "099fdb1ca4fd4829a7afdeff7091ee02",
+                                        "name": "AssetName2",
+                                        "parentId": "0",
+                                        "sortOrder": 1,
+                                        "hasChildren": false
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/AssetBulkResponse"
+                                    },
+                                    "examples": {
+                                        "Aspect": {
+                                            "$ref": "#/components/examples/AssetBulkResponseExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/AssetService/Assets/Bulk/Delete": {
+                "post": {
+                    "tags": [
+                        "Assets"
+                    ],
+                    "summary": "Delete a set of assets.",
+                    "description": "Delete a set of assets.",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": [
+                                    "53abb2fdc0da4c24b84b735930c7b9c8",
+                                    "099fdb1ca4fd4829a7afdeff7091ee02"
+                                ]
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/AssetBulkResponse"
+                                    },
+                                    "examples": {
+                                        "Aspect": {
+                                            "$ref": "#/components/examples/AssetBulkResponseExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "/DataService/Backup/Config": {
                 "get": {
                     "tags": [
@@ -3058,6 +3358,7 @@ function specData() {
                                                 "aspects": [],
                                                 "variables": [],
                                                 "dataRetentions": [],
+                                                "dataDestinations": [],
                                                 "aggregations": [],
                                                 "aspectTypes": [],
                                                 "aspectTypeVariables": []
@@ -5235,6 +5536,392 @@ function specData() {
                     }
                 }
             },
+            "/DataService/DataDestination": {
+                "get": {
+                    "tags": [
+                        "DataDestination"
+                    ],
+                    "summary": "Get all data destinations.",
+                    "description": "Get a list of all available data destinations.",
+                    "parameters": [],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "dataDestinations": {
+                                                "type": "array",
+                                                "items": {
+                                                    "$ref": "#/components/schemas/DataDestination"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "post": {
+                    "tags": [
+                        "DataDestination"
+                    ],
+                    "summary": "Create a new data destination.",
+                    "description": "Create a new data destination. Name must be unique and not empty.",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DataDestination"
+                                },
+                                "example": {
+                                    "name": "wccdev",
+                                    "type": "mindsphere",
+                                    "active": false,
+                                    "config": {
+                                        "tenantId": "wccdev",
+                                        "clientId": "ninjatest",
+                                        "region": "EU1",
+                                        "appId": "wccdev-pdmcoreservice-1.0",
+                                        "password": "",
+                                        "connectorCertificate": {
+                                            "fileName": "ConnectionCertificate.pem",
+                                            "content": ""
+                                        },
+                                        "connectorKey": {
+                                            "fileName": "ConnectionKey.key",
+                                            "content": ""
+                                        },
+                                        "caCertificate": {
+                                            "fileName": "MindSphereRootCA1.pem",
+                                            "content": ""
+                                        },
+                                        "brokerUrl": "mindconnectmqtt.eu1.mindsphere.io",
+                                        "port": 8883,
+                                        "timeoutInSec": 1000,
+                                        "publishIntervalInSec": 10,
+                                        "retryCount": 5,
+                                        "qos": 1
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/DataDestination"
+                                    },
+                                    "examples": {
+                                        "MindSphere": {
+                                            "$ref": "#/components/examples/DataDestinationMdspExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "400": {
+                            "description": "Bad Request",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "MissingParameter": {
+                                            "$ref": "#/components/examples/ExceptionMissingParameterExample"
+                                        },
+                                        "InvalidParameter": {
+                                            "$ref": "#/components/examples/ExceptionInvalidParameterExample"
+                                        },
+                                        "NameInUse": {
+                                            "value": {
+                                                "service": "DataService",
+                                                "state": 400,
+                                                "stateText": "BadRequest",
+                                                "errorCode": 35,
+                                                "errorKey": "DataDestinationNameAlreadyInUse",
+                                                "message": "There is already an data destination with the name 'wccdev'.",
+                                                "errorParams": {
+                                                    "nameInUse": "wccdev"
+                                                },
+                                                "debugInfo": {
+                                                    "method": "POST",
+                                                    "route": "/DataService/DataDestination"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/DataService/DataDestination/{id}": {
+                "get": {
+                    "tags": [
+                        "DataDestination"
+                    ],
+                    "summary": "Read a data destination.",
+                    "description": "Read a specific data destination with the id from path.",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "example": "3c49642087f2459fa705b24fa61a3bb9",
+                            "in": "path",
+                            "description": "data destination id to search for",
+                            "schema": {
+                                "type": "string"
+                            },
+                            "required": true
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/DataDestination"
+                                    },
+                                    "examples": {
+                                        "MindSphere": {
+                                            "$ref": "#/components/examples/DataDestinationMdspExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Not Found",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "NotFound": {
+                                            "$ref": "#/components/examples/DataDestinationNotFoundExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "put": {
+                    "tags": [
+                        "DataDestination"
+                    ],
+                    "summary": "Update a data destination.",
+                    "description": "Update a specific data destination. Name must be unique and not empty. 'type' is readOnly.",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "example": "3c49642087f2459fa705b24fa61a3bb9",
+                            "in": "path",
+                            "description": "data destination id to search for",
+                            "schema": {
+                                "type": "string"
+                            },
+                            "required": true
+                        }
+                    ],
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DataDestination"
+                                },
+                                "example": {
+                                    "name": "wccdev",
+                                    "type": "mindsphere",
+                                    "active": false,
+                                    "config": {
+                                        "tenantId": "wccdev",
+                                        "clientId": "ninjatest",
+                                        "region": "EU1",
+                                        "appId": "wccdev-pdmcoreservice-1.0",
+                                        "password": "",
+                                        "connectorCertificate": {
+                                            "fileName": "ConnectionCertificate.pem",
+                                            "content": ""
+                                        },
+                                        "connectorKey": {
+                                            "fileName": "ConnectionKey.key",
+                                            "content": ""
+                                        },
+                                        "caCertificate": {
+                                            "fileName": "MindSphereRootCA1.pem",
+                                            "content": ""
+                                        },
+                                        "brokerUrl": "mindconnectmqtt.eu1.mindsphere.io",
+                                        "port": 8883,
+                                        "timeoutInSec": 1000,
+                                        "publishIntervalInSec": 10,
+                                        "retryCount": 5,
+                                        "qos": 1
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Aspect"
+                                    },
+                                    "examples": {
+                                        "MindSphere": {
+                                            "$ref": "#/components/examples/DataDestinationMdspExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "400": {
+                            "description": "Bad Request",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "MissingParameter": {
+                                            "description": "Test",
+                                            "$ref": "#/components/examples/ExceptionMissingParameterExample"
+                                        },
+                                        "InvalidParameter": {
+                                            "$ref": "#/components/examples/ExceptionInvalidParameterExample"
+                                        },
+                                        "NameInUse": {
+                                            "value": {
+                                                "service": "DataService",
+                                                "state": 400,
+                                                "stateText": "BadRequest",
+                                                "errorCode": 35,
+                                                "errorKey": "DataDestinationNameAlreadyInUse",
+                                                "message": "There is already an data destination with the name 'wccdev'.",
+                                                "errorParams": {
+                                                    "nameInUse": "wccdev"
+                                                },
+                                                "debugInfo": {
+                                                    "method": "POST",
+                                                    "route": "/DataService/DataDestination"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Not Found",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "NotFound": {
+                                            "$ref": "#/components/examples/DataDestinationNotFoundExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "delete": {
+                    "tags": [
+                        "DataDestination"
+                    ],
+                    "summary": "Delete a data destination.",
+                    "description": "Delete a specific data destination.",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "example": "3c49642087f2459fa705b24fa61a3bb9",
+                            "in": "path",
+                            "description": "data destination id to search for",
+                            "schema": {
+                                "type": "string"
+                            },
+                            "required": true
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/DataDestination"
+                                    },
+                                    "examples": {
+                                        "MindSphere": {
+                                            "$ref": "#/components/examples/DataDestinationMdspExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "400": {
+                            "description": "Bad Request",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "InUse": {
+                                            "$ref": "#/components/examples/DataDestinationNotFoundExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Not Found",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "NotFound": {
+                                            "value": {
+                                                "service": "DataService",
+                                                "state": 400,
+                                                "stateText": "BadRequest",
+                                                "errorCode": 68,
+                                                "errorKey": "DataDestinationDeleteFailed_IsUsed",
+                                                "message": "Data destinations which are in use cannot be deleted.",
+                                                "debugInfo": {
+                                                    "method": "DELETE",
+                                                    "route": "/DataService/DataDestination/{id}"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "/DataService/DataRetentions": {
                 "get": {
                     "tags": [
@@ -5256,7 +5943,7 @@ function specData() {
                             "name": "sourceTypeId",
                             "in": "query",
                             "schema": {
-                                "$ref": "#/components/schemas/DataRetentionSourceType"
+                                "$ref": "#/components/schemas/SourceType"
                             },
                             "required": true
                         }
@@ -5640,6 +6327,527 @@ function specData() {
                     "responses": {
                         "200": {
                             "description": "see route GET /DataService/DataSources."
+                        }
+                    }
+                }
+            },
+            "/DataService/DataSync": {
+                "get": {
+                    "tags": [
+                        "DataSync"
+                    ],
+                    "summary": "Get all data syncs.",
+                    "description": "Get a list of all available data sync for a specific source.",
+                    "parameters": [
+                        {
+                            "name": "sourceId",
+                            "example": "d0df2a40afd64671bda7b53ce8f08ef8",
+                            "in": "query",
+                            "description": "sourceId to search for",
+                            "schema": {
+                                "type": "string"
+                            },
+                            "required": true
+                        },
+                        {
+                            "name": "sourceTypeId",
+                            "example": "asset",
+                            "in": "query",
+                            "description": "sourceTypeId of the sourceId to search for",
+                            "schema": {
+                                "$ref": "#/components/schemas/SourceType"
+                            },
+                            "required": true
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "dataSyncs": {
+                                                "type": "array",
+                                                "items": {
+                                                    "$ref": "#/components/schemas/DataSync"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "400": {
+                            "description": "Bad Request",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "MissingParameter": {
+                                            "$ref": "#/components/examples/ExceptionMissingQueryParameterExample"
+                                        },
+                                        "InvalidParameter": {
+                                            "$ref": "#/components/examples/ExceptionInvalidQueryParameterExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Not Found",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "AssetNotFound": {
+                                            "$ref": "#/components/examples/AssetNotFoundExample"
+                                        },
+                                        "AspectNotFound": {
+                                            "$ref": "#/components/examples/AspectNotFoundExample"
+                                        },
+                                        "VariableNotFound": {
+                                            "$ref": "#/components/examples/VariableNotFoundExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "post": {
+                    "tags": [
+                        "DataSync"
+                    ],
+                    "summary": "Create a new data sync.",
+                    "description": "Create a new data sync.",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DataSync"
+                                },
+                                "examples": {
+                                    "Set": {
+                                        "$ref": "#/components/examples/DataSyncExample"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/DataSync"
+                                    },
+                                    "examples": {
+                                        "MindSphere": {
+                                            "$ref": "#/components/examples/DataSyncExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "400": {
+                            "description": "Bad Request",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "MissingParameter": {
+                                            "$ref": "#/components/examples/ExceptionMissingParameterExample"
+                                        },
+                                        "InvalidParameter": {
+                                            "$ref": "#/components/examples/ExceptionInvalidParameterExample"
+                                        },
+                                        "AlreadyInUse": {
+                                            "value": {
+                                                "service": "DataService",
+                                                "state": 400,
+                                                "stateText": "BadRequest",
+                                                "errorCode": 69,
+                                                "errorKey": "DataSyncAlreadyInUse",
+                                                "message": "There is already a data sync for this source with the destination wccdev.",
+                                                "errorParams": {
+                                                    "destName": "wccdev"
+                                                },
+                                                "debugInfo": {
+                                                    "method": "POST",
+                                                    "route": "/DataService/DataSync"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/DataService/DataSync/{id}": {
+                "get": {
+                    "tags": [
+                        "DataSync"
+                    ],
+                    "summary": "Read a data sync.",
+                    "description": "Read a specific data sync with the id from path.",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "example": "08ff6fd3ba7e4a94887708b22c6fb70b",
+                            "in": "path",
+                            "description": "data sync id to search for",
+                            "schema": {
+                                "type": "string"
+                            },
+                            "required": true
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/DataSync"
+                                    },
+                                    "examples": {
+                                        "Success": {
+                                            "$ref": "#/components/examples/DataSyncStateExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Not Found",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "NotFound": {
+                                            "$ref": "#/components/examples/DataSyncNotFoundExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "put": {
+                    "tags": [
+                        "DataSync"
+                    ],
+                    "summary": "Update a data sync.",
+                    "description": "Update a specific data sync. 'sourceId', 'sourceTypeId' and 'dataDestinationid' are readOnly.",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "example": "08ff6fd3ba7e4a94887708b22c6fb70b",
+                            "in": "path",
+                            "description": "data sync id to search for",
+                            "schema": {
+                                "type": "string"
+                            },
+                            "required": true
+                        }
+                    ],
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DataSync"
+                                },
+                                "examples": {
+                                    "Update": {
+                                        "$ref": "#/components/examples/DataSyncExample"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/DataSync"
+                                    },
+                                    "examples": {
+                                        "Success": {
+                                            "$ref": "#/components/examples/DataSyncExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "400": {
+                            "description": "Bad Request",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "MissingParameter": {
+                                            "description": "Test",
+                                            "$ref": "#/components/examples/ExceptionMissingParameterExample"
+                                        },
+                                        "InvalidParameter": {
+                                            "$ref": "#/components/examples/ExceptionInvalidParameterExample"
+                                        },
+                                        "NotSupported": {
+                                            "value": {
+                                                "service": "DataService",
+                                                "state": 400,
+                                                "stateText": "BadRequest",
+                                                "errorCode": 3,
+                                                "errorKey": "InvalidParameter",
+                                                "message": "Parameter DataSync is invalid: Only supported to change the start time.",
+                                                "errorParams": {
+                                                    "reason": "Only supported to change the start time.",
+                                                    "what": "DataSync"
+                                                },
+                                                "debugInfo": {
+                                                    "id": "14f539f918c343bd8320d3d0dd14dddb",
+                                                    "method": "PUT",
+                                                    "route": "/DataService/DataSync/{id}",
+                                                    "sourceId": "0",
+                                                    "sourceType": "asset"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Not Found",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "NotFound": {
+                                            "$ref": "#/components/examples/DataSyncNotFoundExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "delete": {
+                    "tags": [
+                        "DataSync"
+                    ],
+                    "summary": "Delete a data sync.",
+                    "description": "Delete a specific data sync.",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "example": "08ff6fd3ba7e4a94887708b22c6fb70b",
+                            "in": "path",
+                            "description": "data sync id to search for",
+                            "schema": {
+                                "type": "string"
+                            },
+                            "required": true
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/DataSync"
+                                    },
+                                    "examples": {
+                                        "Success": {
+                                            "$ref": "#/components/examples/DataSyncExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Not Found",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "NotFound": {
+                                            "$ref": "#/components/examples/DataSyncNotFoundExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/DataService/DataSync/errors": {
+                "get": {
+                    "tags": [
+                        "DataSync"
+                    ],
+                    "summary": "Get the erros of a data sync.",
+                    "description": "Get a list of all erros from a data sync, including all child errors",
+                    "parameters": [
+                        {
+                            "name": "sourceId",
+                            "example": "d0df2a40afd64671bda7b53ce8f08ef8",
+                            "in": "query",
+                            "description": "sourceId to search for",
+                            "schema": {
+                                "type": "string"
+                            },
+                            "required": true
+                        },
+                        {
+                            "name": "sourceTypeId",
+                            "example": "asset",
+                            "in": "query",
+                            "description": "sourceTypeId of the sourceId to search for",
+                            "schema": {
+                                "$ref": "#/components/schemas/SourceType"
+                            },
+                            "required": true
+                        },
+                        {
+                            "name": "dataDestinationId",
+                            "example": "66501abda97a498c9e246b13195e47ea",
+                            "in": "query",
+                            "description": "dataDestinationId of the data sync to search for",
+                            "schema": {
+                                "type": "string"
+                            },
+                            "required": true
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/DataSyncError"
+                                        }
+                                    },
+                                    "examples": {
+                                        "NoErrors": {
+                                            "value": []
+                                        },
+                                        "WrongAspectName": {
+                                            "value": [
+                                                {
+                                                    "error": {
+                                                        "service": "DataService",
+                                                        "state": 400,
+                                                        "stateText": "BadRequest",
+                                                        "errorCode": 78,
+                                                        "errorKey": "MdspDataSyncApiError",
+                                                        "message": "Insights Hub API error for asset type - SubAsset: code=assetmngmnt.aspect.name.pattern,msg=Given name is not a valid aspect name,log=assetmngmnt.aspect.name.pattern;",
+                                                        "errorParams": {
+                                                            "object": "SubAsset",
+                                                            "reason": "code=assetmngmnt.aspect.name.pattern,msg=Given name is not a valid aspect name,log=assetmngmnt.aspect.name.pattern;",
+                                                            "type": "asset type"
+                                                        }
+                                                    },
+                                                    "sourceId": "fe6bd521ae984c1faa57eefec2fed8ee",
+                                                    "sourceType": "asset",
+                                                    "destinationId": "66501abda97a498c9e246b13195e47ea",
+                                                    "state": "Error",
+                                                    "path": "edge/TopAsset/SubAsset"
+                                                },
+                                                {
+                                                    "error": {
+                                                        "service": "DataService",
+                                                        "state": 400,
+                                                        "stateText": "BadRequest",
+                                                        "errorCode": 78,
+                                                        "errorKey": "MdspDataSyncApiError",
+                                                        "message": "Insights Hub API error for aspect - Aspect 123: code=assetmngmnt.aspect.name.pattern,msg=Given name is not a valid aspect name,log=assetmngmnt.aspect.name.pattern;",
+                                                        "errorParams": {
+                                                            "object": "Aspect 123",
+                                                            "reason": "code=assetmngmnt.aspect.name.pattern,msg=Given name is not a valid aspect name,log=assetmngmnt.aspect.name.pattern;",
+                                                            "type": "aspect"
+                                                        }
+                                                    },
+                                                    "sourceId": "cfc32e75291a41f5bb862ff54546d327",
+                                                    "sourceType": "aspect",
+                                                    "destinationId": "66501abda97a498c9e246b13195e47ea",
+                                                    "state": "Error",
+                                                    "path": "edge/TopAsset/SubAsset/Aspect 123"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "400": {
+                            "description": "Bad Request",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "MissingParameter": {
+                                            "$ref": "#/components/examples/ExceptionMissingQueryParameterExample"
+                                        },
+                                        "InvalidParameter": {
+                                            "$ref": "#/components/examples/ExceptionInvalidQueryParameterExample"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Not Found",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Exception"
+                                    },
+                                    "examples": {
+                                        "AssetNotFound": {
+                                            "$ref": "#/components/examples/AssetNotFoundExample"
+                                        },
+                                        "AspectNotFound": {
+                                            "$ref": "#/components/examples/AspectNotFoundExample"
+                                        },
+                                        "VariableNotFound": {
+                                            "$ref": "#/components/examples/VariableNotFoundExample"
+                                        },
+                                        "DataDestinationNotFound": {
+                                            "$ref": "#/components/examples/DataDestinationNotFoundExample"
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -6828,16 +8036,6 @@ function specData() {
                                 "624c0f7b550c4c468c848842489582f3"
                             ],
                             "description": "Filter the variable list by variableIds."
-                        },
-                        {
-                            "name": "cloudSync",
-                            "in": "query",
-                            "schema": {
-                                "$ref": "#/components/schemas/PdmCloudSync"
-                            },
-                            "required": false,
-                            "example": "mdsp",
-                            "description": "Filter the variable list by cloudSync setting."
                         }
                     ],
                     "responses": {
@@ -7378,6 +8576,187 @@ function specData() {
                         }
                     }
                 }
+            },
+            "/DataService/Variables/Bulk/Create": {
+                "post": {
+                    "tags": [
+                        "Variables"
+                    ],
+                    "summary": "Create a set of variables.",
+                    "description": "Create a set of new variables.",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Variable"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "variableName": "Variable1",
+                                        "dataType": "Double",
+                                        "assetId": "0",
+                                        "aspectId": "ff857cc22e454a2a88bc36076bc69bdf",
+                                        "adapterId": "profinet",
+                                        "topic": "PLC1::Double1::4::7"
+                                    },
+                                    {
+                                        "variableName": "Variable2",
+                                        "dataType": "Double",
+                                        "assetId": "0",
+                                        "aspectId": "ff857cc22e454a2a88bc36076bc69bdf",
+                                        "adapterId": "profinet",
+                                        "topic": "PLC1::Double1::4::7"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/VariableBulkResponse"
+                                    },
+                                    "examples": {
+                                        "Aspect": {
+                                            "$ref": "#/components/examples/VariableBulkResponseExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/DataService/Variables/Bulk/Update": {
+                "post": {
+                    "tags": [
+                        "Variables"
+                    ],
+                    "summary": "Update a set of variables.",
+                    "description": "Update a set of variables.",
+                    "parameters": [
+                        {
+                            "name": "forceDataTypeChange",
+                            "required": false,
+                            "in": "query",
+                            "example": true,
+                            "schema": {
+                                "type": "boolean"
+                            },
+                            "description": "If datatype is changed and the types cannot be converted without error, this forces to convert it anyway."
+                        }
+                    ],
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Variable"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "variableId": "53abb2fdc0da4c24b84b735930c7b9c8",
+                                        "variableName": "Variable1",
+                                        "dataType": "Double",
+                                        "blobType": "image/png",
+                                        "assetId": "0",
+                                        "aspectId": "ff857cc22e454a2a88bc36076bc69bdf",
+                                        "unit": "",
+                                        "adapterId": "profinet",
+                                        "topic": "PLC1::Double1::4::7",
+                                        "aspectName": "Aspect",
+                                        "connected": false,
+                                        "store": true
+                                    },
+                                    {
+                                        "variableId": "099fdb1ca4fd4829a7afdeff7091ee02",
+                                        "variableName": "Variable2",
+                                        "dataType": "Double",
+                                        "blobType": "image/png",
+                                        "assetId": "0",
+                                        "aspectId": "ff857cc22e454a2a88bc36076bc69bdf",
+                                        "unit": "",
+                                        "adapterId": "profinet",
+                                        "topic": "PLC1::Double1::4::8",
+                                        "aspectName": "Aspect",
+                                        "connected": false,
+                                        "store": true
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/AspectBulkResponse"
+                                    },
+                                    "examples": {
+                                        "Aspect": {
+                                            "$ref": "#/components/examples/AspectBulkResponseExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "/DataService/Variables/Bulk/Delete": {
+                "post": {
+                    "tags": [
+                        "Variables"
+                    ],
+                    "summary": "Delete a set of variables.",
+                    "description": "Delete a set of variables.",
+                    "requestBody": {
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": [
+                                    "53abb2fdc0da4c24b84b735930c7b9c8",
+                                    "099fdb1ca4fd4829a7afdeff7091ee02"
+                                ]
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/VariableBulkResponse"
+                                    },
+                                    "examples": {
+                                        "Aspect": {
+                                            "$ref": "#/components/examples/VariableBulkResponseExample"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "components": {
@@ -7579,11 +8958,15 @@ function specData() {
                         },
                         "provideAsVariable": {
                             "type": "boolean",
-                            "example": true
+                            "example": false,
+                            "deprecated": true,
+                            "description": "optional, is deprecated and will be supported until 2024-06-01."
                         },
                         "publishMqtt": {
                             "type": "boolean",
-                            "example": false
+                            "example": false,
+                            "deprecated": true,
+                            "description": "optional, is deprecated and will be supported until 2024-06-01."
                         },
                         "aggregationOptions": {
                             "$ref": "#/components/schemas/AggregationOptions"
@@ -7680,6 +9063,23 @@ function specData() {
                         }
                     }
                 },
+                "AspectBulkResponse": {
+                    "type": "object",
+                    "properties": {
+                        "results": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Aspect"
+                            }
+                        },
+                        "errors": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Exception"
+                            }
+                        }
+                    }
+                },
                 "Asset": {
                     "type": "object",
                     "properties": {
@@ -7723,6 +9123,23 @@ function specData() {
                             },
                             "nullable": true,
                             "readOnly": true
+                        }
+                    }
+                },
+                "AssetBulkResponse": {
+                    "type": "object",
+                    "properties": {
+                        "results": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Asset"
+                            }
+                        },
+                        "errors": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Exception"
+                            }
                         }
                     }
                 },
@@ -8049,6 +9466,21 @@ function specData() {
                         }
                     }
                 },
+                "Certificate": {
+                    "type": "object",
+                    "properties": {
+                        "fileName": {
+                            "type": "string",
+                            "example": "Cert.pem",
+                            "description": "name of certificate file"
+                        },
+                        "content": {
+                            "type": "string",
+                            "example": "",
+                            "description": "content of certificate file"
+                        }
+                    }
+                },
                 "ConnectorStateEnum": {
                     "type": "string",
                     "enum": [
@@ -8170,6 +9602,117 @@ function specData() {
                         }
                     }
                 },
+                "DataDestination": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "readOnly": true,
+                            "example": "3c49642087f2459fa705b24fa61a3bb9"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "wccdev"
+                        },
+                        "type": {
+                            "type": "string",
+                            "readOnly": true,
+                            "example": "mindsphere",
+                            "enum": [
+                                "mindsphere"
+                            ]
+                        },
+                        "active": {
+                            "type": "boolean",
+                            "description": "true, if this data destinations enabled.",
+                            "example": true
+                        },
+                        "config": {
+                            "type": "object",
+                            "description": "configuration, dependent on data destination type.",
+                            "oneOf": [
+                                {
+                                    "$ref": "#/components/schemas/MdspDataDestinationConfig"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "DataDestinationSyncState": {
+                    "type": "string",
+                    "enum": [
+                        "NoSync",
+                        "Disconnected",
+                        "Syncing",
+                        "Synced",
+                        "Error"
+                    ],
+                    "description": "Current sync state of DataSync object, only readable in GET calls."
+                },
+                "MdspDataDestinationConfig": {
+                    "type": "object",
+                    "properties": {
+                        "tenantId": {
+                            "type": "string",
+                            "example": "wccdev",
+                            "description": "tenant of mindsphere"
+                        },
+                        "clientId": {
+                            "type": "string",
+                            "example": "ninjatest",
+                            "description": "client id of mqtt certificate"
+                        },
+                        "appId": {
+                            "type": "string",
+                            "example": "wccdev-pdmcoreservice-1.0",
+                            "description": "app id of the app credentials"
+                        },
+                        "password": {
+                            "type": "string",
+                            "description": "secret id of the app credentials, required for POST, optional in PUT"
+                        },
+                        "region": {
+                            "type": "string",
+                            "example": "EU1",
+                            "description": "region of mindsphere"
+                        },
+                        "connectorCertificate": {
+                            "$ref": "#/components/schemas/Certificate"
+                        },
+                        "connectorKey": {
+                            "$ref": "#/components/schemas/Certificate"
+                        },
+                        "caCertificate": {
+                            "$ref": "#/components/schemas/Certificate"
+                        },
+                        "brokerUrl": {
+                            "type": "string",
+                            "example": "mindconnectmqtt.eu1.mindsphere.io",
+                            "description": "url of mindsphere mqtt broker"
+                        },
+                        "port": {
+                            "type": "number",
+                            "example": 8883,
+                            "description": "port of mindsphere mqtt broker"
+                        },
+                        "timeoutInSec": {
+                            "type": "number",
+                            "example": 1000
+                        },
+                        "publishIntervalInSec": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "retryCount": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "qos": {
+                            "type": "number",
+                            "example": 1
+                        }
+                    }
+                },
                 "DataResponseArray": {
                     "type": "object",
                     "properties": {
@@ -8213,7 +9756,7 @@ function specData() {
                             "type": "string"
                         },
                         "sourceTypeId": {
-                            "$ref": "#/components/schemas/DataRetentionSourceType"
+                            "$ref": "#/components/schemas/SourceType"
                         },
                         "settings": {
                             "type": "object",
@@ -8230,14 +9773,6 @@ function specData() {
                             }
                         }
                     }
-                },
-                "DataRetentionSourceType": {
-                    "type": "string",
-                    "enum": [
-                        "asset",
-                        "aspect",
-                        "variable"
-                    ]
                 },
                 "DataSourceReference": {
                     "type": "object",
@@ -8374,6 +9909,72 @@ function specData() {
                         "UnitCount"
                     ]
                 },
+                "DataSync": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "readOnly": true,
+                            "example": "a4d1778f056248cd9ea93f4529d00fdd"
+                        },
+                        "sourceId": {
+                            "type": "string",
+                            "description": "id of the source object",
+                            "example": "d0df2a40afd64671bda7b53ce8f08ef8"
+                        },
+                        "sourceTypeId": {
+                            "$ref": "#/components/schemas/SourceType"
+                        },
+                        "destinationId": {
+                            "type": "string",
+                            "description": "id of the data destination",
+                            "example": "3c49642087f2459fa705b24fa61a3bb9"
+                        },
+                        "startTime": {
+                            "type": "string",
+                            "description": "timestamp in ISO8601 string",
+                            "format": "date-time",
+                            "example": "2022-08-16T12:00:00"
+                        },
+                        "disabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "optional parameter to disable data sync for this object and data destination"
+                        },
+                        "state": {
+                            "$ref": "#/components/schemas/DataDestinationSyncState"
+                        }
+                    }
+                },
+                "DataSyncError": {
+                    "type": "object",
+                    "properties": {
+                        "sourceId": {
+                            "type": "string",
+                            "description": "id of the source object",
+                            "example": "d0df2a40afd64671bda7b53ce8f08ef8"
+                        },
+                        "sourceTypeId": {
+                            "$ref": "#/components/schemas/SourceType"
+                        },
+                        "destinationId": {
+                            "type": "string",
+                            "description": "id of the data destination",
+                            "example": "3c49642087f2459fa705b24fa61a3bb9"
+                        },
+                        "state": {
+                            "$ref": "#/components/schemas/DataDestinationSyncState"
+                        },
+                        "error": {
+                            "$ref": "#/components/schemas/Exception"
+                        },
+                        "path": {
+                            "type": "string",
+                            "description": "full path of the object",
+                            "example": "edge/TopAsset/SubAsset"
+                        }
+                    }
+                },
                 "DataType": {
                     "type": "string",
                     "example": "Double",
@@ -8472,13 +10073,6 @@ function specData() {
                         "all"
                     ]
                 },
-                "PdmCloudSync": {
-                    "type": "string",
-                    "enum": [
-                        "none",
-                        "mdsp"
-                    ]
-                },
                 "Size": {
                     "type": "object",
                     "properties": {
@@ -8497,6 +10091,14 @@ function specData() {
                     "enum": [
                         "Ascending",
                         "Descending"
+                    ]
+                },
+                "SourceType": {
+                    "type": "string",
+                    "enum": [
+                        "asset",
+                        "aspect",
+                        "variable"
                     ]
                 },
                 "SuccessResponse": {
@@ -8765,25 +10367,29 @@ function specData() {
                             "readOnly": true,
                             "example": false
                         },
-                        "cloudSync": {
-                            "allOf": [
-                                {
-                                    "$ref": "#/components/schemas/PdmCloudSync"
-                                },
-                                {
-                                    "nullable": true,
-                                    "default": "none",
-                                    "example": "mdsp",
-                                    "description": "This parameter describes if the variables timeseries data should be synchronized with a cloud system."
-                                }
-                            ]
-                        },
                         "store": {
                             "type": "boolean",
                             "nullable": true,
                             "default": true,
                             "example": true,
                             "description": "This parameter describes if the variable should be subscribed to the adapter to get timeseries data."
+                        }
+                    }
+                },
+                "VariableBulkResponse": {
+                    "type": "object",
+                    "properties": {
+                        "results": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Variable"
+                            }
+                        },
+                        "errors": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Exception"
+                            }
                         }
                     }
                 },
@@ -9034,6 +10640,37 @@ function specData() {
                         }
                     }
                 },
+                "AspectBulkResponseExample": {
+                    "value": {
+                        "results": [
+                            {
+                                "aspectId": "53abb2fdc0da4c24b84b735930c7b9c8",
+                                "aspectName": "AspectName1",
+                                "assetId": "0",
+                                "aspectTypeId": null
+                            }
+                        ],
+                        "errors": [
+                            {
+                                "service": "DataService",
+                                "state": 404,
+                                "stateText": "NotFound",
+                                "errorCode": 4,
+                                "errorKey": "NotFound",
+                                "message": "The Aspect with the id 099fdb1ca4fd4829a7afdeff7091ee02 was not found.",
+                                "errorParams": {
+                                    "id": "099fdb1ca4fd4829a7afdeff7091ee02",
+                                    "what": "Aspect"
+                                },
+                                "debugInfo": {
+                                    "method": "XXX",
+                                    "route": "/DataService/Aspects/{id}",
+                                    "objectIndex": "1"
+                                }
+                            }
+                        ]
+                    }
+                },
                 "AssetExample": {
                     "value": {
                         "id": "d0df2a40afd64671bda7b53ce8f08ef8",
@@ -9079,6 +10716,38 @@ function specData() {
                         }
                     }
                 },
+                "AssetBulkResponseExample": {
+                    "value": {
+                        "results": [
+                            {
+                                "id": "d0df2a40afd64671bda7b53ce8f08ef8",
+                                "name": "AssetName1",
+                                "parentId": "0",
+                                "sortOrder": 0,
+                                "hasChildren": false
+                            }
+                        ],
+                        "errors": [
+                            {
+                                "service": "DataService",
+                                "state": 404,
+                                "stateText": "NotFound",
+                                "errorCode": 4,
+                                "errorKey": "NotFound",
+                                "message": "The Asset with the id 099fdb1ca4fd4829a7afdeff7091ee02 was not found.",
+                                "errorParams": {
+                                    "id": "099fdb1ca4fd4829a7afdeff7091ee02",
+                                    "what": "Asset"
+                                },
+                                "debugInfo": {
+                                    "method": "XXX",
+                                    "route": "/AssetService/Assets/{id}",
+                                    "objectIndex": "1"
+                                }
+                            }
+                        ]
+                    }
+                },
                 "CalculateJobCollectionResultExample": {
                     "value": {
                         "jobCollectionId": "cb8c8cf6dac6428ea31ee1d6d96c1bce",
@@ -9113,6 +10782,57 @@ function specData() {
                                 ]
                             }
                         ]
+                    }
+                },
+                "DataDestinationNotFoundExample": {
+                    "value": {
+                        "service": "DataService",
+                        "state": 404,
+                        "stateText": "NotFound",
+                        "errorCode": 4,
+                        "errorKey": "NotFound",
+                        "message": "The data destination with the id XXX was not found.",
+                        "errorParams": {
+                            "id": "XXX",
+                            "what": "data destination"
+                        },
+                        "debugInfo": {
+                            "method": "GET",
+                            "route": "/DataService/DataDestination/{id}"
+                        }
+                    }
+                },
+                "DataDestinationMdspExample": {
+                    "value": {
+                        "id": "3c49642087f2459fa705b24fa61a3bb9",
+                        "name": "wccdev",
+                        "type": "mindsphere",
+                        "active": false,
+                        "config": {
+                            "tenantId": "wccdev",
+                            "clientId": "ninjatest",
+                            "region": "EU1",
+                            "appId": "wccdev-pdmcoreservice-1.0",
+                            "password": "",
+                            "connectorCertificate": {
+                                "fileName": "ConnectionCertificate.pem",
+                                "content": ""
+                            },
+                            "connectorKey": {
+                                "fileName": "ConnectionKey.key",
+                                "content": ""
+                            },
+                            "caCertificate": {
+                                "fileName": "MindSphereRootCA1.pem",
+                                "content": ""
+                            },
+                            "brokerUrl": "mindconnectmqtt.eu1.mindsphere.io",
+                            "port": 8883,
+                            "timeoutInSec": 1000,
+                            "publishIntervalInSec": 10,
+                            "retryCount": 5,
+                            "qos": 1
+                        }
                     }
                 },
                 "DataRetentionExample": {
@@ -9171,6 +10891,45 @@ function specData() {
                         "debugInfo": {
                             "method": "XXX",
                             "route": "/DataService/Data/XXX"
+                        }
+                    }
+                },
+                "DataSyncExample": {
+                    "value": {
+                        "id": "08ff6fd3ba7e4a94887708b22c6fb70b",
+                        "sourceId": "d0df2a40afd64671bda7b53ce8f08ef8",
+                        "sourceTypeId": "asset",
+                        "destinationId": "3c49642087f2459fa705b24fa61a3bb9",
+                        "startTime": "2022-08-16T12:00:00",
+                        "disabled": false
+                    }
+                },
+                "DataSyncStateExample": {
+                    "value": {
+                        "id": "08ff6fd3ba7e4a94887708b22c6fb70b",
+                        "sourceId": "d0df2a40afd64671bda7b53ce8f08ef8",
+                        "sourceTypeId": "asset",
+                        "destinationId": "3c49642087f2459fa705b24fa61a3bb9",
+                        "startTime": "2022-08-16T12:00:00",
+                        "disabled": false,
+                        "state": "NoSync"
+                    }
+                },
+                "DataSyncNotFoundExample": {
+                    "value": {
+                        "service": "DataService",
+                        "state": 404,
+                        "stateText": "NotFound",
+                        "errorCode": 4,
+                        "errorKey": "NotFound",
+                        "message": "The data sync with the id XXX was not found.",
+                        "errorParams": {
+                            "id": "XXX",
+                            "what": "DataSync"
+                        },
+                        "debugInfo": {
+                            "method": "GET",
+                            "route": "/DataService/DataSync/{id}"
                         }
                     }
                 },
@@ -9280,6 +11039,45 @@ function specData() {
                             "method": "XXX",
                             "route": "/DataService/Variables/{id}"
                         }
+                    }
+                },
+                "VariableBulkResponseExample": {
+                    "value": {
+                        "results": [
+                            {
+                                "variableId": "53abb2fdc0da4c24b84b735930c7b9c8",
+                                "variableName": "Variable1",
+                                "dataType": "Double",
+                                "blobType": "image/png",
+                                "assetId": "0",
+                                "aspectId": "ff857cc22e454a2a88bc36076bc69bdf",
+                                "unit": "",
+                                "adapterId": "profinet",
+                                "topic": "PLC1::Double1::4::7",
+                                "aspectName": "Aspect",
+                                "connected": false,
+                                "store": true
+                            }
+                        ],
+                        "errors": [
+                            {
+                                "service": "DataService",
+                                "state": 404,
+                                "stateText": "NotFound",
+                                "errorCode": 4,
+                                "errorKey": "NotFound",
+                                "message": "The Variable with the id 099fdb1ca4fd4829a7afdeff7091ee02 was not found.",
+                                "errorParams": {
+                                    "id": "099fdb1ca4fd4829a7afdeff7091ee02",
+                                    "what": "Variable"
+                                },
+                                "debugInfo": {
+                                    "method": "XXX",
+                                    "route": "/DataService/Aspects/{id}",
+                                    "objectIndex": "1"
+                                }
+                            }
+                        ]
                     }
                 }
             }
