@@ -55,7 +55,7 @@ An image is loaded from Docker Hub, containing these components:
 - Install NodeJS (only for running examples)
 - Create Docker-Compose file
 
-In order to run the data service development kit you need to to define an execute a Docker-Compose file.
+In order to run the data service development kit you need  to define and execute a Docker-Compose file.
 The docker-compose.example.yml is an example Docker-Compose file that can be used to download and run the required docker image(s) of the service(s) that runs in this application example. If you choose to use these, rename the file to docker-compose.yml before proceeding
 
 ### Setting up
