@@ -1,7 +1,7 @@
 ## Quick reference
 
 - Where to get help: [Industrial Edge Forum](https://forum.industrial-edge.siemens.cloud/)
-- Also see the [IIH Essentials Device Kit Manual](https://github.com/industrial-edge/data-service-device-kit) as well as the [Getting Stared](https://github.com/industrial-edge/iih-essentials-development-kit/issues)
+- Also see the [IIH Essentials Device Kit Manual](https://github.com/industrial-edge/data-service-device-kit) as well as the [Getting Stared](https://github.com/industrial-edge/iih-essentials-development-kit)
 - Also see the [IIH Essentials Simulation](https://hub.docker.com/r/siemensindustrialedge/dataservicesimulation) 
 
 ## Supported Tags
@@ -66,4 +66,4 @@ The IIH Essentials in the Development Kit is a limited version of the IIH Essent
 
 ## License
 
-View [license information](https://github.com/industrial-edge/data-service-development-kit/blob/main/docs/dockerhub/LICENSE.md) for the software contained in this image.
+View [license information](https://github.com/industrial-edge/iih-essentials-development-kit/blob/main/docs/dockerhub/LICENSE.md) for the software contained in this image.
