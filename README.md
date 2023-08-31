@@ -1,10 +1,10 @@
-# Data Service Development Kit
+# IIH Essentials Development Kit
 
 <br>
 <div align="center">
     <img src="./docs/graphics/IndustrialEdgeApp_DataService_Gradient.svg" alt="data-service-development-kit-logo" width="120px" height="120px"/>
     <br>
-    <i>Data Service is a central data storage for Industrial Edge, connecting you with many
+    <i>IIH Essentials is a central data storage for Industrial Edge, connecting you with many
         <br> data sources available on the platform.</i>
     <br>
 </div>
@@ -14,7 +14,7 @@
 </div>
 <br><hr><br>
 
-- [Data Service Development Kit](#data-service-development-kit)
+- [IIH Essentials Development Kit](#iih-essentials-development-kit)
   - [Documentation](#documentation)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
@@ -30,21 +30,21 @@
 
 ## Documentation
 
-Using the ​Data Service Development Kit​ you can develop apps based on the Data Service and integrate them into Siemens Industrial Edge.
+Using the IIH Essentials Development Kit​ you can develop apps based on the IIH Essentials and integrate them into Siemens Industrial Edge.
 
 In this repository you can find the following components:
 - <a href="docker-compose.yml">​Docker file: docker-compose.yml</a>
 - <a href="./docs">Documentation</a>
-  - <a href="./docs/data-service">​Data Service documentation and ​API specification</a>
+  - <a href="./docs/iih-essentials">IIH Essentials documentation and ​API specification</a>
   - <a href="./docs/development-kit">Development Kit documentation</a>
 - <a href="./examples">Examples</a>
 
-By running the docker compose configuration, an API instance of the Data Service will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](./docs/data-service/api-documentation/data-service-api-specification.html). This file needs to be opened locally in a browser.
+By running the docker compose configuration, an API instance of the IIH Essentials will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](./docs/data-service/api-documentation/data-service-api-specification.html). This file needs to be opened locally in a browser.
 
 An image is loaded from Docker Hub, containing these components:
 
-- ​Data Service -> provides the external interface (REST API) for non-Siemens applications)
-- ​MQTT Broker -> used to transfer data from the simulator to the Data Service
+- IIH Essentials -> provides the external interface (REST API) for non-Siemens applications)
+- ​MQTT Broker -> used to transfer data from the simulator to the IIH Essentials
 - Data simulator -> simulate simple data like sinus, inc/dec or custom data sequences
 
 ## Getting Started
@@ -55,7 +55,7 @@ An image is loaded from Docker Hub, containing these components:
 - Install NodeJS (only for running examples)
 - Create Docker-Compose file
 
-In order to run the data service development kit you need  to define and execute a Docker-Compose file.
+In order to run the IIH Essentials development kit you need  to define and execute a Docker-Compose file.
 The docker-compose.example.yml is an example Docker-Compose file that can be used to download and run the required docker image(s) of the service(s) that runs in this application example. If you choose to use these, rename the file to docker-compose.yml before proceeding
 
 ### Setting up
@@ -75,13 +75,13 @@ docker-compose up
 
 ​All service images are downloaded from Docker Hub and launched as defined in the ```​docker-compose.yml​``` file.
 
-Use the Simulation UI to create tags with simulated data that can be connected to Data Service variables. To access the Simulation UI open this address in a browser:
+Use the Simulation UI to create tags with simulated data that can be connected to IIH Essentials variables. To access the Simulation UI open this address in a browser:
 
 ``` browser
 http://localhost:4519
 ```
 
-Use the Data Service UI to configure data connections and structure your data. You can connect simulated tags to variables. This will store the data and offer it through the API, making it available for 3rd party apps to use. To access the Data Service UI open this address in a browser:
+Use the IIH Essentials UI to configure data connections and structure your data. You can connect simulated tags to variables. This will store the data and offer it through the API, making it available for 3rd party apps to use. To access the IIH Essentials UI open this address in a browser:
 
 ``` browser
 http://localhost:4203​
@@ -89,7 +89,7 @@ http://localhost:4203​
 
 ### Limitations
 
-The Data Service in the Development Kit is a limited version of the Data Service:
+The IIH Essentials in the Development Kit is a limited version of the IIH Essentials:
 
 - Data retention: ​By default, the data is kept for one week. This cannot be changed.
 - Adapters/Connectors: Existing adapters/connectors cannot be modified or deleted. No new adapters/connectors can be added.
@@ -98,10 +98,53 @@ The Data Service in the Development Kit is a limited version of the Data Service
 
 ### Example Client
 
-​This application example is intended to show how to get access to the Data Service API as an external app.
-It shows how to create a user, request a token and get assets, tags and time series data from the the Data Service. ​It is available [here: ExampleClient](./examples/ExampleClient). More details can be found inside the ExampleClient folder.
+​This application example is intended to show how to get access to the IIH Essentials API as an external app.
+It shows how to create a user, request a token and get assets, tags and time series data from the the IIH Essentials. ​It is available [here: ExampleClient](./examples/ExampleClient). More details can be found inside the ExampleClient folder.
 
 ## What's new
+<details>
+  <summary>
+    <h2 style="display: inline">v1.8.0 - 2023-08-31</h2>
+  </summary>
+  <h3>Added</h3>
+  <ul>
+    <li>Feature 2214201: Renaming to IIH Essentials</li>
+    <li>Feature 2066521: Senseye sync</li>
+    <li>Feature 1478154: Request data of multiple variables with unsynced time ranges</li>
+  </ul>
+  <h3>Fixed</h3>
+  <ul>
+    <li>Bug 2259118: IIH: Parent asset name is not displayed in inheritance message</li>
+    <li>Bug 2282961: IIH: REST API Documentation is not linked in IIH Configurator</li>
+    <li>Bug 2300022: IIH Essentials creates an Asset twice to Senseye, resulting in a duplicate Asset in Senseye</li>
+    <li>Bug 2344205: Failed to create the data destination whose Device Type is Senseye in front end of IIH Essentials</li>
+    <li>Bug 2344941: Failed to create the data destination whose Device Type is Senseye in front end of IIH Essentials,an error message is displayed indicating that the packageInBatch type is incorrect</li>
+    <li>Bug 2358618: Performance Insight: Batch Analysis shows unplausible value for KPI OEE</li>
+    <li>Bug 2362872: IIH IIH Essentials: Data Aggregation does not work</li>
+    <li>Bug 2364595: The "mqttTopicPrefix" field is missing when adding Destinations in the IIH Essentials front-end</li>
+    <li>Bug 2366449: Debian GNU/Linux 10 - libmicrohttpd Remote Denial of Service Vulnerability - DLA-3374-1</li>
+    <li>Bug 2374000: Debian GNU/Linux 10 - libtasn1-6 Remote Denial of Service Vulnerability - DLA-3263-1</li>
+    <li>Bug 2377064: Debian GNU/Linux 11 - openssl Multiple Vulnerabilities - DSA-5343-1</li>
+    <li>Bug 2425207: URL is not adapted after deleting a destination</li>
+    <li>Bug 2425217: URL is not adapted after deleting a connector</li>
+    <li>Bug 2433103: Slow UI when big model is configured</li>
+    <li>Bug 2464131: Add Data destination page closes upon clicking escape button from keyboard</li>
+    <li>Bug 2468584: Unable to create two variables with same in DataService UI however its possible via api</li>
+    <li>Bug 2492497: IIH Store data page is displayed with empty spaces</li>
+    <li>Bug 2492899: Click on Debugging tile in settings page navigates the user back to IED</li>
+    <li>Bug 2508899: IIH: Synchronization tab in edit variable section of Store data page should be removed</li>
+    <li>Bug 2513180: New tree component has errors</li>
+    <li>Bug 2517217: TC: IIH - User Interface(UI) in Store data page is broken / Improper</li>
+    <li>Bug 2519573: cURL, libcurl 7.7 ≤ 8.0.1 - Multiple Vulnerabilities - 8.1.0</li>
+    <li>Bug 2521259: File upload option is not displayed correctly in Add data destination page</li>
+    <li>Bug 2531940: TRA tracker: IIH Essentials (DataService)1.8</li>
+    <li>Bug 2611844: TC:IIH-UI in the Store data page is improper when asset is added.</li>
+    <li>Bug 2614014: [IIH Essentials] Not able to sync Boolean tags to MindSphere </li>
+    <li>Bug 2629668: Variable aggregations syncs are not getting saved in common configurator</li>
+    <li>Bug 2631519: TC : Time series data sync recovery after the internet connection loss is not working</li>
+    <li>Bug 2641817: Missing MDSP Data Upload after MQTT error</li>
+  </ul>
+</details>
 
 <details>
   <summary>
@@ -489,9 +532,9 @@ You can ask questions in the [Industrial Edge support forum](https://support.ind
 
 ## Contact us
 
-[SIOS Data Service for Industrial Edge](https://support.industry.siemens.com/cs/document/109784426)
+[SIOS IIH Essentials for Industrial Edge](https://support.industry.siemens.com/cs/document/109784426)
 
-[SIOS Data Service Development Kit for Industrial Edge](https://support.industry.siemens.com/cs/document/109792717)
+[SIOS IIH Essentials Development Kit for Industrial Edge](https://support.industry.siemens.com/cs/document/109792717)
 
 For support requests contact your regional contact person.
 They take care of your concerns and give you feedback.

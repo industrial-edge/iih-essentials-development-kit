@@ -1,12 +1,11 @@
 ﻿/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2023. All rights reserved.
  *
  * Lib:  Base
  *
  */
 
-/* global framework*/
 var g_treeNodeId = 'home';
 var id = 'home';
 var GlobalLocalized = null;
