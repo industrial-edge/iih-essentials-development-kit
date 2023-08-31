@@ -102,6 +102,49 @@ The IIH Essentials in the Development Kit is a limited version of the IIH Essent
 It shows how to create a user, request a token and get assets, tags and time series data from the the IIH Essentials. ​It is available [here: ExampleClient](./examples/ExampleClient). More details can be found inside the ExampleClient folder.
 
 ## What's new
+<details>
+  <summary>
+    <h2 style="display: inline">v1.8.0 - 2023-08-31</h2>
+  </summary>
+  <h3>Added</h3>
+  <ul>
+    <li>Feature 2214201: Renaming to IIH Essentials</li>
+    <li>Feature 2066521: Senseye sync</li>
+    <li>Feature 1478154: Request data of multiple variables with unsynced time ranges</li>
+  </ul>
+  <h3>Fixed</h3>
+  <ul>
+    <li>Bug 2259118: IIH: Parent asset name is not displayed in inheritance message</li>
+    <li>Bug 2282961: IIH: REST API Documentation is not linked in IIH Configurator</li>
+    <li>Bug 2300022: IIH Essentials creates an Asset twice to Senseye, resulting in a duplicate Asset in Senseye</li>
+    <li>Bug 2344205: Failed to create the data destination whose Device Type is Senseye in front end of IIH Essentials</li>
+    <li>Bug 2344941: Failed to create the data destination whose Device Type is Senseye in front end of IIH Essentials,an error message is displayed indicating that the packageInBatch type is incorrect</li>
+    <li>Bug 2358618: Performance Insight: Batch Analysis shows unplausible value for KPI OEE</li>
+    <li>Bug 2362872: IIH IIH Essentials: Data Aggregation does not work</li>
+    <li>Bug 2364595: The "mqttTopicPrefix" field is missing when adding Destinations in the IIH Essentials front-end</li>
+    <li>Bug 2366449: Debian GNU/Linux 10 - libmicrohttpd Remote Denial of Service Vulnerability - DLA-3374-1</li>
+    <li>Bug 2374000: Debian GNU/Linux 10 - libtasn1-6 Remote Denial of Service Vulnerability - DLA-3263-1</li>
+    <li>Bug 2377064: Debian GNU/Linux 11 - openssl Multiple Vulnerabilities - DSA-5343-1</li>
+    <li>Bug 2425207: URL is not adapted after deleting a destination</li>
+    <li>Bug 2425217: URL is not adapted after deleting a connector</li>
+    <li>Bug 2433103: Slow UI when big model is configured</li>
+    <li>Bug 2464131: Add Data destination page closes upon clicking escape button from keyboard</li>
+    <li>Bug 2468584: Unable to create two variables with same in DataService UI however its possible via api</li>
+    <li>Bug 2492497: IIH Store data page is displayed with empty spaces</li>
+    <li>Bug 2492899: Click on Debugging tile in settings page navigates the user back to IED</li>
+    <li>Bug 2508899: IIH: Synchronization tab in edit variable section of Store data page should be removed</li>
+    <li>Bug 2513180: New tree component has errors</li>
+    <li>Bug 2517217: TC: IIH - User Interface(UI) in Store data page is broken / Improper</li>
+    <li>Bug 2519573: cURL, libcurl 7.7 ≤ 8.0.1 - Multiple Vulnerabilities - 8.1.0</li>
+    <li>Bug 2521259: File upload option is not displayed correctly in Add data destination page</li>
+    <li>Bug 2531940: TRA tracker: IIH Essentials (DataService)1.8</li>
+    <li>Bug 2611844: TC:IIH-UI in the Store data page is improper when asset is added.</li>
+    <li>Bug 2614014: [IIH Essentials] Not able to sync Boolean tags to MindSphere </li>
+    <li>Bug 2629668: Variable aggregations syncs are not getting saved in common configurator</li>
+    <li>Bug 2631519: TC : Time series data sync recovery after the internet connection loss is not working</li>
+    <li>Bug 2641817: Missing MDSP Data Upload after MQTT error</li>
+  </ul>
+</details>
 
 <details>
   <summary>
