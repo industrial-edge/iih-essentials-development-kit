@@ -1,2 +1,0 @@
-## API Specification
-This folder contains the API specification for Data Service Development Kit. To access it, clone the repository and open ```data-service-api-specification.html``` locally in a web browser.

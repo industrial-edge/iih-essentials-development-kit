@@ -1,6 +1,6 @@
 ﻿/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2023. All rights reserved.
  *
  * Lib: styles for topic
  *
@@ -38,7 +38,7 @@ html.no-touch .topicclass img.img_free:hover{cursor:pointer;-webkit-user-select:
 .topicclass div.expandable-container>div.h4:before{line-height:1.3rem;-webkit-transition:all 200ms;-moz-transition:all 200ms;-o-transition:all 200ms;transition:all 200ms;content:'+';font-size:1rem;font-family:'Siemens Sans Global','Lucida Sans Unicode',Arial,'Sans-Serif';font-weight:bold;color:#005f87}
 .topicclass div.expandable-container>div.h4[data-expandable="minus"]:before{content:'-';font-size:1rem;top:-1px;font-family:'Siemens Sans Global','Lucida Sans Unicode',Arial,'Sans-Serif';font-weight:bold;color:#005f87}
 .mobile.topicclass div.expandable-container>div.h4:before,.mobile.topicclass div.expandable-container>div.h4{display:inline-block;font-size:1rem;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#005f87!important}
-.mobile.topicclass div.expandable-container>div.h4:before{font-family:FontAwesome;content:'\f105';font-size:1.4rem;margin-right:15px;position:absolute;left:15px;top:7px;color:#005f87}
+.mobile.topicclass div.expandable-container>div.h4:before{font-family:'Font Awesome 5 Free';content:'\f105';font-size:1.4rem;margin-right:15px;position:absolute;left:15px;top:7px;color:#005f87}
 .mobile.topicclass div.expandable-container>div.h4[data-expandable="minus"]:before{content:'\f105';font-size:1.4rem;transform:rotate(90deg);position:absolute;left:15px;top:7px;color:#005f87}
 .topicclass div.expandable-container .expandable-content{margin-top:6px}
 .topicclass div.h1{display:none}
@@ -138,7 +138,7 @@ span.search-result-text-emphasis.search-result-level2,.topicclass span.search-re
 .topicclass .img_centered{text-align:center}
 .topicclass .p span.code{font-family:Courier New;font-size:.95rem}
 .topicclass a.copy-code-link{color:#039;text-decoration:none}
-.topicclass .copy-code-icon-container{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.topicclass .copy-code-icon-container{display:inline-block;font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .topicclass .copy-code-icon-container:before{content:"\f0ea";color:#039}
 .topicclass div.copy-code-pre-link-container{float:left;margin-right:8px}
 .topicclass a.copy-code-link>div{vertical-align:middle}
@@ -301,10 +301,10 @@ li.bullet ul.line span{float:left}
 .scroll-to-element-link{text-decoration:none;font-weight:normal;text-shadow:none;color:#005f87}
 .topicclass.mobile .externalhotspot a.external-link,.topicclass.mobile .externalhotspot a.external-link span{color:#005f87}
 .glossary-entry-ref-link i::before{padding-right:5px}
-.topicclass.mobile .seeAlso a.external-link::before,.topicclass.mobile .externalhotspot a.external-link::before{content:"\f178";font:normal normal normal 14px/1 FontAwesome;-moz-transform:rotate(-45deg);-ms-transform:rotate(-45deg);-o-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg);display:inline-block;padding-right:3px}
+.topicclass.mobile .seeAlso a.external-link::before,.topicclass.mobile .externalhotspot a.external-link::before{content:"\f30b";font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;-moz-transform:rotate(-45deg);-ms-transform:rotate(-45deg);-o-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg);display:inline-block;padding-right:3px}
 html.no-touch .topicclass.mobile a.aLink:hover,html.no-touch .topicclass.mobile .hotspot>a:hover,html.no-touch .topicclass.mobile .seeAlso>a:hover,html.no-touch .topicclass.mobile span.externalhotspot>a:hover,html.no-touch .glossary-entry-ref-link:hover,html.no-touch .scroll-to-element-link:hover{text-decoration:underline;color:#005578}
 html.no-touch .topicclass.mobile a.aLink:active,html.no-touch .topicclass.mobile .hotspot>a:active,html.no-touch .topicclass.mobile .seeAlso>a:active,html.no-touch .topicclass.mobile span.externalhotspot>a:active,html.no-touch .glossary-entry-ref-link:active html.no-touch .scroll-to-element-link:active{color:#50BED7}
-html.no-touch body.app-pud .topicclass.mobile span.externalhotspot>a:before{display:inline;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;content:"\f105";margin-left:2px;margin-right:2px}
+html.no-touch body.app-pud .topicclass.mobile span.externalhotspot>a:before{display:inline;font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;content:"\f105";margin-left:2px;margin-right:2px}
 .topicclass div.ul-container{display:block;margin-left:3px}
 .topicclass div.ul-container>ul>li{padding-left:12px;margin-left:12px}
 .topicclass .footer-table td,.topicclass .footer-table{border:0}
@@ -374,7 +374,7 @@ html.no-touch body.app-pud .topicclass.mobile span.externalhotspot>a:before{disp
 .topicclass a.hotspot-ext-link.display-none,.topicclass div.hotspot-container.display-none{display:none}
 .topicclass a.hotspot-ext-link.display-block,.topicclass div.hotspot-container.display-block{display:block}
 .topicclass a.hotspot-ext-link{cursor:pointer}
-.topicclass a.hotspot-link i,.topicclass a.hotspot-ext-link i{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.topicclass a.hotspot-link i,.topicclass a.hotspot-ext-link i{display:inline-block;font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .topicclass a.hotspot-link span{color:#005578}
 .topicclass a.hotspot-link.display-none i,.topicclass a.hotspot-link.display-i-none i{display:none}
 .topicclass a.hotspot-link.expanded i{-webkit-transform:rotate(90deg);transform:rotate(90deg)}
@@ -388,7 +388,7 @@ html.no-touch body.app-pud .topicclass.mobile span.externalhotspot>a:before{disp
 .topicclass div.hotspot-container.hidden{min-height:1px;overflow:auto}
 .topicclass .index-entry{font-size:.85rem;font-weight:500;color:#2d373c;-moz-border-image:none;-o-border-image:none;-webkit-border-image:none;border-image:none;border:3px solid #ff0;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;padding:2px 2px 2px 8px;text-decoration:none!important;display:inline-block;margin:0 8px 3px 3px}
 .topicclass table.table_legend span.index-entry.hidden,.topicclass .index-entry.hidden{display:none}
-.topicclass .index-entry:before{display:inline;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#2d373c;content:"\f02e";margin-right:5px;margin-left:1px;line-height:1rem}
+.topicclass .index-entry:before{display:inline;font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#2d373c;content:"\f02e";margin-right:5px;margin-left:1px;line-height:1rem}
 .topicclass .index-entry .index-entry-item,.topicclass .index-entry .index-subentry-item,.topicclass .index-entry .index-entry-textref{font-size:.85rem!important;font-weight:500!important;color:#646464!important;margin-left:1px;margin-right:1px}
 .topicclass .index-entry .index-entry-item ~ span:before{content:":";margin-right:3px}
 #glossary .glossary-entry{padding:0 10px}

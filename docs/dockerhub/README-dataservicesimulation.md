@@ -1,8 +1,8 @@
 ## Quick reference
 
-- Part of [Data Service Development Kit](https://hub.docker.com/r/siemensindustrialedge/dataservicedevelopmentkit) 
+- Part of [IIH Essentials Development Kit](https://hub.docker.com/r/siemensindustrialedge/dataservicedevelopmentkit) 
 - Where to get help: [Industrial Edge Forum](https://www.siemens.com/industrial-edge-forum)
-- Also see the [Data Service Device Kit Manual](https://github.com/industrial-edge/data-service-device-kit) as well as the [Getting Stared](https://github.com/industrial-edge/data-service-device-kit-getting-started)
+- Also see the [IIH Essentials Device Kit Manual](https://github.com/industrial-edge/data-service-device-kit) as well as the [Getting Stared](https://github.com/industrial-edge/data-service-device-kit-getting-started)
 
 ## Supported Tags
 

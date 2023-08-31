@@ -1,6 +1,6 @@
 ﻿/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2023. All rights reserved.
   *
  * CSS: mobile.reset
  *
@@ -13,7 +13,7 @@ blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
 table{border-collapse:collapse;border-spacing:0}
 input::-ms-clear{display:none}/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2023. All rights reserved.
  *
  * CSS: mobile.base
  *
@@ -100,8 +100,8 @@ html.no-touch #leftPanel li:hover{background-color:#EBF0F5;cursor:pointer}
 html.no-touch #header li:hover{background-color:#EBF0F5;cursor:pointer}
 .selected,html.no-touch .selected:hover{background-color:#C7D6E5!important}
 .defaultRow .rowTextContainer{height:50px;min-height:50px;line-height:50px;text-align:left;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;text-indent:11px;font-size:.9rem}
-.defaultRow:before{font-family:"FontAwesome";font-size:1rem;color:#788791;width:50px;text-align:center;line-height:50px;position:absolute;left:0}
-.defaultRow:after{font-family:"FontAwesome";font-size:1rem;width:50px;text-align:center;line-height:50px;position:absolute;right:0;display:inline}
+.defaultRow:before{font-family:"Font Awesome 5 Free";font-weight:900;font-size:1rem;color:#788791;width:50px;text-align:center;line-height:50px;position:absolute;left:0}
+.defaultRow:after{font-family:"Font Awesome 5 Free";font-weight:900;font-size:1rem;width:50px;text-align:center;line-height:50px;position:absolute;right:0;display:inline}
 html.no-touch .defaultRow.ui-menu-item-wrapper.ui-state-active,html.no-touch .defaultRow.active,html.no-touch .defaultRow:hover{background-color:#EBF0F5;cursor:pointer}
 html.no-touch .defaultRow:active{background-color:#EBF0F5}
 .historyRow,.suggestionRow,.suggestionRowSimple{background-color:#f5f5f5}
@@ -125,9 +125,9 @@ html.no-touch .languageRow-picked:hover{background-color:#dfe6ed!important}
 .resultRow .searchRowTopic{line-height:40px;height:40px;padding-right:10px;text-align:left;font-weight:bold;-ms-text-overflow:ellipsis;-o-text-overflow:ellipsis;text-overflow:ellipsis;overflow:hidden;display:block;position:relative}
 .resultRow .searchRowPlaceholder{line-height:40px;height:40px;text-align:center;-ms-text-overflow:ellipsis;-o-text-overflow:ellipsis;text-overflow:ellipsis;overflow:hidden;display:block;font-style:italic}
 .resultRow .searchRowText{line-height:20px;height:20px;text-align:left;font-size:.8rem;-ms-text-overflow:ellipsis;-o-text-overflow:ellipsis;text-overflow:ellipsis;overflow:hidden;display:none}
-.resultRow.resultRowIndex span.searchRowTopic:after{display:inline-block;font:normal normal normal 14px/1 FontAwesome;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:.8rem;content:"\f02e";margin-right:10px;float:right;text-align:-webkit-center;line-height:40px;position:absolute;right:10px}
-.resultRow.resultRowGlossary span.searchRowTopic:after{display:inline-block;font:normal normal normal 14px/1 FontAwesome;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:.8rem;content:"\f02d";margin-right:10px;float:right;text-align:-webkit-center;line-height:40px;position:absolute;right:10px}
-.resultRow.resultRowHideInToc span.searchRowTopic:after{display:inline-block;font:normal normal normal 14px/1 FontAwesome;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:.8rem;content:"\f06c";margin-right:10px;float:right;text-align:-webkit-center;line-height:40px}
+.resultRow.resultRowIndex span.searchRowTopic:after{display:inline-block;font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:.8rem;content:"\f02e";margin-right:10px;float:right;text-align:-webkit-center;line-height:40px;position:absolute;right:10px}
+.resultRow.resultRowGlossary span.searchRowTopic:after{display:inline-block;font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:.8rem;content:"\f02d";margin-right:10px;float:right;text-align:-webkit-center;line-height:40px;position:absolute;right:10px}
+.resultRow.resultRowHideInToc span.searchRowTopic:after{display:inline-block;font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:.8rem;content:"\f06c";margin-right:10px;float:right;text-align:-webkit-center;line-height:40px}
 .left{float:left}
 .right{float:right}
 .rotate45{-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);-ms-filter:"progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476)";transform:rotate(45deg)}
@@ -192,7 +192,7 @@ to{transform:rotate(90deg)}
 .header_confidential .text-confidential{font-size:8px}
 }/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2023. All rights reserved.
  *
  * CSS: mobile.startpage
  *
@@ -204,7 +204,7 @@ to{transform:rotate(90deg)}
 .home-view .home-content-overlay{position:absolute;display:block;left:47%;width:53%;bottom:90px;height:300px;z-index:110;background-color:transparent}
 .home-view #versionInfo{left:0;height:80px;width:53%;top:0;position:absolute;z-index:110;background-color:transparent}
 .home-view #versionInfo:after{display:block;clear:both;content:" "}
-.home-view .versionLabel,.home-view .whiteBox{position:relative;display:inline-block;float:left;margin:0;min-width:200px;height:80px;color:#fff;background-color:#005f87}
+.home-view .versionLabel,.home-view .whiteBox{position:relative;display:inline-block;float:left;margin:0;min-width:250px;height:80px;color:#fff;background-color:#005f87}
 .home-view .bottomText{position:absolute;top:10px;left:25px;width:100%;text-align:left;font-size:1.143rem}
 .home-view #productInfoContainer{position:absolute;top:30px;z-index:120;left:5%;width:50%;-moz-transition:width .3s;-o-transition:width .3s;-webkit-transition:width .3s;transition:width .3s}
 .home-view #productInfo{margin-top:10px;padding-top:20px;padding-right:10px;background:-webkit-gradient(linear,left top,right top,from(rgba(79,189,189,0.7)),to(rgba(1,153,203,0.7)));background:linear-gradient(to right,rgba(79,189,189,0.7),rgba(1,153,203,0.7));background-color:#fff;color:#fff}
@@ -218,7 +218,7 @@ to{transform:rotate(90deg)}
 .home-view #startButton{position:absolute;left:10%;width:20%;right:70%;z-index:150;top:230px;display:inline-block;height:auto;border:0;background-color:#005f87;vertical-align:middle;text-align:center;line-height:40px}
 html.no-touch .home-view #startButton:hover{background-color:#005f87;cursor:pointer}
 .home-view #buttonText{padding:10px 0 5px 0;color:#fff;text-indent:8%;font-size:2.286rem}
-.home-view #buttonText::after{padding-left:30px;color:#fff;content:"\f054 ";vertical-align:middle;font-size:2rem;font-family:"FontAwesome"}
+.home-view #buttonText::after{padding-left:30px;color:#fff;content:"\f054 ";vertical-align:middle;font-size:2rem;font-family:"Font Awesome 5 Free";font-weight:900}
 .home-view #startButton a{width:100%;height:100%;text-decoration:none}
 @media only screen and (min-width :0) and (max-width :468px){.home-view .home-header{left:5%;top:5%;width:90%}
 .home-view #companyLogo{width:50%}
@@ -295,7 +295,7 @@ html.no-touch .home-view #startButton:hover{background-color:#005f87;cursor:poin
 .home-view .home-content-overlay{bottom:0}
 }/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2023. All rights reserved.
  *
  * CSS: mobile.header
  *
@@ -323,7 +323,7 @@ html.no-touch .home-view #startButton:hover{background-color:#005f87;cursor:poin
 .header div.headerTitle span{display:block;position:absolute;top:0;margin-top:14px;font-size:.7rem;text-align:left}
 }/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2023. All rights reserved.
  *
  * CSS: mobile.footer
  *
@@ -347,7 +347,7 @@ html.no-touch .footer .footerColumn a:hover,.footer .footerColumn a:active{color
 .footer #siemensIncorporatedContainer div{text-align:center}
 .footer #siemensIncorporatedContainer div i{overflow:hidden;-ms-text-overflow:ellipsis;-o-text-overflow:ellipsis;text-overflow:ellipsis;white-space:nowrap;font-style:italic}/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2023. All rights reserved.
  *
  * CSS: mobile.panels
  *
@@ -451,7 +451,7 @@ div.modal-backdrop{z-index:10040}
 100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
 }/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2023. All rights reserved.
  *
  * CSS: mobile.tree
  *
@@ -522,10 +522,10 @@ div.modal-backdrop{z-index:10040}
 .panel-content.desktop-view ul.main-navigation li{margin-bottom:5px;color:#1e2832;font-size:12px}
 ul.main-navigation span.plusminus{position:absolute;top:0;right:15px;display:none;width:20px;height:20px;background-image:none}
 ul.main-navigation li>a.has-children>span.plusminus{display:block;margin-top:-2px;text-indent:0}
-ul.main-navigation li>a.has-children>span.plusminus:before{text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:inline-block;margin-top:50%;margin-left:0;color:#2d373c;content:"\f054";font:normal normal normal 14px/1 FontAwesome;font-size:.9rem;-moz-transition:transform .4s;-o-transition:transform .4s;-webkit-transition:transform .4s;transition:transform .4s;-moz-transform:rotate(-90deg);-ms-transform:rotate(-90deg);-o-transform:rotate(-90deg);-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}
-ul.main-navigation li>a.has-children>span.plusminus.spinner:before{-webkit-font-smoothing:antialiased;text-rendering:auto;-moz-osx-font-smoothing:grayscale;display:inline-block;margin-top:50%;margin-left:0;content:"\f110";font:normal normal normal 14px/1 FontAwesome;font-size:.9rem;-moz-transition:transform .4s;-o-transition:transform .4s;-webkit-transition:transform .4s;transition:transform .4s}
-ul.main-navigation li.arrow>a.has-children>span.plusminus:before{text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:inline-block;margin-top:50%;margin-left:0;content:"\f054";font:normal normal normal 14px/1 FontAwesome;font-size:.9rem;-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);-webkit-transform:rotate(90deg);-moz-transition:transform .4s;-o-transition:transform .4s;-webkit-transition:transform .4s;transition:transform .4s;transform:rotate(90deg)}
-ul.main-navigation li.no-arrow.virtual-sub-node>a.has-children>span.plusminus:before,ul.main-navigation li.no-arrow>a.has-children>span.plusminus:before{-webkit-font-smoothing:antialiased;text-rendering:auto;-moz-osx-font-smoothing:grayscale;display:inline-block;margin-top:50%;content:"\f054";font:normal normal normal 14px/1 FontAwesome;font-size:.9rem;-moz-transition:transform .4s;-o-transition:transform .4s;-webkit-transition:transform .4s;transition:transform .4s}
+ul.main-navigation li>a.has-children>span.plusminus:before{text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:inline-block;margin-top:50%;margin-left:0;color:#2d373c;content:"\f054";font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;font-size:.9rem;-moz-transition:transform .4s;-o-transition:transform .4s;-webkit-transition:transform .4s;transition:transform .4s;-moz-transform:rotate(-90deg);-ms-transform:rotate(-90deg);-o-transform:rotate(-90deg);-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}
+ul.main-navigation li>a.has-children>span.plusminus.spinner:before{-webkit-font-smoothing:antialiased;text-rendering:auto;-moz-osx-font-smoothing:grayscale;display:inline-block;margin-top:50%;margin-left:0;content:"\f110";font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;font-size:.9rem;-moz-transition:transform .4s;-o-transition:transform .4s;-webkit-transition:transform .4s;transition:transform .4s}
+ul.main-navigation li.arrow>a.has-children>span.plusminus:before{text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:inline-block;margin-top:50%;margin-left:0;content:"\f054";font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;font-size:.9rem;-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);-webkit-transform:rotate(90deg);-moz-transition:transform .4s;-o-transition:transform .4s;-webkit-transition:transform .4s;transition:transform .4s;transform:rotate(90deg)}
+ul.main-navigation li.no-arrow.virtual-sub-node>a.has-children>span.plusminus:before,ul.main-navigation li.no-arrow>a.has-children>span.plusminus:before{-webkit-font-smoothing:antialiased;text-rendering:auto;-moz-osx-font-smoothing:grayscale;display:inline-block;margin-top:50%;content:"\f054";font:normal normal normal 14px/1 'Font Awesome 5 Free';font-weight:900;font-size:.9rem;-moz-transition:transform .4s;-o-transition:transform .4s;-webkit-transition:transform .4s;transition:transform .4s}
 .helpviewer ul.main-navigation li.no-arrow.virtual-sub-node>a.has-children>span.plusminus:before,.helpviewer ul.main-navigation li.arrow.virtual-sub-node>a.has-children>span.plusminus:before,.helpviewer ul.main-navigation li.no-arrow>a.has-children>span.plusminus:before,.helpviewer ul.main-navigation li.arrow>a.has-children>span.plusminus:before,.helpviewer ul.main-navigation li>a.has-children>span.plusminus:before{-moz-transition:none;-o-transition:none;-webkit-transition:none;transition:none}
 ul.main-navigation li.no-arrow.virtual-sub-node>a.has-children>span.plusminus.spinner:before,ul.main-navigation li.no-arrow>a.has-children>span.plusminus.spinner:before{content:"\f110"}
 ul.main-navigation li.no-arrow>a.has-children>span.ttitle,ul.main-navigation li.arrow>a.has-children>span.ttitle{font-weight:bold;color:#2d373c}
@@ -580,7 +580,7 @@ html.no-touch .cd-accordion-menu label:hover,html.no-touch .cd-accordion-menu a:
 .hasno-children label{text-indent:25px}
 .hasno-children label::before{content:none}/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2023. All rights reserved.
  *
  * CSS: mobile.xnav
  *
@@ -611,7 +611,7 @@ html.no-touch .xNavigationPanel .xNavigationListContainer .xNavigationList li:ho
 .xNavigationPanel .xNavigationListContainer .xNavigationList .xEmptyItem{display:block}
 html.no-touch .xNavigationPanel .xNavigationListContainer .xNavigationList .section:hover{background-color:#f3f2f3!important;color:#000!important}/*!
  *
- * Copyright (C) Siemens AG 2015-2022. All rights reserved.
+ * Copyright (C) Siemens AG 2015-2023. All rights reserved.
  *
  * CSS: mobile.widget
  *
