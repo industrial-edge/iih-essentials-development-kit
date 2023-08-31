@@ -1,7 +1,7 @@
 ## Quick reference
 
-- Where to get help: [Industrial Edge Forum](https://www.siemens.com/industrial-edge-forum)
-- Also see the [IIH Essentials Device Kit Manual](https://github.com/industrial-edge/data-service-device-kit) as well as the [Getting Stared](https://github.com/industrial-edge/data-service-device-kit-getting-started)
+- Where to get help: [Industrial Edge Forum](https://forum.industrial-edge.siemens.cloud/)
+- Also see the [IIH Essentials Device Kit Manual](https://github.com/industrial-edge/data-service-device-kit) as well as the [Getting Stared](https://github.com/industrial-edge/iih-essentials-development-kit)
 - Also see the [IIH Essentials Simulation](https://hub.docker.com/r/siemensindustrialedge/dataservicesimulation) 
 
 ## Supported Tags
@@ -14,9 +14,9 @@
 
 ## Quick reference (cont.)
 
-- Where to file issues: Issues can be filed in the [Industrial Edge Forum](https://www.siemens.com/industrial-edge-forum) or [Github](https://github.com/industrial-edge/data-service-device-kit/issues)
+- Where to file issues: Issues can be filed in the [Industrial Edge Forum](https://forum.industrial-edge.siemens.cloud/) or [Github](https://github.com/industrial-edge/iih-essentials-development-kit/issues)
 - Supported architectures: `amd64`
-- Source of the description: [docs repo's siemensindustrialedge/dataservicedevelopmentkit](https://github.com/industrial-edge/data-service-development-kit/tree/main/docs/dockerhub)
+- Source of the description: [docs repo's siemensindustrialedge/dataservicedevelopmentkit](https://github.com/industrial-edge/iih-essentials-development-kit/tree/main/docs/dockerhub)
 
 ## What is IIH Essentials Development Kit for Industrial Edge
 
@@ -31,7 +31,7 @@ There is no need  for having an Industrial Edge environment, everything can be d
 
 ## How to use this image
 
-This image is part of the IIH Essentials Development Kit application and needs to be used as part of the [Docker Compose file](https://github.com/industrial-edge/data-service-development-kit/blob/main/docker-compose.yml) provided in the IIH Essentials Development Kit [Github Repository](https://github.com/industrial-edge/data-service-development-kit).
+This image is part of the IIH Essentials Development Kit application and needs to be used as part of the [Docker Compose file](https://github.com/industrial-edge/iih-essentials-development-kit/blob/main/docker-compose.example.yml) provided in the IIH Essentials Development Kit [Github Repository](https://github.com/industrial-edge/iih-essentials-development-kit).
 
 By running the docker compose configuration, an API instance of the IIH Essentials will be started on your machine. This can be used to easily develop and test your application during development.
 
@@ -39,7 +39,7 @@ Additionally please check the [Getting Started How To](https://github.com/indust
 
 ## Quick Start
 
-Download the [Docker Compose file](https://github.com/industrial-edge/data-service-development-kit/blob/main/docker-compose.yml) and execute it using the following command:
+Download the [Docker Compose file](https://github.com/industrial-edge/iih-essentials-development-kit/blob/main/docker-compose.example.yml) and execute it using the following command:
 
 ```
 docker-compose up
@@ -66,4 +66,4 @@ The IIH Essentials in the Development Kit is a limited version of the IIH Essent
 
 ## License
 
-View [license information](https://github.com/industrial-edge/data-service-development-kit/blob/main/docs/dockerhub/LICENSE.md) for the software contained in this image.
+View [license information](https://github.com/industrial-edge/iih-essentials-development-kit/blob/main/docs/dockerhub/LICENSE.md) for the software contained in this image.
