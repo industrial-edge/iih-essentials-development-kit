@@ -10,7 +10,7 @@
 </div>
 <br><hr><br>
 <div align="center">
-    <img src="./docs/graphics/ds-overview.png" alt="data-service-development-kit-logo" width="1000px" />
+    <img src="./docs/graphics/iih-essentials-overview.png" alt="data-service-development-kit-logo" width="1000px" />
 </div>
 <br><hr><br>
 
