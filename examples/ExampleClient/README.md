@@ -16,7 +16,18 @@ on the REST API of the Data Service.
 >- Calculate trends of aggregated values.
 >- Request new values of timeseries data.
 
-## Build
+## Getting started
+This example can be started in two different ways:
+
+### Docker
+Execute the following command in the example folder:
+```
+docker compose up
+```
+
+### Locally
+
+#### Build
 Install node and npm (node package manager).
 
 In the terminal window navigate to the ExampleClient folder.
@@ -32,7 +43,7 @@ Execute the following command.
 npm run build
 ```
 
-## Execute
+#### Execute
 
 Set the environment variable LOCAL_RUN to true. This is needed so that the application can select the
 correct base url for the communication with the REST API of the Data Service.
@@ -40,6 +51,7 @@ Execute the following command.
 ```
 set LOCAL_RUN=true
 ```
+> Note that this will only work locally. It is not compatible with the Docker method and has to be false when using docker.
 
 Start the application locally.
 Execute the following command.
