@@ -103,15 +103,82 @@ It shows how to create a user, request a token and get assets, tags and time ser
 
 ## What's new
 <details>
-  <summary>
-    <h2 style="display: inline">v1.8.0 - 2023-08-31</h2>
-  </summary>
+  <summary style="font-weight: bold; font-size: x-large;">v1.9.0 - 2023-12-20</summary>
   <h3>Added</h3>
+  <h4>Feature 1981421: Transformations</h4>
+  You can transform data before storing using a user defined formula. Multiple data sources can be combined/processed and stored into a variable. Available operators include basic mathematical, comparing, logical and conditional operators.
+
+  For more Information see the documentation 5.2.2.3.
+
+  This feature aligns with the transformations/rules in IIH or Common Configurator. Variables with rules can now be stored in IIH Essentials.
+
+  <h4>Feature 599116: Refined variable picker</h4>
+  The single and multiple variable pickers have been reworked into an improved variable picker.
+
+  It features single and multiple variable creation using mass operations and error resolving functionalities.
+
+  <h4>Feature 2427421: Licensing information overview</h4>
+  A overview was added in the settings section to display license relevant resource counts. Currently these are asset attributes i.e variables.
+
+  <h4>Feature 2411102: Correction of micro stops for PI OEE</h4>
+  The aggregation for OEE offers an option to remove short amounts of unplanned downtime from the machine state analysis.
+
+  This is necessary because short periods of downtime can be wrongly registered through manual steps in the production (e.g.: The machine operator loads parts into machine).
+
+  <h3>Fixed</h3>
   <ul>
-    <li>Feature 2214201: Renaming to IIH Essentials</li>
-    <li>Feature 2066521: Senseye sync</li>
-    <li>Feature 1478154: Request data of multiple variables with unsynced time ranges</li>
+    <li>Bug 2689196: Search is not working across connection and tagname</li>
+    <li>Bug 2689197: Documentation in IIH opens in same tab</li>
+    <li>Bug 2689205: Wrong Databus credentials can be saved</li>
+    <li>Bug 2689208: Backup file selection should be lost when cancelling another file selection dialog</li>
+    <li>Bug 2689212: Add button on unnamed available connector fails</li>
+    <li>Bug 2689215: Uncommon upload button</li>
+    <li>Bug 2689226: Feedback link is not working</li>
+    <li>Bug 2689230: Sidebar can be opened in the settings view</li>
+    <li>Bug 2689232: Button displayed in system info gauge widget</li>
+    <li>Bug 2689272: Asset name change possible in IIH</li>
+    <li>Bug 2689495: No file type filter when selecting destination certificate files</li>
+    <li>Bug 2695765: Data destination configuration lost on exit without saving</li>
+    <li>Bug 2722744: Insights Hub sync: Memory increases after every model change</li>
+    <li>Bug 2617577: Data Service Documentation: Add explanation for Insights Hub Sync configuration</li>
+    <li>Bug 2618663: Resource not found error when adding a variable with aggregation to Aspect</li>
+    <li>Bug 2620424: Missing tests in test report frontend</li>
+    <li>Bug 2589639: TC : IIH Essentials : Error message is not showing properly for senseye MQTT error in standalone mode</li>
+    <li>Bug 2589692: TC : IIH Essentials : Error message for incorrect API password is not showing properly for senseye in standalone mode</li>
+    <li>Bug 2774695: Senseye destination can be created for not existing root</li>
+    <li>Bug 2794529: Boolean trend is displayed wrong</li>
+    <li>Bug 2805376: TRA tracker: IIH Essentials (DataService)1.9.0</li>
+    <li>Bug 2816251: IIH Essentials: Unable to setup Insights Hub Connectivity with self created technical user</li>
+    <li>Bug 2845488: Multiline Text in Error Messages</li>
+    <li>Bug 2794349: Tag picker: resolving of multiple variable add errors fails</li>
+    <li>Bug 2686803: Focas connectors are not listed in connector list in IIH Essentials</li>
+    <li>Bug 2751084: cURL, libcurl ≤ 8.3.0 - Multiple Unspecified Vulnerabilities - CVE-2023-38545, CVE-2023-38546</li>
+    <li>Bug 2686828: cURL, libcurl 7.84.0 ≤ 8.2.1 - Remote Denial of Service Vulnerability - 8.3.0</li>
+    <li>Bug 2609763: cURL, libcurl 7.84.0 ≤ 8.1.2 - Remote Data Manipulation Vulnerability - 8.2.0</li>
   </ul>
+</details>
+
+<details>
+  <summary style="font-weight: bold; font-size: x-large;">v1.8.0 - 2023-08-31</summary>
+  <h3>Added</h3>
+  <h4>Feature 2214201: Renaming to IIH Essentials</h4>
+  IIH Essentials will replace the current name Data Service.
+
+  When updating from Data Service <=1.7.0 to 1.8.0, the app name will automatically change to IIH Essentials.
+  Everything will continue to work as previously. No further steps are required.
+
+  The app path will change to /iih-essentials. The old path /dataservice is deprecated (deprecation date: 2023-08-16) and will be supported for one more year.
+
+  <h4>Feature 2066521: Senseye sync</h4>
+  Senseye is available as a synchronization destination.
+
+  The asset model and time-series data can be synced to the AI-powered predictive maintenance and asset intelligence solution.
+
+  <h4>Feature 1478154: Request data of multiple variables with unsynced time ranges</h4>
+  The raw data read API offers to request multiple variables at once. The time ranges were synchronized among the variables to optimize displaying all variables at once for the same time range.
+
+  However, other use cases don’t require this. Thus the option to request the variables with independent time ranges was added.
+
   <h3>Fixed</h3>
   <ul>
     <li>Bug 2259118: IIH: Parent asset name is not displayed in inheritance message</li>
@@ -147,15 +214,23 @@ It shows how to create a user, request a token and get assets, tags and time ser
 </details>
 
 <details>
-  <summary>
-    <h2 style="display: inline">v1.7.0 - 2023-06-22</h2>
-  </summary>
+  <summary style="font-weight: bold; font-size: x-large;">v1.7.0 - 2023-06-22</summary>
   <h3>Added</h3>
-  <ul>
-    <li>Feature 1478167: Encrypted backups</li>
-    <li>Feature 1733570: MindSphere connectivity</li>
-    <li>Feature 1977721: Bulk API</li>
-  </ul>
+  <h4>Feature 1478167: Encrypted backups</h4>
+  Backups can be encrypted with a password when being created. Using this, the configuration (including credentials for the databus or clouds) can be secured.
+
+  The password has to be entered again when the backup file is uploaded. There is no way to restore it without.
+
+  <h4>Feature 1733570: MindSphere connectivity</h4>
+  Model and data can be synchronized automatically to MindSphere. The synchronization can be configured at any assets, aspects, variables and aggregations and will be inherited to descendants.
+
+  In Data Service v1.7.0, Insights Hub is available as a possible data destination. In the future, more will be added.
+
+  <h4>Feature 1977721: Bulk API</h4>
+  By adding "/bulk" in the API route, you can create multiple objects (aspects, assets, variables, ...) at once.
+
+  In comparison to creating one object per call, this reduces the time needed to create many objects substantially.
+
   <h3>Fixed</h3>
   <ul>
     <li>Bug 1018113: On Asset & Connectivity view the splitter handle is displayed above open dialogs if mouse cursor hovers over the splitter handle</li>
@@ -196,23 +271,73 @@ It shows how to create a user, request a token and get assets, tags and time ser
 </details>
 
 <details>
-  <summary>
-    <h2 style="display: inline">v1.6.0 - 2023-03-31</h2>
-  </summary>
+  <summary style="font-weight: bold; font-size: x-large;">v1.6.0 - 2023-03-31</summary>
   <h3>Added</h3>
-  <ul>
-    <li>Epic 599113: Datatype blob</li>
-    <li>Epic 1445051: Debugging view</li>
-    <li>Epic 1445127: Add available connectors</li>
-    <li>Epic 1445141: Aggregations UI improvements</li>
-    <li>Epic 1538556: 1.4.0 migration cleanup</li>
-    <li>Epic 1682750: Extend errors and translation in UI</li>
-    <li>Epic 1684984: Variable and counter configuration in Data Service</li>
-    <li>Epic 1685823: CSV export of variable data</li>
-    <li>Epic 1772094: Add databus settings</li>
-    <li>Epic 1864384: Encrypted/secured config store</li>
-    <li>Epic 1928463: Optimize panel performance</li>
-  </ul>
+  <h4>Epic 599113: Datatype blob</h4>
+  The blob data type is a type for unstructured data, stored in binary form. It can be used to store data which is not covered by the other supported data types.
+  
+  Unlike other data types the blob data type has an additional optional property "Blob type". It can be used to define the format of the stored data. It is advisable to use a standardised approach such as MIME-types.
+
+  <h4>Epic 1445051: Debugging view</h4>
+  Default databus settings (broker url, username, password) can be defined in the Data Service settings.
+  
+  They will be used for all connectors. In the connector configuration, however, these can be overwritten with connector specific ones.
+
+  <h4>Epic 1445127: Add available connectors</h4>
+  Simatic connectors and Connectivity Suite connectors can be detected automatically and added with just one click.
+  
+  No manual custom connector configuration necessary (although still possible).
+
+  <h4>Epic 1445141: Aggregations UI improvements</h4>
+  The data of a variable can be exportet to CSV for a given timeframe including existing aggregations.
+  
+  This export file can be imported into any other variable.
+  
+
+  Thus it can be used to
+  - initialize a variable with data
+  - backup/export data in a generic format
+  - transfer data to another Data Service instance
+  - ...
+
+  <h4>Epic 1538556: 1.4.0 migration cleanup</h4>
+  In case of errors the debugging view is the right place to get more information.
+  
+  It is accessible via https://<IED_IP>/dataservice/#/debug and shows information relevant for the support like component versions and live logs.
+  
+  Also extended logging can be enabled on a feature basis to get more detailed information if needed.
+
+  <h4>Epic 1682750: Extend errors and translation in UI</h4>
+  With Data Service v1.4.0 several technologies have been exchanged to achieve higher performance.
+  
+  An automatic migration was running when installing v1.4.0 or v1.5.0 on top of 1.3.0. This, however, requires Data Service to still have the previeous technologies included.
+  
+  Starting from v1.6.0 this automatic migration is removed to dispose of the previous technologies. This results in having configuration and data not migrated when installing >= v1.6.0 directly on top of <= v1.3.0. To keep the data in this update case, a backup has to be created before the update and restored after the update.
+
+
+  This does not have an impact on versions starting >= 1.4.0.
+
+  <h4>Epic 1684984: Variable and counter configuration in Data Service</h4>
+  The variable configuration has been extended to support an aquisition category including counter configuration.
+  
+  It was previously only available in Performance Insight but has now been moved to Data Service in order to allow these configurations for pre-calculated aggregations, too.
+
+  <h4>Epic 1685823: CSV export of variable data</h4>
+  Sensitive information like databus credentials is encrypted and secure.
+  
+  Previous versions of Data Service stored the databus credentials unencrypted on the internal storage. Through the IED file download these could be retrieved. This is now fixed.
+
+  <h4>Epic 1772094: Add databus settings</h4>
+  Aggregations are not explicitly displayed anymore but accessible through the source variable. (Accessible for retention, preview, etc.)
+
+  <h4>Epic 1864384: Encrypted/secured config store</h4>
+  Error messages for backup/restore and IIH mode switch have been extended.
+  
+  Several missing translations habe been added.
+
+  <h4>Epic 1928463: Optimize panel performance</h4>
+  The performance of the subscriptions on the UCP have been improved.
+
   <h3>Fixed</h3>
   <ul>
     <li>Bug 345213: Swt Dataservice:-BACKEND UI is geeting Overlapped when user try to perform such operation(Add,Delete,Edit,Move)</li>
@@ -312,17 +437,36 @@ It shows how to create a user, request a token and get assets, tags and time ser
 </details>
 
 <details>
-  <summary>
-    <h2 style="display: inline">v1.5.0 - 2022-11-08</h2>
-  </summary>
+  <summary style="font-weight: bold; font-size: x-large;">v1.5.0 - 2022-11-08</summary>
   <h3>Added</h3>
-  <ul>
-    <li>Epic 841389: automatic migration to IIH mode</li>
-    <li>Epic 1291958: OpenPipe browsing</li>
-    <li>Epic 1341337: configuration fullscreen dialogs</li>
-    <li>Epic 1444942: Enable/disable storing of variable</li>
-    <li>Epic 1684997: Model mutation via API in IIH mode</li>
-  </ul>
+  <h4>Epic 841389: automatic migration to IIH mode</h4>
+  Automatic migration from Data Service standalone mode to IIH mode is supported. Switching to IIH mode does preserve the already configured data.
+
+  How to migrate Data Service standalone to IIH:
+  1. Install IIH Common Configurator and IIH Core in addition to Data Service
+  1. Go to Data Service settings -> Activate IIH mode
+  1. Starting from version 1.5: Automatic migration. No further steps needed.
+
+  <h4>Epic 1291958: OpenPipe browsing</h4>
+  The “HMI runtime” connector can be browsed like all other connectors.
+  
+  No need to manually type in connection information
+
+  <h4>Epic 1341337: configuration fullscreen dialogs</h4>
+  The configuration of assets, aspects and variables has been improved by combining all configurations of each of these objects into a full screen settings view.
+  
+  This is now the single place where all configurations concerning this object can be found.
+
+  <h4>Epic 1444942: Enable/disable storing of variable</h4>
+  The storing of data of a variable can be temporarily disabled. Every variable has a check box indicating whether it is currently storing new values.
+  
+  In IIH mode this connects directly to the archive flag of the IIH Configurator.
+
+  <h4>Epic 1684997: Model mutation via API in IIH mode</h4>
+  All APIs of data service are working in both modes, standalone and IIH.
+
+  Apps relying on APIs that mutate the model now also work with a Data Service in IIH mode (in 1.4 only standalone was working).
+
   <h3>Fixed</h3>
   <ul>
     <li>Bug 1081843: Data Service Backup configuration exposes credentials</li>
@@ -343,30 +487,48 @@ It shows how to create a user, request a token and get assets, tags and time ser
 </details>
 
 <details>
-  <summary>
-    <h2 style="display: inline">v1.4.0 - 2022-08-15</h2>
-  </summary>
+  <summary style="font-weight: bold; font-size: x-large;">v1.4.0 - 2022-08-15</summary>
   <h3>Added</h3>
-  <ul>
-    <li>1152241 Epic Data Service C++: Major performance improvements</li>
-    <li>599109 Epic System info dashboard: Monitor the system with using the system info dashboard</li>
-    <li>Pre-aggregate variables to reduce calculation response times</li>
-    <ul>
-      <li>955990 Epic Pre-calculated aggregation</li>
-      <li>1032684 Epic Improve calculation performance using pre-aggregated data</li>
-    </ul>
-    <li>IIH integration: Run Data Service in IIH Mode</li>
-    <ul>
-      <li>1392382 Epic Running modes: Standalone and IIH</li>
-      <li>1121415 Epic IIH frontend adaptions</li>
-      <li>Connectivity Suite compatibility</li>
-    </ul>
-    <li>1024587 Epic Optimized UI for mobile</li>
-    <li>1024592 Epic Optimized UI keyboard handling</li>
-    <li>1028323 Epic New Simulation UI</li>
-    <li>1389681 Epic Add new default adapters: New default adapters: SLMP, OPC UA, S7+</li>
-    <li>1392451 Epic Migration of DS standalone 1.3 to 1.4</li>
-  </ul>
+  <h4>Epic 1152241 and 1392451: Data Service C++ - Major performance improvements</h4>
+  Data Service has been completely rewritten using more suitable technologies to remove bottle necks that couldn’t have been removed otherwise.
+
+  This gives Data Service a performance multiple times the performance of V1.3.0.
+
+  <h4>Epic 599109: System info dashboard: Monitor the system with using the system info dashboard</h4>
+  The system info dashboard allows app specific insights into the system metrics:
+  - CPU load
+  - RAM load
+  - Database Size
+  - …
+
+  <h4>Epic 955990 and 1032684: Pre-aggregate variables to reduce calculation response times</h4>
+  Variables can be aggregated before demand when the live values are received.
+
+  This reduces the performance impact for the calculation as the aggregation is done continuously in the background. When requesting results will be available quickly, even for a month or a year request.
+
+  <h4>Epic 1392382 and 1121415: IIH integration - Run Data Service in IIH Mode</h4>
+  The Data Service can be switched into IIH mode where the model will be retrieved from the IIH and configuration will be possible in IIH configurator. The Data Service itself will be used to store/manage the live data as time-series-data and provide it via the already known API interface.
+
+  Caution: In version 1.4.0 all existing data will be lost if IIH mode is activated. A automatic migration will be available starting from version 1.5.0.
+
+  Connectors using the Connectivity Suite standard are supported by Data Service.
+
+  <h4>Epic 1024587: Optimized UI for mobile</h4>
+  Data Service has a responsive design which allows to being used with different screensizes including mobile devices.
+
+  <h4>Epic 1024592: Optimized UI keyboard handling</h4>
+  UI elements like dialogs can be operated using a keyboard:
+  - Esc closes/cancels an action
+  - Return confirms an action
+  - Tab navigates the elements
+  - First element is focussed automatically
+
+  <h4>Epic 1389681: Add new default adapters: New default adapters: SLMP, OPC UA, S7+</h4>
+  The list of default adapters has been extended by:
+  - SLPM
+  - OPC UA
+  - S7+
+
   <h3>Fixed</h3>
   <ul>
     <li>1467230 Bug Edit variable dialog displays connection status of a variable without adapter</li>
@@ -442,19 +604,7 @@ It shows how to create a user, request a token and get assets, tags and time ser
 </details>
 
 <details>
-  <summary>
-    <h2 style="display: inline">v1.3.3 - 2022-02-25</h2>
-  </summary>
-  <h3>Fixed</h3>
-  <ul>
-    <li>1197005 Bug Booleans are sent in an unexpected format for some apps</li>
-  </ul>
-</details>
-
-<details>
-  <summary>
-    <h2 style="display: inline">v1.3.0 - 2021-10-11</h2>
-  </summary>
+  <summary style="font-weight: bold; font-size: x-large;">v1.3.0 - 2021-10-11</summary>
   <h3>Added</h3>
   <ul>
     <li>Predefined aspect types</li>
@@ -500,9 +650,7 @@ It shows how to create a user, request a token and get assets, tags and time ser
 </details>
 
 <details>
-  <summary>
-    <h2 style="display: inline">v1.2.0 - 2021-05-21</h2>
-  </summary>
+  <summary style="font-weight: bold; font-size: x-large;">v1.2.0 - 2021-05-21</summary>
   <h3>Added</h3>
   <ul>
     <li>New Aggregates: standard deviation, variance, count (number of datapoints), first</li>
@@ -518,9 +666,7 @@ It shows how to create a user, request a token and get assets, tags and time ser
 </details>
 
 <details>
-  <summary>
-    <h2 style="display: inline">v1.1.0 - 2021-04-19</h2>
-  </summary>
+  <summary style="font-weight: bold; font-size: x-large;">v1.1.0 - 2021-04-19</summary>
   Initial release of Data Service Development Kit.
 </details>
 
