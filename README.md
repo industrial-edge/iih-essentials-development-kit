@@ -103,6 +103,42 @@ It shows how to create a user, request a token and get assets, tags and time ser
 
 ## What's new
 <details>
+  <summary style="font-weight: bold; font-size: x-large;">v1.10.0 - 2024-02-05</summary>
+  <h3>Added</h3>
+  <h4>Feature 2684415: Alarm support</h4>
+  Alarms can be received from Connectivity Suite connectors. The alarms are saved in "alarm channels", which are configured by selecting the alarm source (connector) and a filter, which alarms should be stored.
+
+  The stored alarms are provided though the northbound REST API.
+
+  <h4>Feature 1742222: Publish data to Connector</h4>
+  A new API route is available which allows data to be published to a connector for a specific variable.
+
+  The connector then sends this to the corresponding PLC. If the PLC "accepts" the data, it is forwarded the already existing way, via connector, and stored into IIH Essentials.
+
+  <h4>Feature 2956912: Write performance optimization</h4>
+  The time series database was improved with an additional write buffer.
+
+  This way, write operations can be optimized. It reduces the CPU load by ~20% and reduces wear on the persisting hardware.
+
+  <h3>Fixed</h3>
+  <ul>
+    <li>Bug 2660712: TC: Senseye sync could not recover from incorrect sublevel root</li>
+    <li>Bug 2717535: "Put /DataService/AlarmChannels/{id}" API does not check for duplicate name</li>
+    <li>Bug 2774639: Destination shows connected when not</li>
+    <li>Bug 2774660: Senseye API Credentials with special characters don't</li>
+    <li>Bug 2774722: Senseye data not syncing after a certain</li>
+    <li>Bug 2845225: There is a problem with the sorting functionality of the "query alarms by filters and raisedTime range"</li>
+    <li>Bug 2845305: There is a problem with the filter function of the "query alarms by filters and raisedTime range"</li>
+    <li>Bug 2867332: IIH essentials - need to click cancel twice in order to</li>
+    <li>Bug 2973022: TRA tracker: IIH Essentials</li>
+    <li>Bug 3101348: Transformations: Tag names are not displayed after selection the connector for S7 and S7+</li>
+    <li>Bug 3111242: Transformations: Tags with dot in the name cannot be</li>
+    <li>Bug 2942725: IIH Essentials can't restore data Parameter locked is not</li>
+    <li>Bug 3075243: IIH Essentials: can not import configuration</li>
+  </ul>
+</details>
+
+<details>
   <summary style="font-weight: bold; font-size: x-large;">v1.9.0 - 2023-12-20</summary>
   <h3>Added</h3>
   <h4>Feature 1981421: Transformations</h4>

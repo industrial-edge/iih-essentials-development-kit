@@ -1,0 +1,90 @@
+[data-md-color-scheme=light] {
+    --md-table-bg-color: #fff;
+    --md-table-head-color: #f3f3f0;
+}
+
+thead {
+    background-color: var(--md-table-head-color);
+}
+
+.md-typeset .md-button {
+    margin-bottom: 4px;
+}
+
+:root {
+    --md-admonition-icon--legal-danger: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>')
+  }
+  .md-typeset .admonition.legal-danger,
+  .md-typeset details.legal-danger {
+    border-color: rgb(239, 1, 55);
+  }
+  .md-typeset .legal-danger > .admonition-title,
+  .md-typeset .legal-danger > summary {
+    background-color: rgba(239, 1, 55, 0.1);
+  }
+  .md-typeset .legal-danger > .admonition-title::before,
+  .md-typeset .legal-danger > summary::before {
+    background-color: rgb(239, 1, 55);
+    -webkit-mask-image: var(--md-admonition-icon--legal-danger);
+            mask-image: var(--md-admonition-icon--legal-danger);
+  }
+
+  :root {
+    --md-admonition-icon--legal-warning: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>')
+  }
+  .md-typeset .admonition.legal-warning,
+  .md-typeset details.legal-warning {
+    border-color: rgb(255, 144, 0);
+  }
+  .md-typeset .legal-warning > .admonition-title,
+  .md-typeset .legal-warning > summary {
+    background-color: rgba(255, 144, 0, 0.1);
+  }
+  .md-typeset .legal-warning > .admonition-title::before,
+  .md-typeset .legal-warning > summary::before {
+    background-color: rgb(255, 144, 0);
+    -webkit-mask-image: var(--md-admonition-icon--legal-warning);
+            mask-image: var(--md-admonition-icon--legal-warning);
+  }
+
+  :root {
+    --md-admonition-icon--legal-caution: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>')
+  }
+  .md-typeset .admonition.legal-caution,
+  .md-typeset details.legal-caution {
+    border-color: rgb(255, 215, 50);
+  }
+  .md-typeset .legal-caution > .admonition-title,
+  .md-typeset .legal-caution > summary {
+    background-color: rgba(255, 215, 50, 0.1);
+  }
+  .md-typeset .legal-caution > .admonition-title::before,
+  .md-typeset .legal-caution > summary::before {
+    background-color: rgb(255, 215, 50);
+    -webkit-mask-image: var(--md-admonition-icon--legal-caution);
+            mask-image: var(--md-admonition-icon--legal-caution);
+  }
+
+  :root {
+    --md-admonition-icon--legal-notice: :material-triangle-outline:
+  }
+  .md-typeset .admonition.legal-notice,
+  .md-typeset details.legal-notice {
+    border-color: rgb(0, 190, 220);
+  }
+  .md-typeset .legal-notice > .admonition-title,
+  .md-typeset .legal-notice > summary {
+    background-color: rgba(0, 190, 220, 0.1);
+    padding-left: 0.6rem;
+  }
+  .md-typeset .legal-notice > .admonition-title::before,
+  .md-typeset .legal-notice > summary::before {
+    background-color: rgba(0, 190, 220, 0);
+    -webkit-mask-image: var(--md-admonition-icon--legal-notice);
+            mask-image: var(--md-admonition-icon--legal-notice);
+  }
+
+  .responsive-iframe {
+    aspect-ratio: 16/9;
+    width: 75%;
+  }
