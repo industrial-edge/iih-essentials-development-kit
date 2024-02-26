@@ -33,13 +33,11 @@
 Using the IIH Essentials Development Kit​ you can develop apps based on the IIH Essentials and integrate them into Siemens Industrial Edge.
 
 In this repository you can find the following components:
-- <a href="docker-compose.example.yml">​Docker file: docker-compose.example.yml</a>
-- <a href="./docs">Documentation</a>
-  - <a href="./docs/iih-essentials">IIH Essentials documentation and ​API specification</a>
-  - <a href="./docs/development-kit">Development Kit documentation</a>
-- <a href="./examples">Examples</a>
+- [​Docker file: docker-compose.example.yml](docker-compose.example.yml)
+- [Documentation](https://industrial-edge.github.io/iih-essentials-development-kit/iih-essentials/)
+- [Examples](./examples)
 
-By running the docker compose configuration, an API instance of the IIH Essentials will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](./docs/iih-essentials/api-documentation/data-service-api-specification.html). This file needs to be opened locally in a browser.
+By running the docker compose configuration, an API instance of the IIH Essentials will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](https://industrial-edge.github.io/iih-essentials-development-kit/iih-essentials/api/openapi/). This file needs to be opened locally in a browser.
 
 An image is loaded from Docker Hub, containing these components:
 
