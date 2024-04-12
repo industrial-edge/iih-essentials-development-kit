@@ -73,24 +73,29 @@ docker-compose up
 
 ​All service images are downloaded from Docker Hub and launched as defined in the ```​docker-compose.yml​``` file.
 
-Use the Simulation UI to create tags with simulated data that can be connected to IIH Essentials variables. To access the Simulation UI open this address in a browser:
-
-``` browser
-http://localhost:4519
-```
-
 Use the IIH Essentials UI to configure data connections and structure your data. You can connect simulated tags to variables. This will store the data and offer it through the API, making it available for 3rd party apps to use. To access the IIH Essentials UI open this address in a browser:
 
 ``` browser
 http://localhost:4203​
 ```
 
+### Simulate data
+
+Use the Simulation UI to create tags with simulated data that can be connected to IIH Essentials variables. To access the Simulation UI open this address in a browser:
+
+``` browser
+http://localhost:4519
+```
+
+To use the configured tags, the simulation connector needs to be added to IIH Essentials:
+
+<img src="./docs/graphics/add-simulation-connector.png" alt="add-simulation-connector" width="1000px" />
+
 ### Limitations
 
 The IIH Essentials in the Development Kit is a limited version of the IIH Essentials:
 
 - Data retention: ​By default, the data is kept for one week. This cannot be changed.
-- Adapters/Connectors: Existing adapters/connectors cannot be modified or deleted. No new adapters/connectors can be added.
 
 ## Examples
 
