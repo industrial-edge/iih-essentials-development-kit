@@ -13,7 +13,7 @@ volumes:
 
 services:
   # MQTT Broker
-  simulation-broker:
+  ie-databus:
     image: eclipse-mosquitto:1.6.10
     networks:
       - dataservicedevelopmentkit_default
@@ -42,7 +42,7 @@ services:
     restart: unless-stopped
 
   simulation:
-    image: siemensindustrialedge/dataservicesimulation:1.5.2
+    image: siemensindustrialedge/dataservicesimulation:1.5.3
     environment:
       - PLATFORM=edge
       - OPERATOR_PLAN=edge
@@ -50,7 +50,7 @@ services:
       - DBSERVICE=Edge
       - EXTENDED_ERRORS=true
       - LOG_DEBUG_INFO=true
-      - MQTT_BROKER_URL=tcp://simulation-broker:1883
+      - MQTT_BROKER_URL=tcp://ie-databus:1883
       - MQTT_BROKER_USR=
       - MQTT_BROKER_PSW=
       - SIM_MODE=MQTT
