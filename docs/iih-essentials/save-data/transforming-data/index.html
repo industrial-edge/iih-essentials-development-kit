@@ -326,6 +326,7 @@
   
   
     
+      
   <a href="../../api/openapi/" title="API" 
       >
     
@@ -334,6 +335,8 @@
   
   
 
+    
+  
   
 
   
@@ -345,7 +348,7 @@
         
           
             
-  <a href="../../what%27s-new-history/what%27s-new-in-iih-essentials-v1_9/" title="Appendix" 
+  <a href="../../what%27s-new-history/what%27s-new-in-iih-essentials-v1_10/" title="Appendix" 
       >
     
   Appendix
@@ -615,14 +618,8 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="/assets/data-service-ui/title-bar/documentation/" hreflang="en" class="md-select__link">
+            <a href="/dl/dl-media/639/109827639/att_1166730/v4/IIH_Essentials_Docu_V1_10_EN_DE/index.html" hreflang="en" class="md-select__link">
               English
-            </a>
-          </li>
-        
-          <li class="md-select__item">
-            <a href="/assets/data-service-ui/title-bar/documentation/de/" hreflang="de" class="md-select__link">
-              Deutsch
             </a>
           </li>
         
@@ -780,7 +777,7 @@
         
   
   <span class="md-ellipsis">
-    Defining databus settings centrally
+    Defining Databus settings centrally
   </span>
   
 
@@ -1039,6 +1036,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Transforming data
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1048,6 +1056,45 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        
+<li class="md-nav__item">
+  <a href="#procedure" title="Procedure" class="md-nav__link md-nav__link--primary">
+    Procedure
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
+  <a href="#result" title="Result" class="md-nav__link md-nav__link--primary">
+    Result
+  </a>
+
+  
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1997,6 +2044,34 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        
+<li class="md-nav__item">
+  <a href="#procedure" title="Procedure" class="md-nav__link md-nav__link--primary">
+    Procedure
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
+  <a href="#result" title="Result" class="md-nav__link md-nav__link--primary">
+    Result
+  </a>
+
+  
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2015,34 +2090,41 @@
 <h1 id="transforming-data">Transforming data</h1>
 <p>In the rule editor of <abbr title="Industrial Information Hub">IIH</abbr> Essentials you can create transformation rules with pre-defined operators. A transformation rule can consist of the following elements:</p>
 <ul>
-<li>Tags from the data source</li>
-<li>Process tags</li>
-<li>Constants</li>
-</ul>
-<p>A data source is referenced by the name of the data source from which the data is loaded. These can be connectors, for example. A data source consists of the connector name, connection name and tag name. The following syntax is used: <code class="highlight">connectorName.connectionName.tagName</code></p>
-<p>Examples:</p>
-<ul>
+<li>Tags from a data source<br />
+  The name of a data source consists of the connector name from which data is retrieved (e.g. SIMATIC S7+ CONNECTOR), connection name and tag name.<br />
+  The following syntax is used: (<code class="highlight">connectorName.connectionName.tagName</code>).<br />
+  Examples for a data source name:<ul>
 <li><code class="highlight">css7pdriver1.PLC_3.AlwaysTRUE</code></li>
 <li><code class="highlight">mbtcp1.turbofan.sensor1</code></li>
 </ul>
-<p>A connector name is referenced by the name of the connector from which data is retrieved (e.g. SIMATIC S7+ CONNECTOR).</p>
-<p>A process tag consists of the name of the CPU, followed by a dot, followed by a tag name (e.g. "plc.tagname").</p>
-<p>A constant can be:</p>
-<ul>
-<li>Integers<br/>
-  A number must only be used decimally, for example 4711.</li>
-<li>Floating-point numbers<br/>
-  A floating-point number is a digit sequence, followed by a dot, followed by a sequence of numbers</li>
-<li>true or false<br/></li>
+</li>
+<li>Process tags<br />
+  The name of a process tag consists of the name of the CPU, followed by a dot, followed by a tag name (e.g. "plc.tagname").</li>
+<li>Constants<br />
+  For more information about constants see: <a href="../supported-data-types/">Supported data types</a>.</li>
 </ul>
+<h2 id="procedure">Procedure</h2>
+<ol>
+<li>Open the settings of a selected variable or create a new variable.</li>
+<li>Click "Transformation" in the "Source" tab.</li>
+<li>Create the transformation rule in the rule editor.</li>
+<li>Click "Add variable" or "Edit variable" to check and save the syntax of the transformation rule, operands and operators.<br/>
+  <a class="glightbox" href="../../media/174607225867.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="174607225867-d2e2480" src="../../media/174607225867.png" /></a><br/>
+  !!! note<ul>
+<li>The key combination "<span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-space">Space</kbd></span>" displays suggestions of the data sources available in the current context.    </li>
+<li>If a part of the data source contains spaces, use quotation marks to declare:
+  Example: <code class="highlight">((&quot;SIMATIC S7 Connector&quot;.turbofan.sensor4 + &quot;SIMATIC S7 Connector&quot;.PLC_4.AlwaysFALSE) * &quot;SIMATIC S7 Connector&quot;.PLC_4.DataInByte / &quot;SIMATIC S7 Connector&quot;.PLC_5.Pressure_1 + 10)</code></li>
+</ul>
+</li>
+</ol>
 <div class="admonition info">
-<p class="admonition-title">Use lowercase</p>
-<p>All letters must be lowercase in strings, e.g. true, false</p>
+<p class="admonition-title">Responsibility for the tranformation script</p>
+<p>The operator is responsible for the hygiene of self written code in data source transformation editor.
+Please examine the impact the code can have on the system before activating.</p>
 </div>
-<p>In formulas, the data source references are given in double inverted commas:</p>
-<p>Example:</p>
-<p><code class="highlight">((&quot;SIMATIC S7 Connector.turbofan.sensor4&quot; + &quot;SIMATIC S7 Connector.PLC_4.AlwaysFALSE&quot;) * &quot;SIMATIC S7 Connector.PLC_4.DataInByte&quot; / &quot;SIMATIC S7 Connector.PLC_5.Pressure_1&quot; + 10)</code></p>
-<p>The key combination "<span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-space">Space</kbd></span>" displays suggestions of the data sources available in the current context.</p>
+<h2 id="result">Result</h2>
+<p>You created a transformation rule for the selected variable.</p>
+<p><a class="glightbox" href="../../media/174759995275.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="174759995275-d2e2503" src="../../media/174759995275.png" /></a></p>
 
 
 

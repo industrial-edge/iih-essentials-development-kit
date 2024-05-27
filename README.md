@@ -106,6 +106,42 @@ It shows how to create a user, request a token and get assets, tags and time ser
 
 ## What's new
 <details>
+  <summary style="font-weight: bold; font-size: x-large;">v1.11.0 - 2024-05-14</summary>
+  <h3>Added</h3>
+  <h4>Feature 2214191: Sync aggregated data</h4>
+  When syncing, it is now possible to synchronize aggregated data. E.g. if you have data with high granularity on the edge the device, you might not want to sync all the raw data to the cloud. With this new feature, it is possible to define the cycle and the aggregation algorithm, in which the data should be synced. The data of every variable below will then first be aggregated and consecutively sent to the cloud.
+
+  <h4>Feature 3147997: Alarm data backup</h4>
+  Initially released in the 1.10.0, the alarming feature was missing in the backup. With 1.11.0, the alarm data is now also included in the backup.
+
+  <h3>Fixed</h3>
+  <ul>
+    <li>Bug 3222534: Development kit simulation adapter available</li>
+    <li>Bug 3230718: IIH-Essentials shows disconnected state after power off/restore of IED</li>
+    <li>Bug 3235884: IIHE: Databus credentials suddenly no longer valid</li>
+    <li>Bug 3327353: Incorrect parameter in swagger documentation</li>
+    <li>Bug 3328456: IIH Essentials - Added Connector is not activated by default</li>
+    <li>Bug 3328790: Documentation is not opening in store data page</li>
+    <li>Bug 3328834: Store Data - About - System Information graphics label.</li>
+    <li>Bug 3395304: TC : Store data : In IIH integrated mode Define data Assets are not updating to store data page</li>
+    <li>Bug 3406293: IIH Essentials API: wrongly generated Request URL for GetAllVariables function when assetIds filter is used</li>
+    <li>Bug 3409396: TRA tracker: IIH Essentials (DataService)1.11.0</li>
+    <li>Bug 3409668: IIH Essentials: Sporatic issue Connector Discovery</li>
+    <li>Bug 3411565: Unable to create alarm channels after backup restore</li>
+    <li>Bug 3417609: Connectors are not restored from a backup</li>
+    <li>Bug 3440632: Alarm class is not displayed in Alarms page</li>
+    <li>Bug 3448834: Unable to create alarm channel with same name in two different assets</li>
+    <li>Bug 3448854: Retention properties are not displayed while adding alarm channel without connector</li>
+    <li>Bug 3448893: Retention fields are displayed while adding alarm channel even though the retention toggle is off</li>
+    <li>Bug 3449021: API Response time is high for large data while fetching 1000 alarms from IIH Essentials</li>
+    <li>Bug 3449042: The column which displays the Alarm ID has the title ID</li>
+    <li>Bug 3449826: Too long alarm text is not displayed properly in alarm details dialog</li>
+    <li>Bug 3483013: Add/Edit Alarm Channel header is not present</li>
+    <li>Bug 3531935: Backup download of Alarming data file contains timeseries data of variables</li>
+  </ul>
+</details>
+
+<details>
   <summary style="font-weight: bold; font-size: x-large;">v1.10.0 - 2024-02-05</summary>
   <h3>Added</h3>
   <h4>Feature 2684415: Alarm support</h4>

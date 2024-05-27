@@ -24,7 +24,7 @@ services:
 
   # Services
   edgeappdataservice:
-    image: siemensindustrialedge/dataservicedevelopmentkit:1.10.0
+    image: siemensindustrialedge/dataservicedevelopmentkit:1.11.0
     environment:
       - EXTENDED_ERRORS=true
       - LOG_DEBUG_INFO=true

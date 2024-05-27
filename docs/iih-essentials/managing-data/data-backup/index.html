@@ -326,6 +326,7 @@
   
   
     
+      
   <a href="../../api/openapi/" title="API" 
       >
     
@@ -334,6 +335,8 @@
   
   
 
+    
+  
   
 
   
@@ -345,7 +348,7 @@
         
           
             
-  <a href="../../what%27s-new-history/what%27s-new-in-iih-essentials-v1_9/" title="Appendix" 
+  <a href="../../what%27s-new-history/what%27s-new-in-iih-essentials-v1_10/" title="Appendix" 
       >
     
   Appendix
@@ -615,14 +618,8 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="/assets/data-service-ui/title-bar/documentation/" hreflang="en" class="md-select__link">
+            <a href="/dl/dl-media/639/109827639/att_1166730/v4/IIH_Essentials_Docu_V1_10_EN_DE/index.html" hreflang="en" class="md-select__link">
               English
-            </a>
-          </li>
-        
-          <li class="md-select__item">
-            <a href="/assets/data-service-ui/title-bar/documentation/de/" hreflang="de" class="md-select__link">
-              Deutsch
             </a>
           </li>
         
@@ -778,7 +775,7 @@
         
   
   <span class="md-ellipsis">
-    Defining databus settings centrally
+    Defining Databus settings centrally
   </span>
   
 
@@ -2089,38 +2086,45 @@
 
 
 <h1 id="data-backup">Data backup</h1>
-<p>You can back up the configuration data and time series data in <abbr title="Industrial Information Hub">IIH</abbr> Essentials (connector connections, asset structure, variables, aspects, etc.) and, for example, restore it on another <abbr title="Industiral Edge Device">IED</abbr>, or you can create a data backup of your configuration.</p>
+<p>You can back up the configuration data, time series data, and alarm data in <abbr title="Industrial Information Hub">IIH</abbr> Essentials. It is possible to encrypt the backup so it can only be restored with a password. The encryption will only affect the configuration file.
+The <strong>configuration data backup</strong> includes all structures without data. These are the instances like assets, aspects, variables, and alarm channels. The configuration also includes the data destinations and connectors.
+The <strong>time series data backup</strong> contains the pure data of variables from the before-mentioned configuration. By omitting this file in the restore process, it is possible to copy the structure of variables from one <abbr title="Industiral Edge Device">IED</abbr> to another without having the data included.
+The <strong>alarm data backup</strong> contains the pure data of alarm channels from the before-mentioned configuration. By omitting this file in the restore process, it is possible to copy the structure of alarm channels from one <abbr title="Industiral Edge Device">IED</abbr> to another without having the data included.</p>
 <div class="admonition info">
 <p class="admonition-title">Restoring a data backup</p>
-<p>When you restore a backup of your data, only the data that was included at the time of the last data backup is restored. Recent changes made in <abbr title="Industrial Information Hub">IIH</abbr> Essentials since the last data backup are lost when the data backup is restored.</p>
+<p>When you restore a backup of your data, only the data that was included at the time of the last data backup is restored. Recent changes made in <abbr title="Industrial Information Hub">IIH</abbr> Essentials since the last data backup are lost when restoring the file.</p>
 <p>For this reason, we recommend making regular data backups.</p>
 </div>
 <h2 id="procedure">Procedure</h2>
 <p>Proceed as follows to back up the data:</p>
 <ol>
 <li>In the navigation bar, click on "Settings &gt; Backup and restore".</li>
-<li>If you only want to back up the configuration files, click directly on "Download".</li>
-<li>If you also want to save the time series data, enable the function "Include time series data":<br/>
-  <a class="glightbox" href="../../media/159107920139.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="159107920139-d2e3299" src="../../media/159107920139.png" /></a></li>
+<li>If you only want to back up the configuration files, click "Download".<ul>
+<li>If you set a password, the backup file will be encrypted. The password is then needed to restore the backup.</li>
+</ul>
+</li>
+<li>If you also want to include the time series data or alarm data, check the corresponding box under "Include".<br/>
+  <a class="glightbox" href="../../media/backup.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="backup" src="../../media/backup.png" /></a></li>
 <li>Click "Download".</li>
 <li>
 <p>The data is downloaded locally (in the Downloads folder):<br/></p>
 <ul>
-<li>For the configuration data: iih-essentials-backup-config.json</li>
-<li>For the time series data: iih-essentials-backup-data.txt</li>
+<li>Configuration data: <code class="highlight">iih-essentials-backup-config.json</code></li>
+<li>Time series data: <code class="highlight">iih-essentials-backup-data.txt</code></li>
+<li>Alarm data: <code class="highlight">iih-essentials-backup-alarm-data.txt</code></li>
 </ul>
 <div class="admonition info">
-<p class="admonition-title">Creation of the time series data file</p>
-<p>It may take a bit longer to create the file.</p>
+<p class="admonition-title">Time series data file</p>
+<p>It may take some time to create the time series data file.</p>
 </div>
 </li>
 <li>
-<p>To track the creation process of the files, you can enable the developer tools in the browser (<span class="keys"><kbd>F12</kbd></span> or <span class="keys"><kbd class="key-control">Ctrl</kbd></span> + <span class="keys"><kbd class="key-shift">Shift</kbd></span> + <span class="keys"><kbd>I</kbd></span>) and open the "Network" tab.</p>
+<p>To track the creation process of the files, you can enable the developer tools in the browser (<span class="keys"><kbd class="key-f12">F12</kbd></span> or <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-i">I</kbd></span>) and open the "Network" tab.</p>
 </li>
 </ol>
 <h2 id="result">Result</h2>
-<p>The following data, for example, are backed up in the configuration file:</p>
-<p><a class="glightbox" href="../../media/159107924491.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="159107924491-d2e3337" src="../../media/159107924491.png" /></a></p>
+<p>The configuration backup file is of the type .json. It contains the structure of <abbr title="Industrial Information Hub">IIH</abbr> Essentials and the core settings like the <code class="highlight">dataBusCredentials</code>. When a password is set for the backup, the file will be encrypted and not readable.</p>
+<p>The data backup files are of the type .txt. The data is stored in a table structure. The data files are never encrypted.</p>
 
 
 
