@@ -326,6 +326,7 @@
   
   
     
+      
   <a href="../../api/openapi/" title="API" 
       >
     
@@ -334,6 +335,8 @@
   
   
 
+    
+  
   
 
   
@@ -345,7 +348,7 @@
         
           
             
-  <a href="../../what%27s-new-history/what%27s-new-in-iih-essentials-v1_9/" title="Appendix" 
+  <a href="../../what%27s-new-history/what%27s-new-in-iih-essentials-v1_10/" title="Appendix" 
       >
     
   Appendix
@@ -613,14 +616,8 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="/assets/data-service-ui/title-bar/documentation/" hreflang="en" class="md-select__link">
+            <a href="/dl/dl-media/639/109827639/att_1166730/v4/IIH_Essentials_Docu_V1_10_EN_DE/index.html" hreflang="en" class="md-select__link">
               English
-            </a>
-          </li>
-        
-          <li class="md-select__item">
-            <a href="/assets/data-service-ui/title-bar/documentation/de/" hreflang="de" class="md-select__link">
-              Deutsch
             </a>
           </li>
         
@@ -776,7 +773,7 @@
         
   
   <span class="md-ellipsis">
-    Defining databus settings centrally
+    Defining Databus settings centrally
   </span>
   
 
@@ -2242,20 +2239,16 @@
 <h2 id="special-features-and-limitations">Special features and limitations</h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>MindSphere has been renamed Insights Hub.</p>
+<p>MindSphere has been renamed to Insights Hub.</p>
 </div>
 <p>The following special features and restrictions apply when Insights Hub is used as the data destination for data synchronization.</p>
 <h3 id="data-prioritization">Data prioritization</h3>
-<p><abbr title="Industrial Information Hub">IIH</abbr> Essentials handles historical data and live data differently.</p>
-<ul>
-<li>Live data: <abbr title="Industrial Information Hub">IIH</abbr> Essentials subscribes to the connectors. When new data arrives, it is sent directly to Insights Hub. This means that live data appears immediately in Insights Hub.</li>
-<li>Historical data: If the Insights Hub synchronization has to resynchronize historical time ranges due to a disconnection, this is carried out in parallel but with lower priority. Depending on how long the downtime was, this can involve a lot of data and take some time.</li>
-</ul>
-<p>Even if new live data is already available in Insights Hub after a connection is lost, the process of synchronizing the buffered data can still continue.</p>
-<p>In addition, Insights Hub handles new data with higher priority than data from the past, which can amplify the effect.</p>
+<p>The data prioritization in <abbr title="Industrial Information Hub">IIH</abbr> Essentials has changed compared to previous versions. In previous versions, historical data and live data were handled differently.</p>
+<p>Now <abbr title="Industrial Information Hub">IIH</abbr> Essentials synchronizes data for a variable in chronological order. This means it starts with the oldest but not yet synchronized data and continues until all data up to the current timestamp is synchronized.</p>
+<p>If a variable with historical data is added to an asset/aspect, sending this data is prioritized. The data of other already synchronized variables for this asset/aspect will only be sent again if the historical data of the new variable is synchronized.</p>
 <h3 id="loss-of-data">Loss of data</h3>
 <p>If a synchronized variable is moved in <abbr title="Industrial Information Hub">IIH</abbr> Essentials, the data of this variable is lost in Insights Hub. This also applies to the addition or removal of a variable to/from an aspect.</p>
-<p>To synchronize data again, modify the start date.</p>
+<p>The data of the moved variable still in <abbr title="Industrial Information Hub">IIH</abbr> Essentials will then be synchronized again with the newly created variable in Insights Hub.</p>
 <h3 id="payload">Payload</h3>
 <p>Limits per tenant and per client are specified by Insights Hub and AWS:</p>
 <ul>
@@ -2283,6 +2276,9 @@
 <ul>
 <li>
 <p>Tenant: Insights Hub tenant name of the Insights Hub account, e.g. wccdev.<br/></p>
+</li>
+<li>
+<p>Client: Insights Hub client name of the Insights Hub mqtt agent (name of the certificate, see below), e.g. test.<br/></p>
 <div class="admonition info">
 <p class="admonition-title">Correct tenant name and client</p>
 <p>If the tenant name or the client CN name are incorrect, the connection to Insights Hub cannot be established.</p>
@@ -2290,17 +2286,26 @@
 </li>
 <li>
 <p>Login data for the app: <br/></p>
-<p>(Preferred) app credentials: Possible if development capabilities are available in the tenant: create app, create app credentials.
-Technical user: Create a technical user with the permissions <code class="highlight"><span class="n">mdsp</span><span class="o">:</span><span class="n">core</span><span class="o">:</span><span class="n">assetmanagement</span><span class="o">.</span><span class="na">admin</span></code> and <code class="highlight"><span class="n">mdsp</span><span class="o">:</span><span class="n">core</span><span class="o">:</span><span class="n">mindconnect</span><span class="o">.</span><span class="na">fullaccess</span></code>.</p>
-<p>The app ID and password (secret key) are the app credentials required when an app such as <abbr title="Industrial Information Hub">IIH</abbr> Essentials requires interaction with REST APIs of Insights Hub.<br/>
-To obtain the certificate login information, open a <a href="https://www.youtube.com/watch?v=72YKbqT_WY4&amp;list=PL1m1vu8_quoB_ieAG9KrlqFLDurjNzrOD&amp;index=11">Support Ticket</a>.</p>
 <ul>
-<li>Certificates: Upload the created device certificate, e.g. test-cert.pem.If there is no certificate for the selected tenant yet, then you need to create an appropriate certificate first. <br/>
-A detailed description of how to create a Connector certificate can be found here:<br/><ul>
+<li>
+<p>Credentials: App ID and Secret key: The app ID and password (secret key) are the app credentials required when an app such as <abbr title="Industrial Information Hub">IIH</abbr> Essentials requires interaction with REST APIs of Insights Hub.
+There are several ways of creating these credentials:</p>
+<ul>
+<li>(Preferred) Creating user credentials via Insights Hub.
+Open the following url <code class="highlight">https://&lt;tenantname&gt;-settings.eu1.mindsphere.io/home</code>
+Go to Technical Users and create a new technical user with the permissions <code class="highlight"><span class="n">mdsp</span><span class="o">:</span><span class="n">core</span><span class="o">:</span><span class="n">assetmanagement</span><span class="o">.</span><span class="na">admin</span></code> and <code class="highlight"><span class="n">mdsp</span><span class="o">:</span><span class="n">core</span><span class="o">:</span><span class="n">mindconnect</span><span class="o">.</span><span class="na">fullaccess</span></code>.</li>
+<li>If development capabilities are available in the tenant: create an app, create app credentials via the app.</li>
+<li>Open a <a href="https://www.youtube.com/watch?v=72YKbqT_WY4&amp;list=PL1m1vu8_quoB_ieAG9KrlqFLDurjNzrOD&amp;index=11">Support Ticket</a> to request a technical user</li>
+</ul>
+</li>
+<li>
+<p>Certificates: Upload the created device certificate, e.g. test-cert.pem. If there is no certificate for the selected tenant yet, then you need to create an appropriate certificate first. <br/>
+A detailed description of how to create a Connector certificate can be found here:<br/></p>
+<ul>
 <li><a href="https://developer.mindsphere.io/howto/howto-managing-ca-certificates.html">Managing CA Certificates</a><br/></li>
 <li><a href="https://documentation.mindsphere.io/MindSphere/concepts/concept-mindconnect-mqtt-broker.html">MindConnect MQTT Broker</a><br/>
   Read how to create a client certificate here: "<a href="../creating-a-client-certificate/">Creating a client certificate</a>".<br/>
- Read how to download a broker certificate here: "<a href="../downloading-a-broker-certificate/">Downloading a broker certificate</a>".</li>
+  Read how to download a broker certificate here: "<a href="../downloading-a-broker-certificate/">Downloading a broker certificate</a>".</li>
 </ul>
 </li>
 <li>Region, Broker URL and Broker port: Do not adapt these settings, as only the EU1 region is supported.</li>
@@ -2312,7 +2317,7 @@ A detailed description of how to create a Connector certificate can be found her
 <li>
 <p>Enable the data destination.</p>
 </li>
-<li>To create the data destination, click "Save".</li>
+<li>Click "Save".</li>
 </ol>
 <h2 id="result">Result</h2>
 <p>Insights Hub is available as a data destination and can be specified as the <a href="../defining-the-data-synchronization/">storage location</a>.</p>

@@ -326,6 +326,7 @@
   
   
     
+      
   <a href="../../api/openapi/" title="API" 
       >
     
@@ -334,6 +335,8 @@
   
   
 
+    
+  
   
 
   
@@ -345,7 +348,7 @@
         
           
             
-  <a href="../../what%27s-new-history/what%27s-new-in-iih-essentials-v1_9/" title="Appendix" 
+  <a href="../../what%27s-new-history/what%27s-new-in-iih-essentials-v1_10/" title="Appendix" 
       >
     
   Appendix
@@ -615,14 +618,8 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="/assets/data-service-ui/title-bar/documentation/" hreflang="en" class="md-select__link">
+            <a href="/dl/dl-media/639/109827639/att_1166730/v4/IIH_Essentials_Docu_V1_10_EN_DE/index.html" hreflang="en" class="md-select__link">
               English
-            </a>
-          </li>
-        
-          <li class="md-select__item">
-            <a href="/assets/data-service-ui/title-bar/documentation/de/" hreflang="de" class="md-select__link">
-              Deutsch
             </a>
           </li>
         
@@ -780,7 +777,7 @@
         
   
   <span class="md-ellipsis">
-    Defining databus settings centrally
+    Defining Databus settings centrally
   </span>
   
 
@@ -1188,26 +1185,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        
-<li class="md-nav__item">
-  <a href="#procedure" title="Procedure" class="md-nav__link md-nav__link--primary">
-    Procedure
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
-  <a href="#result" title="Result" class="md-nav__link md-nav__link--primary">
-    Result
-  </a>
-
-  
   
 </li>
       
@@ -2103,26 +2080,6 @@
   
 </li>
       
-        
-<li class="md-nav__item">
-  <a href="#procedure" title="Procedure" class="md-nav__link md-nav__link--primary">
-    Procedure
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
-  <a href="#result" title="Result" class="md-nav__link md-nav__link--primary">
-    Result
-  </a>
-
-  
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2145,12 +2102,12 @@
 <ul>
 <li>Integers</li>
 <li>Floating-point numbers</li>
-<li>true or false</li>
+<li>Boolean values</li>
 <li>Strings<br/></li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Use lowercase</p>
-<p>All letters must be lowercase in strings, e.g. true, false</p>
+<p>All letters must be lowercase in strings, e.g. true, false.</p>
 </div>
 <h2 id="list-of-all-supported-operators">List of all supported operators</h2>
 <p>An unary operator can be placed in front of a primary or (partial) expression.</p>
@@ -2178,42 +2135,68 @@
 <th>Operator</th>
 <th>Description</th>
 <th>Notes</th>
+<th>Examples</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>* / %</td>
+<td>* <br/>/ <br/>%</td>
 <td>Multiplication<br/>Division<br/>Modulo</td>
 <td>Mathematical operators</td>
+<td><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">var2</span></code><br/><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">var2</span></code><br/><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">var2</span></code></td>
 </tr>
 <tr>
-<td>+ -</td>
+<td>+ <br/>-</td>
 <td>Addition<br/>Subtraction</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td>&lt; <br/>&gt; <br/>&lt;=<br/>&gt;=<br/></td>
 <td>Relational operators</td>
 <td>Relational operators have a higher priority than equality operators, in contrast to IEC 6113-1.</td>
+<td><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">var2</span></code><br/><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">var2</span></code><br/><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">var2</span></code><br/><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">var2</span></code></td>
 </tr>
 <tr>
 <td>==<br/>!=</td>
 <td>Equality operators</td>
 <td>Equality operators have a lower priority than relational operators, in contrast to IEC 6113-1.</td>
+<td><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">var2</span></code><br/><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">var2</span></code></td>
 </tr>
 <tr>
 <td>^</td>
 <td>Bit-wise Exclusive Or</td>
-<td>of the C languages</td>
+<td>C language</td>
+<td><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">var2</span></code></td>
 </tr>
 <tr>
 <td>AND</td>
-<td>logical AND</td>
+<td>Logical AND</td>
 <td></td>
+<td><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">var2</span></code></td>
 </tr>
 <tr>
 <td>OR</td>
-<td>logical OR</td>
+<td>Logical OR</td>
+<td></td>
+<td><code class="highlight"><span class="n">var1</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">var2</span></code></td>
+</tr>
+<tr>
+<td>min/max</td>
+<td>Functions</td>
+<td></td>
+<td><code class="highlight"><span class="nb">min</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span><span class="w"> </span><span class="n">var2</span><span class="p">)</span></code></td>
+</tr>
+<tr>
+<td>if-else-then <br/>switch case</td>
+<td>Control structures</td>
+<td></td>
+<td><code class="highlight"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">var1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">var2</span><span class="p">,</span><span class="w"> </span><span class="n">var1</span><span class="p">,</span><span class="w"> </span><span class="n">var2</span><span class="p">)</span></code> <br/> <code class="highlight"><span class="n">switch</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="n">case</span><span class="w"> </span><span class="n">var1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">var1</span><span class="o">+</span><span class="mi">1000</span><span class="p">;</span><span class="w">  </span><span class="n">case</span><span class="w"> </span><span class="n">var2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">var2</span><span class="o">+</span><span class="mi">10</span><span class="p">;</span><span class="w">  </span><span class="n">default</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span><span class="w"> </span><span class="n">var2</span><span class="p">);}</span></code></td>
+</tr>
+<tr>
+<td>while loop</td>
+<td>Loop structures</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
@@ -2235,36 +2218,21 @@
 </tr>
 </tbody>
 </table>
-<p>All listed operators can be combined with any process tags and constants (as long as the data types fit). The sequence of the operations can be changed by using brackets: In the expression (x+y)*z the sub-expression x+y is calculated first and then the result is multiplied by z.</p>
-<p>For Boolean values, the text representations true and false or the numerical values 0 and 1 can be used. A numerical calculation with a result of the data type BOOL must be evaluated either as 0 or 1. Any other value leads to an evaluation error.</p>
-<p>Conditional evaluations can be made with the ternary operator. The general syntax is &lt;condition&gt; ? &lt;true case&gt; : &lt;false case&gt; :</p>
-<p>if the result of the sub-expression &lt;condition&gt; is TRUE (or unequal to 0), then the result is the value of the sub-expression &lt;true case&gt;. Otherwise the result is the value of &lt;false case&gt;.</p>
+<p>All listed operators can be combined with any process tags and constants (as long as the data types fit). The sequence of the operations can be changed by using brackets: 
+In the expression <code class="highlight">(x+y)*z</code> the sub-expression <code class="highlight">x+y</code> is calculated first and then the result is multiplied by <code class="highlight">z</code>.</p>
+<p>For Boolean values, you can use text representations (<code class="highlight">true</code> and <code class="highlight">false</code>) or the numerical values (<code class="highlight"><span class="mf">0</span></code> and <code class="highlight"><span class="mf">1</span></code>). A numerical calculation with a result of the data type BOOL must be evaluated either as <code class="highlight"><span class="mf">0</span></code> or <code class="highlight"><span class="mf">1</span></code>. Any other value leads to an evaluation error.</p>
+<p>Conditional evaluations can be made with the ternary operator. The general syntax is: <code class="highlight">&lt;condition\&gt; ? &lt;true case\&gt; : &lt;false case\&gt;</code>.
+If the result of the sub-expression <code class="highlight">&lt;condition\&gt;</code> is TRUE (or unequal to <code class="highlight"><span class="mf">0</span></code>), then the result is the value of the sub-expression <code class="highlight">&lt;true case\&gt;</code>. Otherwise the result is the value of <code class="highlight">&lt;false case\&gt;</code>.</p>
 <h3 id="examples-for-transformation-rules">Examples for transformation rules</h3>
 <ul>
-<li>a &gt; b ? x + 1 : 0<br/>
-  If the actual value of the variables a is greater than the actual value of the variables b, the value of the assigned variables is set to the result of the evaluation of x+1.<br/>
-  Otherwise if a is smaller or equal to b, the value of the assigned variables is set to 0.</li>
-<li>a &gt; b ? 1 : x + y<br/>
-  If the actual value of the variables a is greater than the actual value of the variables b, the value of the assigned variables is set to 1. Otherwise the value of the assigned variables is set to the result of the evaluation of x+y.</li>
-<li>(a &gt; b ? 1 : x) + y<br/>
-  If the actual value of the variables a is greater than the actual value of the variables b, the value of the assigned variables is set to 1+y. Otherwise the value of the assigned variables is set to the result of the evaluation of x+y.</li>
+<li><code class="highlight">a &gt; b ? x + 1 : 0</code><br/>
+  If the actual value of the variables <code class="highlight">a</code> is greater than the actual value of the variables <code class="highlight">b</code>, the value of the assigned variables is set to the result of the evaluation of <code class="highlight">x+1</code>.<br/>
+  Otherwise if <code class="highlight">a</code> is smaller or equal to <code class="highlight">b</code>, the value of the assigned variables is set to <code class="highlight"><span class="mf">0</span></code>.</li>
+<li><code class="highlight">a &gt; b ? 1 : x + y</code><br/>
+  If the actual value of the variables <code class="highlight">a</code> is greater than the actual value of the variables <code class="highlight">b</code>, the value of the assigned variables is set to <code class="highlight"><span class="mf">1</span></code>. Otherwise the value of the assigned variables is set to the result of the evaluation of <code class="highlight">x+y</code>.</li>
+<li><code class="highlight">(a &gt; b ? 1 : x) + y</code><br/>
+  If the actual value of the variables <code class="highlight">a</code> is greater than the actual value of the variables <code class="highlight">b</code>, the value of the assigned variables is set to <code class="highlight"><span class="mf">1</span><span class="o">+</span><span class="n">y</span></code>. Otherwise the value of the assigned variables is set to the result of the evaluation of <code class="highlight">x+y</code>.</li>
 </ul>
-<h2 id="procedure">Procedure</h2>
-<p>To transform an assigned tag in the asset model, follow these steps:</p>
-<ol>
-<li>Open the variable settings or create a new variable.</li>
-<li>Click "Transformation" in the "Source" tab.</li>
-<li>Create the transformation rule in the rule editor.</li>
-<li>Click "Add Variable" to check and save the syntax of the transformation rule, operands and operators.<br/>
-  <a class="glightbox" href="../../media/174607225867.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="174607225867-d2e2480" src="../../media/174607225867.png" /></a><br/>
-  The tag must be placed in double quotation marks.</li>
-<li>Click "Validate" to validate the syntax of the transformation rule, the operands and operators immediately.<br/>
-  The tag must be enclosed in single quotes.</li>
-<li>Click "Save".</li>
-</ol>
-<h2 id="result">Result</h2>
-<p>As soon as the transformation rule has been created, the variable is displayed in the list.</p>
-<p><a class="glightbox" href="../../media/174759995275.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="174759995275-d2e2503" src="../../media/174759995275.png" /></a></p>
 
 
 

@@ -326,6 +326,7 @@
   
   
     
+      
   <a href="../../api/openapi/" title="API" 
       >
     
@@ -334,6 +335,8 @@
   
   
 
+    
+  
   
 
   
@@ -345,7 +348,7 @@
         
           
             
-  <a href="../../what%27s-new-history/what%27s-new-in-iih-essentials-v1_9/" title="Appendix" 
+  <a href="../../what%27s-new-history/what%27s-new-in-iih-essentials-v1_10/" title="Appendix" 
       >
     
   Appendix
@@ -613,14 +616,8 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="/assets/data-service-ui/title-bar/documentation/" hreflang="en" class="md-select__link">
+            <a href="/dl/dl-media/639/109827639/att_1166730/v4/IIH_Essentials_Docu_V1_10_EN_DE/index.html" hreflang="en" class="md-select__link">
               English
-            </a>
-          </li>
-        
-          <li class="md-select__item">
-            <a href="/assets/data-service-ui/title-bar/documentation/de/" hreflang="de" class="md-select__link">
-              Deutsch
             </a>
           </li>
         
@@ -776,7 +773,7 @@
         
   
   <span class="md-ellipsis">
-    Defining databus settings centrally
+    Defining Databus settings centrally
   </span>
   
 
@@ -2105,30 +2102,27 @@
 
 
 <h1 id="defining-the-data-synchronization">Defining the data synchronization</h1>
-<p>You can decide for every level (assets, aspects, variables, aggregations) whether data are to be synchronized with one or several external data destinations. A complete synchronization setting always consists of a data destination and the start date as of which data are to be synchronized.</p>
+<p>You can decide for every level (assets, aspects, variables) whether data are to be synchronized with one or several external data destinations. A complete synchronization setting always consists of a data destination and the start date as of which data are to be synchronized and the aggregation configuration for controlling the granularity of the synchronization.</p>
 <p>Synchronization settings are inherited to the respective subordinate levels.</p>
 <div class="admonition info">
 <p class="admonition-title">Data synchronization on the asset level</p>
-<p>Aggregations will no longer be synchronized globally in a future version of <abbr title="Industrial Information Hub">IIH</abbr> Essentials. Instead, a function for controlling the granularity of the synchronization will be implemented. </p>
-<p>Please take this account in your project design.</p>
 </div>
 <h2 id="requirement">Requirement</h2>
 <p>At least one <a href="../setting-up-insights-hub-as-a-synchronization-destination/">data destination has been set up</a>.</p>
 <h2 id="procedure">Procedure</h2>
-<p>The procedure for setting up data synchronization is the same for assets, aspects, variables, and aggregations. The areas for settings are located at the following points:</p>
+<p>The procedure for setting up data synchronization is the same for assets, aspects, and variables. The areas for settings are located at the following points:</p>
 <ul>
 <li>Assets: In the "Synchronizations" section of the respective asset.</li>
 <li>Aspects: In the "Synchronizations" section of the respective aspect.</li>
 <li>Variables: In the "Synchronizations" tab of the respective variable.</li>
-<li>Aggregations: In the "Aggregation" tab of the respective variable, in the "Synchronizations" column.</li>
 </ul>
 <p>To define the data synchronization, follow these steps:</p>
 <ol>
-<li>Select the asset, aspect, variable or aggregation for which you want to set the data synchronization.</li>
+<li>Select the asset, aspect or variable for which you want to set the data synchronization.</li>
 <li>Depending on your choice, navigate to one of the points mentioned above.</li>
 <li>Click <a class="glightbox" href="../../media/136885514251.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="136885514251-d2e4585" src="../../media/136885514251.png" /></a>.</li>
-<li>Select the data destination and the start date and activate data synchronization by using the blue slider. The following screenshot shows the settings for the asset level as an example.<br/>
-  <a class="glightbox" href="../../media/168714612619.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="168714612619-d2e4591" src="../../media/168714612619.png" /></a></li>
+<li>Select the data destination and the start date, configure aggregation and activate data synchronization by using the blue slider. The following screenshot shows the settings for the asset level as an example.<br/>
+  <a class="glightbox" href="../../media/data_syncs.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="168714612619-d2e4591" src="../../media/data_syncs.png" /></a></li>
 </ol>
 <h2 id="result">Result</h2>
 <p>The data are synchronized with the selected data destination. The respective synchronization status is indicated by one of the following icons.</p>

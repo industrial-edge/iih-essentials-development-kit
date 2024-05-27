@@ -2,8 +2,8 @@
     "openapi": "3.0.1",
     "info": {
         "title": "IIH Essentials API",
-        "description": "Description of the REST API of IIH Essentials. <br>The maximum size limit for a single request (no file) is 4 MB.<br>The connection timeout is 10 seconds.<br>The routes starting with \"/TokenManagerService/*\" are also available at port 4521. This is deprecated and will be supported until 2023-09-07.",
-        "version": "1.10.0"
+        "description": "Description of the REST API of IIH Essentials. <br>The maximum size limit for a single request (no file) is 4 MB.<br>The connection timeout is 10 seconds.",
+        "version": "1.11.0"
     },
     "servers": [
         {
@@ -70,10 +70,6 @@
         {
             "name": "Service",
             "description": "General information."
-        },
-        {
-            "name": "TokenManager",
-            "description": "Legacy routes for dependencies. These routes are only simulated to provide the functionality."
         },
         {
             "name": "Variables"
@@ -479,6 +475,65 @@
                 }
             }
         },
+        "/DataService/Adapters/Values": {
+            "post": {
+                "tags": [
+                    "Adapters"
+                ],
+                "summary": "Write values via adapter.",
+                "description": "Write values via adapter. Adapter tags must be configured as writeable.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/AdapterWriteValueRequest"
+                                }
+                            },
+                            "example": [
+                                {
+                                    "variableId": "02bd77391f8a4ed7ac5b3c5b4db8bfe3",
+                                    "value": 1234
+                                },
+                                {
+                                    "variableId": "0c4a5565a1ef4d87acdcbe6a157fb03b",
+                                    "value": 12.34
+                                }
+                            ]
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AdapterWriteValueResponse"
+                                    }
+                                },
+                                "example": [
+                                    {
+                                        "variableId": "02bd77391f8a4ed7ac5b3c5b4db8bfe3",
+                                        "success": true
+                                    },
+                                    {
+                                        "variableId": "0c4a5565a1ef4d87acdcbe6a157fb03b",
+                                        "success": false,
+                                        "errorCode": "VARIABLE_NOT_FOUND",
+                                        "errorDescription": "The variable with the id 0c4a5565a1ef4d87acdcbe6a157fb03b was not found."
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/DataService/Adapters/{id}/browse": {
             "get": {
                 "tags": [
@@ -725,13 +780,18 @@
                     "Aggregations"
                 ],
                 "summary": "Get all aggregations",
-                "description": "Get a list of aggregations, aggregations can be filtered by variable ids",
+                "description": "Get a list of aggregations, aggregations can be filtered by variable ids. \n\n Please note that the generated curl command and request URL should be modified, if using a filter, before using sending the request to IIH Essentials. The returned array for variableIds must be enclosed in (square) brackets [], each single string should be in quotation marks and strings should remain separated by commas, in case multiple strings are used for a filter. For instance: \n\n - For a single variableId: http://localhost:4203/DataService/Aggregations?variableIds=[\"53f05e175c0c48bd9742157c1a462ca9\"] \n\n - For multiple variableIds: http://localhost:4203/DataService/Aggregations?variableIds=[\"53f05e175c0c48bd9742157c1a462ca9\",\"eab960dcb97e4752b298387f780cba1e\"]",
                 "parameters": [
                     {
                         "name": "variableIds",
                         "in": "query",
+                        "style": "form",
+                        "explode": false,
                         "schema": {
-                            "type": "string"
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
                         },
                         "description": "The variable ids have to be specified as JSON array"
                     }
@@ -1846,26 +1906,26 @@
                                     "alarmText": [
                                         {
                                             "language": "en-US",
-                                            "text": "EN ack alarm text"
+                                            "value": "EN ack alarm text"
                                         }
                                     ],
                                     "extendedProperties": [
                                         {
                                             "key": "AdditionalText0",
-                                            "valueType": "MultilingualText",
+                                            "valueType": "LocalizedString",
                                             "language": "en-US",
-                                            "text": "EN addl ack alarm text 1"
+                                            "value": "EN addl ack alarm text 1"
                                         },
                                         {
                                             "key": "AdditionalText1",
-                                            "valueType": "MultilingualText",
+                                            "valueType": "LocalizedString",
                                             "language": "en-US",
-                                            "text": "EN addl ack alarm text 2"
+                                            "value": "EN addl ack alarm text 2"
                                         },
                                         {
                                             "key": "Alarm State",
                                             "valueType": "String",
-                                            "text": "kAcknowledged"
+                                            "value": "kAcknowledged"
                                         }
                                     ]
                                 },
@@ -1886,26 +1946,26 @@
                                     "alarmText": [
                                         {
                                             "language": "en-US",
-                                            "text": "EN ack alarm text"
+                                            "value": "EN ack alarm text"
                                         }
                                     ],
                                     "extendedProperties": [
                                         {
                                             "key": "AdditionalText0",
-                                            "valueType": "MultilingualText",
+                                            "valueType": "LocalizedString",
                                             "language": "en-US",
-                                            "text": "EN addl ack alarm text 1"
+                                            "value": "EN addl ack alarm text 1"
                                         },
                                         {
                                             "key": "AdditionalText1",
-                                            "valueType": "MultilingualText",
+                                            "valueType": "LocalizedString",
                                             "language": "en-US",
-                                            "text": "EN addl ack alarm text 2"
+                                            "value": "EN addl ack alarm text 2"
                                         },
                                         {
                                             "key": "Alarm State",
                                             "valueType": "String",
-                                            "text": "kAcknowledged"
+                                            "value": "kAcknowledged"
                                         }
                                     ]
                                 }
@@ -1942,8 +2002,8 @@
                                 "$ref": "#/components/schemas/AlarmQueryBody"
                             },
                             "example": {
-                                "channel": [],
-                                "asset": [
+                                "alarmChannelIds": [],
+                                "assetIds": [
                                     "0"
                                 ],
                                 "areaFilter": [
@@ -1982,7 +2042,7 @@
                                 ],
                                 "from": "2023-08-17T03:17:06Z",
                                 "to": "2023-11-17T03:17:06Z",
-                                "order": "desc",
+                                "order": "Descending",
                                 "offset": 0,
                                 "take": 20
                             }
@@ -2033,26 +2093,26 @@
                                             "alarmText": [
                                                 {
                                                     "language": "en-US",
-                                                    "text": "EN ack alarm text"
+                                                    "value": "EN ack alarm text"
                                                 }
                                             ],
                                             "extendedProperties": [
                                                 {
                                                     "key": "AdditionalText0",
-                                                    "valueType": "MultilingualText",
+                                                    "valueType": "LocalizedString",
                                                     "language": "en-US",
-                                                    "text": "EN addl ack alarm text 1"
+                                                    "value": "EN addl ack alarm text 1"
                                                 },
                                                 {
                                                     "key": "AdditionalText1",
-                                                    "valueType": "MultilingualText",
+                                                    "valueType": "LocalizedString",
                                                     "language": "en-US",
-                                                    "text": "EN addl ack alarm text 2"
+                                                    "value": "EN addl ack alarm text 2"
                                                 },
                                                 {
                                                     "key": "Alarm State",
                                                     "valueType": "String",
-                                                    "text": "kAcknowledged"
+                                                    "value": "kAcknowledged"
                                                 }
                                             ]
                                         },
@@ -2074,26 +2134,26 @@
                                             "alarmText": [
                                                 {
                                                     "language": "en-US",
-                                                    "text": "EN ack alarm text"
+                                                    "value": "EN ack alarm text"
                                                 }
                                             ],
                                             "extendedProperties": [
                                                 {
                                                     "key": "AdditionalText0",
-                                                    "valueType": "MultilingualText",
+                                                    "valueType": "LocalizedString",
                                                     "language": "en-US",
-                                                    "text": "EN addl ack alarm text 1"
+                                                    "value": "EN addl ack alarm text 1"
                                                 },
                                                 {
                                                     "key": "AdditionalText1",
-                                                    "valueType": "MultilingualText",
+                                                    "valueType": "LocalizedString",
                                                     "language": "en-US",
-                                                    "text": "EN addl ack alarm text 2"
+                                                    "value": "EN addl ack alarm text 2"
                                                 },
                                                 {
                                                     "key": "Alarm State",
                                                     "valueType": "String",
-                                                    "text": "kAcknowledged"
+                                                    "value": "kAcknowledged"
                                                 }
                                             ]
                                         }
@@ -2151,11 +2211,13 @@
                     "Aspects"
                 ],
                 "summary": "Get all aspects.",
-                "description": "Get a list of Aspects. Aspects can be filtered by aspectId or assetId. If no filter is specified, all aspects will be returned. It is not supported to specify more than one filter parameter.",
+                "description": "Get a list of Aspects. Aspects can be filtered by aspectId or assetId. If no filter is specified, all aspects will be returned. It is not supported to specify more than one filter parameter. \n\n Please note that the generated curl command and request URL should be modified, if a filter is being used, before using sending the request to IIH Essentials. The returned array must be enclosed in (square) brackets [], each single string should be in quotation marks and strings should remain separated by commas, in case multiple strings are used for a filter. For instance: \n\n - Filtering for a single assetId: http://localhost:4203/DataService/Aspects?assetIds=[\"53f05e175c0c48bd9742157c1a462ca9\"] \n\n - Filtering for multiple assetIds: http://localhost:4203/DataService/Aspects?assetIds=[\"53f05e175c0c48bd9742157c1a462ca9\",\"eab960dcb97e4752b298387f780cba1e\"]",
                 "parameters": [
                     {
                         "name": "aspectIds",
                         "in": "query",
+                        "style": "form",
+                        "explode": false,
                         "schema": {
                             "type": "array",
                             "items": {
@@ -2170,6 +2232,8 @@
                     {
                         "name": "assetIds",
                         "in": "query",
+                        "style": "form",
+                        "explode": false,
                         "schema": {
                             "type": "array",
                             "items": {
@@ -3245,16 +3309,24 @@
                     "Assets"
                 ],
                 "summary": "Get all assets.",
-                "description": "Get a list of assets. Assets can be filtered by assetId. Breadcrumb and children can be added to the response if specific assets are requested.",
+                "description": "Get a list of assets. Assets can be filtered by assetId. Breadcrumb and children can be added to the response if specific assets are requested. \n\n Please note that the generated curl command and request URL should be modified, if a filter is being used, before using sending the request to IIH Essentials. The returned array must be enclosed in (square) brackets [], each single string should be in quotation marks and strings should remain separated by commas, in case multiple strings are used for a filter. For instance: \n\n - Filtering for a single assetId: http://localhost:4203/AssetService/Assets?assetIds=[\"53f05e175c0c48bd9742157c1a462ca9\"]&includeChildren=true&includeBreadcrumb=true \n\n - Filtering for multiple assetIds: http://localhost:4203/AssetService/Assets?assetIds=[\"53f05e175c0c48bd9742157c1a462ca9\",\"eab960dcb97e4752b298387f780cba1e\"]&includeChildren=true&includeBreadcrumb=true",
                 "parameters": [
                     {
                         "name": "assetIds",
                         "description": "Filter to get only a specified subset of assets.",
                         "in": "query",
+                        "style": "form",
+                        "explode": false,
                         "schema": {
-                            "type": "string",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
                             "description": "Array of assetId strings encoded in JSON.",
-                            "example": "[\"0\",\"d0df2a40afd64671bda7b53ce8f08ef8\"]"
+                            "example": [
+                                "53abb2fdc0da4c24b84b735930c7b9c8",
+                                "53abb2fdc0da4c24b84b735930c7b9c8"
+                            ]
                         }
                     },
                     {
@@ -4319,7 +4391,7 @@
                     "Backup"
                 ],
                 "summary": "Restore the configuration backup.",
-                "description": "Restore the whole configuration, this means every current configuration will be deleted, except system types, those are updated. If an error occurs, the existing setup will be restored.",
+                "description": "Restore the whole configuration, this means every current configuration will be deleted, except system types, those are updated. If an error occurs, the existing setup will be restored. This route is limited to 4MB. Use /DataService/Backup/ConfigFile for bigger files.",
                 "parameters": [
                     {
                         "name": "fromIIH",
@@ -4354,6 +4426,118 @@
                                         "$ref": "#/components/schemas/DataServiceEncryptedConfig"
                                     }
                                 ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request,<br>The examples are only a selection of the possible error values. Several consistency checks are made.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Exception"
+                                },
+                                "examples": {
+                                    "InvalidParameter": {
+                                        "$ref": "#/components/examples/ExceptionInvalidParameterExample"
+                                    },
+                                    "RootAssetNotFound": {
+                                        "value": {
+                                            "service": "IIH Essentials",
+                                            "state": 400,
+                                            "stateText": "BadRequest",
+                                            "errorCode": 3,
+                                            "errorKey": "InvalidParameter",
+                                            "message": "Parameter Asset.parentId is invalid: Root asset not found.",
+                                            "errorParams": {
+                                                "reason": "Root asset not found.",
+                                                "what": "Asset.parentId"
+                                            },
+                                            "debugInfo": {
+                                                "method": "POST",
+                                                "missingAssetId": "0",
+                                                "missingParentId": "",
+                                                "route": "/DataService/Backup/Config"
+                                            }
+                                        }
+                                    },
+                                    "AdapterIdMissing": {
+                                        "value": {
+                                            "service": "IIH Essentials",
+                                            "state": 400,
+                                            "stateText": "BadRequest",
+                                            "errorCode": 3,
+                                            "errorKey": "InvalidParameter",
+                                            "message": "Parameter Adapter.id is invalid: Id missing.",
+                                            "errorParams": {
+                                                "reason": "Id missing.",
+                                                "what": "Adapter.id"
+                                            },
+                                            "debugInfo": {
+                                                "method": "POST",
+                                                "name": "Simatic Connector",
+                                                "route": "/DataService/Backup/Config"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/DataService/Backup/ConfigFile": {
+            "post": {
+                "tags": [
+                    "Backup"
+                ],
+                "summary": "Restore the configuration backup as multipart file upload.",
+                "description": "This route has the same features as /Backup/Config. Is is implemented as multipart/form file upload to be able to use config files which are bigger than 4 MB.",
+                "parameters": [
+                    {
+                        "name": "fromIIH",
+                        "in": "query",
+                        "description": "This indicates that the restore call is coming from IIH. Only IIH should use this parameter.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Required if the backup is encrypted.",
+                        "schema": {
+                            "type": "string",
+                            "example": "1234"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "This is the file download with GET.",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "config": {
+                                        "type": "string",
+                                        "format": "application/json"
+                                    }
+                                }
                             }
                         }
                     }
@@ -4666,6 +4850,77 @@
                                     "NotFound": {
                                         "$ref": "#/components/examples/DataNotFoundExample"
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/DataService/Backup/AlarmData": {
+            "get": {
+                "tags": [
+                    "Backup"
+                ],
+                "summary": "Get the alarm data backup.",
+                "description": "Download the whole alarm data backup. This includes all content from all channels and alarms and extended properties. This is configured as an automatic file download",
+                "responses": {
+                    "200": {
+                        "description": "Data as txt file with own format",
+                        "content": {
+                            "text/plain": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Backup"
+                ],
+                "summary": "Restore the alarm data backup.",
+                "description": "Restore the alarm data backup downloaded with GET request.",
+                "requestBody": {
+                    "required": true,
+                    "description": "This is the file download with GET.",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "data": {
+                                        "type": "string",
+                                        "format": "text/plain"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success,<br>The possible errors are listet in the errors array, in the example are only a few possible errors listed.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RestoreAlarmDataResult"
+                                },
+                                "example": {
+                                    "alarmChannels": [
+                                        {
+                                            "alarmChannelId": "3845831fca4148269c2dae60547cae24",
+                                            "alarmCount": 10,
+                                            "extendedPropertyCount": 100
+                                        }
+                                    ],
+                                    "errors": [
+                                        "Line 1: Database version row is incorrect",
+                                        "Line 200: ChannelId or tableName cannot be parsed.",
+                                        "Line 300: Provided invalid channelId or table name.",
+                                        "Line 400: Failed to restore an alarm data.",
+                                        "Line 500: Failed to restore an extended property data.",
+                                        "Line 600: Data values and columns are mismatch. Some values are missing for this record."
+                                    ],
+                                    "maxErrorsReached": false
                                 }
                             }
                         }
@@ -5225,7 +5480,7 @@
         "/DataService/Data": {
             "get": {
                 "summary": "Read data of multiple variables.",
-                "description": "Get time series data of multiple variables. The response size is limited to 4 MB. In order to not exceed this limit, maximum 100 variables are supported per request. Furthermore, you should be cautions when choosing the time range and cycle time as these affect the size of the response, too.",
+                "description": "Get time series data of multiple variables. The response size is limited to 4 MB. In order to not exceed this limit, maximum 100 variables are supported per request. Furthermore, you should be cautions when choosing the time range and cycle time as these affect the size of the response, too. \n\n Please note that the generated curl command and request URL should be modified before using sending the request to IIH Essentials. The returned array for variableIds must be enclosed in (square) brackets [], each single string should be in quotation marks and strings should remain separated by commas, in case multiple strings are used for a filter. For instance: \n\n - For a single variableId: http://localhost:4203/DataService/Data?variableIds=[\"53f05e175c0c48bd9742157c1a462ca9\"]&from=2024-04-17T09:00:00.000Z&to=2024-04-17T10:05:00.000Z \n\n - For multiple variableIds: http://localhost:4203/DataService/Data?variableIds=[\"53f05e175c0c48bd9742157c1a462ca9\",\"eab960dcb97e4752b298387f780cba1e\"]&from=2024-04-17T09:00:00.000Z&to=2024-04-17T10:05:00.000Z",
                 "tags": [
                     "Data"
                 ],
@@ -5233,11 +5488,18 @@
                     {
                         "name": "variableIds",
                         "description": "The variableIds have to be specified as JSON array of strings.",
-                        "example": "[\"9d9ed88826854821884e17cdeeb98fa7\",\"87906f351b4844c4960bfc99d7e41dc3\"]",
+                        "example": [
+                            "d0df2a40afd64671bda7b53ce8f08ef8"
+                        ],
                         "required": true,
                         "in": "query",
+                        "style": "form",
+                        "explode": false,
                         "schema": {
-                            "type": "string"
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
                         }
                     },
                     {
@@ -7699,7 +7961,15 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/DataSyncResponse"
+                                    "$ref": "#/components/schemas/DataSyncArray"
+                                },
+                                "examples": {
+                                    "WithAggregation": {
+                                        "$ref": "#/components/examples/DataSyncStateWithAggregationExample"
+                                    },
+                                    "WithoutAggregation": {
+                                        "$ref": "#/components/examples/DataSyncStateWithoutAggregationExample"
+                                    }
                                 }
                             }
                         }
@@ -7750,7 +8020,8 @@
                     "DataSync"
                 ],
                 "summary": "Create a new data sync.",
-                "description": "Create a new data sync.",
+                "description": "Create a new data sync. Blocked if this overwritts existing datasyncs in startime.",
+                "parameters": [],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -7759,8 +8030,11 @@
                                 "$ref": "#/components/schemas/DataSync"
                             },
                             "examples": {
-                                "Set": {
-                                    "$ref": "#/components/examples/DataSyncExample"
+                                "WithAggregation": {
+                                    "$ref": "#/components/examples/DataSyncWithAggregationExample"
+                                },
+                                "WithoutAggregation": {
+                                    "$ref": "#/components/examples/DataSyncWithoutAggregationExample"
                                 }
                             }
                         }
@@ -7775,8 +8049,11 @@
                                     "$ref": "#/components/schemas/DataSync"
                                 },
                                 "examples": {
-                                    "MindSphere": {
-                                        "$ref": "#/components/examples/DataSyncExample"
+                                    "WithAggregation": {
+                                        "$ref": "#/components/examples/DataSyncWithAggregationExample"
+                                    },
+                                    "WithoutAggregation": {
+                                        "$ref": "#/components/examples/DataSyncWithoutAggregationExample"
                                     }
                                 }
                             }
@@ -7796,6 +8073,9 @@
                                     "InvalidParameter": {
                                         "$ref": "#/components/examples/ExceptionInvalidParameterExample"
                                     },
+                                    "RootAssetError": {
+                                        "$ref": "#/components/examples/DataSyncRootAssetNotAllowedExample"
+                                    },
                                     "AlreadyInUse": {
                                         "value": {
                                             "service": "IIH Essentials",
@@ -7804,6 +8084,23 @@
                                             "errorCode": 69,
                                             "errorKey": "DataSyncAlreadyInUse",
                                             "message": "There is already a data sync for this source with the destination wccdev.",
+                                            "errorParams": {
+                                                "destName": "wccdev"
+                                            },
+                                            "debugInfo": {
+                                                "method": "POST",
+                                                "route": "/DataService/DataSync"
+                                            }
+                                        }
+                                    },
+                                    "OverwriteStartTime": {
+                                        "value": {
+                                            "service": "IIH Essentials",
+                                            "state": 400,
+                                            "stateText": "BadRequest",
+                                            "errorCode": 71,
+                                            "errorKey": "DataSyncStartTimeOverwrite",
+                                            "message": "Not allowed to overwrite startime for existing data sync.",
                                             "errorParams": {
                                                 "destName": "wccdev"
                                             },
@@ -7848,8 +8145,11 @@
                                     "$ref": "#/components/schemas/DataSync"
                                 },
                                 "examples": {
-                                    "Success": {
-                                        "$ref": "#/components/examples/DataSyncStateExample"
+                                    "WithAggregation": {
+                                        "$ref": "#/components/examples/DataSyncStateWithAggregationExample"
+                                    },
+                                    "WithoutAggregation": {
+                                        "$ref": "#/components/examples/DataSyncStateWithoutAggregationExample"
                                     }
                                 }
                             }
@@ -7877,7 +8177,7 @@
                     "DataSync"
                 ],
                 "summary": "Update a data sync.",
-                "description": "Update a specific data sync. 'sourceId', 'sourceTypeId' and 'dataDestinationid' are readOnly.",
+                "description": "Update a specific data sync. 'sourceId', 'sourceTypeId', 'dataDestinationid' and 'startTime' are readOnly.",
                 "parameters": [
                     {
                         "name": "id",
@@ -7898,8 +8198,11 @@
                                 "$ref": "#/components/schemas/DataSync"
                             },
                             "examples": {
-                                "Update": {
-                                    "$ref": "#/components/examples/DataSyncExample"
+                                "WithAggregation": {
+                                    "$ref": "#/components/examples/DataSyncWithAggregationExample"
+                                },
+                                "WithoutAggregation": {
+                                    "$ref": "#/components/examples/DataSyncWithoutAggregationExample"
                                 }
                             }
                         }
@@ -7914,8 +8217,11 @@
                                     "$ref": "#/components/schemas/DataSync"
                                 },
                                 "examples": {
-                                    "Success": {
-                                        "$ref": "#/components/examples/DataSyncExample"
+                                    "WithAggregation": {
+                                        "$ref": "#/components/examples/DataSyncStateWithAggregationExample"
+                                    },
+                                    "WithoutAggregation": {
+                                        "$ref": "#/components/examples/DataSyncStateWithoutAggregationExample"
                                     }
                                 }
                             }
@@ -7943,7 +8249,7 @@
                                             "stateText": "BadRequest",
                                             "errorCode": 3,
                                             "errorKey": "InvalidParameter",
-                                            "message": "Parameter DataSync is invalid: Only supported to change the start time.",
+                                            "message": "Parameter DataSync is invalid: Only supported to change the start time or the aggregation.",
                                             "errorParams": {
                                                 "reason": "Only supported to change the start time.",
                                                 "what": "DataSync"
@@ -8005,8 +8311,11 @@
                                     "$ref": "#/components/schemas/DataSync"
                                 },
                                 "examples": {
-                                    "Success": {
-                                        "$ref": "#/components/examples/DataSyncExample"
+                                    "WithAggregation": {
+                                        "$ref": "#/components/examples/DataSyncStateWithAggregationExample"
+                                    },
+                                    "WithoutAggregation": {
+                                        "$ref": "#/components/examples/DataSyncStateWithoutAggregationExample"
                                     }
                                 }
                             }
@@ -8227,862 +8536,6 @@
                 }
             }
         },
-        "/TokenManagerService/Service/IsRunning": {
-            "get": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Check if dataservice is running.",
-                "description": "Can be called to check if dataservice is available. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "responses": {
-                    "200": {
-                        "description": "See \"/DataService/Service/IsRunning\""
-                    }
-                }
-            }
-        },
-        "/TokenManagerService/token_keys": {
-            "get": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Get public.",
-                "description": "Get public key to sign a token. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "example": {
-                                    "keys": [
-                                        {
-                                            "kty": "RSA",
-                                            "e": "",
-                                            "use": "sig",
-                                            "kid": "key-id-1",
-                                            "alg": "RS256",
-                                            "value": "\n-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu1SU1LfVLPHCozMxH2Mo\n4lgOEePzNm0tRgeLezV6ffAt0gunVTLw7onLRnrq0/IzW7yWR7QkrmBL7jTKEn5u\n+qKhbwKfBstIs+bMY2Zkp18gnTxKLxoS2tFczGkPLPgizskuemMghRniWaoLcyeh\nkd3qqGElvW/VDL5AaWTg0nLVkjRo9z+40RQzuVaE8AkAFmxZzow3x+VJYKdjykkJ\n0iT9wCS0DRTXu269V264Vf/3jvredZiKRkgwlL9xNAwxXFg0x/XFw005UWVRIkdg\ncKWTjpBP2dPwVZ4WWC+9aGVd+Gyn1o0CLelf4rEjGoXbAAEgAqeGUxrcIlbjXfbc\nmwIDAQAB\n-----END PUBLIC KEY-----\n",
-                                            "n": ""
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/TokenManagerService/oauth_token": {
-            "get": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Get a session token.",
-                "description": "Provide a cookie and get a session token. The session token is a constant.",
-                "deprecated": true,
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "application",
-                        "required": true,
-                        "description": "provide an application name",
-                        "example": "edgeappdataservice",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "in": "cookie",
-                        "name": "eads-session-id",
-                        "required": true,
-                        "description": "any kind of session id.",
-                        "example": "4fef2cac49a8481886c9a083f236d8f2",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "in": "cookie",
-                        "name": "eads-session-info",
-                        "required": true,
-                        "description": "any kind of session id.",
-                        "example": "752a92e2b1880adf2b97dd618ccba8908ec724c6b1367d6f7cbb0f0553f10472",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/TokenInformation"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Exception"
-                                },
-                                "examples": {
-                                    "No application name": {
-                                        "value": {
-                                            "service": "IIH Essentials",
-                                            "state": 401,
-                                            "stateText": "Unauthorized",
-                                            "errorCode": 5,
-                                            "errorKey": "Unauthorized",
-                                            "message": "Authorization failed.",
-                                            "debugInfo": {
-                                                "hint": "Query parameter application not found.",
-                                                "method": "GET",
-                                                "route": "/TokenManagerService/oauth/token"
-                                            }
-                                        }
-                                    },
-                                    "No session": {
-                                        "value": {
-                                            "service": "IIH Essentials",
-                                            "state": 401,
-                                            "stateText": "Unauthorized",
-                                            "errorCode": 5,
-                                            "errorKey": "Unauthorized",
-                                            "message": "Authorization failed.",
-                                            "debugInfo": {
-                                                "eads-session-id": "",
-                                                "eads-session-info": "",
-                                                "hint": "Session not found.",
-                                                "method": "GET",
-                                                "route": "/TokenManagerService/oauth/token"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Get a token.",
-                "description": "Login and get a token to access other routes.",
-                "deprecated": true,
-                "requestBody": {
-                    "required": true,
-                    "description": "used to give appname and tenant information, all properties are needed, but only appname is used.",
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "appName": {
-                                        "type": "string",
-                                        "example": "machinemonitor"
-                                    },
-                                    "appVersion": {
-                                        "type": "string",
-                                        "example": "1.0.0"
-                                    },
-                                    "hostTenant": {
-                                        "type": "string",
-                                        "example": "edge"
-                                    },
-                                    "userTenant": {
-                                        "type": "string",
-                                        "example": "edge"
-                                    }
-                                }
-                            },
-                            "examples": {
-                                "Machine Monitor": {
-                                    "value": {
-                                        "appName": "machinemonitor",
-                                        "appVersion": "1.0.0",
-                                        "hostTenant": "edge",
-                                        "userTenant": "edge"
-                                    }
-                                },
-                                "DataService": {
-                                    "value": {
-                                        "appName": "edgeappdataservice",
-                                        "appVersion": "1.0.0",
-                                        "hostTenant": "edge",
-                                        "userTenant": "edge"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "x-space-auth-key",
-                        "required": true,
-                        "description": "base64 encoded login string, should start with \"basic \". The encoded part is \"username:password\".",
-                        "example": "basic YWRtaW46",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/TokenInformation"
-                                },
-                                "examples": {
-                                    "MachineMonitor": {
-                                        "value": {
-                                            "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtleS1pZC0xIn0.eyJzY29wZSI6WyJtYWNoaW5lbW9uaXRvci5hc3NldGNvbmZpZ3VyYXRpb25zLnJlYWQiLCJtYWNoaW5lbW9uaXRvci5hc3NldGNvbmZpZ3VyYXRpb25zLndyaXRlIiwibWFjaGluZW1vbml0b3IuYXNzZXRzLnJlYWQiLCJtYWNoaW5lbW9uaXRvci5hc3NldHMud3JpdGUiLCJtYWNoaW5lbW9uaXRvci5hc3NpZ25lZHJ1bGVzLnJlYWQiLCJtYWNoaW5lbW9uaXRvci5hc3NpZ25lZHJ1bGVzLndyaXRlIiwibWFjaGluZW1vbml0b3IuZGFzaGJvYXJkc2V0dGluZ3MucmVhZCIsIm1hY2hpbmVtb25pdG9yLmRhc2hib2FyZHNldHRpbmdzLndyaXRlIiwibWFjaGluZW1vbml0b3IuZGF0YS5yZWFkIiwibWFjaGluZW1vbml0b3IuZGVidWdnaW5nIiwibWFjaGluZW1vbml0b3IuZG9jdW1lbnQucmVhZCIsIm1hY2hpbmVtb25pdG9yLmRvY3VtZW50LndyaXRlIiwibWFjaGluZW1vbml0b3IuZmlsZS5yZWFkIiwibWFjaGluZW1vbml0b3IuZmlsZS53cml0ZSIsIm1hY2hpbmVtb25pdG9yLmluc3RydWN0aW9uLnJlYWQiLCJtYWNoaW5lbW9uaXRvci5pbnN0cnVjdGlvbi53cml0ZSIsIm1hY2hpbmVtb25pdG9yLm1haW50ZW5hbmNlam9iLnJlYWQiLCJtYWNoaW5lbW9uaXRvci5tYWludGVuYW5jZWpvYi53cml0ZSIsIm1hY2hpbmVtb25pdG9yLm1haW50ZW5hbmNlam9iLm1hbnVmYWN0dXJlciIsIm1hY2hpbmVtb25pdG9yLm1haW50ZW5hbmNlam9iLm9wZXJhdG9yIiwibWFjaGluZW1vbml0b3IubWFpbnRlbmFuY2Vqb2IudGhpcmRwYXJ0eSIsIm1hY2hpbmVtb25pdG9yLm1haW50ZW5hbmNlcnVsZS5yZWFkIiwibWFjaGluZW1vbml0b3IubWFpbnRlbmFuY2VydWxlLndyaXRlIiwibWFjaGluZW1vbml0b3IucnVsZWNvbGxlY3Rpb24ucmVhZCIsIm1hY2hpbmVtb25pdG9yLnJ1bGVjb2xsZWN0aW9uLndyaXRlIiwibWFjaGluZW1vbml0b3Iuc2VydmljaW5nIiwibWFjaGluZW1vbml0b3IudXNlci5yZWFkIiwibWFjaGluZW1vbml0b3IudXNlci53cml0ZSJdLCJjbGllbnRfaWQiOiJtYWNoaW5lbW9uaXRvci1lZGdlIiwiY2lkIjoibWFjaGluZW1vbml0b3ItZWRnZSIsImF6cCI6Im1hY2hpbmVtb25pdG9yLWVkZ2UiLCJncmFudF90eXBlIjoiYXV0aG9yaXphdGlvbl9jb2RlIiwidXNlcl9pZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwib3JpZ2luIjoiZWRnZSIsInVzZXJfbmFtZSI6IkFkbWluIiwiZW1haWwiOiJBZG1pbi5FZGdlQFNpZW1lbnMuY29tIiwiemlkIjoiZWRnZSIsInRlbiI6ImVkZ2UiLCJzY2hlbWFzIjpbInVybjpzaWVtZW5zOm1pbmRzcGhlcmU6aWFtOnYxIl0sImNhdCI6InVzZXItdG9rZW46djEiLCJhdWQiOltdLCJpc3MiOiJodHRwOi8vZWRnZWFwcGRhdGFzZXJ2aWNlOjQyMDMvVG9rZW5NYW5hZ2VyU2VydmljZS9vYXV0aC90b2tlbiIsInN1YiI6ImVkZ2UiLCJqdGkiOiJiNTlkZjBjNmNkNjA0NzMyOGRiMTRhNGI1MTM1MjQ2ZCJ9.ZbWH871JBh9j7gOhl6RBYE6Gch8iBlKGJcm5JTjhjDil2o4El2iSkbrHWapsXzbfbqGMqzLOXV_awhWdtUGoXLSK-1u8oeoPR3O1qT8VP8vDNqtae86B4MmHHfNPHX2D7sQ2JdbrvSKFyUiICg0_37QSisOmoap6a6qUcyWB-Zoo-tO1dM25M_OYT6L2RxtfVaLoXjUpZVL5LDKI3L_jVmlminlzPwqCfaGrr8VyWdFAUa0Vw5MVG5DoGSfwOb6QhIKCnPRYerjq8sm9edx-5PK4GmsQmUH3zzRDSFFrGg4NYib3k9vcJHSv-hJVNNaCUzkL1S5M67fPJr375a-aQA",
-                                            "token_type": "bearer",
-                                            "expires_in": 1209600,
-                                            "scope": "edge",
-                                            "jti": "b59df0c6cd6047328db14a4b5135246d"
-                                        },
-                                        "description": "This is for appname \"machinemonitor\" and user \"admin\" only."
-                                    },
-                                    "DataService": {
-                                        "value": {
-                                            "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtleS1pZC0xIn0.eyJzY29wZSI6WyJtZHNwOmNvcmU6YWRtaW4zcmRwYXJ0eXRlY2h1c2VyIl0sImNsaWVudF9pZCI6ImVkZ2VhcHBkYXRhc2VydmljZS1lZGdlIiwiY2lkIjoiZWRnZWFwcGRhdGFzZXJ2aWNlLWVkZ2UiLCJhenAiOiJlZGdlYXBwZGF0YXNlcnZpY2UtZWRnZSIsImdyYW50X3R5cGUiOiJhdXRob3JpemF0aW9uX2NvZGUiLCJ1c2VyX2lkIjoiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLCJvcmlnaW4iOiJlZGdlIiwidXNlcl9uYW1lIjoiVGVjaFVzZXIiLCJlbWFpbCI6IlRlY2hVc2VyLkVkZ2VAU2llbWVucy5jb20iLCJ6aWQiOiJlZGdlIiwidGVuIjoiZWRnZSIsInNjaGVtYXMiOlsidXJuOnNpZW1lbnM6bWluZHNwaGVyZTppYW06djEiXSwiY2F0IjoidXNlci10b2tlbjp2MSIsImF1ZCI6W10sImlzcyI6Imh0dHA6Ly9lZGdlYXBwZGF0YXNlcnZpY2U6NDIwMy9Ub2tlbk1hbmFnZXJTZXJ2aWNlL29hdXRoL3Rva2VuIiwic3ViIjoiZWRnZSIsImp0aSI6ImI1OWRmMGM2Y2Q2MDQ3MzI4ZGIxNGE0YjUxMzUyNDZkIn0.ZmcVb6KcvYPk0w1-UGJPzjF-IPxMVbKOX5kCo47b9ItDVexicUMVuXvoCwN7djFJ6AgSm_tuwpc-gyW-5iPc0DPm-K4Y21hUdpiF6gm3XpaJ6WE05EpAvko5HXShuSnyAITwztplHPWO46kORR2nwRsGShur-Tk12WxhvNXymT65ieG_U6DeaF42DMk730XXBC74de2mL_EuhgRVZT_vyUhYFOsjCtXNIbOfDuCKRtf0QAHIym5UeXl7wP6wobbgVOCW7I-lsqs_HoMnj8tT3x7iYJp5pexV6lK6jZZajs-p2H9pJuz5Sq1V7X5qcwe5D9iOM9vJ8luGHTQR6Dzqow",
-                                            "token_type": "bearer",
-                                            "expires_in": 1209600,
-                                            "scope": "edge",
-                                            "jti": "b59df0c6cd6047328db14a4b5135246d"
-                                        },
-                                        "description": "This is for all other combinations of appname and user."
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Exception"
-                                },
-                                "examples": {
-                                    "MissingParameter": {
-                                        "$ref": "#/components/examples/ExceptionMissingParameterExample"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Exception"
-                                },
-                                "examples": {
-                                    "Invalid Prefix": {
-                                        "value": {
-                                            "service": "IIH Essentials",
-                                            "state": 401,
-                                            "stateText": "Unauthorized",
-                                            "errorCode": 5,
-                                            "errorKey": "Unauthorized",
-                                            "message": "Authorization failed.",
-                                            "debugInfo": {
-                                                "hint": "Header x-space-auth-key: invalid prefix.",
-                                                "method": "POST",
-                                                "route": "/TokenManagerService/oauth/token",
-                                                "x-space-auth-key": ""
-                                            }
-                                        }
-                                    },
-                                    "Invalid Payload": {
-                                        "value": {
-                                            "service": "IIH Essentials",
-                                            "state": 401,
-                                            "stateText": "Unauthorized",
-                                            "errorCode": 5,
-                                            "errorKey": "Unauthorized",
-                                            "message": "Authorization failed.",
-                                            "debugInfo": {
-                                                "hint": "Header x-space-auth-key: invalid payload.",
-                                                "method": "POST",
-                                                "route": "/TokenManagerService/oauth/token",
-                                                "x-space-auth-key": "basic 123"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/TokenManagerService/users": {
-            "get": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Get users.",
-                "description": "Get list of predefined users. The list cannot be extented. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/TokenUser"
-                                    }
-                                },
-                                "example": [
-                                    {
-                                        "id": "00000000000000000000000000000001",
-                                        "userName": "Admin",
-                                        "familyName": "Edge",
-                                        "givenName": "Admin",
-                                        "email": "Admin.Edge@Siemens.com",
-                                        "roles": [
-                                            {
-                                                "application": "edgeappdataservice",
-                                                "role": "admin"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "id": "00000000000000000000000000000002",
-                                        "userName": "User",
-                                        "familyName": "Edge",
-                                        "givenName": "User",
-                                        "email": "User.Edge@Siemens.com",
-                                        "roles": [
-                                            {
-                                                "application": "edgeappdataservice",
-                                                "role": "user"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Create a user.",
-                "description": "Create a new user. The user information will be returned but not saved. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/TokenUser"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/TokenUser"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/TokenManagerService/users/{id}": {
-            "get": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Get a user.",
-                "description": "Get a user. The returned user is only a predefined user. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "required": true,
-                        "description": "any text string is accepted.",
-                        "example": "00000000000000000000000000000001",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/TokenUser"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Update a user.",
-                "description": "Update a user. No real update is done, it will only return the provided user information. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "required": true,
-                        "description": "any text string is accepted.",
-                        "example": "00000000000000000000000000000001",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/TokenUser"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/TokenUser"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Delete a user.",
-                "description": "Delete a user. No real user is deleted, it will only return default user information. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "required": true,
-                        "description": "any text string is accepted.",
-                        "example": "00000000000000000000000000000001",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/TokenUser"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/TokenManagerService/users/create": {
-            "get": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Create a user.",
-                "description": "Create a user, as dataservice c++ does not support body content in get request, only a default user will be returned. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/TokenUser"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/TokenManagerService/users/me": {
-            "get": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Get own user.",
-                "description": "Get own user. The returned user is only a predefined user. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/TokenUser"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Update own user.",
-                "description": "Update the own user. No real update is done, it will only return the provided user information. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/TokenUser"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/TokenUser"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/TokenManagerService/identitymanagement/v3/users": {
-            "get": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Get identity users.",
-                "description": "Get list of predefined identity users. The list cannot be extented. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "parameters": [
-                    {
-                        "in": "query",
-                        "required": false,
-                        "name": "filter",
-                        "description": "filter usernames (e-mail), must be in the format: 'userName Eq \"Admin.Edge@Siemens.com\"'.",
-                        "example": "userName Eq \"Admin.Edge@Siemens.com\"",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "resources": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/TokenIdentityUser"
-                                            }
-                                        },
-                                        "itemPerPage": {
-                                            "type": "integer",
-                                            "example": 100
-                                        },
-                                        "schemas": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string",
-                                                "example": "urn:scim:schemas:core:1.0"
-                                            }
-                                        },
-                                        "startIndex": {
-                                            "type": "integer",
-                                            "example": 1
-                                        },
-                                        "totalResults": {
-                                            "type": "integer",
-                                            "example": 2
-                                        }
-                                    }
-                                },
-                                "example": {
-                                    "resources": [
-                                        {
-                                            "schemas": [
-                                                "urn:scim:schemas:core:1.0"
-                                            ],
-                                            "id": "00000000000000000000000000000001",
-                                            "userName": "Admin.Edge@Siemens.com",
-                                            "name": {
-                                                "familyName": "Edge",
-                                                "givenName": "Admin"
-                                            },
-                                            "groups": [
-                                                {
-                                                    "value": "",
-                                                    "display": "mdsp:edge:machinemonitor.admin",
-                                                    "type": "DIRECT"
-                                                }
-                                            ],
-                                            "emails": [
-                                                {
-                                                    "value": "Admin.Edge@Siemens.com"
-                                                }
-                                            ],
-                                            "active": true
-                                        },
-                                        {
-                                            "schemas": [
-                                                "urn:scim:schemas:core:1.0"
-                                            ],
-                                            "id": "00000000000000000000000000000002",
-                                            "userName": "User.Edge@Siemens.com",
-                                            "name": {
-                                                "familyName": "Edge",
-                                                "givenName": "User"
-                                            },
-                                            "groups": [
-                                                {
-                                                    "value": "",
-                                                    "display": "mdsp:edge:machinemonitor.user",
-                                                    "type": "DIRECT"
-                                                }
-                                            ],
-                                            "emails": [
-                                                {
-                                                    "value": "User.Edge@Siemens.com"
-                                                }
-                                            ],
-                                            "active": true
-                                        }
-                                    ],
-                                    "itemPerPage": 100,
-                                    "schemas": [
-                                        "urn:scim:schemas:core:1.0"
-                                    ],
-                                    "startIndex": 1,
-                                    "totalResults": 2
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/TokenManagerService/identitymanagement/v3/users/{id}": {
-            "get": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Get an identity users.",
-                "description": "Get a predefined identity users. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "parameters": [
-                    {
-                        "in": "path",
-                        "required": true,
-                        "name": "id",
-                        "description": "id to search for, there are only two possible users: admin and user",
-                        "example": "00000000000000000000000000000001",
-                        "schema": {
-                            "type": "string",
-                            "enum": [
-                                "00000000000000000000000000000001",
-                                "00000000000000000000000000000002"
-                            ]
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/TokenIdentityUser"
-                                },
-                                "examples": {
-                                    "Admin": {
-                                        "value": {
-                                            "schemas": [
-                                                "urn:scim:schemas:core:1.0"
-                                            ],
-                                            "id": "00000000000000000000000000000001",
-                                            "userName": "Admin.Edge@Siemens.com",
-                                            "name": {
-                                                "familyName": "Edge",
-                                                "givenName": "Admin"
-                                            },
-                                            "groups": [
-                                                {
-                                                    "value": "",
-                                                    "display": "mdsp:edge:machinemonitor.admin",
-                                                    "type": "DIRECT"
-                                                }
-                                            ],
-                                            "emails": [
-                                                {
-                                                    "value": "Admin.Edge@Siemens.com"
-                                                }
-                                            ],
-                                            "active": true
-                                        }
-                                    },
-                                    "User": {
-                                        "value": {
-                                            "schemas": [
-                                                "urn:scim:schemas:core:1.0"
-                                            ],
-                                            "id": "00000000000000000000000000000002",
-                                            "userName": "User.Edge@Siemens.com",
-                                            "name": {
-                                                "familyName": "Edge",
-                                                "givenName": "User"
-                                            },
-                                            "groups": [
-                                                {
-                                                    "value": "",
-                                                    "display": "mdsp:edge:machinemonitor.user",
-                                                    "type": "DIRECT"
-                                                }
-                                            ],
-                                            "emails": [
-                                                {
-                                                    "value": "User.Edge@Siemens.com"
-                                                }
-                                            ],
-                                            "active": true
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Exception"
-                                },
-                                "example": {
-                                    "service": "IIH Essentials",
-                                    "state": 404,
-                                    "stateText": "NotFound",
-                                    "errorCode": 4,
-                                    "errorKey": "NotFound",
-                                    "message": "The user with the id 000000000000000000000000000000021 was not found.",
-                                    "errorParams": {
-                                        "id": "000000000000000000000000000000021",
-                                        "what": "user"
-                                    },
-                                    "debugInfo": {
-                                        "method": "GET",
-                                        "route": "/TokenManagerService/identitymanagement/v3/users/{id}"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/TokenManagerService/usagetransparency/v3/usages": {
-            "post": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Get usage.",
-                "description": "Return a default string. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "example": "\"Data is successfully saved to the database\""
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/TokenManagerService/usagetransparency/v3/usagesJobs": {
-            "post": {
-                "tags": [
-                    "TokenManager"
-                ],
-                "summary": "Get usage.",
-                "description": "Return a default string. This route is deprecated and will be supported until 2023-09-07.",
-                "deprecated": true,
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "example": "\"Data is successfully saved to the database\""
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/DataService/VariableConfigurations/{id}": {
             "get": {
                 "tags": [
@@ -9280,11 +8733,13 @@
                     "Variables"
                 ],
                 "summary": "Get all variables.",
-                "description": "Get a list of Variables. Variables can be filtered by assetsIds, aspectIds, adapterIds or variableIds. If no filter is specified, all variables will be returned. It is not supported to specify more than one filter parameter.",
+                "description": "Get a list of Variables. Variables can be filtered by assetsIds, aspectIds, adapterIds or variableIds. If no filter is specified, all variables will be returned. It is not supported to specify more than one filter parameter. \n\n Please note that the generated curl command and request URL should be modified, if a filter is being used, before using sending the request to IIH Essentials. The returned array must be enclosed in (square) brackets [], each single string should be in quotation marks and strings should remain separated by commas, in case multiple strings are used for a filter. For instance: \n\n - Filtering for a single assetId: http://localhost:4203/DataService/Variables?assetIds=[\"53f05e175c0c48bd9742157c1a462ca9\"] \n\n - Filtering for multiple assetIds: http://localhost:4203/DataService/Variables?assetIds=[\"53f05e175c0c48bd9742157c1a462ca9\",\"eab960dcb97e4752b298387f780cba1e\"]",
                 "parameters": [
                     {
                         "name": "assetIds",
                         "in": "query",
+                        "style": "form",
+                        "explode": false,
                         "schema": {
                             "type": "array",
                             "items": {
@@ -9299,6 +8754,8 @@
                     {
                         "name": "aspectIds",
                         "in": "query",
+                        "style": "form",
+                        "explode": false,
                         "schema": {
                             "type": "array",
                             "items": {
@@ -9314,6 +8771,8 @@
                     {
                         "name": "adapterIds",
                         "in": "query",
+                        "style": "form",
+                        "explode": false,
                         "schema": {
                             "type": "array",
                             "items": {
@@ -9329,6 +8788,8 @@
                     {
                         "name": "variable",
                         "in": "query",
+                        "style": "form",
+                        "explode": false,
                         "schema": {
                             "type": "array",
                             "items": {
@@ -9887,6 +9348,27 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/TotalNumber"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/DataService/Variables/TotalNumberMappedToSource": {
+            "get": {
+                "summary": "Get the total number of variables which mapped to data source.",
+                "description": "Return the total number of variables which mapped to data source in system.",
+                "tags": [
+                    "Variables"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TotalNumberMappedToSource"
                                 }
                             }
                         }
@@ -10595,6 +10077,92 @@
                     }
                 }
             },
+            "AdapterWriteValueRequest": {
+                "type": "object",
+                "description": "Provide needed information about one value to write. Prefered way is to specify variableId and value. Alternatively it is possible to specify adapter tag infos directly.",
+                "properties": {
+                    "variableId": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "oneOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "tag": {
+                        "type": "object",
+                        "description": "Optional way to specify the target tag. variableId must be set to empty string in this case.",
+                        "nullable": true,
+                        "properties": {
+                            "adapterId": {
+                                "type": "string"
+                            },
+                            "connectionName": {
+                                "type": "string"
+                            },
+                            "tagName": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "AdapterWriteValueResponse": {
+                "type": "object",
+                "description": "Returns information about the success or failiure of writing one value.",
+                "properties": {
+                    "variableId": {
+                        "type": "string"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "errorCode": {
+                        "allOf": [
+                            {
+                                "description": "Only set if success is false.",
+                                "nullable": true
+                            },
+                            {
+                                "$ref": "#/components/schemas/AdapterWriteValueErrorCode"
+                            }
+                        ]
+                    },
+                    "errorDescription": {
+                        "type": "string",
+                        "description": "Only set if success is false. More details about the occoured error.",
+                        "nullable": true
+                    }
+                }
+            },
+            "AdapterWriteValueErrorCode": {
+                "type": "string",
+                "enum": [
+                    "VARIABLE_NOT_FOUND",
+                    "VARIABLE_NOT_CONNECTED",
+                    "TAG_INCONSISTENT",
+                    "TAG_MISSING",
+                    "ADAPTER_NOT_FOUND",
+                    "ADAPTER_NOT_ACTIVE",
+                    "ADAPTER_NOT_SUPPORTED",
+                    "ADAPTER_NOT_CONNECTED",
+                    "ADAPTER_NO_METADATA",
+                    "CONNECTION_NOT_FOUND",
+                    "TAG_NOT_FOUND",
+                    "TAG_ALREADY_ADDED",
+                    "TAG_NOT_WRITEABLE",
+                    "VALUE_NOT_ACCEPTED",
+                    "WRITE_FAILED"
+                ]
+            },
             "Aggregation": {
                 "type": "string",
                 "enum": [
@@ -10623,11 +10191,33 @@
                     "MaxWithTimestamp",
                     "FirstWithTimestamp",
                     "LastWithTimestamp",
-                    "Latest",
                     "StepDuration",
                     "ValueChanges",
                     "GanttView"
                 ]
+            },
+            "AggregationInfo": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "$ref": "#/components/schemas/Aggregation",
+                        "example": "Sum"
+                    },
+                    "cycle": {
+                        "$ref": "#/components/schemas/TimeRange"
+                    },
+                    "aggregationOptions": {
+                        "nullable": true,
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/AggregationOptions"
+                            },
+                            {
+                                "nullable": true
+                            }
+                        ]
+                    }
+                }
             },
             "AggregationObject": {
                 "type": "object",
@@ -10932,7 +10522,7 @@
                         "type": "string",
                         "description": "language like en-US"
                     },
-                    "text": {
+                    "value": {
                         "type": "string",
                         "description": "the alarm text in the language"
                     }
@@ -10949,9 +10539,9 @@
                     },
                     "language": {
                         "type": "string",
-                        "description": "optional, only valid when valueType is MultilingualText"
+                        "description": "optional, only valid when valueType is LocalizedString"
                     },
-                    "text": {
+                    "value": {
                         "type": "string"
                     }
                 }
@@ -12093,39 +11683,45 @@
                 "description": "Current sync state of DataSync object, only readable in GET calls."
             },
             "DataReadBulkRequest": {
-                "type": "array",
-                "items": {
-                    "type": "object",
-                    "properties": {
-                        "variableId": {
-                            "type": "string",
-                            "example": "0dc1963b0db54bc485d76a763315f604"
-                        },
-                        "from": {
-                            "type": "string",
-                            "format": "date-time",
-                            "example": "2022-08-17T08:01:00.000Z",
-                            "nullable": true
-                        },
-                        "to": {
-                            "type": "string",
-                            "format": "date-time",
-                            "example": "2022-08-17T09:01:00.000Z",
-                            "nullable": true
-                        },
-                        "limit": {
-                            "type": "number",
-                            "example": 10,
-                            "nullable": true
-                        },
-                        "order": {
-                            "$ref": "#/components/schemas/SortOrder"
-                        },
-                        "excludeBadQuality": {
-                            "type": "boolean",
-                            "default": false,
-                            "example": true
-                        }
+                "type": "object",
+                "properties": {
+                    "variableId": {
+                        "type": "string",
+                        "example": "0dc1963b0db54bc485d76a763315f604"
+                    },
+                    "from": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-08-17T08:01:00.000Z",
+                        "nullable": true
+                    },
+                    "to": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-08-17T09:01:00.000Z",
+                        "nullable": true
+                    },
+                    "limit": {
+                        "type": "number",
+                        "example": 10,
+                        "nullable": true
+                    },
+                    "order": {
+                        "nullable": true,
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/SortOrder"
+                            },
+                            {
+                                "nullable": true
+                            }
+                        ]
+                    },
+                    "excludeBadQuality": {
+                        "type": "boolean",
+                        "nullable": true,
+                        "default": false,
+                        "example": true
                     }
                 }
             },
@@ -12448,7 +12044,7 @@
                     },
                     "startTime": {
                         "type": "string",
-                        "description": "timestamp in ISO8601 string",
+                        "description": "optional timestamp in ISO8601 string",
                         "format": "date-time",
                         "example": "2022-08-16T12:00:00"
                     },
@@ -12457,12 +12053,24 @@
                         "default": false,
                         "description": "optional parameter to disable data sync for this object and data destination"
                     },
+                    "aggregation": {
+                        "description": "optional object which describes an aggregation for this data sync",
+                        "nullable": true,
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/AggregationInfo"
+                            },
+                            {
+                                "nullable": true
+                            }
+                        ]
+                    },
                     "state": {
                         "$ref": "#/components/schemas/DataDestinationSyncState"
                     }
                 }
             },
-            "DataSyncResponse": {
+            "DataSyncArray": {
                 "type": "object",
                 "properties": {
                     "dataSyncs": {
@@ -12834,6 +12442,29 @@
                     }
                 }
             },
+            "RestoreAlarmDataResult": {
+                "type": "object",
+                "properties": {
+                    "alarmChannels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RestoreChannelResult"
+                        },
+                        "nullable": true
+                    },
+                    "errors": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "nullable": true
+                    },
+                    "maxErrorsReached": {
+                        "type": "boolean",
+                        "example": true
+                    }
+                }
+            },
             "RestoreResultVariable": {
                 "type": "object",
                 "properties": {
@@ -12847,6 +12478,20 @@
                         "type": "string"
                     },
                     "count": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "RestoreChannelResult": {
+                "type": "object",
+                "properties": {
+                    "alarmChannelId": {
+                        "type": "string"
+                    },
+                    "alarmCount": {
+                        "type": "integer"
+                    },
+                    "extendedPropertyCount": {
                         "type": "integer"
                     }
                 }
@@ -13044,149 +12689,19 @@
                     "year"
                 ]
             },
-            "TokenInformation": {
-                "type": "object",
-                "properties": {
-                    "access_token": {
-                        "type": "string",
-                        "example": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtleS1pZC0xIn0.eyJzY29wZSI6WyJtZHNwOmNvcmU6YWRtaW4zcmRwYXJ0eXRlY2h1c2VyIl0sImNsaWVudF9pZCI6ImVkZ2VhcHBkYXRhc2VydmljZS1lZGdlIiwiY2lkIjoiZWRnZWFwcGRhdGFzZXJ2aWNlLWVkZ2UiLCJhenAiOiJlZGdlYXBwZGF0YXNlcnZpY2UtZWRnZSIsImdyYW50X3R5cGUiOiJhdXRob3JpemF0aW9uX2NvZGUiLCJ1c2VyX2lkIjoiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLCJvcmlnaW4iOiJlZGdlIiwidXNlcl9uYW1lIjoiVGVjaFVzZXIiLCJlbWFpbCI6IlRlY2hVc2VyLkVkZ2VAU2llbWVucy5jb20iLCJ6aWQiOiJlZGdlIiwidGVuIjoiZWRnZSIsInNjaGVtYXMiOlsidXJuOnNpZW1lbnM6bWluZHNwaGVyZTppYW06djEiXSwiY2F0IjoidXNlci10b2tlbjp2MSIsImF1ZCI6W10sImlzcyI6Imh0dHA6Ly9lZGdlYXBwZGF0YXNlcnZpY2U6NDIwMy9Ub2tlbk1hbmFnZXJTZXJ2aWNlL29hdXRoL3Rva2VuIiwic3ViIjoiZWRnZSIsImp0aSI6ImI1OWRmMGM2Y2Q2MDQ3MzI4ZGIxNGE0YjUxMzUyNDZkIn0.ZmcVb6KcvYPk0w1-UGJPzjF-IPxMVbKOX5kCo47b9ItDVexicUMVuXvoCwN7djFJ6AgSm_tuwpc-gyW-5iPc0DPm-K4Y21hUdpiF6gm3XpaJ6WE05EpAvko5HXShuSnyAITwztplHPWO46kORR2nwRsGShur-Tk12WxhvNXymT65ieG_U6DeaF42DMk730XXBC74de2mL_EuhgRVZT_vyUhYFOsjCtXNIbOfDuCKRtf0QAHIym5UeXl7wP6wobbgVOCW7I-lsqs_HoMnj8tT3x7iYJp5pexV6lK6jZZajs-p2H9pJuz5Sq1V7X5qcwe5D9iOM9vJ8luGHTQR6Dzqow"
-                    },
-                    "token_type": {
-                        "type": "string",
-                        "example": "bearer"
-                    },
-                    "expires_in": {
-                        "type": "integer",
-                        "example": 1209600
-                    },
-                    "scope": {
-                        "type": "string",
-                        "example": "edge"
-                    },
-                    "jti": {
-                        "type": "string",
-                        "example": "b59df0c6cd6047328db14a4b5135246d"
-                    }
-                }
-            },
-            "TokenUser": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "example": "00000000000000000000000000000001"
-                    },
-                    "userName": {
-                        "type": "string",
-                        "example": "Admin"
-                    },
-                    "familyName": {
-                        "type": "string",
-                        "example": "Edge"
-                    },
-                    "givenName": {
-                        "type": "string",
-                        "example": "Admin"
-                    },
-                    "email": {
-                        "type": "string",
-                        "example": "Admin.Edge@Siemens.com"
-                    },
-                    "roles": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "application": {
-                                    "type": "string",
-                                    "example": "edgeappdataservice"
-                                },
-                                "role": {
-                                    "type": "string",
-                                    "example": "admin",
-                                    "enum": [
-                                        "admin",
-                                        "user"
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "TokenIdentityUser": {
-                "type": "object",
-                "properties": {
-                    "schemas": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "example": "urn:scim:schemas:core:1.0"
-                        }
-                    },
-                    "id": {
-                        "type": "string",
-                        "example": "00000000000000000000000000000001"
-                    },
-                    "userName": {
-                        "type": "string",
-                        "example": "Admin.Edge@Siemens.com"
-                    },
-                    "name": {
-                        "type": "object",
-                        "properties": {
-                            "familyName": {
-                                "type": "string",
-                                "example": "Edge"
-                            },
-                            "givenName": {
-                                "type": "string",
-                                "example": "Admin"
-                            }
-                        }
-                    },
-                    "groups": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "value": {
-                                    "type": "string",
-                                    "example": ""
-                                },
-                                "display": {
-                                    "type": "string",
-                                    "example": "mdsp:edge:machinemonitor.admin"
-                                },
-                                "type": {
-                                    "type": "string",
-                                    "example": "DIRECT"
-                                }
-                            }
-                        }
-                    },
-                    "emails": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "value": {
-                                    "type": "string",
-                                    "example": "Admin.Edge@Siemens.com"
-                                }
-                            }
-                        }
-                    },
-                    "active": {
-                        "type": "boolean",
-                        "example": true
-                    }
-                }
-            },
             "TotalNumber": {
                 "type": "object",
                 "properties": {
                     "totalNumber": {
+                        "type": "integer",
+                        "example": 10000
+                    }
+                }
+            },
+            "TotalNumberMappedToSource": {
+                "type": "object",
+                "properties": {
+                    "totalNumberMappedToSource": {
                         "type": "integer",
                         "example": 10000
                     }
@@ -13842,12 +13357,14 @@
                         "mqttHost": "mqtt.senseye.io",
                         "mqttPort": 8883,
                         "mqttUsername": "industrialedge",
-                        "publishIntervalInSec": 10,
-                        "sublevelRoot": "88a73b74-3784-496c-8aa0-5cf4018e935e",
-                        "packageInBatch": true,
+                        "mqttPassword": "testpassword",
                         "mqttOrgId": "groupb46573800f17486e95c55c327944b384-industrial-edge",
                         "apiHost": "api.senseye.io",
-                        "apiUserName": "siemens-integration-testbed-admin@senseye.io"
+                        "apiUserName": "siemens-integration-testbed-admin@senseye.io",
+                        "apiPassword": "password",
+                        "publishIntervalInSec": 10,
+                        "sublevelRoot": "88a73b74-3784-496c-8aa0-5cf4018e935e",
+                        "qos": 1
                     },
                     "connected": true
                 }
@@ -13911,27 +13428,6 @@
                     }
                 }
             },
-            "DataSyncExample": {
-                "value": {
-                    "id": "08ff6fd3ba7e4a94887708b22c6fb70b",
-                    "sourceId": "d0df2a40afd64671bda7b53ce8f08ef8",
-                    "sourceTypeId": "asset",
-                    "destinationId": "3c49642087f2459fa705b24fa61a3bb9",
-                    "startTime": "2022-08-16T12:00:00",
-                    "disabled": false
-                }
-            },
-            "DataSyncStateExample": {
-                "value": {
-                    "id": "08ff6fd3ba7e4a94887708b22c6fb70b",
-                    "sourceId": "d0df2a40afd64671bda7b53ce8f08ef8",
-                    "sourceTypeId": "asset",
-                    "destinationId": "3c49642087f2459fa705b24fa61a3bb9",
-                    "startTime": "2022-08-16T12:00:00",
-                    "disabled": false,
-                    "state": "NoSync"
-                }
-            },
             "DataSyncNotFoundExample": {
                 "value": {
                     "service": "IIH Essentials",
@@ -13947,6 +13443,75 @@
                     "debugInfo": {
                         "method": "GET",
                         "route": "/DataService/DataSync/{id}"
+                    }
+                }
+            },
+            "DataSyncRootAssetNotAllowedExample": {
+                "value": {
+                    "service": "IIH Essentials",
+                    "state": 400,
+                    "stateText": "BadRequest",
+                    "errorCode": 74,
+                    "errorKey": "DataSyncRootAssetNoAllowed",
+                    "message": "Not allowed to sync direct children of root asset.",
+                    "debugInfo": {
+                        "method": "POST",
+                        "route": "/DataService/DataSync"
+                    }
+                }
+            },
+            "DataSyncStateWithoutAggregationExample": {
+                "value": {
+                    "id": "08ff6fd3ba7e4a94887708b22c6fb70b",
+                    "sourceId": "d0df2a40afd64671bda7b53ce8f08ef8",
+                    "sourceTypeId": "asset",
+                    "destinationId": "3c49642087f2459fa705b24fa61a3bb9",
+                    "startTime": "2022-08-16T12:00:00",
+                    "disabled": false,
+                    "state": "NoSync"
+                }
+            },
+            "DataSyncStateWithAggregationExample": {
+                "value": {
+                    "id": "08ff6fd3ba7e4a94887708b22c6fb70b",
+                    "sourceId": "d0df2a40afd64671bda7b53ce8f08ef8",
+                    "sourceTypeId": "asset",
+                    "destinationId": "3c49642087f2459fa705b24fa61a3bb9",
+                    "startTime": "2022-08-16T12:00:00",
+                    "disabled": true,
+                    "aggregation": {
+                        "type": "Count,",
+                        "cycle": {
+                            "base": "minute,",
+                            "factor": 2
+                        }
+                    },
+                    "state": "NoSync"
+                }
+            },
+            "DataSyncWithoutAggregationExample": {
+                "value": {
+                    "id": "08ff6fd3ba7e4a94887708b22c6fb70b",
+                    "sourceId": "d0df2a40afd64671bda7b53ce8f08ef8",
+                    "sourceTypeId": "asset",
+                    "destinationId": "3c49642087f2459fa705b24fa61a3bb9",
+                    "startTime": "2022-08-16T12:00:00"
+                }
+            },
+            "DataSyncWithAggregationExample": {
+                "value": {
+                    "id": "08ff6fd3ba7e4a94887708b22c6fb70b",
+                    "sourceId": "d0df2a40afd64671bda7b53ce8f08ef8",
+                    "sourceTypeId": "asset",
+                    "destinationId": "3c49642087f2459fa705b24fa61a3bb9",
+                    "startTime": "2022-08-16T12:00:00",
+                    "disabled": false,
+                    "aggregation": {
+                        "type": "Count,",
+                        "cycle": {
+                            "base": "minute,",
+                            "factor": 2
+                        }
                     }
                 }
             },
