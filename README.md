@@ -106,6 +106,145 @@ It shows how to create a user, request a token and get assets, tags and time ser
 
 ## What's new
 <details>
+  <summary style="font-weight: bold; font-size: x-large;">v2.0.0 - 2024-10-28</summary>
+  <h3>Added</h3>
+  <h4>Feature 2684516, 2684523, 2684525, 2684526, 2684617, 2684622: Advanced instance model</h4>
+  The main feature of the new version is the new advanced model. It offers support for:
+  - Assets and aspects, attributes (variables), compositions (link in one place) and aggregations (link in multiple places)
+  - Objects have a display name which can be localized
+  - Relations to define connections between objects
+  - Metadata and external references
+  - Predefined units
+
+  It also includes a new API.
+
+  The old model is completely replaced by the new model. Its API will be supported for one more year but will then be removed (approx. Q4/2025).
+
+  <h4>Feature 2684516, 2684620: Model types support</h4>
+  Additionally to its features on the instance level, the new model also offers a type level.
+
+  Types can be created for each of the object concepts:
+  - Asset type
+  - Aspect type
+  - Attribute type
+  - Reference type
+  - Relation type
+
+  A base-type can be used to inherit from (creating a sub-type to the base-type). Using these types, instances can be created. If the type is altered, the instances are automatically updated.
+
+  <h4>Feature 2684624: Simplified IIH integration</h4>
+  After the update, IIH Essentials can work independently of other IIH components.
+  This makes it easier to use and prevents error scenarios.
+
+  IIH Essentials can be installed and used with its own UI.
+  If needed, IIH Semantics and Common Configurator can be installed on top and used with the Common Configurator UI. A migration for this switch is not needed anymore.
+
+  Even after installing the full IIH, you can continue to use the IIH Essentials UI or even uninstall all other components and continue to work without any interruption.
+
+  <h4>Feature 2684626: Simplified Common Configurator integration</h4>
+  Define data and Store data are combined into manage data. Previously Define Data managed the model editing and mapping, while Store Data focused on viewing the stored data and synchronizing it.
+
+  The new combined UI will replace the two previous tabs and combine all these tasks. It is the exact same UI as the IIH Essentials UI, so the users only must learn to use one UI.
+
+  <h4>Feature 2433703: Improved UI and UX</h4>
+  Together with the new model, the UI was also vastly improved. It was optimized to work with big quantities of objects and will be improved further in future versions.
+
+  To handle large quantities, data is loaded via a paging mechanism and displayed via virtual scroll. The filtering is done on the server side so only required data is loaded.
+  Secondly, the UX was improved. It is possible to search/filter almost any list. Tables support multiselect and can execute bulk operations on the selection. For better overview, table columns can be resized, reordered and hidden. This is a persisted configuration.
+  To ease navigation, where possible links have been added to jump to the referenced object.
+
+  <h4>Feature 1754101: New theming with dark mode</h4>
+  Working with the light theme for a longer time can become stressful for the eyes.
+
+  To ensure constant comfortable operation of IIH Essentials, a dark mode has been added. It reduces the emitted brightness to a minimum while maintaining its contrast and readability.
+
+  <h4>Feature 2877474: Generic MQTT synchronization</h4>
+  MQTT has been added as a synchronization destination like the already existing Insights Hub and Senseye sync.
+
+  It is possible to synchronize time-series data to external MQTT brokers available within the network, E.g. to azure.
+
+  Because of the flexibility of MQTT it is possible to configure how the topic, payload and data point format should look like.
+
+  <h4>Feature 3610923: Write transformation results back to connector</h4>
+  Results of a transformation can be written to any connected writable tag.
+
+  This way it is possible to ingest data from any source and transform it. During the transformation tags from different sources can be combined and then written back to a tag.
+
+  <h3>Fixed</h3>
+  <ul>
+    <li>Bug 2688192: Store flag is not set if variable is created via API in integrated</li>
+    <li>Bug 2694119: IIH Essentials: Boolean tags are plotted incorrectly in the "Preview data"</li>
+    <li>Bug 2751086: Angular 15.x, 16.x - End of Life Notification</li>
+    <li>Bug 2805647: IIH: Add viriable to asset cannot support</li>
+    <li>Bug 2814874: Node.js Package: postcss ≤ 8.4.30 - Remote Content Spoofing Vulnerability -</li>
+    <li>Bug 2818484: TC : Store data : Values are not updating properly via IE Databus interface</li>
+    <li>Bug 2865553: No option to delete All/Selected variables in IIH</li>
+    <li>Bug 2865888: Not clear what exclamation mark in connection column</li>
+    <li>Bug 2866843: [IIH Essentials] No information provided to the user how to establish the connection when the connection state is showing</li>
+    <li>Bug 2866879: Common Configurator - Store Data - Storage - No multiselection</li>
+    <li>Bug 2866917: IIH essentials- by default save is enabled on</li>
+    <li>Bug 2866932: IIH essentials - Console logs on</li>
+    <li>Bug 2866947: Wrong connection state</li>
+    <li>Bug 2867009: [Common Configurator] Store data - system information - when user zooms in and zoom out the gauge indicator is been</li>
+    <li>Bug 2956656: Legacy API returns different</li>
+    <li>Bug 3306759: IIHE: Tiny dropdown menu makes handling large numbers of variables</li>
+    <li>Bug 3328391: IIH Essentials - Add Connector - OPC Connector</li>
+    <li>Bug 3328787: IIH Essentials: asset tree layout have the content after decreasing the screen</li>
+    <li>Bug 3328821: IIH Essentials - Aspects not ordered alphabetically or</li>
+    <li>Bug 3329032: IIH Essentials - Edit Variable - Choose Tag not</li>
+    <li>Bug 3329671: [TestingDay_PI22] Modbus TCP tag manual write from watch tables is not reflecting in IIH</li>
+    <li>Bug 3332122: IIH - Flat lists instead of structured</li>
+    <li>Bug 3385629: IIH Aggregation Server: UInt32 variable switched to</li>
+    <li>Bug 3395094: SQLite 3.x ≤ 3.43.0 - Remote Code Execution Vulnerability -</li>
+    <li>Bug 3395101: SQLite ≤ 3.43.1 - Local Denial of Service Vulnerability -</li>
+    <li>Bug 3395116: cURL, libcurl 7.44.0 ≤ 8.6.0 - Multiple Vulnerabilities -</li>
+    <li>Bug 3411293: TC:Issue with deleting Insights Hub configuration in common configurator V</li>
+    <li>Bug 3412275: IIH Essentials Docu link re-directs</li>
+    <li>Bug 3462737: Unspecific error message at adapter discovery, some errorKeys are missing in the</li>
+    <li>Bug 3601741: Casing of word simatic in connector add screen is</li>
+    <li>Bug 3633084: Common Configurator V1.11.0-1 - Char with Special Symbols still Success to Deploy and Cloud Sync</li>
+    <li>Bug 3638260: IIH Essentials: Date Time picker difficult to use as scrolling in required to apply choice in Export variable</li>
+    <li>Bug 3639411: Save button is enabled by default without any</li>
+    <li>Bug 3639546: Unnecessary scrollbar for the content which is already fitting the screen</li>
+    <li>Bug 3640871: Gauge Indicator value is shown even after the indicator is</li>
+    <li>Bug 3640944: Edit asset button is enabled without any</li>
+    <li>Bug 3640951: Alarms are not updating in alarms table, but alarms count is</li>
+    <li>Bug 3640967: Edit Variable - The variable ActiveState must be read-only as it is not allowed to be modified in IIH Essentials</li>
+    <li>Bug 3640993: Mandatory asterisk must be provided for connector and tag selection, in Edit</li>
+    <li>Bug 3645706: Mapping of 12000 variables</li>
+    <li>Bug 3645847: Debian GNU/Linux 11, 12 - util-linux Remote Improper Input Validation Vulnerability -</li>
+    <li>Bug 3662691: Debian GNU/Linux 11, 12 - glibc Multiple Denial of Service Vulnerabilities -</li>
+    <li>Bug 3662694: Debian GNU/Linux 11, 12 - glibc Remote Denial of Service Vulnerability -</li>
+    <li>Bug 3703920: IIH Variable displayed as disconnected after creating aggregation even though values are still</li>
+    <li>Bug 3776517: Demand: simpler id format in /data</li>
+    <li>Bug 3896949: When invalid Tenant is entered for Insight Hub, Error msg shows empty</li>
+    <li>Bug 3925745: IIH Essentials - Alarms get lost after some</li>
+    <li>Bug 3983080: Define Rules not able to deploy the 800 plus assets to IIH Essential with the latest app V</li>
+    <li>Bug 3983163: Alarming: Backend crashes when creating AlarmChannel without</li>
+    <li>Bug 3984098: TRA tracker: IIH Essentials</li>
+    <li>Bug 2599330: Incorrect position of value highlighting in preview data</li>
+    <li>Bug 3985156: console error on clicking on add aspect</li>
+    <li>Bug 3986108: Unable to add all variables from Connector to</li>
+    <li>Bug 3986758: [Bug] IIH Essentials</li>
+    <li>Bug 3987044: Move One Asset to Another Asset doesn't show at common configurator but works in</li>
+    <li>Bug 3987046: Attribute data</li>
+    <li>Bug 4001080: Translation is not showing correctly on Manage Data</li>
+    <li>Bug 3986415: Service unavailable upon deleting an asset with 12K</li>
+    <li>Bug 4048898: IIH Essentials: When creating attribute type Unit is not</li>
+    <li>Bug 4053259: TC:Issue observed pushing values into Cloud (Mind sphere)</li>
+    <li>Bug 2630456: TC : Invalid/wrong credentials are saved for mindsphere cloud</li>
+    <li>Bug 3985099: breaking UI on clicking of Kebab</li>
+    <li>Bug 3985147: close button is not working as expected when the right panel is expanded to full</li>
+    <li>Bug 3986326: IIH Essentials: Add Asset - UI dose not display the arrow for connector</li>
+    <li>Bug 4035648: TC: Data sources option with Data bus and Connectivity suite for mapping at Model Page is not</li>
+    <li>Bug 3985006: "Delete Data" have no response in Common</li>
+    <li>Bug 3985064: getting console error on clicking of setting</li>
+    <li>Bug 3986532: No reaction after click on add asset in Common</li>
+    <li>Bug 3985697: Cancel and other button not working after entering text in Name field of Add</li>
+  </ul>
+</details>
+
+<details>
   <summary style="font-weight: bold; font-size: x-large;">v1.11.0 - 2024-05-14</summary>
   <h3>Added</h3>
   <h4>Feature 2214191: Sync aggregated data</h4>
