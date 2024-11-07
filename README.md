@@ -37,7 +37,7 @@ In this repository you can find the following components:
 - [Documentation](https://industrial-edge.github.io/iih-essentials-development-kit/iih-essentials/)
 - [Examples](./examples)
 
-By running the docker compose configuration, an API instance of the IIH Essentials will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](https://industrial-edge.github.io/iih-essentials-development-kit/iih-essentials/api/openapi/). This file needs to be opened locally in a browser.
+By running the docker compose configuration, an API instance of the IIH Essentials will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](https://industrial-edge.github.io/iih-essentials-development-kit/iih-essentials/for-developers/api/openapi.html). This file needs to be opened locally in a browser.
 
 An image is loaded from Docker Hub, containing these components:
 
