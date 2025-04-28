@@ -2,8 +2,8 @@
     "openapi": "3.0.1",
     "info": {
         "title": "IIH Essentials API",
-        "description": "Description of the REST API of IIH Essentials. <br>The maximum size limit for a single request (no file) is 4 MB.<br>The connection timeout is 10 seconds.",
-        "version": "2.0.0"
+        "description": "Description of the REST API of IIH Essentials. <br>The maximum size limit for a single request (no file) is 4 MB.<br>The connection timeout is 10 seconds.<br>Based on Anchor Asset API specification v1.0.<br>The property $anchor of the schema AggregationValue will be renamed to $pointer in the next version.",
+        "version": "2.1.0"
     },
     "servers": [
         {
@@ -50,6 +50,10 @@
             "description": "API to manage AttributeTypes."
         },
         {
+            "name": "Anchor Attributes (ex)",
+            "description": "Extended API to manage Attributes."
+        },
+        {
             "name": "Anchor Relations",
             "description": "API to manage Relations."
         },
@@ -83,13 +87,16 @@
             "name": "AlarmStorage"
         },
         {
-            "name": "Aspects"
+            "name": "Aspects",
+            "description": "Is deprecated and supported until 31.10.2025."
         },
         {
-            "name": "AspectTypes"
+            "name": "AspectTypes",
+            "description": "Is deprecated and supported until 31.10.2025."
         },
         {
-            "name": "Assets"
+            "name": "Assets",
+            "description": "Is deprecated and supported until 31.10.2025."
         },
         {
             "name": "Backup",
@@ -121,7 +128,8 @@
             "description": "General information."
         },
         {
-            "name": "Variables"
+            "name": "Variables",
+            "description": "Is deprecated and supported until 31.10.2025."
         },
         {
             "name": "VariableConfigurations"
@@ -806,7 +814,7 @@
             "get": {
                 "deprecated": true,
                 "summary": "Get used disk space by adapters.",
-                "description": "Return the size of the adapters folder.",
+                "description": "Return the size of the adapters folder. Is deprecated and supported until 31.10.2025",
                 "tags": [
                     "Adapters"
                 ],
@@ -1349,7 +1357,7 @@
             "get": {
                 "deprecated": true,
                 "summary": "Get used disk space by aggregations.",
-                "description": "Return the size of the aggregation folder.",
+                "description": "Return the size of the aggregation folder. Is deprecated and supported until 31.10.2025",
                 "tags": [
                     "Aggregations"
                 ],
@@ -2073,50 +2081,13 @@
                             "schema": {
                                 "$ref": "#/components/schemas/AlarmQueryBody"
                             },
-                            "example": {
-                                "alarmChannelIds": [],
-                                "assetIds": [
-                                    "0"
-                                ],
-                                "areaFilter": [
-                                    "System"
-                                ],
-                                "alarmClassFilter": [],
-                                "sourceFilter": [
-                                    "PLC 1",
-                                    "PLC 2"
-                                ],
-                                "originFilter": [],
-                                "isActiveFilter": [
-                                    "Yes",
-                                    "No"
-                                ],
-                                "isAcknowledgedFilter": [
-                                    "NotRelevant"
-                                ],
-                                "isConfirmedFilter": [],
-                                "extendedPropertiesFilters": [
-                                    {
-                                        "name": "AdditionalText0",
-                                        "value": [
-                                            "text1",
-                                            "text2",
-                                            "text3"
-                                        ]
-                                    },
-                                    {
-                                        "name": "ExtProp1",
-                                        "value": [
-                                            "text1",
-                                            "text2"
-                                        ]
-                                    }
-                                ],
-                                "from": "2023-08-17T03:17:06Z",
-                                "to": "2023-11-17T03:17:06Z",
-                                "order": "Descending",
-                                "offset": 0,
-                                "take": 20
+                            "examples": {
+                                "AdvancedFilterExample": {
+                                    "$ref": "#/components/examples/QueryAlarmAdvancedFilterExample"
+                                },
+                                "FilterExample": {
+                                    "$ref": "#/components/examples/QueryAlarmFilterExample"
+                                }
                             }
                         }
                     }
@@ -7146,6 +7117,21 @@
                                 },
                                 "SenseyeWithoutHierarchy": {
                                     "$ref": "#/components/examples/DataDestinationSenseyeWithoutHierarchyRequestExample"
+                                },
+                                "GenericMQTTNoAuthAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTNoAuthNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthNoAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTUserPWCertNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWCertNoAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTCertNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTCertNoAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTUserPWNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWNoAdvancedSettingsRequestExample"
                                 }
                             }
                         }
@@ -7168,6 +7154,21 @@
                                     },
                                     "SenseyeWithoutHierarchy": {
                                         "$ref": "#/components/examples/DataDestinationSenseyeWithoutHierarchyExample"
+                                    },
+                                    "GenericMQTTNoAuthAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTNoAuthNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTUserPWCertNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWCertNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTCertNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTCertNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTUserPWNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWNoAdvancedSettingsExample"
                                     }
                                 }
                             }
@@ -7262,6 +7263,21 @@
                                     },
                                     "SenseyeWithoutHierarchy": {
                                         "$ref": "#/components/examples/DataDestinationSenseyeWithoutHierarchyExample"
+                                    },
+                                    "GenericMQTTNoAuthAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTNoAuthNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTUserPWCertNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWCertNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTCertNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTCertNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTUserPWNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWNoAdvancedSettingsExample"
                                     }
                                 }
                             }
@@ -7318,6 +7334,21 @@
                                 },
                                 "SenseyeWithoutHierarchy": {
                                     "$ref": "#/components/examples/DataDestinationSenseyeWithoutHierarchyRequestExample"
+                                },
+                                "GenericMQTTNoAuthAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTNoAuthNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthNoAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTUserPWCertNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWCertNoAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTCertNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTCertNoAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTUserPWNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWNoAdvancedSettingsRequestExample"
                                 }
                             }
                         }
@@ -7340,6 +7371,21 @@
                                     },
                                     "SenseyeWithoutHierarchy": {
                                         "$ref": "#/components/examples/DataDestinationSenseyeWithoutHierarchyExample"
+                                    },
+                                    "GenericMQTTNoAuthAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTNoAuthNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTUserPWCertNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWCertNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTCertNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTCertNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTUserPWNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWNoAdvancedSettingsExample"
                                     }
                                 }
                             }
@@ -7448,6 +7494,21 @@
                                     },
                                     "SenseyeWithoutHierarchy": {
                                         "$ref": "#/components/examples/DataDestinationSenseyeWithoutHierarchyExample"
+                                    },
+                                    "GenericMQTTNoAuthAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTNoAuthNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTUserPWCertNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWCertNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTCertNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTCertNoAdvancedSettingsExample"
+                                    },
+                                    "GenericMQTTUserPWNoAdvancedSettings": {
+                                        "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWNoAdvancedSettingsExample"
                                     }
                                 }
                             }
@@ -7527,6 +7588,21 @@
                                 },
                                 "SenseyeWithoutHierarchy": {
                                     "$ref": "#/components/examples/DataDestinationSenseyeWithoutHierarchyRequestExample"
+                                },
+                                "GenericMQTTNoAuthAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTNoAuthNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTNoAuthNoAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTUserPWCertNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWCertNoAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTCertNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTCertNoAdvancedSettingsRequestExample"
+                                },
+                                "GenericMQTTUserPWNoAdvancedSettings": {
+                                    "$ref": "#/components/examples/DataDestinationGenericMQTTUserPWNoAdvancedSettingsRequestExample"
                                 }
                             }
                         }
@@ -7878,7 +7954,7 @@
             "get": {
                 "deprecated": true,
                 "summary": "Get used disk space by data retentions.",
-                "description": "Return the size of the data-retention folder.",
+                "description": "Return the size of the data-retention folder. Is deprecated and supported until 31.10.2025",
                 "tags": [
                     "DataRetention"
                 ],
@@ -12498,6 +12574,316 @@
                 }
             }
         },
+        "/DataService/anchor/v1/references": {
+            "post": {
+                "tags": [
+                    "Anchor References"
+                ],
+                "summary": "Creates a Reference.",
+                "description": "Creates a Reference.",
+                "requestBody": {
+                    "description": "JSON document of the Aspect to be created, serialized according to schema `Reference`. Missing $anchor-identifiers will automatically be created.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Reference"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "JSON document of the newly created Reference instance serialized according to schema `Reference`.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Reference"
+                                }
+                            }
+                        }
+                    },
+                    "304": {
+                        "$ref": "#/components/responses/DataNotModified"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/RequestMalformed"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "405": {
+                        "$ref": "#/components/responses/MethodNotAllowed"
+                    },
+                    "410": {
+                        "$ref": "#/components/responses/ResourceGone"
+                    },
+                    "415": {
+                        "$ref": "#/components/responses/UnsupportedMediaType"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/UnprocessableEntity"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/RequestRejected"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalError"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Anchor References"
+                ],
+                "summary": "Returns all References.",
+                "description": "Returns all References.",
+                "parameters": [
+                    {
+                        "name": "namefilter",
+                        "in": "query",
+                        "description": "one or multiple filter statements. Default: `*`",
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "typefilter",
+                        "in": "query",
+                        "description": "UUID of the ReferenceType the response has to match or be inherited from. Default: Empty, filter not active.",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "reference",
+                        "in": "query",
+                        "description": "UUID of the anchor **after** which the result set shall start. Default: Empty, start with the first entry.",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Maximum offset of entries with respect to the provided reference. Default: `0`",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "take",
+                        "in": "query",
+                        "description": "Maximum number of entries in the result. Default: `20`",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "JSON document with array of References.",
+                        "headers": {
+                            "x-anchor-position": {
+                                "description": "Position of the anchor provided as reference.",
+                                "schema": {
+                                    "type": "integer",
+                                    "description": "Position of the anchor provided as reference.",
+                                    "format": ""
+                                }
+                            },
+                            "x-anchor-count": {
+                                "description": "Overall count of results.",
+                                "schema": {
+                                    "type": "integer",
+                                    "description": "Overall count of results.",
+                                    "format": ""
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Reference"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "304": {
+                        "$ref": "#/components/responses/DataNotModified"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/RequestMalformed"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "405": {
+                        "$ref": "#/components/responses/MethodNotAllowed"
+                    },
+                    "410": {
+                        "$ref": "#/components/responses/ResourceGone"
+                    },
+                    "415": {
+                        "$ref": "#/components/responses/UnsupportedMediaType"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/UnprocessableEntity"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/RequestRejected"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalError"
+                    }
+                }
+            }
+        },
+        "/DataService/anchor/v1/references/{anchor}": {
+            "get": {
+                "tags": [
+                    "Anchor References"
+                ],
+                "summary": "Returns a Reference.",
+                "description": "Returns a Reference.",
+                "parameters": [
+                    {
+                        "name": "anchor",
+                        "in": "path",
+                        "description": "Unique identifier of the Reference.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "JSON document of the Reference instance serialized according to schema `Reference`.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Reference"
+                                }
+                            }
+                        }
+                    },
+                    "304": {
+                        "$ref": "#/components/responses/DataNotModified"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/RequestMalformed"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "405": {
+                        "$ref": "#/components/responses/MethodNotAllowed"
+                    },
+                    "410": {
+                        "$ref": "#/components/responses/ResourceGone"
+                    },
+                    "415": {
+                        "$ref": "#/components/responses/UnsupportedMediaType"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/UnprocessableEntity"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/RequestRejected"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalError"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Anchor References"
+                ],
+                "summary": "Deletes a Reference.",
+                "description": "Deletes a Reference.",
+                "parameters": [
+                    {
+                        "name": "anchor",
+                        "in": "path",
+                        "description": "Unique identifier of the reference.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "This method returns with an HTTP status code only."
+                    },
+                    "304": {
+                        "$ref": "#/components/responses/DataNotModified"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/RequestMalformed"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "405": {
+                        "$ref": "#/components/responses/MethodNotAllowed"
+                    },
+                    "410": {
+                        "$ref": "#/components/responses/ResourceGone"
+                    },
+                    "415": {
+                        "$ref": "#/components/responses/UnsupportedMediaType"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/UnprocessableEntity"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/RequestRejected"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalError"
+                    }
+                }
+            }
+        },
         "/DataService/anchor/v1/referencetypes": {
             "post": {
                 "tags": [
@@ -13755,6 +14141,428 @@
                     }
                 }
             }
+        },
+        "/DataService/anchor-ex/v1/attributes/{anchor}": {
+            "get": {
+                "tags": [
+                    "Anchor Attributes (ex)"
+                ],
+                "summary": "Returns the requested Attribute.",
+                "description": "Returns the requested Attribute.",
+                "parameters": [
+                    {
+                        "name": "anchor",
+                        "in": "path",
+                        "description": "Unique identifier of the Attribute.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "_includeSource",
+                        "in": "query",
+                        "description": "If true the $_source property will be added to the returned Attributes.<br>`Usecase` Allow to provide the source configuration also with the new API. Prevent multiple queries when loading Attributes in the frontend.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "_expandTypeAnchors",
+                        "in": "query",
+                        "description": "If true anchors of types will be returned as fully qualified identifiers including the types name. Pattern: typename@anchor. Example: anchor.asset-base@0ad068b1-b1a2-420a-9907-3c03c2784e90.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Attribute definition.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AttributeEx"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Anchor Attributes (ex)"
+                ],
+                "summary": "Deletes an attribute.",
+                "description": "Deletes an attribute.",
+                "parameters": [
+                    {
+                        "name": "anchor",
+                        "in": "path",
+                        "description": "Unique identifier of the attribute.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "This method returns with an HTTP status code only."
+                    },
+                    "304": {
+                        "$ref": "#/components/responses/DataNotModified"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/RequestMalformed"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    },
+                    "405": {
+                        "$ref": "#/components/responses/MethodNotAllowed"
+                    },
+                    "410": {
+                        "$ref": "#/components/responses/ResourceGone"
+                    },
+                    "415": {
+                        "$ref": "#/components/responses/UnsupportedMediaType"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/UnprocessableEntity"
+                    },
+                    "429": {
+                        "$ref": "#/components/responses/RequestRejected"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/InternalError"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Anchor Attributes (ex)"
+                ],
+                "summary": "Updates an attribute.",
+                "description": "Creates an attribute.<br>`Usecase` Entity editor Attributes tab - add Attributes of an Entity generic (not knowing if it is an Asset, Aspect or View).<br>`Usecase` Provide symetric set of interfaces.",
+                "parameters": [
+                    {
+                        "name": "anchor",
+                        "in": "path",
+                        "description": "Unique identifier of the Attribute.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "_includeSource",
+                        "in": "query",
+                        "description": "If true the $_source property will be added to the returned Attributes.<br>`Usecase` Allow to provide the source configuration also with the new API. Prevent multiple queries when loading Attributes in the frontend.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "_protectData",
+                        "in": "query",
+                        "description": "This query parameter specifies the behaviour on datatype change.<br>If set to true an error will be returned if there are already timeseries values stored which are incompatible with the new datatype. The errorKey in this case is AdapterTags_IncompatibleData.<br>If false or not specified incompatible timeseries values are deleted. Compatible (convertable) timeseries values are preserved.<br>`Usecase` Protect the user from loosing data.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "_expandTypeAnchors",
+                        "in": "query",
+                        "description": "If true anchors of types will be returned as fully qualified identifiers including the types name. Pattern: typename@anchor. Example: anchor.asset-base@0ad068b1-b1a2-420a-9907-3c03c2784e90.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "JSON document of the Attribute to be updated.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AttributeEx"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Attribute definition.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AttributeEx"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/DataService/anchor-ex/v1/attributes": {
+            "get": {
+                "tags": [
+                    "Anchor Attributes (ex)"
+                ],
+                "summary": "Returns all attributes.",
+                "description": "Returns all attributes.<br>`Usecase`: Entity editor Attributes tab - load Attributes of an Entity (not knowing if it is an Asset, Aspect or View).<br>`Usecase` AttributeType editor Instances tab - show instances of AttributeType.",
+                "parameters": [
+                    {
+                        "name": "namefilter",
+                        "in": "query",
+                        "description": "one or multiple filter statements. Default: `*`",
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "typefilter",
+                        "in": "query",
+                        "description": "UUID of the AttributeType the response has to match or be inherited from. Default: Empty, filter not active.",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "reference",
+                        "in": "query",
+                        "description": "UUID of the anchor **after** which the result set shall start. Default: Empty, start with the first entry.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Maximum offset of entries with respect to the provided reference. Default: `0`",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "take",
+                        "in": "query",
+                        "description": "Maximum number of entries in the result. Default: `20`",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "_datatypefilter",
+                        "in": "query",
+                        "description": "Filter by datatype. One datatype or multiple comma-separated datatypes can be selected.<br><br>Special syntax can be used to exclude specific datatypes:<br>`*,-composition,-aggregation` Return all datatypes except composition and aggregation.",
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "_arrayfilter",
+                        "in": "query",
+                        "description": "Filter by array. Only true or false are supported. To get both (arrays and non-arrays) the query parameter must be omitted.",
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "_resolveAggregatedAttributes",
+                        "in": "query",
+                        "description": "Add attributes linked via aggregation attributes to the result.<br>`Usecase` Show translated OPC-UA Model which uses aggregation attributes.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "_owner",
+                        "in": "query",
+                        "description": "Filter. Anchor of the Entity which Attributes should be returned.<br>`Usecase` Be able to use this route as alternative to /{domainconcept}/{anchor}/attributes.",
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "_includeSource",
+                        "in": "query",
+                        "description": "If true the $_source property will be added to the returned Attributes.<br>`Usecase` Allow to provide the source configuration also with the new API. Prevent multiple queries when loading Attributes in the frontend.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "_expandTypeAnchors",
+                        "in": "query",
+                        "description": "If true anchors of types will be returned as fully qualified identifiers including the types name. Pattern: typename@anchor. Example: anchor.asset-base@0ad068b1-b1a2-420a-9907-3c03c2784e90.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Attribute definitions.",
+                        "headers": {
+                            "x-anchor-position": {
+                                "description": "Position of the anchor provided as reference.",
+                                "schema": {
+                                    "type": "integer",
+                                    "description": "Position of the anchor provided as reference.",
+                                    "format": ""
+                                }
+                            },
+                            "x-anchor-count": {
+                                "description": "Overall count of results.",
+                                "schema": {
+                                    "type": "integer",
+                                    "description": "Overall count of results.",
+                                    "format": ""
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/AttributeEx"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Anchor Attributes (ex)"
+                ],
+                "summary": "Creates an attribute.",
+                "description": "Creates an attribute.<br>`Usecase` Entity editor Attributes tab - add Attributes of an Entity generic (not knowing if it is an Asset, Aspect or View).<br>`Usecase` Provide symetric set of interfaces.",
+                "parameters": [
+                    {
+                        "name": "_includeSource",
+                        "in": "query",
+                        "description": "If true the $_source property will be added to the returned Attributes.<br>`Usecase` Allow to provide the source configuration also with the new API. Prevent multiple queries when loading Attributes in the frontend.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "_expandTypeAnchors",
+                        "in": "query",
+                        "description": "If true anchors of types will be returned as fully qualified identifiers including the types name. Pattern: typename@anchor. Example: anchor.asset-base@0ad068b1-b1a2-420a-9907-3c03c2784e90.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "JSON document of the Attribute to be created. Missing $anchor-identifiers will automatically be created. The $_owner property is mandatory.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AttributeEx"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Attribute definition.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AttributeEx"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/DataService/anchor-ex/v1/attributes/{anchor}/paths": {
+            "get": {
+                "tags": [
+                    "Anchor Attributes (ex)"
+                ],
+                "summary": "Returns all paths of the specified Attribute.",
+                "description": "Returns all paths of the specified Attribute.<br>`Usecase` Customer specific request.",
+                "parameters": [
+                    {
+                        "name": "anchor",
+                        "in": "path",
+                        "description": "Unique identifier of the Attribute.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "_view",
+                        "in": "query",
+                        "description": "Allows to choose another view than the IIH main view.<br>`Usecase` Navigation using a view.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "_language",
+                        "in": "query",
+                        "description": "The UI language of the client application. Displaynames will be returned for this language. If not specified Displaynames are not included in the response.",
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TreeItem path definitions.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TreeItemPath"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -14597,6 +15405,49 @@
                     }
                 }
             },
+            "AlarmFilter": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "enum": [
+                            "IsActive",
+                            "IsAcknowledged",
+                            "IsConfirmed",
+                            "Area",
+                            "AlarmClass",
+                            "Source",
+                            "Origin",
+                            "ExtendedProperty"
+                        ],
+                        "description": "The key of the filter (e.g. IsActive, IsAcknowledged, IsConfirmed, Area, AlarmClass, Source, Origin, ExtendedProperty)"
+                    },
+                    "operator": {
+                        "type": "string",
+                        "enum": [
+                            "IsIn",
+                            "IsNotIn",
+                            "Contains",
+                            "DoesNotContain",
+                            "Exists",
+                            "DoesNotExist"
+                        ],
+                        "description": "The operation to apply (e.g. IsIn, IsNotIn, Contains, DoesNotContain, Exists, DoesNotExist)"
+                    },
+                    "value": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The values for the filter operation (only if operator is of IsIn, IsNotIn, Contains, DoesNotContain). If the key is IsActive, IsAcknowledged or IsConfirmed, the strings 'Yes', 'No' and 'NotRelevant' must be used"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the extended property (only if key is ExtendedProperty)",
+                        "nullable": true
+                    }
+                }
+            },
             "AlarmMetaData": {
                 "type": "object",
                 "properties": {
@@ -14690,6 +15541,14 @@
                         "nullable": true,
                         "items": {
                             "$ref": "#/components/schemas/ExtendedPropertiesFilter"
+                        }
+                    },
+                    "alarmFilters": {
+                        "type": "array",
+                        "description": "List of filters applied to alarms",
+                        "nullable": true,
+                        "items": {
+                            "$ref": "#/components/schemas/AlarmFilter"
                         }
                     },
                     "from": {
@@ -15199,6 +16058,22 @@
                         },
                         "description": "Details about Sub-Entities defined via composition or aggregation. Added only if the query parameter _includeSubEntities is true.<br>$_subEntities is always an array. For non-array attributes the array contains exactly one element.",
                         "nullable": true
+                    },
+                    "$_aggregatingAttribute": {
+                        "type": "object",
+                        "description": "Only present if GET /attributes is called with the query parameter _resolveAggregatedAttributes and the attribute is an resolved one.",
+                        "properties": {
+                            "$anchor": {
+                                "type": "string",
+                                "format": "uuid"
+                            },
+                            "$_index": {
+                                "description": "Only used if the aggregating attribute is an array.",
+                                "type": "number",
+                                "format": "int32",
+                                "nullable": true
+                            }
+                        }
                     }
                 }
             },
@@ -15281,9 +16156,9 @@
                         "description": "The type of the source.<br>`none` No connection to an external source. Data can be stored via the REST API.<br>`tag` Direct connection to a single tag of a connector.<br>`rule` Formula configuration. Formula operands are connected to tags of a connector.",
                         "type": "string",
                         "enum": [
-                            "none",
-                            "tag",
-                            "rule"
+                            "None",
+                            "Tag",
+                            "Rule"
                         ]
                     },
                     "store": {
@@ -16406,7 +17281,8 @@
                         "example": "mindsphere",
                         "enum": [
                             "mindsphere",
-                            "senseye"
+                            "senseye",
+                            "genericmqtt"
                         ]
                     },
                     "active": {
@@ -16491,7 +17367,8 @@
                     "number",
                     "string",
                     "password",
-                    "file"
+                    "file",
+                    "selector"
                 ]
             },
             "DataDestinationCreate": {
@@ -16511,6 +17388,9 @@
                                     },
                                     {
                                         "$ref": "#/components/schemas/SenseyeDataDestinationConfigCreate"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/GenericMQTTDataDestinationConfigCreate"
                                     }
                                 ]
                             }
@@ -16535,6 +17415,9 @@
                                     },
                                     {
                                         "$ref": "#/components/schemas/SenseyeDataDestinationConfig"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/GenericMQTTDataDestinationConfigRead"
                                     }
                                 ]
                             }
@@ -16592,6 +17475,9 @@
                                     },
                                     {
                                         "$ref": "#/components/schemas/SenseyeDataDestinationConfigUpdate"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/GenericMQTTDataDestinationConfigUpdate"
                                     }
                                 ]
                             }
@@ -17466,6 +18352,264 @@
             "FloatingValue": {
                 "type": "number",
                 "additionalProperties": false
+            },
+            "GenericMQTTDataDestinationConfig": {
+                "type": "object",
+                "properties": {
+                    "mqttHost": {
+                        "type": "string",
+                        "example": "mqtt.broker.io",
+                        "description": "url of the mqtt broker"
+                    },
+                    "mqttProtocol": {
+                        "type": "string",
+                        "example": "tcp",
+                        "description": "Protocol used for establishing the connection to the broker"
+                    },
+                    "mqttPort": {
+                        "type": "number",
+                        "example": 8883,
+                        "description": "port of mqtt broker"
+                    },
+                    "mqttPath": {
+                        "type": "string",
+                        "example": "/mqtt",
+                        "description": "optional path to be appended after port number"
+                    },
+                    "bulk": {
+                        "type": "boolean",
+                        "nullable": true,
+                        "example": true,
+                        "description": "group data points of an attribute in an mqtt package. deactivating this sets the publishing interval to 1 s and causes a higher resource comsumption."
+                    },
+                    "publishIntervalInSec": {
+                        "type": "number",
+                        "example": 30,
+                        "description": "how often should mqtt packages be published in seconds. data will be buffered."
+                    },
+                    "qos": {
+                        "type": "number",
+                        "example": 1,
+                        "description": "mqtt quality of service for time series data, last will and birth message"
+                    },
+                    "mqttMaxPackageSend": {
+                        "type": "number",
+                        "example": 100,
+                        "description": "maximum amount of packages that can be sent within a second. if limit is reached it will be waited until next second"
+                    },
+                    "mqttMaxPackageSize": {
+                        "type": "number",
+                        "example": 256,
+                        "description": "maximum size of a single mqtt package. if limit is reached the package will be split."
+                    },
+                    "authSelector": {
+                        "type": "string",
+                        "example": "user_pw_cert",
+                        "description": "authentication method for mqtt communication"
+                    },
+                    "mqttUsername": {
+                        "type": "string",
+                        "example": "sample_username",
+                        "nullable": true,
+                        "description": "mqtt username for authentication"
+                    },
+                    "mqttPassword": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "mqtt password for authentication"
+                    },
+                    "clientCertificate": {
+                        "nullable": true,
+                        "description": "client certificate for mqtt tls authentication",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/Certificate"
+                            },
+                            {
+                                "nullable": true
+                            }
+                        ]
+                    },
+                    "clientKey": {
+                        "nullable": true,
+                        "description": "client key for mqtt tls authentication",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/Certificate"
+                            },
+                            {
+                                "nullable": true
+                            }
+                        ]
+                    },
+                    "privateKeyPassword": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "private key password for client certificates"
+                    },
+                    "caCertificateMQTT": {
+                        "nullable": true,
+                        "description": "ca certificate for mqtt tls authentication",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/Certificate"
+                            },
+                            {
+                                "nullable": true
+                            }
+                        ]
+                    },
+                    "advancedSettings": {
+                        "type": "boolean",
+                        "example": true,
+                        "description": "flag to activate or deactivate advanced settings when setting up data destination"
+                    },
+                    "retainedFlag": {
+                        "type": "boolean",
+                        "nullable": true,
+                        "example": true,
+                        "description": "retained flag for time series data, last will and birth message"
+                    },
+                    "cleanSession": {
+                        "type": "boolean",
+                        "nullable": true,
+                        "example": true,
+                        "description": "clean session for time series data"
+                    },
+                    "keepAlive": {
+                        "type": "number",
+                        "nullable": true,
+                        "example": 60,
+                        "description": "keep alive for time series data"
+                    },
+                    "connectionTimeout": {
+                        "type": "number",
+                        "nullable": true,
+                        "example": 15,
+                        "description": "connection timeout for time series data"
+                    },
+                    "birthMessage": {
+                        "type": "boolean",
+                        "nullable": true,
+                        "example": true,
+                        "description": "flag to activate or deactivate birth message"
+                    },
+                    "birthMessageTopic": {
+                        "type": "string",
+                        "nullable": true,
+                        "example": "birthMessage/topic",
+                        "description": "topic to send out birth message"
+                    },
+                    "birthMessageContent": {
+                        "type": "string",
+                        "nullable": true,
+                        "example": "lastWillContent",
+                        "description": "content of birth message"
+                    },
+                    "lastWill": {
+                        "type": "boolean",
+                        "nullable": true,
+                        "example": true,
+                        "description": "flag to activate or deactivate last will and testament"
+                    },
+                    "lastWillTopic": {
+                        "type": "string",
+                        "nullable": true,
+                        "example": "lastWill/topic",
+                        "description": "topic to send out last will message"
+                    },
+                    "lastWillMessage": {
+                        "type": "string",
+                        "nullable": true,
+                        "example": "lastWillMessage",
+                        "description": "content of last will message"
+                    }
+                }
+            },
+            "GenericMQTTDataDestinationConfigCreate": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/GenericMQTTDataDestinationConfig"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "configFile": {
+                                "$ref": "#/components/schemas/GenericMQTTDataDestinationConfigFile"
+                            }
+                        }
+                    }
+                ]
+            },
+            "GenericMQTTDataDestinationConfigFile": {
+                "type": "object",
+                "properties": {
+                    "fileName": {
+                        "type": "string",
+                        "example": "Broker_Config.json",
+                        "description": "name of generic mqtt data destination configuration file"
+                    },
+                    "content": {
+                        "type": "object",
+                        "example": {
+                            "topic": "factory_1/motors/$path/$attributeName",
+                            "payload": {
+                                "header": {
+                                    "Topic": "$topic",
+                                    "Name": "$attributeName",
+                                    "Hierarchy": "$path",
+                                    "IED_Model": "IED427Factory1"
+                                },
+                                "datapoints": [
+                                    {
+                                        "Measurement": "$value",
+                                        "Time": "$timestamp:LDAP-Filetime",
+                                        "Quality_Code": "$qualityCode"
+                                    }
+                                ]
+                            }
+                        },
+                        "description": "content of generic mqtt data destination configuration file"
+                    }
+                }
+            },
+            "GenericMQTTDataDestinationConfigRead": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/GenericMQTTDataDestinationConfig"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "configFile": {
+                                "$ref": "#/components/schemas/GenericMQTTDataDestinationConfigFile"
+                            }
+                        }
+                    }
+                ]
+            },
+            "GenericMQTTDataDestinationConfigUpdate": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/GenericMQTTDataDestinationConfig"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "configFile": {
+                                "nullable": true,
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/GenericMQTTDataDestinationConfigFile"
+                                    },
+                                    {
+                                        "nullable": true
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
             },
             "IntegerValue": {
                 "type": "integer",
@@ -18343,6 +19487,11 @@
             "SenseyeDataDestinationConfig": {
                 "type": "object",
                 "properties": {
+                    "mqttProtocol": {
+                        "type": "string",
+                        "example": "ssl",
+                        "description": "protocol of senseye mqtt broker"
+                    },
                     "mqttHost": {
                         "type": "string",
                         "example": "mqtt.senseye.io",
@@ -18570,6 +19719,110 @@
                         "type": "integer",
                         "example": 10000
                     }
+                }
+            },
+            "TreeItem": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "$anchor": {
+                        "description": "The anchor of the TreeItem object.",
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "$name": {
+                        "type": "string"
+                    },
+                    "$displayname": {
+                        "nullable": true,
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Dictionary, where the key is country code (e.g. \"de-DE\") and the value a human-readable name for the given locality."
+                    },
+                    "$_attribute": {
+                        "allOf": [
+                            {
+                                "description": "The Attribute used to link this TreeItem with its parent. Not present if this link is realized via a Relation.",
+                                "nullable": true
+                            },
+                            {
+                                "$ref": "#/components/schemas/TreeItemAttribute"
+                            }
+                        ]
+                    },
+                    "$_entity": {
+                        "allOf": [
+                            {
+                                "description": "The Entity linked to this TreeItem. Not present if the TreeItem represents an array Attribute.",
+                                "nullable": true
+                            },
+                            {
+                                "$ref": "#/components/schemas/TreeItemEntity"
+                            }
+                        ]
+                    },
+                    "$_hasChildren": {
+                        "description": "This property is only included if the query parameter _includeHasChildren is true.<br>This property is not  included in the GlobalSearch mode (_viewPoint=null). GlobalSearch mode is View independent.",
+                        "type": "boolean",
+                        "nullable": true
+                    }
+                }
+            },
+            "TreeItemAttribute": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "$anchor": {
+                        "description": "The anchor of the Attribute object.",
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "$datatype": {
+                        "description": "The datatype of the Attribute object.",
+                        "type": "string",
+                        "enum": [
+                            "composition",
+                            "aggregation"
+                        ]
+                    },
+                    "$array": {
+                        "description": "The array flag of the Attribute.",
+                        "type": "boolean"
+                    },
+                    "$_index": {
+                        "description": "Only used if a single element of an attribute array is addressed.",
+                        "type": "number",
+                        "format": "int32",
+                        "nullable": true
+                    }
+                }
+            },
+            "TreeItemEntity": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "$anchor": {
+                        "description": "The anchor of the Entity object.",
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "$concept": {
+                        "description": "The concept of the Entity object.",
+                        "type": "string",
+                        "enum": [
+                            "asset",
+                            "aspect"
+                        ]
+                    }
+                }
+            },
+            "TreeItemPath": {
+                "description": "",
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/TreeItem"
                 }
             },
             "TypeEx": {
@@ -19263,6 +20516,501 @@
                     }
                 }
             },
+            "DataDestinationGenericMQTTNoAuthAdvancedSettingsExample": {
+                "value": {
+                    "id": "asdasa5873ac45c3914ddfbb11c4c43e",
+                    "name": "SampleBroker",
+                    "type": "genericmqtt",
+                    "active": true,
+                    "config": {
+                        "mqttHost": "mqtt.broker.io",
+                        "mqttProtocol": "tcp",
+                        "mqttPort": 8883,
+                        "mqttPath": "",
+                        "bulk": true,
+                        "publishIntervalInSec": 10,
+                        "qos": 1,
+                        "mqttMaxPackageSend": "100",
+                        "mqttMaxPackageSize": "256",
+                        "configFile": {
+                            "fileName": "MQTT_Config.json",
+                            "content": {
+                                "topic": "factory_1/motors/$path/$attributeName",
+                                "payload": {
+                                    "header": {
+                                        "Topic": "$topic",
+                                        "Name": "$attributeName",
+                                        "Hierarchy": "$path",
+                                        "IED_Model": "IED427Factory1"
+                                    },
+                                    "datapoints": [
+                                        {
+                                            "Measurement": "$value",
+                                            "Time": "$timestamp:LDAP-Filetime",
+                                            "Quality_Code": "$qualityCode"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "authSelector": "none",
+                        "advancedSettings": true,
+                        "retainedFlag": true,
+                        "cleanSession": true,
+                        "keepAlive": 60,
+                        "connectionTimeout": 15,
+                        "birthMessage": true,
+                        "birthMessageTopic": "birthMessage/topic",
+                        "birthMessageContent": "birthMessageContent",
+                        "lastWill": true,
+                        "lastWillTopic": "lastWill/topic",
+                        "lastWillMessage": "lastWillMessage"
+                    }
+                }
+            },
+            "DataDestinationGenericMQTTNoAuthAdvancedSettingsRequestExample": {
+                "value": {
+                    "name": "SampleBroker",
+                    "type": "genericmqtt",
+                    "active": false,
+                    "config": {
+                        "mqttHost": "mqtt.broker.io",
+                        "mqttProtocol": "tcp",
+                        "mqttPort": 8883,
+                        "mqttPath": "",
+                        "bulk": true,
+                        "publishIntervalInSec": 10,
+                        "qos": 1,
+                        "mqttMaxPackageSend": "100",
+                        "mqttMaxPackageSize": "256",
+                        "configFile": {
+                            "fileName": "MQTT_Config.json",
+                            "content": {
+                                "topic": "factory_1/motors/$path/$attributeName",
+                                "payload": {
+                                    "header": {
+                                        "Topic": "$topic",
+                                        "Name": "$attributeName",
+                                        "Hierarchy": "$path",
+                                        "IED_Model": "IED427Factory1"
+                                    },
+                                    "datapoints": [
+                                        {
+                                            "Measurement": "$value",
+                                            "Time": "$timestamp:LDAP-Filetime",
+                                            "Quality_Code": "$qualityCode"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "authSelector": "none",
+                        "advancedSettings": true,
+                        "retainedFlag": true,
+                        "cleanSession": true,
+                        "keepAlive": 60,
+                        "connectionTimeout": 15,
+                        "birthMessage": true,
+                        "birthMessageTopic": "birthMessage/topic",
+                        "birthMessageContent": "birthMessageContent",
+                        "lastWill": true,
+                        "lastWillTopic": "lastWill/topic",
+                        "lastWillMessage": "lastWillMessage"
+                    }
+                }
+            },
+            "DataDestinationGenericMQTTNoAuthNoAdvancedSettingsExample": {
+                "value": {
+                    "id": "asdasa5873ac45c3914ddfbb11c4c43e",
+                    "name": "SampleBroker",
+                    "type": "genericmqtt",
+                    "active": true,
+                    "config": {
+                        "mqttHost": "mqtt.broker.io",
+                        "mqttProtocol": "tcp",
+                        "mqttPort": 8883,
+                        "mqttPath": "",
+                        "bulk": true,
+                        "publishIntervalInSec": 10,
+                        "qos": 1,
+                        "mqttMaxPackageSend": "100",
+                        "mqttMaxPackageSize": "256",
+                        "configFile": {
+                            "fileName": "MQTT_Config.json",
+                            "content": {
+                                "topic": "factory_1/motors/$path/$attributeName",
+                                "payload": {
+                                    "header": {
+                                        "Topic": "$topic",
+                                        "Name": "$attributeName",
+                                        "Hierarchy": "$path",
+                                        "IED_Model": "IED427Factory1"
+                                    },
+                                    "datapoints": [
+                                        {
+                                            "Measurement": "$value",
+                                            "Time": "$timestamp:LDAP-Filetime",
+                                            "Quality_Code": "$qualityCode"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "authSelector": "none",
+                        "advancedSettings": false
+                    }
+                }
+            },
+            "DataDestinationGenericMQTTNoAuthNoAdvancedSettingsRequestExample": {
+                "value": {
+                    "name": "SampleBroker",
+                    "type": "genericmqtt",
+                    "active": false,
+                    "config": {
+                        "mqttHost": "mqtt.broker.io",
+                        "mqttProtocol": "tcp",
+                        "mqttPort": 8883,
+                        "mqttPath": "",
+                        "bulk": true,
+                        "publishIntervalInSec": 10,
+                        "qos": 1,
+                        "mqttMaxPackageSend": "100",
+                        "mqttMaxPackageSize": "256",
+                        "configFile": {
+                            "fileName": "MQTT_Config.json",
+                            "content": {
+                                "topic": "factory_1/motors/$path/$attributeName",
+                                "payload": {
+                                    "header": {
+                                        "Topic": "$topic",
+                                        "Name": "$attributeName",
+                                        "Hierarchy": "$path",
+                                        "IED_Model": "IED427Factory1"
+                                    },
+                                    "datapoints": [
+                                        {
+                                            "Measurement": "$value",
+                                            "Time": "$timestamp:LDAP-Filetime",
+                                            "Quality_Code": "$qualityCode"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "authSelector": "none",
+                        "advancedSettings": false
+                    }
+                }
+            },
+            "DataDestinationGenericMQTTUserPWCertNoAdvancedSettingsExample": {
+                "value": {
+                    "id": "asdasa5873ac45c3914ddfbb11c4c43e",
+                    "name": "SampleBroker",
+                    "type": "genericmqtt",
+                    "active": true,
+                    "config": {
+                        "mqttHost": "mqtt.broker.io",
+                        "mqttProtocol": "tcp",
+                        "mqttPort": 8883,
+                        "mqttPath": "",
+                        "bulk": true,
+                        "publishIntervalInSec": 10,
+                        "qos": 1,
+                        "mqttMaxPackageSend": "100",
+                        "mqttMaxPackageSize": "256",
+                        "configFile": {
+                            "fileName": "MQTT_Config.json",
+                            "content": {
+                                "topic": "factory_1/motors/$path/$attributeName",
+                                "payload": {
+                                    "header": {
+                                        "Topic": "$topic",
+                                        "Name": "$attributeName",
+                                        "Hierarchy": "$path",
+                                        "IED_Model": "IED427Factory1"
+                                    },
+                                    "datapoints": [
+                                        {
+                                            "Measurement": "$value",
+                                            "Time": "$timestamp:LDAP-Filetime",
+                                            "Quality_Code": "$qualityCode"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "authSelector": "user_pw_cert",
+                        "mqttUsername": "sampleusername",
+                        "mqttPassword": "samplepassword",
+                        "clientCertificate": {
+                            "fileName": "ClientCertificate.pem",
+                            "content": ""
+                        },
+                        "clientKey": {
+                            "fileName": "ClientKey.key",
+                            "content": ""
+                        },
+                        "privateKeyPassword": "sampleprivatekeypassword",
+                        "caCertificateMQTT": {
+                            "fileName": "CACertificate.pem",
+                            "content": ""
+                        },
+                        "advancedSettings": false
+                    }
+                }
+            },
+            "DataDestinationGenericMQTTUserPWCertNoAdvancedSettingsRequestExample": {
+                "value": {
+                    "name": "SampleBroker",
+                    "type": "genericmqtt",
+                    "active": false,
+                    "config": {
+                        "mqttHost": "mqtt.broker.io",
+                        "mqttProtocol": "tcp",
+                        "mqttPort": 8883,
+                        "mqttPath": "",
+                        "bulk": true,
+                        "publishIntervalInSec": 10,
+                        "qos": 1,
+                        "mqttMaxPackageSend": "100",
+                        "mqttMaxPackageSize": "256",
+                        "configFile": {
+                            "fileName": "MQTT_Config.json",
+                            "content": {
+                                "topic": "factory_1/motors/$path/$attributeName",
+                                "payload": {
+                                    "header": {
+                                        "Topic": "$topic",
+                                        "Name": "$attributeName",
+                                        "Hierarchy": "$path",
+                                        "IED_Model": "IED427Factory1"
+                                    },
+                                    "datapoints": [
+                                        {
+                                            "Measurement": "$value",
+                                            "Time": "$timestamp:LDAP-Filetime",
+                                            "Quality_Code": "$qualityCode"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "authSelector": "user_pw_cert",
+                        "mqttUsername": "sampleusername",
+                        "mqttPassword": "samplepassword",
+                        "clientCertificate": {
+                            "fileName": "ClientCertificate.pem",
+                            "content": ""
+                        },
+                        "clientKey": {
+                            "fileName": "ClientKey.key",
+                            "content": ""
+                        },
+                        "privateKeyPassword": "sampleprivatekeypassword",
+                        "caCertificateMQTT": {
+                            "fileName": "CACertificate.pem",
+                            "content": ""
+                        },
+                        "advancedSettings": false
+                    }
+                }
+            },
+            "DataDestinationGenericMQTTCertNoAdvancedSettingsExample": {
+                "value": {
+                    "id": "asdasa5873ac45c3914ddfbb11c4c43e",
+                    "name": "SampleBroker",
+                    "type": "genericmqtt",
+                    "active": true,
+                    "config": {
+                        "mqttHost": "mqtt.broker.io",
+                        "mqttProtocol": "tcp",
+                        "mqttPort": 8883,
+                        "mqttPath": "",
+                        "bulk": true,
+                        "publishIntervalInSec": 10,
+                        "qos": 1,
+                        "mqttMaxPackageSend": "100",
+                        "mqttMaxPackageSize": "256",
+                        "configFile": {
+                            "fileName": "MQTT_Config.json",
+                            "content": {
+                                "topic": "factory_1/motors/$path/$attributeName",
+                                "payload": {
+                                    "header": {
+                                        "Topic": "$topic",
+                                        "Name": "$attributeName",
+                                        "Hierarchy": "$path",
+                                        "IED_Model": "IED427Factory1"
+                                    },
+                                    "datapoints": [
+                                        {
+                                            "Measurement": "$value",
+                                            "Time": "$timestamp:LDAP-Filetime",
+                                            "Quality_Code": "$qualityCode"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "authSelector": "cert",
+                        "clientCertificate": {
+                            "fileName": "ClientCertificate.pem",
+                            "content": ""
+                        },
+                        "clientKey": {
+                            "fileName": "ClientKey.key",
+                            "content": ""
+                        },
+                        "privateKeyPassword": "sampleprivatekeypassword",
+                        "caCertificateMQTT": {
+                            "fileName": "CACertificate.pem",
+                            "content": ""
+                        },
+                        "advancedSettings": false
+                    }
+                }
+            },
+            "DataDestinationGenericMQTTCertNoAdvancedSettingsRequestExample": {
+                "value": {
+                    "name": "SampleBroker",
+                    "type": "genericmqtt",
+                    "active": false,
+                    "config": {
+                        "mqttHost": "mqtt.broker.io",
+                        "mqttProtocol": "tcp",
+                        "mqttPort": 8883,
+                        "mqttPath": "",
+                        "bulk": true,
+                        "publishIntervalInSec": 10,
+                        "qos": 1,
+                        "mqttMaxPackageSend": "100",
+                        "mqttMaxPackageSize": "256",
+                        "configFile": {
+                            "fileName": "MQTT_Config.json",
+                            "content": {
+                                "topic": "factory_1/motors/$path/$attributeName",
+                                "payload": {
+                                    "header": {
+                                        "Topic": "$topic",
+                                        "Name": "$attributeName",
+                                        "Hierarchy": "$path",
+                                        "IED_Model": "IED427Factory1"
+                                    },
+                                    "datapoints": [
+                                        {
+                                            "Measurement": "$value",
+                                            "Time": "$timestamp:LDAP-Filetime",
+                                            "Quality_Code": "$qualityCode"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "authSelector": "cert",
+                        "clientCertificate": {
+                            "fileName": "ClientCertificate.pem",
+                            "content": ""
+                        },
+                        "clientKey": {
+                            "fileName": "ClientKey.key",
+                            "content": ""
+                        },
+                        "privateKeyPassword": "sampleprivatekeypassword",
+                        "caCertificateMQTT": {
+                            "fileName": "CACertificate.pem",
+                            "content": ""
+                        },
+                        "advancedSettings": false
+                    }
+                }
+            },
+            "DataDestinationGenericMQTTUserPWNoAdvancedSettingsExample": {
+                "value": {
+                    "id": "asdasa5873ac45c3914ddfbb11c4c43e",
+                    "name": "SampleBroker",
+                    "type": "genericmqtt",
+                    "active": true,
+                    "config": {
+                        "mqttHost": "mqtt.broker.io",
+                        "mqttProtocol": "tcp",
+                        "mqttPort": 8883,
+                        "mqttPath": "",
+                        "bulk": true,
+                        "publishIntervalInSec": 10,
+                        "qos": 1,
+                        "mqttMaxPackageSend": "100",
+                        "mqttMaxPackageSize": "256",
+                        "configFile": {
+                            "fileName": "MQTT_Config.json",
+                            "content": {
+                                "topic": "factory_1/motors/$path/$attributeName",
+                                "payload": {
+                                    "header": {
+                                        "Topic": "$topic",
+                                        "Name": "$attributeName",
+                                        "Hierarchy": "$path",
+                                        "IED_Model": "IED427Factory1"
+                                    },
+                                    "datapoints": [
+                                        {
+                                            "Measurement": "$value",
+                                            "Time": "$timestamp:LDAP-Filetime",
+                                            "Quality_Code": "$qualityCode"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "authSelector": "user_pw",
+                        "mqttUsername": "sampleusername",
+                        "mqttPassword": "samplepassword",
+                        "advancedSettings": false
+                    }
+                }
+            },
+            "DataDestinationGenericMQTTUserPWNoAdvancedSettingsRequestExample": {
+                "value": {
+                    "name": "SampleBroker",
+                    "type": "genericmqtt",
+                    "active": false,
+                    "config": {
+                        "mqttHost": "mqtt.broker.io",
+                        "mqttProtocol": "tcp",
+                        "mqttPort": 8883,
+                        "mqttPath": "",
+                        "bulk": true,
+                        "publishIntervalInSec": 10,
+                        "qos": 1,
+                        "mqttMaxPackageSend": "100",
+                        "mqttMaxPackageSize": "256",
+                        "configFile": {
+                            "fileName": "MQTT_Config.json",
+                            "content": {
+                                "topic": "factory_1/motors/$path/$attributeName",
+                                "payload": {
+                                    "header": {
+                                        "Topic": "$topic",
+                                        "Name": "$attributeName",
+                                        "Hierarchy": "$path",
+                                        "IED_Model": "IED427Factory1"
+                                    },
+                                    "datapoints": [
+                                        {
+                                            "Measurement": "$value",
+                                            "Time": "$timestamp:LDAP-Filetime",
+                                            "Quality_Code": "$qualityCode"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "authSelector": "user_pw",
+                        "mqttUsername": "sampleusername",
+                        "mqttPassword": "samplepassword",
+                        "advancedSettings": false
+                    }
+                }
+            },
             "DataDestinationMdspRequestExample": {
                 "value": {
                     "name": "wccdev",
@@ -19334,6 +21082,7 @@
                     "type": "senseye",
                     "active": true,
                     "config": {
+                        "mqttProtocol": "ssl",
                         "mqttHost": "mqtt.senseye.io",
                         "mqttPort": 8883,
                         "mqttUsername": "industrialedge",
@@ -19356,6 +21105,7 @@
                     "type": "senseye",
                     "active": true,
                     "config": {
+                        "mqttProtocol": "wss",
                         "mqttHost": "mqtt.senseye.io",
                         "mqttPort": 8883,
                         "mqttUsername": "industrialedge",
@@ -19378,12 +21128,14 @@
                     "type": "senseye",
                     "active": true,
                     "config": {
+                        "mqttProtocol": "ssl",
                         "mqttHost": "mqtt.senseye.io",
                         "mqttPort": 8883,
                         "mqttUsername": "industrialedge",
                         "mqttPassword": "testpassword",
                         "mqttOrgId": "groupb46573800f17486e95c55c327944b384-industrial-edge",
                         "syncHierarchy": false,
+                        "sensorNamePrefix": "MySensor",
                         "apiHost": "api.senseye.io",
                         "apiUserName": "siemens-integration-testbed-admin@senseye.io",
                         "apiPassword": "password",
@@ -19400,12 +21152,14 @@
                     "type": "senseye",
                     "active": true,
                     "config": {
+                        "mqttProtocol": "ssl",
                         "mqttHost": "mqtt.senseye.io",
                         "mqttPort": 8883,
                         "mqttUsername": "industrialedge",
                         "mqttPassword": "testpassword",
                         "mqttOrgId": "groupb46573800f17486e95c55c327944b384-industrial-edge",
                         "syncHierarchy": false,
+                        "sensorNamePrefix": "MySensor",
                         "publishIntervalInSec": 10,
                         "qos": 1
                     },
@@ -19724,6 +21478,148 @@
                         "method": "###",
                         "route": "###"
                     }
+                }
+            },
+            "QueryAlarmAdvancedFilterExample": {
+                "value": {
+                    "alarmChannelIds": [],
+                    "assetIds": [
+                        "d0df2a40a8964671bda7b53ce8f08ab9"
+                    ],
+                    "alarmFilters": [
+                        {
+                            "key": "IsActive",
+                            "operator": "IsIn",
+                            "value": [
+                                "Yes",
+                                "No"
+                            ]
+                        },
+                        {
+                            "key": "IsAcknowledged",
+                            "operator": "IsNotIn",
+                            "value": [
+                                "No"
+                            ]
+                        },
+                        {
+                            "key": "IsConfirmed",
+                            "operator": "IsIn",
+                            "value": [
+                                "Yes",
+                                "NotRelevant"
+                            ]
+                        },
+                        {
+                            "key": "Area",
+                            "operator": "IsIn",
+                            "value": [
+                                "System"
+                            ]
+                        },
+                        {
+                            "key": "AlarmClass",
+                            "operator": "Contains",
+                            "value": [
+                                "Acknowledgement",
+                                "t1_alarm30_acknowledgement"
+                            ]
+                        },
+                        {
+                            "key": "Source",
+                            "operator": "DoesNotContain",
+                            "value": [
+                                "PLC 1",
+                                "PLC 2"
+                            ]
+                        },
+                        {
+                            "key": "Origin",
+                            "operator": "IsIn",
+                            "value": [
+                                "t1_alarm30_origin",
+                                "integration shop"
+                            ]
+                        },
+                        {
+                            "key": "ExtendedProperty",
+                            "name": "AddlText0",
+                            "operator": "IsIn",
+                            "value": [
+                                "EN extended property AddlText0 for alarm30"
+                            ]
+                        },
+                        {
+                            "key": "ExtendedProperty",
+                            "name": "ExtProp1",
+                            "operator": "Contains",
+                            "value": [
+                                "alarm30 extended property value."
+                            ]
+                        },
+                        {
+                            "key": "ExtendedProperty",
+                            "name": "ExtProp2",
+                            "operator": "Exists"
+                        },
+                        {
+                            "key": "ExtendedProperty",
+                            "name": "ExtProp3",
+                            "operator": "DoesNotExist"
+                        }
+                    ],
+                    "from": "2022-01-01T09:00:00",
+                    "to": "2023-12-31T09:00:00",
+                    "order": "descending",
+                    "offset": 0,
+                    "take": 20
+                }
+            },
+            "QueryAlarmFilterExample": {
+                "value": {
+                    "alarmChannelIds": [],
+                    "assetIds": [
+                        "channel0"
+                    ],
+                    "areaFilter": [
+                        "System"
+                    ],
+                    "alarmClassFilter": [],
+                    "sourceFilter": [
+                        "PLC 1",
+                        "PLC 2"
+                    ],
+                    "originFilter": [],
+                    "isActiveFilter": [
+                        "Yes",
+                        "No"
+                    ],
+                    "isAcknowledgedFilter": [
+                        "NotRelevant"
+                    ],
+                    "isConfirmedFilter": [],
+                    "extendedPropertiesFilters": [
+                        {
+                            "name": "AdditionalText0",
+                            "value": [
+                                "text1",
+                                "text2",
+                                "text3"
+                            ]
+                        },
+                        {
+                            "name": "ExtProp1",
+                            "value": [
+                                "text1",
+                                "text2"
+                            ]
+                        }
+                    ],
+                    "from": "2022-01-01T09:00:00",
+                    "to": "2023-12-31T09:00:00",
+                    "order": "descending",
+                    "offset": 0,
+                    "take": 20
                 }
             },
             "TooManyFilterExample": {
