@@ -1444,16 +1444,6 @@
       
         
 <li class="md-nav__item">
-  <a href="#possible-hierarchy" title="Possible hierarchy" class="md-nav__link md-nav__link--primary">
-    Possible hierarchy
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
   <a href="#firewall-settings" title="Firewall settings" class="md-nav__link md-nav__link--primary">
     Firewall settings
   </a>
@@ -1578,11 +1568,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../defining-the-data-synchronization.html" class="md-nav__link">
+      <a href="../../building-a-destination-hierarchy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Defining the data synchronization
+    Building a Destination Hierarchy
   </span>
   
 
@@ -1639,16 +1629,6 @@
       
         
 <li class="md-nav__item">
-  <a href="#possible-hierarchy" title="Possible hierarchy" class="md-nav__link md-nav__link--primary">
-    Possible hierarchy
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
   <a href="#firewall-settings" title="Firewall settings" class="md-nav__link md-nav__link--primary">
     Firewall settings
   </a>
@@ -1676,151 +1656,6 @@
 
 <h1 id="overview">Overview</h1>
 <p>You can synchronize the data of attributes and entities to a generic MQTT broker. The MQTT broker needs to be added as a data destination in <abbr title="Industrial Information Hub">IIH</abbr> Essentials. The topic where the data will be sent to, the payload structure and further MQTT parameters can be chosen via the UI of <abbr title="Industrial Information Hub">IIH</abbr> Essentials.</p>
-<h2 id="possible-hierarchy">Possible hierarchy</h2>
-<p>This tables shows different hierarchy structures and if they are able to sync with a generic MQTT broker:</p>
-<table>
-<thead>
-<tr>
-<th>Top element</th>
-<th>Link to parent</th>
-<th>Subelement<br>(with attribute)</th>
-<th>Link to parent</th>
-<th>Allowed in <abbr title="Industrial Information Hub">IIH</abbr></th>
-<th>Sync with generic MQTT</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Relation</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Relation/Composition</td>
-<td>Yes</td>
-<td><strong>Yes</strong></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-<tr>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Composition</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Relation</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Composition</td>
-<td>Yes</td>
-<td><strong>Yes</strong></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-<tr>
-<td>Aspect</td>
-<td>Relation</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Relation/Composition</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Aspect</td>
-<td>Relation/Composition</td>
-<td>Yes</td>
-<td><strong>Yes</strong></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-<tr>
-<td>Aspect</td>
-<td>Composition</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Relation/Composition</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Aspect</td>
-<td>Relation</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Aspect</td>
-<td>Composition</td>
-<td>Yes</td>
-<td><strong>Yes</strong></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-</tbody>
-</table>
-<p>*: The subelement will be synced via the Relation/Composition hierarchy.</p>
 <h2 id="firewall-settings">Firewall settings</h2>
 <p>The firewall must be opened for the port chosen for the MQTT communication between <abbr title="Industrial Information Hub">IIH</abbr> Essentials and the MQTT broker. The port number needs to be specified while setting up the MQTT broker as a data destination in <abbr title="Industrial Information Hub">IIH</abbr> Essentials.</p>
 

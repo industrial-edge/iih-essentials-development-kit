@@ -1240,6 +1240,16 @@
   
 </li>
       
+        
+<li class="md-nav__item">
+  <a href="#destination-status" title="Destination Status" class="md-nav__link md-nav__link--primary">
+    Destination Status
+  </a>
+
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1566,11 +1576,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../defining-the-data-synchronization.html" class="md-nav__link">
+      <a href="../building-a-destination-hierarchy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Defining the data synchronization
+    Building a Destination Hierarchy
   </span>
   
 
@@ -1635,6 +1645,16 @@
   
 </li>
       
+        
+<li class="md-nav__item">
+  <a href="#destination-status" title="Destination Status" class="md-nav__link md-nav__link--primary">
+    Destination Status
+  </a>
+
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1659,11 +1679,12 @@
 <li><a href="senseye/setting-up-senseye-as-a-synchronization-destination.html">Senseye</a></li>
 <li><a href="generic-mqtt/overview-gen-mqtt.html">Generic MQTT broker</a></li>
 </ul>
+<p>Each data destination needs to be set up using their respective configuration parameters, configuration files or certificates, if needed. Please refer to each of their sections for more details on how to set them up. In this section, features that are common for all types of data destinations are presented.</p>
 <h2 id="naming">Naming</h2>
 <p>All entities and attributes try to use the display name to sync the model (Neutral language <code class="highlight">xx-XX</code>). If the display name cannot be found, the general name is used.</p>
 <p>There is a general setting for all destinations to replace characters or parts of the used name for all objects.</p>
 <p><strong>Name replacement:</strong></p>
-<p>Replacing names of entities or attributes by regular expressions. The format to describe a regular expression is <code class="highlight">/&lt;pattern&gt;/&lt;replacement&gt;/</code>. This format is similar to the Linux command line tool SED (Stream Editor), except for <code class="highlight">s</code> at the beginning and flags at the end, which are currently not supported. Multiple expressions can be defined, they should be separated by <code class="highlight">;</code>. If <code class="highlight">;</code> or <code class="highlight">/</code> are used in the pattern or the replacement, they should be preceded by <code class="highlight">\</code>.</p>
+<p>The name replacement is used to replace names of entities or attributes by regular expressions. The format to describe a regular expression is <code class="highlight">/&lt;pattern&gt;/&lt;replacement&gt;/</code>. This format is similar to the Linux command line tool SED (Stream Editor), except for <code class="highlight">s</code> at the beginning and flags at the end, which are currently not supported. Multiple expressions can be defined, they should be separated by <code class="highlight">;</code>. If <code class="highlight">;</code> or <code class="highlight">/</code> are used in the pattern or the replacement, they should be preceded by <code class="highlight">\</code>.</p>
 <p>Here are some examples:</p>
 <ul>
 <li>
@@ -1694,6 +1715,31 @@
 <p><strong><code class="highlight">/a/b/;/c/d/</code>:</strong> Replaces all characters of <code class="highlight">a</code> with <code class="highlight">b</code> and <code class="highlight">c</code> with <code class="highlight">d</code>.</p>
 </li>
 </ul>
+<h2 id="destination-status">Destination Status</h2>
+<p>The status of the data destination itself is shown with the symbol besides its name, they have the following meaning:</p>
+<p><img alt="alt text" src="../../assets/images/data_syncs.png" /> <figcaption>Data destination connected with a destination hierarchy</figcaption></p>
+<table>
+<thead>
+<tr>
+<th>Destination status</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="168634963595-d2e4613" src="../../assets/images/adapter-connected.png" /> "Connected"</td>
+<td>The data destination is connected. <br/></td>
+</tr>
+<tr>
+<td><img alt="168635663115-d2e4622" src="../../assets/images/adapter-not-connected.png" /> "Not active"</td>
+<td>The data destination is deactivated.<br/></td>
+</tr>
+<tr>
+<td><img alt="168635671435-d2e4630" src="../../assets/images/destination-status-error.png" />    "Error"</td>
+<td>The data destination could not connect, check the configuration parameters or connection to the broker<br/></td>
+</tr>
+</tbody>
+</table>
 
 
 

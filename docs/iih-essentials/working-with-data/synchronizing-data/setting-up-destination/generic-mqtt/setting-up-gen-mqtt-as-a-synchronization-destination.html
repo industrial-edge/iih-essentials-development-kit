@@ -1465,48 +1465,8 @@
       
         
 <li class="md-nav__item">
-  <a href="#data-prioritization" title="Data prioritization" class="md-nav__link md-nav__link--primary">
-    Data prioritization
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
-  <a href="#attribute-based-synchronization" title="Attribute-based synchronization" class="md-nav__link md-nav__link--primary">
-    Attribute-based synchronization
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
-  <a href="#synchronization-without-model" title="Synchronization without model" class="md-nav__link md-nav__link--primary">
-    Synchronization without model
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
-  <a href="#payload" title="Payload" class="md-nav__link md-nav__link--primary">
-    Payload
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
-  <a href="#unidirectional-synchronization" title="Unidirectional synchronization" class="md-nav__link md-nav__link--primary">
-    Unidirectional synchronization
+  <a href="#introduction" title="Introduction" class="md-nav__link md-nav__link--primary">
+    Introduction
   </a>
 
   
@@ -1628,11 +1588,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../defining-the-data-synchronization.html" class="md-nav__link">
+      <a href="../../building-a-destination-hierarchy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Defining the data synchronization
+    Building a Destination Hierarchy
   </span>
   
 
@@ -1689,48 +1649,8 @@
       
         
 <li class="md-nav__item">
-  <a href="#data-prioritization" title="Data prioritization" class="md-nav__link md-nav__link--primary">
-    Data prioritization
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
-  <a href="#attribute-based-synchronization" title="Attribute-based synchronization" class="md-nav__link md-nav__link--primary">
-    Attribute-based synchronization
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
-  <a href="#synchronization-without-model" title="Synchronization without model" class="md-nav__link md-nav__link--primary">
-    Synchronization without model
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
-  <a href="#payload" title="Payload" class="md-nav__link md-nav__link--primary">
-    Payload
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
-  <a href="#unidirectional-synchronization" title="Unidirectional synchronization" class="md-nav__link md-nav__link--primary">
-    Unidirectional synchronization
+  <a href="#introduction" title="Introduction" class="md-nav__link md-nav__link--primary">
+    Introduction
   </a>
 
   
@@ -1775,24 +1695,42 @@
 
 
 <h1 id="setting-up-a-generic-mqtt-broker-as-a-synchronization-destination">Setting up a generic MQTT broker as a synchronization destination</h1>
-<p>A generic MQTT broker can be configured as a data destination in <abbr title="Industrial Information Hub">IIH</abbr> Essentials to synchronize live and historical data. In this section, the procedure to add an MQTT broker as a data destination, some particularities and limitations to take into consideration are shown.</p>
-<h2 id="data-prioritization">Data prioritization</h2>
+<h2 id="introduction">Introduction</h2>
+<p>A generic MQTT broker can be configured as a data destination in <abbr title="Industrial Information Hub">IIH</abbr> Essentials to synchronize live and historical data. Consider the following points before starting the synchronization:</p>
+<ul>
+<li>
+<p><strong>MQTT version</strong>:</p>
+<p><abbr title="Industrial Information Hub">IIH</abbr> Essentials requires the MQTT broker to support version 3.1 or 3.1.1.</p>
+</li>
+<li>
+<p><strong>Data prioritization</strong>:  </p>
 <p><abbr title="Industrial Information Hub">IIH</abbr> Essentials synchronizes data for an attribute in chronological order. This means it starts with the oldest but not yet synchronized data and continues until all data up to the current timestamp is synchronized.</p>
-<h2 id="attribute-based-synchronization">Attribute-based synchronization</h2>
+</li>
+<li>
+<p><strong>Attribute-based synchronization</strong>:  </p>
+<p>The outgoing MQTT packages from <abbr title="Industrial Information Hub">IIH</abbr> Essentials will contain data from all the attributes contained in a hierarchy. When creating a hierarchy, it is possible to use assets or aspects that already exist in the asset model of <abbr title="Industrial Information Hub">IIH</abbr> Essentials or create assets or aspects that only exist within this destination hierarchy.  </p>
 <p>The outgoing MQTT packages from <abbr title="Industrial Information Hub">IIH</abbr> Essentials only contain data from a single attribute. It is not possible to send data from multiple attributes within the same MQTT package. The synchronization only starts once at least an attribute has been added to the entity. If the synchronization is started for an entity without attributes, no MQTT packages will be sent out.</p>
-<h2 id="synchronization-without-model">Synchronization without model</h2>
-<p>In contrast to the data synchronization to Senseye or Insights Hub, the synchronization to a generic MQTT broker is done without a model synchronization. This means that the model hierarchy will not be synchronized to the data destination. Instead, the hierarchy path of the attribute being synchronized can be sent as part of the topic or payload.</p>
-<h2 id="payload">Payload</h2>
-<p>The payload structure can be specified using the configuration file, please see the section <a href="creating-a-config-file.html">Creating a configuration file</a> for further details on how to create a configuration file. While creating the synchronization destination through <abbr title="Industrial Information Hub">IIH</abbr> Essential's UI it is possible to indicate further parameters linked to the payload of the MQTT packages. As a whole, the following values were taken as upper limits for the payload:</p>
+</li>
+<li>
+<p><strong>Synchronization without a model</strong>:  </p>
+<p>In contrast to the data synchronization to Senseye or Insights Hub, the synchronization to a generic MQTT broker is done without model synchronization. This means that the model hierarchy will not be synchronized to the data destination. Instead, the hierarchy path of the attribute being synchronized can be sent as part of the topic or payload.</p>
+</li>
+<li>
+<p><strong>Payload</strong>:  </p>
+<p>The payload structure can be specified using the configuration file, please see the section <a href="creating-a-config-file.html">Creating a configuration file</a> for further details on how to create a configuration file. While creating the synchronization destination through <abbr title="Industrial Information Hub">IIH</abbr> Essential's UI, you can indicate further parameters linked to the payload of the MQTT packages. As a whole, the following values were taken as upper limits for the payload:</p>
 <ul>
 <li>Maximum 10 MB for payload size per package (including headers).</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The payload size strongly depends on how the payload structure specified in the configuration file looks like.</p>
+<p>The payload size strongly depends on what the payload structure specified in the configuration file looks like.</p>
 </div>
-<h2 id="unidirectional-synchronization">Unidirectional synchronization</h2>
+</li>
+<li>
+<p><strong>Unidirectional synchronization</strong>:</p>
 <p>Data is always synchronized in one direction – from <abbr title="Industrial Information Hub">IIH</abbr> Essentials to the generic MQTT broker. For this synchronization with a generic MQTT broker, <abbr title="Industrial Information Hub">IIH</abbr> Essentials is set up as an MQTT client.</p>
+</li>
+</ul>
 <h2 id="procedure">Procedure</h2>
 <p>To set up a generic MQTT broker as a synchronization destination, follow these steps:</p>
 <ol>
@@ -1815,12 +1753,14 @@
 <li>"TCP/MQTT": The broker's URL will be built using <code class="highlight">tcp://</code></li>
 <li>"SSL/TLS/MQTTS": The broker's URL will be built using <code class="highlight">ssl://</code></li>
 <li>"WebSocket": The broker's URL will be built using <code class="highlight">ws://</code></li>
-<li>"WebSocket Secure": The broker's URL will be built using <code class="highlight">wss://</code><ul>
-<li>"MQTT Host": Host address of the MQTT broker to which the data should be sent.</li>
-<li>"MQTT Port": Port through which the MQTT broker will receive the data published from <abbr title="Industrial Information Hub">IIH</abbr> Essentials.</li>
+<li>"WebSocket Secure": The broker's URL will be built using <code class="highlight">wss://</code></li>
 </ul>
 </li>
-</ul>
+<li>
+<p>"MQTT Host": Host address of the MQTT broker to which the data should be sent.</p>
+</li>
+<li>
+<p>"MQTT Port": Port through which the MQTT broker will receive the data published from <abbr title="Industrial Information Hub">IIH</abbr> Essentials.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This port should be open in the proxy settings, in case that the application is running in an Industrial Edge Device.</p>
@@ -1830,17 +1770,46 @@
 <p>"MQTT Path": Which connection path should be appended to the broker's URL when connecting. For instance, <code class="highlight">/mqtt</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>That is an optional field and is only available when "WebSocket" or "WebSocket Secure" are chosen as MQTT protocols.</p>
+<p>This is an optional field and is only available when "WebSocket" or "WebSocket Secure" are chosen as MQTT protocols.</p>
 </div>
 </li>
 <li>
-<p>"Message Publishing Interval in Seconds": How often the data of the attributes should be sent out. This interval will define the time span of an attribute contained within a single MQTT package. Since one MQTT package is sent out per attribute it is recommended to have relatively large message publish interval. Depending on the amount of values being synchronized, value ranges between 1-10 minutes would be beneficial.</p>
+<p>"MQTT Client ID": Which name should be used as client ID when establishing the connection to the MQTT broker.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an optional field. If nothing is specified as MQTT client ID, a generated ID will be used when connecting to the MQTT broker. For instance, <code class="highlight">DataDestination[69ef0711e9994bd6bdedb1138de0421d]</code>, where the string between brackets is the internal ID of the data destination created in <abbr title="Industrial Information Hub">IIH</abbr> Essentials.</p>
+</div>
 </li>
 <li>
-<p>"QOS for Time Series Data": MQTT Quality of Service.</p>
+<p>"Bulk Data": When this is set, data points of an attribute are grouped in one MQTT package for the period specified as "Message Publishing Interval". Deactivating this sets the publishing interval to 1 s and QoS to level 0. Therefore, one MQTT package will only contain one single datapoint of an attribute. This causes a higher resource consumption.</p>
 </li>
-<li>"Maximum MQTT Packages per Second": Amount of single MQTT packages containing data of a single attribute that can be sent within a second. If the maximum quota is reached, it will waited until the next period of one second starts.</li>
-<li>"Maximum MQTT Package Size in KB": The maximum size of an MQTT package after the payload has been created based on the configuration file. This size includes the headers needed for MQTT as well. The maximum package size was set to 10 MB.</li>
+<li>
+<p>"Message Publishing Interval (s)": How often the data of the attributes should be sent out. This interval will define the time span of an attribute contained within a single MQTT package. Since one MQTT package is sent out per attribute it is recommended to have relatively large message publishing interval. Depending on the amount of values being synchronized, value ranges between 1-10 minutes would be beneficial.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This field is only available if "Bulk Data" is set.</p>
+</div>
+</li>
+<li>
+<p>"QOS": MQTT Quality of Service for time series data, birth message and last will and testament message.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This field is only available if "Bulk Data" is set.</p>
+</div>
+</li>
+<li>
+<p>"Maximum MQTT Packages per Second": Amount of single MQTT packages containing data of a single attribute that can be sent within a second. If the maximum quota is reached, it will waited until the next period of one second starts.</p>
+</li>
+<li>
+<p>"Maximum MQTT Package Size in KB": The maximum size of an MQTT package after the payload has been created based on the configuration file uploaded by the user. This size includes the headers needed for MQTT as well. The maximum package size is limited to 10 MB.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This field is only available if "Bulk Data" is set.</p>
+</div>
+</li>
+<li>
+<p>"Name Replacement": replaces names of entities or attributes by regular expressions. See <a href="../setting-up-destination-overview.html">name replacement</a> for more details.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -1858,6 +1827,7 @@
 <li>"Client Certificate": X.509 certificates based authentication will be used to connect to the MQTT broker.</li>
 <li>"User Credentials with Client Certificate": X.509 certificates based authentication will be combined with user credentials to connect to the MQTT broker.</li>
 </ul>
+<p>Both the username and password will be required if "User Credentials" or "User Credentials with Client Certificate" are chosen as the authentication method. If your broker does not require a password, type in an arbitrary password in the password field, e.g. <code class="highlight">dummypassword</code>. If "Client Certificate" or "User Credentials with Client Certificate" are chosen as the authentication method, the client certificate, client key and the CA certificate will be required fields.</p>
 </li>
 <li>
 <p>More advanced settings can be accessed by activating the "Advanced Settings" option.</p>
@@ -1865,11 +1835,12 @@
 <figcaption>Advanced settings of a generic MQTT broker as synchronization destination in <abbr title="Industrial Information Hub">IIH</abbr> Essentials</figcaption></p>
 <p>The advanced settings will always be used for establishing a connection to the MQTT broker. With the slider the user can decide whether he prefers to use the default values or specify them through the UI. The following default values are used then the slider is set to inactive:</p>
 <ul>
-<li>"Retained Flag for Time Series Data": Active</li>
+<li>"Retained Flag": Active. This property will be used for the time series data, birth message and last will and testament.</li>
 <li>"Clean Session Flag": Inactive</li>
 <li>"Keep Alive Interval": 60 seconds</li>
 <li>"MQTT Connection Timeout": 15 seconds</li>
-<li>"Last Will and Testament": Inactive. Therefore, the last will topic, last will message, QoS for last will message and the retained flag for last will message are left empty/inactive.</li>
+<li>"Birth Message": Inactive. Therefore, the birth message topic and birth message content will be left empty. This message will be sent whenever a connection is established between the client, i.e., <abbr title="Industrial Information Hub">IIH</abbr> Essentials, and the MQTT broker.</li>
+<li>"Last Will and Testament": Inactive. Therefore, the last will topic and last will message will be left empty. This message will be sent if the client, i.e., <abbr title="Industrial Information Hub">IIH</abbr> Essentials, disconnects unexpectedly.</li>
 </ul>
 <p>When the advanced settings are active it is possible to leave some optional fields empty and fill out those of interest. The optional values that were left empty will be replaced by the default values that were portrayed above. Mandatory values are represented using an asterisk right after the property name.</p>
 </li>
@@ -1879,7 +1850,7 @@
 <li>Click "Save".</li>
 </ol>
 <h2 id="result">Result</h2>
-<p>The added MQTT broker is now available as a data destination and can be specified as the <a href="../../defining-the-data-synchronization.html">storage location</a>.</p>
+<p>The added MQTT broker is now available as a data destination and can be specified as the <a href="../../building-a-destination-hierarchy.html">storage location</a>. You can now <a href="../../building-a-destination-hierarchy.html">build a destination hierarchy</a> for this data destination.</p>
 <p><img alt="alt text" src="../../../assets/images/Add_Gen_MQTT_2.png" /></p>
 <figcaption>Status of a Generic MQTT Broker as synchronization destination in IIH Essentials</figcaption>
 

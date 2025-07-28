@@ -3,7 +3,7 @@
     "info": {
         "title": "IIH Essentials API",
         "description": "Description of the REST API of IIH Essentials. <br>The maximum size limit for a single request (no file) is 4 MB.<br>The connection timeout is 10 seconds.<br>Based on Anchor Asset API specification v1.0.<br>The property $anchor of the schema AggregationValue will be renamed to $pointer in the next version.",
-        "version": "2.1.0"
+        "version": "2.2.0"
     },
     "servers": [
         {
@@ -121,7 +121,8 @@
             "name": "DataSource"
         },
         {
-            "name": "DataSync"
+            "name": "DataSync",
+            "description": "Is deprecated and supported until 31.03.2026."
         },
         {
             "name": "Service",
@@ -1357,7 +1358,7 @@
             "get": {
                 "deprecated": true,
                 "summary": "Get used disk space by aggregations.",
-                "description": "Return the size of the aggregation folder. Is deprecated and supported until 31.10.2025",
+                "description": "Return the size of the aggregation folder. Is deprecated and supported until 31.10.2025.",
                 "tags": [
                     "Aggregations"
                 ],
@@ -1421,10 +1422,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/AlarmChannelsResponse"
-                                    }
+                                    "$ref": "#/components/schemas/AlarmChannelsResponse"
                                 },
                                 "example": {
                                     "alarmChannels": [
@@ -4442,6 +4440,7 @@
                                             "variables": [],
                                             "dataRetentions": [],
                                             "dataDestinations": [],
+                                            "destinationHierarchys": [],
                                             "aggregations": [],
                                             "aspectTypes": [],
                                             "aspectTypeVariables": []
@@ -5011,7 +5010,16 @@
                     {
                         "name": "usePrecalculatedData",
                         "in": "query",
-                        "description": "If true, precalculated data will be used.",
+                        "description": "Optional parameter to be able to switch off the usage of precalculated data. By default precalculated data is always used if present.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    {
+                        "name": "useInterpolatedData",
+                        "in": "query",
+                        "description": "Optional parameter to be able to switch off the usage of interpolated data. By default interpolated data is always used if an acquisitionCycle is configured for the attribute.",
                         "schema": {
                             "type": "boolean",
                             "default": true
@@ -5059,7 +5067,9 @@
                                                     "type": "Variable",
                                                     "aggregation": "Average"
                                                 },
-                                                "value": 2.5
+                                                "timestamp": "2022-08-16T16:00:00.000Z",
+                                                "value": 2.5,
+                                                "qualitycode": 448
                                             }
                                         ],
                                         "description": "Value could be succesfully calculated."
@@ -5156,7 +5166,16 @@
                     {
                         "name": "usePrecalculatedData",
                         "in": "query",
-                        "description": "If true, precalculated data will be used.",
+                        "description": "Optional parameter to be able to switch off the usage of precalculated data. By default precalculated data is always used if present.",
+                        "schema": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    {
+                        "name": "useInterpolatedData",
+                        "in": "query",
+                        "description": "Optional parameter to be able to switch off the usage of interpolated data. By default interpolated data is always used if an acquisitionCycle is configured for the attribute.",
                         "schema": {
                             "type": "boolean",
                             "default": true
@@ -5208,19 +5227,23 @@
                                                 "values": [
                                                     {
                                                         "timestamp": "2022-08-17T08:00:00.000Z",
-                                                        "value": 1
+                                                        "value": 1,
+                                                        "qualitycode": 448
                                                     },
                                                     {
                                                         "timestamp": "2022-08-17T08:05:00.000Z",
-                                                        "value": 2
+                                                        "value": 2,
+                                                        "qualitycode": 448
                                                     },
                                                     {
                                                         "timestamp": "2022-08-17T08:10:00.000Z",
-                                                        "value": 3
+                                                        "value": 3,
+                                                        "qualitycode": 448
                                                     },
                                                     {
                                                         "timestamp": "2022-08-17T08:15:00.000Z",
-                                                        "value": 4
+                                                        "value": 4,
+                                                        "qualitycode": 448
                                                     }
                                                 ]
                                             }
@@ -5623,6 +5646,26 @@
                         "schema": {
                             "type": "boolean",
                             "default": false
+                        }
+                    },
+                    {
+                        "name": "interpolated",
+                        "description": "Optional parameter to return interpolated data.",
+                        "example": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "interpolationInterval",
+                        "description": "Optional parameter to specify the interpolation interval in milliseconds. If not specified the acquisitionCycle of the Attribute is used.",
+                        "example": 5000,
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
                         }
                     }
                 ],
@@ -6082,6 +6125,26 @@
                             "type": "boolean",
                             "default": false
                         }
+                    },
+                    {
+                        "name": "interpolated",
+                        "description": "Optional parameter to return interpolated data.",
+                        "example": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "interpolationInterval",
+                        "description": "Optional parameter to specify the interpolation interval in milliseconds. If not specified the acquisitionCycle of the Attribute is used.",
+                        "example": 5000,
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
+                        }
                     }
                 ],
                 "requestBody": {
@@ -6344,6 +6407,26 @@
                         "schema": {
                             "type": "boolean",
                             "default": false
+                        }
+                    },
+                    {
+                        "name": "interpolated",
+                        "description": "Optional parameter to return interpolated data.",
+                        "example": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean",
+                            "default": false
+                        }
+                    },
+                    {
+                        "name": "interpolationInterval",
+                        "description": "Optional parameter to specify the interpolation interval in milliseconds. If not specified the acquisitionCycle of the Attribute is used.",
+                        "example": 5000,
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
                         }
                     }
                 ],
@@ -7954,7 +8037,7 @@
             "get": {
                 "deprecated": true,
                 "summary": "Get used disk space by data retentions.",
-                "description": "Return the size of the data-retention folder. Is deprecated and supported until 31.10.2025",
+                "description": "Return the size of the data-retention folder. Is deprecated and supported until 31.10.2025.",
                 "tags": [
                     "DataRetention"
                 ],
@@ -8125,6 +8208,7 @@
                 "tags": [
                     "DataSync"
                 ],
+                "deprecated": true,
                 "summary": "Get all data syncs.",
                 "description": "Get a list of all available data sync for a specific source.",
                 "parameters": [
@@ -8213,6 +8297,7 @@
                 "tags": [
                     "DataSync"
                 ],
+                "deprecated": true,
                 "summary": "Create a new data sync.",
                 "description": "Create a new data sync. Blocked if this overwritts existing datasyncs in startime.",
                 "parameters": [],
@@ -8316,6 +8401,7 @@
                 "tags": [
                     "DataSync"
                 ],
+                "deprecated": true,
                 "summary": "Read a data sync.",
                 "description": "Read a specific data sync with the id from path.",
                 "parameters": [
@@ -8370,6 +8456,7 @@
                 "tags": [
                     "DataSync"
                 ],
+                "deprecated": true,
                 "summary": "Update a data sync.",
                 "description": "Update a specific data sync. 'sourceId', 'sourceTypeId', 'dataDestinationid' and 'startTime' are readOnly.",
                 "parameters": [
@@ -8482,6 +8569,7 @@
                 "tags": [
                     "DataSync"
                 ],
+                "deprecated": true,
                 "summary": "Delete a data sync.",
                 "description": "Delete a specific data sync.",
                 "parameters": [
@@ -8538,6 +8626,7 @@
                 "tags": [
                     "DataSync"
                 ],
+                "deprecated": true,
                 "summary": "Get the erros of a data sync.",
                 "description": "Get a list of all erros from a data sync, including all child errors",
                 "parameters": [
@@ -14829,43 +14918,6 @@
             "AdapterSystemInfoConfig": {
                 "type": "object"
             },
-            "AdapterType": {
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "type": "string"
-                    },
-                    "displayStringKey": {
-                        "type": "string"
-                    },
-                    "configProperties": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/AdapterTypeConfigProperty"
-                        }
-                    }
-                }
-            },
-            "AdapterTypeConfigProperty": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "displayStringKey": {
-                        "type": "string"
-                    },
-                    "type": {
-                        "type": "string"
-                    },
-                    "readOnly": {
-                        "type": "boolean"
-                    },
-                    "visible": {
-                        "type": "boolean"
-                    }
-                }
-            },
             "AdapterWriteValueErrorCode": {
                 "type": "string",
                 "enum": [
@@ -15328,6 +15380,12 @@
                         "type": "string",
                         "example": "s7plus"
                     },
+                    "languages": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "areaFilter": {
                         "type": "array",
                         "items": {
@@ -15452,19 +15510,34 @@
                 "type": "object",
                 "properties": {
                     "areas": {
-                        "type": "string"
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "sources": {
-                        "type": "string"
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "origins": {
-                        "type": "string"
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "alarmClasses": {
-                        "type": "string"
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "languages": {
-                        "type": "string"
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 }
             },
@@ -15474,12 +15547,14 @@
                     "alarmChannelIds": {
                         "type": "array",
                         "items": {
+                            "type": "string",
                             "description": "Channel Ids, optional if AssetId is given and valid."
                         }
                     },
                     "assetIds": {
                         "type": "array",
                         "items": {
+                            "type": "string",
                             "description": "Asset Ids, optional if channel is given and valid."
                         }
                     },
@@ -15631,15 +15706,6 @@
                         "items": {
                             "$ref": "#/components/schemas/Alarm"
                         }
-                    }
-                }
-            },
-            "Anchor": {
-                "type": "object",
-                "properties": {
-                    "$anchor": {
-                        "type": "string",
-                        "format": "uuid"
                     }
                 }
             },
@@ -16372,30 +16438,6 @@
                 },
                 "additionalProperties": false
             },
-            "AttributeTypeEx": {
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/AttributeType"
-                    },
-                    {
-                        "$ref": "#/components/schemas/TypeEx"
-                    },
-                    {
-                        "properties": {
-                            "$attributeName": {
-                                "description": "This property is only needed for routes where the AttributeType is used in the context of an EntityType. These are the /entitytypes/{anchor}/attributetypes routes. In this usecases it is mandatory.",
-                                "type": "string",
-                                "nullable": true
-                            },
-                            "$base": {
-                                "description": "Note: Temporary added here. After switch to the latest Anchor Model API definition this will be part of AttributeType.",
-                                "type": "string",
-                                "nullable": true
-                            }
-                        }
-                    }
-                ]
-            },
             "AttributeTypeOrAttributeTypePointer": {
                 "oneOf": [
                     {
@@ -16530,235 +16572,6 @@
             "BooleanValue": {
                 "type": "boolean",
                 "additionalProperties": false
-            },
-            "BulkAttributeRequest": {
-                "description": "Request object for bulk operation on Attributes.",
-                "type": "object",
-                "properties": {
-                    "data": {
-                        "description": "Array of attributes to create/update/delete.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BulkAttributeRequestData"
-                        }
-                    }
-                }
-            },
-            "BulkAttributeRequestData": {
-                "description": "Attribute to create/update/delete in bulk operations.",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/Attribute"
-                    },
-                    {
-                        "$ref": "#/components/schemas/AttributeExRequired"
-                    },
-                    {
-                        "$ref": "#/components/schemas/BulkIn"
-                    }
-                ]
-            },
-            "BulkAttributeResponse": {
-                "description": "Response object for bulk operation on Attributes.",
-                "type": "object",
-                "properties": {
-                    "data": {
-                        "nullable": true,
-                        "description": "Array of created/updated attributes. null in case of delete.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BulkAttributeResponseData"
-                        }
-                    },
-                    "errors": {
-                        "nullable": true,
-                        "description": "Array of errors. null in case of no error.<br>Only relevant in non-atomic case. In atomic case the method fails on error.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BulkResponseError"
-                        }
-                    }
-                }
-            },
-            "BulkAttributeResponseData": {
-                "description": "Created/updated attribute in bulk operation.",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/Attribute"
-                    },
-                    {
-                        "$ref": "#/components/schemas/AttributeExRequired"
-                    },
-                    {
-                        "$ref": "#/components/schemas/BulkOut"
-                    }
-                ]
-            },
-            "BulkIn": {
-                "type": "object",
-                "properties": {
-                    "$_bulkId": {
-                        "nullable": true,
-                        "description": "Client provided value which will be copied to the corresponding item in result array.",
-                        "oneOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "integer"
-                            },
-                            {
-                                "type": "number"
-                            },
-                            {
-                                "type": "boolean"
-                            }
-                        ]
-                    }
-                }
-            },
-            "BulkItem": {
-                "description": "Anchor object to create/update/delete in generic bulk operations.",
-                "oneOf": [
-                    {
-                        "$ref": "#/components/schemas/AttributeEx"
-                    },
-                    {
-                        "$ref": "#/components/schemas/AttributeTypeEx"
-                    },
-                    {
-                        "$ref": "#/components/schemas/EntityEx"
-                    },
-                    {
-                        "$ref": "#/components/schemas/EntityTypeEx"
-                    },
-                    {
-                        "$ref": "#/components/schemas/RelationEx"
-                    },
-                    {
-                        "$ref": "#/components/schemas/RelationTypeEx"
-                    },
-                    {
-                        "$ref": "#/components/schemas/ReferenceEx"
-                    },
-                    {
-                        "$ref": "#/components/schemas/ReferenceTypeEx"
-                    }
-                ]
-            },
-            "BulkOut": {
-                "type": "object",
-                "properties": {
-                    "$_bulkIndex": {
-                        "description": "Index of the corresponding item in request array.",
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "$_bulkId": {
-                        "nullable": true,
-                        "description": "Value of the $_bulkId property of the corresponding item in request array.",
-                        "oneOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "integer"
-                            },
-                            {
-                                "type": "number"
-                            },
-                            {
-                                "type": "boolean"
-                            }
-                        ]
-                    },
-                    "$_bulkAnchor": {
-                        "description": "Anchor of the bulk item.",
-                        "nullable": true,
-                        "type": "string"
-                    }
-                }
-            },
-            "BulkOutErr": {
-                "type": "object",
-                "properties": {
-                    "$_bulkAnchor": {
-                        "description": "Anchor of the object at which the error occoured. Especially needed in the /bulk/byranges routes.",
-                        "nullable": true,
-                        "type": "string"
-                    }
-                }
-            },
-            "BulkRequest": {
-                "description": "Request object for generic bulk operations.",
-                "type": "object",
-                "properties": {
-                    "data": {
-                        "description": "Array of bulk items to create/update/delete.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BulkRequestData"
-                        }
-                    }
-                }
-            },
-            "BulkRequestData": {
-                "description": "Anchor object to create/update/delete in generic bulk operations.",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/BulkItem"
-                    },
-                    {
-                        "$ref": "#/components/schemas/BulkIn"
-                    }
-                ]
-            },
-            "BulkResponse": {
-                "description": "Response object for generic bulk operations.",
-                "type": "object",
-                "properties": {
-                    "data": {
-                        "nullable": true,
-                        "description": "Array of created/updated bulk items. null in case of delete.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BulkResponseData"
-                        }
-                    },
-                    "errors": {
-                        "nullable": true,
-                        "description": "Array of errors. null in case of no error.<br>Only relevant in non-atomic case. In atomic case the method fails on error.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BulkResponseError"
-                        }
-                    }
-                }
-            },
-            "BulkResponseData": {
-                "description": "Created/updated anchor objects in generic bulk operation.",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/BulkItem"
-                    },
-                    {
-                        "$ref": "#/components/schemas/BulkOut"
-                    }
-                ]
-            },
-            "BulkResponseError": {
-                "description": "Error in bulk operation.",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/Exception"
-                    },
-                    {
-                        "$ref": "#/components/schemas/BulkOut"
-                    },
-                    {
-                        "$ref": "#/components/schemas/BulkOutErr"
-                    }
-                ]
             },
             "CalculateJobCollectionResult": {
                 "type": "object",
@@ -16956,10 +16769,21 @@
                     "dataSource": {
                         "$ref": "#/components/schemas/DataSourceReference"
                     },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "timestamp in ISO8601 format.",
+                        "example": "2022-08-16T12:00:00.000Z"
+                    },
                     "value": {
                         "type": "number",
-                        "description": "result for calculate single values.",
+                        "description": "the calculated result.",
                         "example": 2.5
+                    },
+                    "qualitycode": {
+                        "type": "number",
+                        "description": "quality code of the calculated result.<br>Possible values are:<br>448: Good - Aggregated<br>344: Uncertain - Subnormal - Aggregated<br>256: Bad - Aggregated",
+                        "example": 488
                     },
                     "error": {
                         "description": "optional error description. If error is set, value will be null.",
@@ -17003,6 +16827,7 @@
                     },
                     "now": {
                         "type": "string",
+                        "nullable": true,
                         "description": "optional parameter to overide the current timestamp as ISO8601 string.",
                         "format": "date-time",
                         "example": "2022-08-16T12:00:00",
@@ -17010,6 +16835,7 @@
                     },
                     "variableConfigurations": {
                         "type": "array",
+                        "nullable": true,
                         "description": "optional array of variable configurations",
                         "items": {
                             "$ref": "#/components/schemas/VariableConfiguration"
@@ -17049,12 +16875,19 @@
                 "properties": {
                     "timestamp": {
                         "type": "string",
-                        "description": "timestamp in ISO8601 string",
-                        "example": "2022-08-16T12:00:00"
+                        "format": "date-time",
+                        "description": "timestamp in ISO8601 format.",
+                        "example": "2022-08-16T12:00:00.000Z"
                     },
                     "value": {
                         "type": "number",
+                        "description": "the calculated result.",
                         "example": 2.5
+                    },
+                    "qualitycode": {
+                        "type": "number",
+                        "description": "quality code of the calculated result.<br>Possible values are:<br>448: Good - Aggregated<br>344: Uncertain - Subnormal - Aggregated<br>256: Bad - Aggregated",
+                        "example": 448
                     }
                 }
             },
@@ -17309,68 +17142,6 @@
                     }
                 }
             },
-            "DataDestinationConfigProperty": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "example": "tenantId"
-                    },
-                    "displayStringKey": {
-                        "type": "string",
-                        "example": "DATA_DESTINATION_TYPE_MINDSPHERE_TENANTID"
-                    },
-                    "type": {
-                        "$ref": "#/components/schemas/DataDestinationConfigPropertyType"
-                    },
-                    "readOnly": {
-                        "type": "boolean",
-                        "example": true
-                    },
-                    "visible": {
-                        "type": "boolean",
-                        "example": true
-                    },
-                    "default": {
-                        "type": "string",
-                        "example": "example",
-                        "nullable": true
-                    },
-                    "fileFilter": {
-                        "type": "string",
-                        "example": "example",
-                        "nullable": true
-                    },
-                    "selection": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "example": "edge"
-                        },
-                        "example": [
-                            "ES1",
-                            "ES2"
-                        ],
-                        "nullable": true
-                    },
-                    "optional": {
-                        "type": "boolean",
-                        "example": false,
-                        "nullable": true
-                    }
-                }
-            },
-            "DataDestinationConfigPropertyType": {
-                "type": "string",
-                "enum": [
-                    "bool",
-                    "number",
-                    "string",
-                    "password",
-                    "file",
-                    "selector"
-                ]
-            },
             "DataDestinationCreate": {
                 "allOf": [
                     {
@@ -17536,6 +17307,18 @@
                         "nullable": true,
                         "default": false,
                         "example": true
+                    },
+                    "interpolated": {
+                        "type": "boolean",
+                        "nullable": true,
+                        "default": false,
+                        "example": true
+                    },
+                    "interpolationInterval": {
+                        "type": "integer",
+                        "nullable": true,
+                        "default": 0,
+                        "example": 5000
                     }
                 }
             },
@@ -17674,10 +17457,10 @@
                             "$ref": "#/components/schemas/DataRetention"
                         }
                     },
-                    "dataSyncs": {
+                    "destinationHierarchys": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/DataSync"
+                            "$ref": "#/components/schemas/DestinationHierarchy"
                         }
                     },
                     "aggregations": {
@@ -17834,6 +17617,7 @@
                     },
                     "aggregationOptions": {
                         "$ref": "#/components/schemas/AggregationOptions",
+                        "nullable": true,
                         "description": "Only needed for Duration and Occurrence calculations.",
                         "example": {
                             "statusValues": [
@@ -17877,7 +17661,7 @@
                         "description": "id of the source object",
                         "example": "d0df2a40afd64671bda7b53ce8f08ef8"
                     },
-                    "sourceTypeId": {
+                    "sourceType": {
                         "$ref": "#/components/schemas/SourceType"
                     },
                     "destinationId": {
@@ -17993,6 +17777,106 @@
                     }
                 }
             },
+            "DestinationHierarchy": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "readOnly": true,
+                        "example": "b7d94ead14064f2883866c3bdc14ab2b"
+                    },
+                    "sourceId": {
+                        "type": "string",
+                        "description": "anchor id of the source object, can be null, but then the name has be sest",
+                        "example": "00000000-0000-0000-0000-000000000000"
+                    },
+                    "sourceType": {
+                        "$ref": "#/components/schemas/DestinationSourceType"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "name of the data destination hierarchy, can only be set if sourceId is null",
+                        "example": "TopAsset"
+                    },
+                    "sourceName": {
+                        "type": "string",
+                        "description": "name of the linked source object, will only be send if sourceId != null, as then name is not set/send. Can only be read.",
+                        "example": "TopAttribute",
+                        "readOnly": true
+                    },
+                    "destinationId": {
+                        "type": "string",
+                        "description": "id of the data destination",
+                        "example": "3c49642087f2459fa705b24fa61a3bb9"
+                    },
+                    "parentId": {
+                        "type": "string",
+                        "description": "id of the parent hierarchy, can be empty for top elements",
+                        "example": "b7d94ead14064f2883866c3bdc14ab2b"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "description": "optional timestamp in ISO8601 string",
+                        "format": "date-time",
+                        "example": "2022-08-16T12:00:00"
+                    },
+                    "aggregation": {
+                        "description": "optional object which describes an aggregation for this destination hierarchy",
+                        "nullable": true,
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/AggregationInfo"
+                            },
+                            {
+                                "nullable": true
+                            }
+                        ]
+                    },
+                    "values": {
+                        "type": "array",
+                        "description": "can only be set for some data destinations and some elements (GenMqtt: top elements)",
+                        "items": {
+                            "type": "object",
+                            "description": "key value pairs for the hierarchy",
+                            "properties": {
+                                "key": {
+                                    "type": "string",
+                                    "description": "key to store information",
+                                    "example": "hierarchyConfiguration"
+                                },
+                                "value": {
+                                    "type": "string",
+                                    "description": "the corresponding value for the key, can be in json format",
+                                    "example": "{\"data\":{}}"
+                                }
+                            }
+                        }
+                    },
+                    "state": {
+                        "$ref": "#/components/schemas/DestinationHierarchySyncState"
+                    }
+                }
+            },
+            "DestinationHierarchySyncState": {
+                "type": "string",
+                "enum": [
+                    "NoSync",
+                    "Disconnected",
+                    "Syncing",
+                    "Synced",
+                    "Error"
+                ],
+                "description": "Current sync state of DestinationHierarchy object, only readable in GET calls."
+            },
+            "DestinationSourceType": {
+                "type": "string",
+                "enum": [
+                    "asset",
+                    "aspect",
+                    "attribute",
+                    "alarm"
+                ]
+            },
             "DictionaryStringValue": {
                 "type": "object",
                 "additionalProperties": {
@@ -18053,32 +17937,6 @@
                 "additionalProperties": {
                     "$ref": "#/components/schemas/AttributeOrAttributeValue"
                 }
-            },
-            "EntityEx": {
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/Entity"
-                    },
-                    {
-                        "properties": {
-                            "$_path": {
-                                "allOf": [
-                                    {
-                                        "$ref": "#/components/schemas/EntityPath"
-                                    },
-                                    {
-                                        "description": "Specifies where the Entity is located in the IIH tree. Added only if the query parameter _includePath is true.",
-                                        "nullable": true
-                                    }
-                                ]
-                            },
-                            "$_hasChildren": {
-                                "description": "Specifies if the Entity has children in the IIH tree? Added only if the query parameter _includeHasChildren is true.",
-                                "type": "boolean"
-                            }
-                        }
-                    }
-                ]
             },
             "EntityPath": {
                 "description": "Full path information of an Entity in the IIH tree.",
@@ -18156,19 +18014,6 @@
                 "additionalProperties": {
                     "$ref": "#/components/schemas/AttributeTypeOrAttributeTypePointer"
                 }
-            },
-            "EntityTypeEx": {
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/EntityType"
-                    },
-                    {
-                        "$ref": "#/components/schemas/TypeEx"
-                    },
-                    {
-                        "properties": {}
-                    }
-                ]
             },
             "EntityValue": {
                 "oneOf": [
@@ -18375,6 +18220,11 @@
                         "type": "string",
                         "example": "/mqtt",
                         "description": "optional path to be appended after port number"
+                    },
+                    "mqttClientId": {
+                        "type": "string",
+                        "example": "AzureClient_1",
+                        "description": "optional mqtt client id for connection. if not set, a random client id is generated."
                     },
                     "bulk": {
                         "type": "boolean",
@@ -18819,62 +18669,6 @@
                     }
                 }
             },
-            "ProfinetConnection": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "example": "profinet"
-                    },
-                    "type": {
-                        "type": "string",
-                        "example": "pn"
-                    },
-                    "dataPoints": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ProfinetConnectionDataPoint"
-                        }
-                    }
-                }
-            },
-            "ProfinetConnectionDataPoint": {
-                "type": "object",
-                "properties": {
-                    "topic": {
-                        "type": "string",
-                        "example": "ie/d/b/simatic/v1/pnhs1/dp/r"
-                    },
-                    "publishType": {
-                        "type": "string",
-                        "example": "binarytimeseries"
-                    },
-                    "dataPointDefinitions": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "name": {
-                                    "type": "string",
-                                    "example": "WriteInt1"
-                                },
-                                "id": {
-                                    "type": "string",
-                                    "example": "w0"
-                                },
-                                "dataType": {
-                                    "type": "string",
-                                    "example": "DInt"
-                                },
-                                "accessMode": {
-                                    "type": "string",
-                                    "example": "w"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "QualityInfo": {
                 "description": "Quality code with extended info.",
                 "type": "object",
@@ -19048,28 +18842,6 @@
                 ],
                 "additionalProperties": false
             },
-            "ReferenceEx": {
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/Reference"
-                    },
-                    {
-                        "properties": {
-                            "$_expandedInternal": {
-                                "allOf": [
-                                    {
-                                        "$ref": "#/components/schemas/AnchorObject"
-                                    },
-                                    {
-                                        "description": "Additional information about the object referenced by the property $internal. Added only if the query parameter _includeExpandedInternal is true.",
-                                        "nullable": true
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                ]
-            },
             "ReferenceExternal": {
                 "required": [
                     "$type"
@@ -19200,19 +18972,6 @@
                 },
                 "additionalProperties": false
             },
-            "ReferenceTypeEx": {
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ReferenceType"
-                    },
-                    {
-                        "$ref": "#/components/schemas/TypeEx"
-                    },
-                    {
-                        "properties": {}
-                    }
-                ]
-            },
             "Relation": {
                 "required": [
                     "$source",
@@ -19269,39 +19028,6 @@
                 },
                 "additionalProperties": false
             },
-            "RelationEx": {
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/Relation"
-                    },
-                    {
-                        "properties": {
-                            "$_sourcePath": {
-                                "allOf": [
-                                    {
-                                        "$ref": "#/components/schemas/EntityPath"
-                                    },
-                                    {
-                                        "description": "Specifies where the source Entity is located in the IIH tree. Added only if the query parameter _includeSourcePath is true.",
-                                        "nullable": true
-                                    }
-                                ]
-                            },
-                            "$_targetPath": {
-                                "allOf": [
-                                    {
-                                        "$ref": "#/components/schemas/EntityPath"
-                                    },
-                                    {
-                                        "description": "Specifies where the target Entity is located in the IIH tree. Added only if the query parameter _includeTargetPath is true.",
-                                        "nullable": true
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                ]
-            },
             "RelationType": {
                 "type": "object",
                 "properties": {
@@ -19357,19 +19083,6 @@
                     }
                 },
                 "additionalProperties": false
-            },
-            "RelationTypeEx": {
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/RelationType"
-                    },
-                    {
-                        "$ref": "#/components/schemas/TypeEx"
-                    },
-                    {
-                        "properties": {}
-                    }
-                ]
             },
             "Relations": {
                 "type": "object",
@@ -19693,6 +19406,8 @@
                 "type": "string",
                 "example": "hour",
                 "enum": [
+                    "acyclic",
+                    "millisecond",
                     "second",
                     "minute",
                     "hour",
@@ -19823,23 +19538,6 @@
                 "type": "array",
                 "items": {
                     "$ref": "#/components/schemas/TreeItem"
-                }
-            },
-            "TypeEx": {
-                "description": "Common information added to all types.",
-                "type": "object",
-                "properties": {
-                    "$_basePath": {
-                        "description": "Array of base classes.",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/AnchorObject"
-                        }
-                    },
-                    "$_isBase": {
-                        "description": "Indicates if this type has derived types.",
-                        "type": "boolean"
-                    }
                 }
             },
             "Value": {
@@ -20527,6 +20225,7 @@
                         "mqttProtocol": "tcp",
                         "mqttPort": 8883,
                         "mqttPath": "",
+                        "mqttClientId": "sampleClientId",
                         "bulk": true,
                         "publishIntervalInSec": 10,
                         "qos": 1,
@@ -20578,6 +20277,7 @@
                         "mqttProtocol": "tcp",
                         "mqttPort": 8883,
                         "mqttPath": "",
+                        "mqttClientId": "sampleClientId",
                         "bulk": true,
                         "publishIntervalInSec": 10,
                         "qos": 1,
@@ -20630,6 +20330,7 @@
                         "mqttProtocol": "tcp",
                         "mqttPort": 8883,
                         "mqttPath": "",
+                        "mqttClientId": "sampleClientId",
                         "bulk": true,
                         "publishIntervalInSec": 10,
                         "qos": 1,
@@ -20671,6 +20372,7 @@
                         "mqttProtocol": "tcp",
                         "mqttPort": 8883,
                         "mqttPath": "",
+                        "mqttClientId": "sampleClientId",
                         "bulk": true,
                         "publishIntervalInSec": 10,
                         "qos": 1,
@@ -20713,6 +20415,7 @@
                         "mqttProtocol": "tcp",
                         "mqttPort": 8883,
                         "mqttPath": "",
+                        "mqttClientId": "sampleClientId",
                         "bulk": true,
                         "publishIntervalInSec": 10,
                         "qos": 1,
@@ -20769,6 +20472,7 @@
                         "mqttProtocol": "tcp",
                         "mqttPort": 8883,
                         "mqttPath": "",
+                        "mqttClientId": "sampleClientId",
                         "bulk": true,
                         "publishIntervalInSec": 10,
                         "qos": 1,
@@ -20826,6 +20530,7 @@
                         "mqttProtocol": "tcp",
                         "mqttPort": 8883,
                         "mqttPath": "",
+                        "mqttClientId": "sampleClientId",
                         "bulk": true,
                         "publishIntervalInSec": 10,
                         "qos": 1,
@@ -20880,6 +20585,7 @@
                         "mqttProtocol": "tcp",
                         "mqttPort": 8883,
                         "mqttPath": "",
+                        "mqttClientId": "sampleClientId",
                         "bulk": true,
                         "publishIntervalInSec": 10,
                         "qos": 1,
@@ -20935,6 +20641,7 @@
                         "mqttProtocol": "tcp",
                         "mqttPort": 8883,
                         "mqttPath": "",
+                        "mqttClientId": "sampleClientId",
                         "bulk": true,
                         "publishIntervalInSec": 10,
                         "qos": 1,
@@ -20978,6 +20685,7 @@
                         "mqttProtocol": "tcp",
                         "mqttPort": 8883,
                         "mqttPath": "",
+                        "mqttClientId": "sampleClientId",
                         "bulk": true,
                         "publishIntervalInSec": 10,
                         "qos": 1,
@@ -21382,9 +21090,9 @@
                     "startTime": "2022-08-16T12:00:00",
                     "disabled": false,
                     "aggregation": {
-                        "type": "Count,",
+                        "type": "Count",
                         "cycle": {
-                            "base": "minute,",
+                            "base": "minute",
                             "factor": 2
                         }
                     }

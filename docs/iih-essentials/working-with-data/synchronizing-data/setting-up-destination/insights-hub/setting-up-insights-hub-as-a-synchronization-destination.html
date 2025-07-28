@@ -1664,11 +1664,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../defining-the-data-synchronization.html" class="md-nav__link">
+      <a href="../../building-a-destination-hierarchy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Defining the data synchronization
+    Building a Destination Hierarchy
   </span>
   
 
@@ -1855,7 +1855,7 @@
 <p>The following special features and restrictions apply when Insights Hub is used as the data destination for data synchronization.</p>
 <h3 id="data-prioritization">Data prioritization</h3>
 <p>The data prioritization in <abbr title="Industrial Information Hub">IIH</abbr> Essentials has changed compared to previous versions. In previous versions, historical data and live data were handled differently.</p>
-<p>Now <abbr title="Industrial Information Hub">IIH</abbr> Essentials synchronizes data for an attribute in chronological order. This means it starts with the oldest but not yet synchronized data and continues until all data up to the current timestamp is synchronized.</p>
+<p>Now, <abbr title="Industrial Information Hub">IIH</abbr> Essentials synchronizes data for an attribute in chronological order. This means it starts with the oldest but not yet synchronized data and continues until all data up to the current timestamp is synchronized.</p>
 <p>If an attribute with historical data is added to an entity, sending this data is prioritized. The data of other already synchronized attributes for this entity will only be sent again if the historical data of the new attribute is synchronized.</p>
 <h3 id="loss-of-data">Loss of data</h3>
 <p>If a synchronized attribute is moved in <abbr title="Industrial Information Hub">IIH</abbr> Essentials, the data of this attribute is lost in Insights Hub.</p>
@@ -1930,17 +1930,20 @@ This is important to keep in mind, especially for available number of MQTT Agent
 </li>
 <li>
 <p>"Certificates": Upload the created device certificate, e.g. test-cert.pem. If there is no certificate for the selected tenant yet, then you need to create an appropriate certificate first.</p>
-</li>
-</ul>
-<p>A detailed description of how to create a Connector certificate can be found here:<br/>
+<p>A detailed description of how to create a connector certificate can be found here:<br/>
     - <a href="https://developer.mindsphere.io/howto/howto-managing-ca-certificates.html">Managing CA Certificates</a><br/>
     - <a href="https://documentation.mindsphere.io/MindSphere/concepts/concept-mindconnect-mqtt-broker.html">MindConnect MQTT Broker</a><br/>
-        1. Read how to create a client certificate here: <a href="creating-a-client-certificate.html">Creating a client certificate</a><br/>
-        1. Read how to download a broker certificate here: <a href="downloading-a-broker-certificate.html">Downloading a broker certificate</a>
-- <em>Region, Broker URL and Broker port:</em> Do not adapt these settings, as only the EU1 region is supported.
-- <em>Message Publishing Interval</em>: The message publishing interval defines how often packages will be sent out to Insights Hub, data will be buffered if it arrives at a faster rate than the publishing interval.
-- <em>QoS:</em> Quality of service for the MQTT packages containing time series data.</p>
+    - Read how to create a client certificate here: <a href="creating-a-client-certificate.html">Creating a client certificate</a><br/>
+    - Read how to download a broker certificate here: <a href="downloading-a-broker-certificate.html">Downloading a broker certificate</a></p>
 </li>
+</ul>
+</li>
+<li>
+<p>"Region, Broker URL and Broker port": Do not adapt these settings, as only the EU1 region is supported.</p>
+</li>
+<li>"Message Publishing Interval": The message publishing interval defines how often packages will be sent out to Insights Hub, data will be buffered if it arrives at a faster rate than the publishing interval.</li>
+<li>"QoS": Quality of service for the MQTT packages containing time series data.</li>
+<li>"Name Replacement": replaces names of entities or attributes by regular expressions. See <a href="../setting-up-destination-overview.html">name replacement</a> for more details.</li>
 </ul>
 </li>
 <li>
@@ -1949,7 +1952,7 @@ This is important to keep in mind, especially for available number of MQTT Agent
 <li>Click "Save".</li>
 </ol>
 <h2 id="result">Result</h2>
-<p>Insights Hub is available as a data destination and can be specified as the <a href="../../defining-the-data-synchronization.html">storage location</a>.</p>
+<p>Insights Hub is available as a data destination and can be specified as the <a href="../../building-a-destination-hierarchy.html">storage location</a>. You can now <a href="../../building-a-destination-hierarchy.html">build a destination hierarchy</a> for this data destination.</p>
 <p><img alt="168633065995-d2e4200" src="../../../assets/images/result-insights-hub.png" /></p>
 
 

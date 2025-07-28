@@ -2,10 +2,11 @@
 
 - Where to get help: [Industrial Edge Forum](https://forum.industrial-edge.siemens.cloud/)
 - Also see the [IIH Essentials Device Kit Manual](https://github.com/industrial-edge/data-service-device-kit) as well as the [Getting Stared](https://github.com/industrial-edge/iih-essentials-development-kit)
-- Also see the [IIH Essentials Simulation](https://hub.docker.com/r/siemensindustrialedge/dataservicesimulation) 
+- Also see the [IIH Essentials Simulation](https://hub.docker.com/r/siemensindustrialedge/dataservicesimulation)
 
 ## Supported Tags
 
+- `2.2.0`
 - `2.1.0`
 - `2.0.0`
 - `1.11.0`
@@ -46,19 +47,19 @@ Additionally please check the [Getting Started How To](https://github.com/indust
 
 Download the [Docker Compose file](https://github.com/industrial-edge/iih-essentials-development-kit/blob/main/docker-compose.example.yml) and execute it using the following command:
 
-```
+``` bash
 docker-compose up
 ```
 
 Use the Simulation UI to create tags with simulated data that can be connected to IIH Essentials variables. To access the Simulation UI open the following URL in a web browser
 
-```
+``` text
 http://localhost:4519
 ```
 
 Use the IIH Essentials UI to configure data connections and structure your data. You can connect simulated tags, which had been created in the previous step, to your variables. The data will be stored in the IIH Essentials and offer it through the API for making it available for 3rd party apps. To access the IIH Essentials UI open the following URL in a web browser:
 
-```
+``` text
 http://localhost:4203
 ```
 
