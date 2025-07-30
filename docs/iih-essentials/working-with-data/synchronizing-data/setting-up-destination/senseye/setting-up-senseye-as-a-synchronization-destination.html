@@ -1430,22 +1430,6 @@
 
   
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          
-<li class="md-nav__item">
-  <a href="#possible-hierarchy" title="Possible hierarchy" class="md-nav__link">
-    Possible hierarchy
-  </a>
-
-  
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -1658,11 +1642,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../defining-the-data-synchronization.html" class="md-nav__link">
+      <a href="../../building-a-destination-hierarchy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Defining the data synchronization
+    Building a Destination Hierarchy
   </span>
   
 
@@ -1766,22 +1750,6 @@
 
   
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          
-<li class="md-nav__item">
-  <a href="#possible-hierarchy" title="Possible hierarchy" class="md-nav__link">
-    Possible hierarchy
-  </a>
-
-  
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -1848,177 +1816,13 @@
 <h3 id="hierarchy">Hierarchy</h3>
 <p>Consider the following aspects about synchronization from <abbr title="Industrial Information Hub">IIH</abbr> Essentials to Senseye:</p>
 <ul>
-<li>For every entity of type <code class="highlight">anchor.asset-base</code> (or inherited children), a sublevel object is created in Senseye.</li>
-<li>For every entity of type <code class="highlight">anchor.asset-base</code> (or inherited children) with an aspect or attributes, an asset object is created in Senseye.</li>
-<li>For every entity of type <code class="highlight">anchor.aspect-base</code> a sensor is created in Senseye and added to its according asset.</li>
-<li>For every attribute a measure is created and added to its according sensor in Senseye.</li>
-<li>Attributes with the data type <code class="highlight">composition</code> or <code class="highlight"><span class="n">aggregation</span></code> are not created in Senseye, as there is no according object, but their aspect value is created as sensor (see entity of type <code class="highlight">anchor.aspect-base</code>)</li>
-<li>If no attribute has been linked with an entity in the hierarchy, no sublevel or asset is created in Senseye.</li>
-<li>If an attribute has been linked directly with an entity of type <code class="highlight">anchor.asset-base</code>, an implicit sensor is created in Senseye.</li>
-<li>An entity of type <code class="highlight">anchor.aspect-base</code> which is a child of an entity of type <code class="highlight">anchor.aspect-base</code> cannot be synced to Senseye as this hierarchy is not possible in Senseye.</li>
-<li>An entity of type <code class="highlight">anchor.asset-base</code> which is connected via composition is not synced to Senseye.</li>
+<li>When building a destination hierarchy, attributes can only be added under an aspect. If you try to add an attribute outside of an aspect — either by dragging it or using the "Create" button in the model tab — an error message will appear. However, if you use the preset "Include -&gt; Attributes", an aspect will automatically be created as the parent of the attribute.</li>
+<li>For each asset in the destination hierarchy, a sublevel object is created in Senseye.</li>
+<li>For each asset in the destination hierarchy that contains an aspect with at least one attribute, an asset object is created in Senseye.</li>
+<li>For each aspect in the destination hierarchy, a sensor is created in Senseye and added to its corresponding asset.</li>
+<li>For each attribute in the destination hierarchy, a measure is created and added to its corresponding sensor in Senseye.</li>
+<li>If an asset in the destination hierarchy does not have an aspect with an attribute, no asset object is created in Senseye. However, a sublevel will still be created.</li>
 </ul>
-<h4 id="possible-hierarchy">Possible hierarchy</h4>
-<p>This tables shows different hierarchy structures and if they are possible to sync with Senseye:</p>
-<table>
-<thead>
-<tr>
-<th>Top element</th>
-<th>Link to parent</th>
-<th>Subelement<br>(with attribute)</th>
-<th>Link to parent</th>
-<th>Allowed in <abbr title="Industrial Information Hub">IIH</abbr></th>
-<th>Sync with Senseye</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Relation</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Relation</td>
-<td>Yes</td>
-<td><strong>Yes</strong></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Composition</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Aspect</td>
-<td>Relation/Composition</td>
-<td>Yes</td>
-<td><strong>Yes</strong></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-<tr>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Composition</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Relation</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Composition</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-<tr>
-<td>Aspect</td>
-<td>Relation</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Relation/Composition</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Aspect</td>
-<td>Relation/Composition</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-<tr>
-<td>Aspect</td>
-<td>Composition</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Relation/Composition</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Aspect</td>
-<td>Relation</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Aspect</td>
-<td>Composition</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-</tbody>
-</table>
-<p>*: The subelement will be synced via the Relation/Composition hierarchy.</p>
 <h2 id="prerequisite">Prerequisite</h2>
 <ul>
 <li>Senseye can be accessed via the network.</li>
@@ -2028,23 +1832,70 @@
 <ol>
 <li>
 <p>Create a new data destination and select "Senseye" as the destination type.</p>
-<p><img alt="alt text" src="../../../assets/images/form-senseye.png" />  <figcaption> Adding Senseye as synchronization destination in <abbr title="Industrial Information Hub">IIH</abbr> Essentials </figcaption></p>
+<p><img alt="alt text" src="../../../assets/images/form-senseye.png" /><br />
+<figcaption> Adding Senseye as synchronization destination in <abbr title="Industrial Information Hub">IIH</abbr> Essentials </figcaption></p>
 </li>
 <li>
 <p>Enter the relevant information.<br/></p>
 <ul>
-<li><em>Name:</em>  Name of the data destination. This name must be unique.</li>
-<li><em>MQTT Host:</em>  The URL for the connection to the MQTT broker.</li>
-<li><em>MQTT Port:</em>  The port for the connection to the MQTT broker.</li>
-<li><em>MQTT User Name:</em>  User name for the connection to the MQTT broker.</li>
-<li><em>MQTT Password:</em>  Password for the connection to the MQTT broker.</li>
-<li><em>MQTT OrgID:</em>  ID in Senseye of the organization to which the data is to be transferred.</li>
-<li><em>Synchronize with Hierarchy:</em> Enables the hierarchy to be synchronized to Senseye hierarchy. If it is disabled, the hierarchy is not synchronized and only the time series data is synchronized to Senseye. This means, attributes will not be created in Senseye's hierarchy. Only the data of the attribute will be sent to a specific MQTT topic, which needs to be mapped to a sensor manually.</li>
-<li><em>API Host:</em>  The URL for the connection to the API server. This control is hidden if syncHierarchy is disabled.</li>
-<li><em>API User Name:</em>  User name for the connection to the API server. This control is hidden if syncHierarchy is disabled.</li>
-<li><em>API Password:</em>  Password for the connection to the API server. This control is hidden if syncHierarchy is disabled.</li>
-<li><em>Sublevel Root:</em>  Sublevel in Senseye with which the hierarchy is to be synchronized.  This control is hidden if syncHierarchy is disabled.</li>
-<li><em>Publishing Interval in Seconds:</em>  The rate at which the data is transferred to Senseye. At least 60 seconds is recommended so that Senseye has time to process the data and reduce the backlog.</li>
+<li>"Name":  Name of the data destination. This name must be unique.</li>
+<li>
+<p>"MQTT Protocol": Which protocol should be used to establish the connection to Senseye.</p>
+<ul>
+<li>"SSL/TLS/MQTTS": The connection will be established using TLS (Transport Layer Security)</li>
+<li>"WebSocket Secure": The connection will be established using Websocket Secure</li>
+</ul>
+</li>
+<li>
+<p>"MQTT Host":  The URL for the connection to Senseye's broker.</p>
+</li>
+<li>"MQTT Port":  The port for the connection to Senseye's broker.</li>
+<li>"MQTT User Name":  User name for the connection to Senseye's broker.</li>
+<li>"MQTT Password":  Password for the connection to Senseye's broker.</li>
+<li>"MQTT OrgID":  ID in Senseye of the organization to which the data is to be transferred.</li>
+<li>"Synchronize with Hierarchy": Enables the hierarchy to be synchronized to Senseye hierarchy. If it is disabled, the hierarchy is not synchronized and only the time series data is synchronized to Senseye. This means, attributes will not be created in Senseye's hierarchy. Only the data of the attribute will be sent to a specific MQTT topic, which needs to be mapped to a sensor manually.</li>
+<li>
+<p>"API host":  The URL for the connection to the API server.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This field is only available if "Synchronize with hierarchy" is set.</p>
+</div>
+</li>
+<li>
+<p>"API user name":  User name for the connection to the API server.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This field is only available if "Synchronize with hierarchy" is set.</p>
+</div>
+</li>
+<li>
+<p>"API password":  Password for the connection to the API server.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This field is only available if "Synchronize with hierarchy" is set.</p>
+</div>
+</li>
+<li>
+<p>"Senseye root sublevel node ID":  Sublevel in Senseye with which the hierarchy is to be synchronized.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This field is only available if "Synchronize with hierarchy" is set.</p>
+</div>
+</li>
+<li>
+<p>"Sensor name prefix":  The assets display name is used as the sensor name. With this field you can define a prefix to identify the device in Senseye.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This field is only available if "Synchronize with hierarchy" is not set.</p>
+</div>
+</li>
+<li>
+<p>"Message publishing interval (s)":  The rate at which the data is transferred to Senseye. At least 60 seconds is recommended so that Senseye has time to process the data and reduce the backlog.</p>
+</li>
+<li>
+<p>"QoS": Quality of service for the MQTT packages containing time series data.</p>
+</li>
+<li>"Name replacement": replaces names of entities or attributes by regular expressions. See <a href="../setting-up-destination-overview.html">name replacement</a> for more details.</li>
 </ul>
 </li>
 <li>
@@ -2053,8 +1904,8 @@
 <li>To create the data destination, click "Save".</li>
 </ol>
 <h2 id="result">Result</h2>
-<p>Senseye is available as a data destination and can be specified as the <a href="../../defining-the-data-synchronization.html">storage location</a><br>
-<img alt="168633065995-d2e4200" src="../../../assets/images/senseye-result.png" /></p>
+<p>Senseye is available as a data destination and can be specified as the <a href="../../building-a-destination-hierarchy.html">storage location</a>. You can now <a href="../../building-a-destination-hierarchy.html">build a destination hierarchy</a> for this data destination.</p>
+<p><img alt="168633065995-d2e4200" src="../../../assets/images/senseye-result.png" /></p>
 
 
 

@@ -1195,6 +1195,16 @@
   
 </li>
       
+        
+<li class="md-nav__item">
+  <a href="#migration-of-entityasset-level-synchronization-to-destination-hierarchy-synchronization" title="Migration of entity/asset level synchronization to destination hierarchy synchronization" class="md-nav__link md-nav__link--primary">
+    Migration of entity/asset level synchronization to destination hierarchy synchronization
+  </a>
+
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1580,11 +1590,11 @@
   
   
     <li class="md-nav__item">
-      <a href="defining-the-data-synchronization.html" class="md-nav__link">
+      <a href="building-a-destination-hierarchy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Defining the data synchronization
+    Building a Destination Hierarchy
   </span>
   
 
@@ -1665,6 +1675,16 @@
   
 </li>
       
+        
+<li class="md-nav__item">
+  <a href="#migration-of-entityasset-level-synchronization-to-destination-hierarchy-synchronization" title="Migration of entity/asset level synchronization to destination hierarchy synchronization" class="md-nav__link md-nav__link--primary">
+    Migration of entity/asset level synchronization to destination hierarchy synchronization
+  </a>
+
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1683,15 +1703,17 @@
 
 
 <h1 id="synchronizing-data">Synchronizing data</h1>
-<p>Data from <abbr title="Industrial Information Hub">IIH</abbr> Essentials can be synchronized to external storage locations to back up data automatically. The data synchronization works unidirectionally, i.e., from <abbr title="Industrial Information Hub">IIH</abbr> Essentials to the external system, for instance, to an MQTT broker. To synchronize data, first a data destination needs to be set up and then the data synchronization needs to be defined. The synchronization can be defined for the respective entities and attributes. It is also possible to set up multiple data destinations and define several synchronizations so that your data is backed up redundantly. This means that a single data destination can support multiple data synchronizations and a single attribute or entity can be synchronized to multiple data destinations.</p>
+<p>Data from <abbr title="Industrial Information Hub">IIH</abbr> Essentials can be synchronized to external storage locations to back up data automatically. The data synchronization works unidirectionally, i.e., from <abbr title="Industrial Information Hub">IIH</abbr> Essentials to the external system, for instance, to an MQTT broker. To synchronize data, first a data destination needs to be set up and then the data synchronization needs to be defined. The synchronization needs to be defined as a hierarchy per data destination that holds the desired assets, aspects and attributes. It is also possible to set up multiple data destinations and define several synchronizations so that your data is backed up redundantly. This means that a single data destination can support multiple data synchronizations and a single attribute or entity can be synchronized to multiple data destinations.</p>
 <h2 id="steps-to-synchronize-data">Steps to synchronize data</h2>
 <p>To set up a data destination, first define the data destination and then adapt the proxy settings, if required.</p>
 <ol>
-<li>In the navigation bar, click "Data Destinations". <br>
-    <img alt="169058468363-d2e3972" src="../assets/images/nav-bar-data-dest.png" /></li>
 <li>
-<p>Set up a new data destination with <img alt="173170202251-d2e3946" src="../assets/images/173170202251.png" />.<br />
-Three data destination types can be used at the moment:</p>
+<p>In the navigation bar, click "Data Destinations". <br>
+    <img alt="169058468363-d2e3972" src="../assets/images/nav-bar-data-dest.png" /></p>
+</li>
+<li>
+<p>Set up a new data destination with <img alt="173170202251-d2e3946" src="../assets/images/173170202251.png" />.<br>
+  Three data destination types can be used at the moment:</p>
 <ul>
 <li><a href="setting-up-destination/insights-hub/insights-hub-overview.html">Insights Hub</a></li>
 <li><a href="setting-up-destination/senseye/setting-up-senseye-as-a-synchronization-destination.html">Senseye</a></li>
@@ -1701,13 +1723,13 @@ Three data destination types can be used at the moment:</p>
 <p class="admonition-title">Info</p>
 <p>For more details on how to set up a data destination see the dedicated section to set up every type of data destination in the section <a href="setting-up-destination/setting-up-destination-overview.html">Setting up the data destination</a>.</p>
 </div>
-</li>
-<li>
-<p>Check the port number and note it down.</p>
-</li>
+<ol>
+<li>Check the port number and note it down.</li>
 <li>Click "Save".</li>
-<li>Define the data synchronization for the desired attributes or entities.<br />
-For more details see the section <a href="defining-the-data-synchronization.html">Defining the Data Synchronization</a>.</li>
+<li>Define the destination hierarchy with desired attributes or entities for the data destination.<br>
+For more details see the section <a href="building-a-destination-hierarchy.html">Building a Destination Hierarchy</a>.</li>
+</ol>
+</li>
 </ol>
 <h3 id="proxy-set-up-for-industrial-edge-devices">Proxy set up for Industrial Edge Devices</h3>
 <div class="admonition note">
@@ -1723,6 +1745,16 @@ For more details see the section <a href="defining-the-data-synchronization.html
 <li>Click "Configure".<br/>
   <img alt="169059791883-d2e3985" src="../assets/images/169059791883.png" /></li>
 </ol>
+<h2 id="migration-of-entityasset-level-synchronization-to-destination-hierarchy-synchronization">Migration of entity/asset level synchronization to destination hierarchy synchronization</h2>
+<p>In <abbr title="Industrial Information Hub">IIH</abbr> Essentials V2.1.1 and earlier, data synchronizations had to be created individually for each asset, aspect, or attribute, including their underlying elements. This defined a model that would be synchronized to the data destination with the selected assets, aspects, and attributes. In the <abbr title="Industrial Information Hub">IIH</abbr> Essentials user interface, the option to create a data synchronization was available at the element itself under the "Synchronization" tab.</p>
+<p><img alt="alt text" src="../assets/images/data_sync_2_1_1.png" />  </p>
+<figcaption>Defining a data synchronization for an asset (left) and an attribute (right) in IIH Essentials v2.1.1</figcaption>
+
+<p>Starting with <abbr title="Industrial Information Hub">IIH</abbr> Essentials V2.2.0, the model to be synchronized with a data destination is defined through a destination hierarchy for each data destination. Within this hierarchy, you can include assets, aspects, or attributes from the <abbr title="Industrial Information Hub">IIH</abbr> Essentials model, or create new ones specifically for that destination hierarchy.</p>
+<p><img alt="alt text" src="../assets/images/2_2_0_data_sync_migration.png" />  </p>
+<figcaption>Migrated asset level synchronization into destination hierarchy synchronization</figcaption>
+
+<p>Data synchronizations created in <abbr title="Industrial Information Hub">IIH</abbr> Essentials V2.1.1 or earlier are automatically migrated to the destination hierarchy synchronization model. The new destination hierarchy will include all assets, aspects, and attributes that were previously synchronized to a single data destination. For example, as shown above, a data synchronization to "Eclipse Broker" for the asset "Factory 1" in <abbr title="Industrial Information Hub">IIH</abbr> Essentials V2.1.1 — including all its underlying entities and attributes — will be migrated to a destination hierarchy for "Eclipse Broker" in V2.2.0. Aggregation settings and synchronization start times are also carried over during the migration.</p>
 
 
 

@@ -14,7 +14,7 @@
         <link rel="prev" href="outgoing-mqtt-packages.html">
       
       
-        <link rel="next" href="../../defining-the-data-synchronization.html">
+        <link rel="next" href="../../building-a-destination-hierarchy.html">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -1538,6 +1538,16 @@
       
         
 <li class="md-nav__item">
+  <a href="#connecting-to-azure-iot-hub" title="Connecting to Azure IoT Hub" class="md-nav__link md-nav__link--primary">
+    Connecting to Azure IoT Hub
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
   <a href="#connecting-to-aws-iot-core" title="Connecting to AWS IoT Core" class="md-nav__link md-nav__link--primary">
     Connecting to AWS IoT Core
   </a>
@@ -1588,11 +1598,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../defining-the-data-synchronization.html" class="md-nav__link">
+      <a href="../../building-a-destination-hierarchy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Defining the data synchronization
+    Building a Destination Hierarchy
   </span>
   
 
@@ -1659,6 +1669,16 @@
       
         
 <li class="md-nav__item">
+  <a href="#connecting-to-azure-iot-hub" title="Connecting to Azure IoT Hub" class="md-nav__link md-nav__link--primary">
+    Connecting to Azure IoT Hub
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
   <a href="#connecting-to-aws-iot-core" title="Connecting to AWS IoT Core" class="md-nav__link md-nav__link--primary">
     Connecting to AWS IoT Core
   </a>
@@ -1702,11 +1722,11 @@ These steps and hints presented here would be analogous with brokers from other 
 <p>Note the following hints when configuring the authentication to an Azure Event Grid broker:</p>
 <ul>
 <li>
-<p><strong>Authentication using Thumbprint Match</strong> (Client certificate and thumbprint)<br />
+<p><strong>Authentication using Thumbprint Match</strong> (Client certificate and thumbprint)<br>
 To use this authentication method, proceed as follows:</p>
 <ol>
 <li>
-<p>To create the thumbprint and create an Event Grid Namespace, proceed as follows:<br />
+<p>To create the thumbprint and create an Event Grid Namespace, proceed as follows:<br>
 More information is available under <a href="https://learn.microsoft.com/en-us/azure/event-grid/mqtt-publish-and-subscribe-portal#create-clients" target="target">Publish and subscribe to MQTT messages on Event Grid Namespace with Azure portal</a>.</p>
 <ol>
 <li>Generate thumbprint.</li>
@@ -1719,27 +1739,28 @@ More information is available under <a href="https://learn.microsoft.com/en-us/a
 <li>
 <p>In <abbr title="Industrial Information Hub">IIH</abbr> Essentials, choose "SSL/TLS/MQTTS" as the MQTT protocol and "User credentials with client certificate" as the authentication method.</p>
 </li>
-<li>Fill in the username with the username chosen when you created the client above.</li>
+<li>Fill in the username with the username chosen when you created the client above.This value must match the value of Client Authentication Name that was specified in the authentication settings when creating the client in the Azure portal. The string to be used has been highlighted in the picture below:<br>
+<img alt="alt text" src="../../../assets/images/generic-mqtt-azure-6.png" /></li>
 <li>Fill in the password with a dummy value, e.g., <code class="highlight">dummypassword</code>.</li>
-<li>Upload the client certificate and client key created when generating the thumbprint above, as well as the CA certificate.<br />
+<li>Upload the client certificate and client key created when generating the thumbprint above, as well as the CA certificate.<br>
 <img alt="alt text" src="../../../assets/images/generic-mqtt-azure.png" /></li>
 <li>Save the data destination.</li>
 </ol>
 </li>
 <li>
-<p><strong>Authentication using Client Certificate signed by CA</strong> (Client certificate using CA certificate chain)<br />
+<p><strong>Authentication using Client Certificate signed by CA</strong> (Client certificate using CA certificate chain)<br>
 For this authentication, client certificates and the parent certificate (CA Certificate) are needed. To use this authentication method, proceed as follows:</p>
 <ol>
 <li>
 <p>To set up the Event Grid, proceed as follows:</p>
 <ol>
-<li>Create a namespace in "Event Grid".</li>
-<li>Enable alternative client authentication name sources and choose "Certificate Subject Name, Certificate DNS" in the "X.509" certificate section in the Event Grid's configuration.<br />
-<img alt="alt text" src="../../../assets/images/generic-mqtt-azure-1.png" /></li>
-<li>Upload the CA certificate to the Event Grid's namespace.<br />
+<li>Create a namespace in "Event Grid".<br></li>
+<li>Enable alternative client authentication name sources and choose "Certificate Subject Name, Certificate DNS" in the "X.509" certificate section in the Event Grid's configuration.<br>
+<img alt="alt text" src="../../../assets/images/generic-mqtt-azure-1.png" /><br></li>
+<li>Upload the CA certificate to the Event Grid's namespace.<br>
 <img alt="alt text" src="../../../assets/images/generic-mqtt-azure-2.png" /><br><br></li>
-<li>Add a client (or use existing one) and configure its authentication settings in the Event Grid as follows:<br />
-<img alt="alt text" src="../../../assets/images/generic-mqtt-azure-3.png" /><br />
+<li>Add a client (or use existing one) and configure its authentication settings in the Event Grid as follows:<br>
+<img alt="alt text" src="../../../assets/images/generic-mqtt-azure-3.png" />
 <img alt="alt text" src="../../../assets/images/generic-mqtt-azure-4.png" /></li>
 <li>Create topic spaces.</li>
 <li>Configure access control using permission bindings.</li>
@@ -1748,12 +1769,66 @@ For this authentication, client certificates and the parent certificate (CA Cert
 <li>
 <p>In <abbr title="Industrial Information Hub">IIH</abbr> Essentials, choose "SSL/TLS/MQTTS" as the MQTT protocol and "Client certificate" as the authentication method.</p>
 </li>
-<li>Upload the client certificate, client key and CA certificate.<br />
+<li>Upload the client certificate, client key and CA certificate.<br>
 <img alt="alt text" src="../../../assets/images/generic-mqtt-azure-5.png" /></li>
-<li>Save the data destination.</li>
+<li>Add the data destination.</li>
 </ol>
 </li>
 </ul>
+<h2 id="connecting-to-azure-iot-hub">Connecting to Azure IoT Hub</h2>
+<p>To communicate with Azure IoT Hub using the MQTT protocol in <abbr title="Industrial Information Hub">IIH</abbr> Essentials, the method used is called "Use the MQTT protocol directly from a device". The steps portrayed in this documentation were extracted from <a href="https://learn.microsoft.com/en-us/azure/iot/iot-mqtt-connect-to-iot-hub" target="target">Use the MQTT protocol directly from a device</a> in Azure's "Communicate with an IoT hub using the MQTT protocol" article. Additional context can be found in the article.</p>
+<p>It is possible to connect to a device in Azure IoT Hub either using a shared access signature, i.e. username and password authentication, or using X.509 certificates, i.e. client certificates. For this documentation, a shared access signature will be used. The MQTT communication will be established using MQTT via WebSockets over port <code class="highlight"><span class="mf">443</span></code>. Other protocols can be used as well, but please note that all device communication with IoT Hub must be secured using TLS. IoT Hub doesn't support insecure MQTT connections over port <code class="highlight"><span class="mf">1883</span></code>.</p>
+<p>Information on how to use X.509 certificates to authenticate devices to IoT Hub can be found here: <a href="https://learn.microsoft.com/en-us/azure/iot-hub/tutorial-x509-test-certs?tabs=windows" target="target">Tutorial: Create and upload certificates for testing</a>.</p>
+<p>Proceed as follows:</p>
+<ol>
+<li>Choose WebSocket Secure as the "MQTT Protocol"</li>
+<li>
+<p>Fill out the "MQTT host" with the IoT Hub host name, the port number and the MQTT path.</p>
+<div class="admonition note">
+<p class="admonition-title">MQTT path for WebSockets</p>
+<p>The MQTT path is only needed if WebSockets based protocols are used.</p>
+</div>
+</li>
+<li>
+<p>Use the <code class="highlight">deviceId</code> in Azure IoT Hub for the "Client ID".<br />
+In this example, the deviceId in Azure IoT hub is  <code class="highlight">sample-device</code>.</p>
+</li>
+<li>
+<p>Create and upload a configuration file for the data destination as described in <a href="creating-a-config-file.html">Creating a configuration file</a>. The topic to send data should be specified with the following format:</p>
+<p><code class="highlight">devices/{device-id}/messages/events/</code></p>
+<p>For instance, if the deviceId in Azure IoT Hub is <code class="highlight">device-1</code>, the topic should be specified as follows:</p>
+<p><code class="highlight">devices/device-1/messages/events/</code></p>
+<p><img alt="alt text" src="../../../assets/images/generic-mqtt-azure-7.png" /></p>
+</li>
+<li>
+<p>Choose "User Credentials" as the authentication method.</p>
+<ol>
+<li>
+<p>For the "Username" field, use <code class="highlight">{iotHub-hostname}/{device-id}/?api-version=2021-04-12</code>, where <code class="highlight">{iotHub-hostname}</code> is the full CName of the IoT hub.</p>
+<p>For example, if the name of your IoT hub is <code class="highlight">contoso.azure-devices.net</code> and if the name of your device is <code class="highlight">MyDevice01</code>, the Username field contains:</p>
+<p><code class="highlight">contoso.azure-devices.net/MyDevice01/?api-version=2021-04-12</code></p>
+<p>To avoid unexpected behavior, include api-version in the field.</p>
+</li>
+<li>
+<p>For the "Password field", use a SAS token. The following snippet shows the format of the SAS token:</p>
+<p><code class="highlight">SharedAccessSignature sig={signature-string}&amp;se={expiry}&amp;sr={URL-encoded-resourceURI}</code></p>
+<div class="admonition note">
+<p class="admonition-title">More information</p>
+<p>For more information about how to generate SAS tokens, see the <a href="https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-dev-guide-sas#use-sas-tokens-as-a-device" target="target">Use SAS tokens as a device</a> section of  <a href="https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-dev-guide-sas" target="target">Control access to IoT Hub using Shared Access Signatures</a>.</p>
+<p>It is also possible to use the <a href="https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Generate-SAS-Token-for-Device" target="target">Azure IoT Hub extension for Visual Studio Code</a> or the CLI extension command <a href="https://learn.microsoft.com/en-us/cli/azure/iot/hub#az-iot-hub-generate-sas-token" target="target">az iot hub generate-sas-token</a> to generate a SAS token. The following would be an example of the SAS token that would need to be copied as "MQTT password" in <abbr title="Industrial Information Hub">IIH</abbr> Essentials:</p>
+<p><code class="highlight">SharedAccessSignature sr={iotHub-hostname}%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&amp;sig=vSgHBMUG.....Ntg%3d&amp;se=1456481802</code></p>
+</div>
+</li>
+</ol>
+</li>
+<li>
+<p>Choose the options under "Advanced Settings" according to your Azure IoT Hub setting.</p>
+<p><img alt="alt text" src="../../../assets/images/generic-mqtt-azure-8.png" /></p>
+</li>
+<li>
+<p>Add the data destination.</p>
+</li>
+</ol>
 <h2 id="connecting-to-aws-iot-core">Connecting to AWS IoT Core</h2>
 <p>To connect to AWS IoT Core using MQTT, add the broker as described in <a href="setting-up-gen-mqtt-as-a-synchronization-destination.html">Setting up a generic MQTT broker as a synchronization destination</a>.</p>
 <p>The hints listed here refer to a sample data synchronization using the "Authentication with Client Certificates" in AWS IoT Core.</p>
@@ -1764,19 +1839,19 @@ For this authentication, client certificates and the parent certificate (CA Cert
 <li>
 <p>Create a Thing (device) under "AWS IoT -&gt; Manage -&gt; Things -&gt; Create Things"</p>
 <ol>
-<li>Provide a name for the device.<br />
+<li>Provide a name for the device.<br>
 <img alt="alt text" src="../../../assets/images/generic-mqtt-aws-1.png" /></li>
-<li>If no client certificates have been created, configure the certificate using "Auto-generate a new certificate".<br />
+<li>If no client certificates have been created, configure the certificate using "Auto-generate a new certificate".<br>
 <img alt="alt text" src="../../../assets/images/generic-mqtt-aws-2.png" /></li>
-<li>Use default policies.<br />
+<li>Use default policies.<br>
 <img alt="alt text" src="../../../assets/images/generic-mqtt-aws-3.png" /></li>
-<li>Download the client certificate, private key file and CA certificate 1 (RSA 2048 bit).<br />
-<img alt="alt text" src="../../../assets/images/generic-mqtt-aws-4.png" /><br />
+<li>Download the client certificate, private key file and CA certificate 1 (RSA 2048 bit).<br>
+<img alt="alt text" src="../../../assets/images/generic-mqtt-aws-4.png" />
 <img alt="alt text" src="../../../assets/images/generic-mqtt-aws-5.png" /></li>
 </ol>
 </li>
 <li>
-<p>Get the device endpoint under "IoT Core -&gt; Settings". The "Domain Name" is needed for adding the broker in <abbr title="Industrial Information Hub">IIH</abbr> Essentials.<br />
+<p>Get the device endpoint under "IoT Core -&gt; Settings". The "Domain Name" is needed for adding the broker in <abbr title="Industrial Information Hub">IIH</abbr> Essentials.<br>
 <img alt="alt text" src="../../../assets/images/generic-mqtt-aws-6.png" /></p>
 </li>
 </ol>
@@ -1785,13 +1860,13 @@ For this authentication, client certificates and the parent certificate (CA Cert
 <p>In <abbr title="Industrial Information Hub">IIH</abbr> Essentials, write a name for the broker.</p>
 </li>
 <li>Choose "SSL/TLS/MQTTS" as the MQTT protocol.</li>
-<li>Copy the "Domain Name" from above as the MQTT host and enter <code class="highlight"><span class="mf">8883</span></code> as the MQTT port.<br />
+<li>Copy the "Domain Name" from above as the MQTT host and enter <code class="highlight"><span class="mf">8883</span></code> as the MQTT port.<br>
 <img alt="alt text" src="../../../assets/images/generic-mqtt-aws-7.png" /></li>
 <li>Choose "Client certificate" as the authentication method.</li>
-<li>Upload the client certificate, client key and CA certificate. Rename the format of the files if needed.<br />
+<li>Upload the client certificate, client key and CA certificate. Rename the format of the files if needed.<br>
 <img alt="alt text" src="../../../assets/images/generic-mqtt-aws-8.png" /></li>
 <li>Fill in the other required fields.</li>
-<li>Save the data destination.</li>
+<li>Add the data destination.</li>
 </ol>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <div class="admonition info">
@@ -1800,17 +1875,17 @@ For this authentication, client certificates and the parent certificate (CA Cert
 </div>
 <ul>
 <li>
-<p><strong>Issue:</strong> After configuring the broker, the status message "No connection to the Generic MQTT Broker" is shown.<br />
-<img alt="alt text" src="../../../assets/images/generic-mqtt-no-connection.png" /><br />
-<strong>Solution:</strong> To remove sources of uncertainty, delete, if possible, any synchronizations started for attributes, assets or aspects. If the connection fails only after the synchronization of an element has been started, check the next question in this section. If the connection cannot be established to the broker even if no synchronization of an element to this broker has been started, the issue might be related to the configuration of the broker parameters or authentication. A wrong configuration of the following parameters will not allow a successful connection to the broker:</p>
+<p><strong>Issue:</strong> After configuring the broker, the status message "No connection to the Generic MQTT Broker" is shown. <br>
+<img alt="alt text" src="../../../assets/images/generic-mqtt-no-connection.png" /><br>
+<strong>Solution:</strong> To remove sources of uncertainty, delete, if possible, all attributes, assets or aspects from the hierarchy. If the connection fails only after an element has been added to the hierarchy, check the next question in this section. If the connection cannot be established to the broker even if no element has been added to the hierarchy, the issue might be related to the configuration of the broker parameters or authentication. A wrong configuration of the following parameters will not allow a successful connection to the broker:</p>
 <ul>
 <li>
-<p><strong>MQTT Protocol</strong><br />
+<p><strong>MQTT Protocol</strong><br>
 This defines the protocol to be used when establishing the broker connection. Check that the right protocol is chosen for establishing the connection. More information can be found in <a href="setting-up-gen-mqtt-as-a-synchronization-destination.html">Setting up a generic MQTT broker as a synchronization destination</a>.</p>
 </li>
 <li>
-<p><strong>MQTT Host</strong><br />
-Write the host name without any protocol, colon or port number. The protocol, colon and port number will be added internally. For instance, to synchronize data to: <code class="highlight">ssl://b-1234a5b6-78cd-901e-2fgh-3i45j6k178l9-1.mq.us-east-2.amazonaws.com:61617</code>, the following values should be chosen:  </p>
+<p><strong>MQTT Host</strong><br>
+Write the host name without any protocol, colon or port number. The protocol, colon and port number will be added internally. For instance, to synchronize data to: <code class="highlight">ssl://b-1234a5b6-78cd-901e-2fgh-3i45j6k178l9-1.mq.us-east-2.amazonaws.com:61617</code>, the following values should be chosen:</p>
 <ul>
 <li>MQTT Protocol: <code class="highlight">SSL/TLS/MQTTS</code></li>
 <li>MQTT Host: <code class="highlight">b-1234a5b6-78cd-901e-2fgh-3i45j6k178l9-1.mq.us-east-2.amazonaws.com</code></li>
@@ -1818,45 +1893,45 @@ Write the host name without any protocol, colon or port number. The protocol, co
 </ul>
 </li>
 <li>
-<p><strong>MQTT Port</strong><br />
+<p><strong>MQTT Port</strong><br>
 Make sure to only write the port number here, without any colon or slash. Open this port in the proxy settings of the Industrial Edge Device or firewall to allow communication to the MQTT broker.</p>
 </li>
-<li><strong>MQTT Authentication Method</strong><br />
+<li><strong>MQTT Authentication Method</strong><br>
 If the wrong credentials or certificates are uploaded to <abbr title="Industrial Information Hub">IIH</abbr> Essentials a connection will not be established to the broker. Please make sure that the correct credentials and/or certificates are used, in case they are needed.</li>
 </ul>
 </li>
 <li>
-<p><strong>Issue:</strong> The connection to the broker was successfully established but it disconnected as soon as the synchronization for an attribute, asset or aspect was started.<br />
-<img alt="alt text" src="../../../assets/images/generic-mqtt-no-sync.png" /><br />
-<strong>Solution:</strong> If the connection fails after the synchronization of an element has been started, it means that the issue is related to the outgoing data rather than to the authentication or MQTT protocol.<br />
+<p><strong>Issue:</strong> The connection to the broker was successfully established but it disconnected as soon as an attribute, asset or aspect has been added to the hierarchy.<br>
+<img alt="alt text" src="../../../assets/images/generic-mqtt-no-sync.png" />
+<strong>Solution:</strong> If the connection fails after an element has been added to the hierarchy, it means that the issue is related to the outgoing data rather than to the authentication or MQTT protocol.
 In this case it, double-check if the broker has any specific requirements or limitations for receiving payloads. The following parameters could terminate the connection, if not configured as allowed by the broker:</p>
 <ul>
-<li><strong>Retained flag</strong><br />
+<li><strong>Retained flag</strong><br>
 Some brokers might not allow sent messages to be retained. Make sure that the broker allows for receiving messages with a retained flag before activating it.</li>
-<li><strong>Maximum MQTT packages per second</strong><br />
+<li><strong>Maximum MQTT packages per second</strong><br>
 The broker might limit the amount of packages that can be received within a second to avoid a system overload. Check this value before configuring the synchronization.</li>
-<li><strong><em>Maximum MQTT package size</em></strong><br />
+<li><strong><em>Maximum MQTT package size</em></strong><br>
 If not correctly configured, <abbr title="Industrial Information Hub">IIH</abbr> Essentials might create MQTT packages larger than those allowed by the broker. If a smaller package size is chosen, data is not thrown away but split into smaller packages.</li>
-<li><strong>QoS (Quality of service)</strong><br />
+<li><strong>QoS (Quality of service)</strong><br>
 Check if the chosen QoS when configuring the data destination is allowed in the MQTT broker.</li>
-<li><strong>Message publishing interval</strong><br />
+<li><strong>Message publishing interval</strong><br>
 The broker might limit the frequency at which packages can be published to avoid a system overload. Check this value before configuring the synchronization.</li>
 </ul>
 </li>
 <li>
-<p><strong>Issue:</strong> The connection to the broker was successfully established, it remains connected when the synchronization for an attribute, asset or aspect has been started but cannot see any incoming data in the MQTT broker.<br />
-<img alt="alt text" src="../../../assets/images/generic-mqtt-sync.png" /><br />
+<p><strong>Issue:</strong> The connection to the broker was successfully established, it remains connected when an attribute, asset or aspect has been added to the hierarchy but cannot see any incoming data in the MQTT broker.<br>
+<img alt="alt text" src="../../../assets/images/generic-mqtt-sync.png" />
 <strong>Solution:</strong> If no error is being shown but still no data is being received in the broker, check the following:</p>
 <ul>
-<li><strong>Hierarchy has at least one attribute</strong><br />
+<li><strong>Hierarchy has at least one attribute</strong><br>
 To start receiving data, at least one attribute must be included as part of the hierarchy to be synchronized. Assets and aspects cannot hold data on their own, they can hold attributes where the data can be stored.</li>
 <li>
-<p><strong>Attribute has data</strong><br />
+<p><strong>Attribute has data</strong><br>
 After making sure that the hierarchy contains at least one attribute, check if the attribute has already been mapped to receive and store data.</p>
 <ul>
 <li>
-<p>If the aim is synchronizing new incoming data, make sure that the attribute is receiving data, this can be for instance checked in the <abbr title="Industrial Information Hub">IIH</abbr> Essentials UI with the value tab:<br />
-<img alt="alt text" src="../../../assets/images/generic-mqtt-attr-update.png" /><br />
+<p>If the aim is synchronizing new incoming data, make sure that the attribute is receiving data, this can be for instance checked in the <abbr title="Industrial Information Hub">IIH</abbr> Essentials UI with the value tab:<br>
+<img alt="alt text" src="../../../assets/images/generic-mqtt-attr-update.png" />
 <figcaption>Live value of an attribute</figcaption></p>
 </li>
 <li>
@@ -1865,7 +1940,7 @@ After making sure that the hierarchy contains at least one attribute, check if t
 </ul>
 </li>
 <li>
-<p><strong><abbr title="A topic is subscribed by IIH Essentials and gets its data from the MQTT Broker">Topic</abbr> in configuration file is correct</strong><br />
+<p><strong><abbr title="A topic is subscribed by IIH Essentials and gets its data from the MQTT Broker">Topic</abbr> in configuration file is correct</strong><br>
 Make sure that the topic is configured as expected. If the path or attribute name has spaces, these will be removed from the topic. See <a href="creating-a-config-file.html">Creating a configuration file</a> for more details on how to define the topic in the configuration file. For troubleshooting, a simple topic can be configured in the configuration file to remove sources of uncertainty and check if data arrives to the test topic, for instance: <code class="highlight">&quot;topic&quot;: &quot;testTopic&quot;</code>.</p>
 </li>
 </ul>
@@ -2036,13 +2111,13 @@ Make sure that the topic is configured as expected. If the path or attribute nam
         
         
           
-          <a href="../../defining-the-data-synchronization.html" class="md-footer__link md-footer__link--next" aria-label="Next: Defining the data synchronization">
+          <a href="../../building-a-destination-hierarchy.html" class="md-footer__link md-footer__link--next" aria-label="Next: Building a Destination Hierarchy">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Defining the data synchronization
+                Building a Destination Hierarchy
               </div>
             </div>
             <div class="md-footer__button md-icon">

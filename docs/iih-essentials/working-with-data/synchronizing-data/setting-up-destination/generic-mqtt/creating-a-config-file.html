@@ -1656,11 +1656,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../defining-the-data-synchronization.html" class="md-nav__link">
+      <a href="../../building-a-destination-hierarchy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Defining the data synchronization
+    Building a Destination Hierarchy
   </span>
   
 
@@ -1831,7 +1831,7 @@
 
 
 <h1 id="creating-a-configuration-file">Creating a configuration file</h1>
-<p>A JSON configuration file is required to synchronize data to a generic MQTT broker. This file defines the MQTT topic, to which the synchronized data packages will be sent out, and the payload structure of the MQTT packages.</p>
+<p>A JSON configuration file is required to synchronize data to a generic MQTT broker. This file defines the MQTT topic, to which the synchronized data packages will be sent out, and the payload structure of the MQTT packages. A connection will not be established to the MQTT broker if the configuration file has an invalid format.</p>
 <h2 id="format-of-the-configuration-file">Format of the configuration file</h2>
 <p>The configuration file should contain the following two fields:</p>
 <table>
@@ -1848,7 +1848,7 @@
 </tr>
 <tr>
 <td><code class="highlight"><span class="n">payload</span></code></td>
-<td>The <code class="highlight"><span class="n">payload</span></code> field defines the payload structure. In the payload field, the data points definition is mandatory. All other fields need to be of type string and are send as header information with every package. The configuration file must strictly follow this format. A connection will not be established to the MQTT broker if the configuration file has an invalid format.</td>
+<td>The <code class="highlight"><span class="n">payload</span></code> field defines the payload structure. In the payload field, the data points definition is mandatory. All other fields need to be of type string and are send as header information with every package. The configuration file must strictly follow this format.</td>
 </tr>
 </tbody>
 </table>
@@ -1873,15 +1873,11 @@
 <p>The <code class="highlight">topic</code> field defines the MQTT topic to which the packages will be sent out. The topic must be specified as a string. The topic will be assigned to every attribute individually, i. e., it is possible to send every attribute to a different topic. Since MQTT topics are built relying on hierarchical topics, it is possible to acquire data, e. g., from multiple attributes or a whole entity, by subscribing to the topic at the desired sublevel.</p>
 <p>Dynamic attributes can be used as a single topic level in the topic structure. To use a dynamic attribute, append a dollar sign ($) in front of the attribute name. Only one keyword per topic level can be used. The following keywords are supported as dynamic attributes:</p>
 <ul>
-<li><code class="highlight">$attributeName</code>: This keyword refers to the attribute name (string) that was assigned in <abbr title="Industrial Information Hub">IIH</abbr> Essentials (<abbr title="Industrial Information Hub Essentials">IIHE</abbr>). For instance, for the entities overview shown below, when synchronizing the attribute, this keyword would be replaced by the string <code class="highlight">StressTest1_3</code>.</li>
-<li><code class="highlight">$path</code>: This keyword refers to the hierarchy to which the attribute belongs. For instance, for the entity overview shown, when synchronizing the attribute, this keyword would be replaced by the string <code class="highlight">StressTest_grpc/StressTest_1</code>. If the attribute belongs to an entity of type aspect it will also be included in the path.</li>
+<li><code class="highlight">$attributeName</code>: This keyword refers to the attribute name (string) that was assigned in <abbr title="Industrial Information Hub">IIH</abbr> Essentials (<abbr title="Industrial Information Hub Essentials">IIHE</abbr>). For instance, for the hierarchy created for the data destination <code class="highlight">Eclipse TCP</code> shown below: for the attribute <code class="highlight">Produced Cars</code>, this keyword would be replaced by the string <code class="highlight">Produced Cars</code>.</li>
+<li><code class="highlight">$path</code>: This keyword refers to the hierarchy to which the attribute belongs. For instance, for the hierarchy created for the data destination <code class="highlight">Eclipse TCP</code> shown below: for the attribute <code class="highlight">Produced Cars</code>, this keyword would be replaced by the string <code class="highlight">Factory 1/Line 1/Sensors</code>. If the attribute belongs to an entity of type aspect it will also be included in the path.</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The base entity, i. e., <strong><code class="highlight">edge</code></strong>, will not be included in the path. In case this is desired, the entity name can be manually typed into the topic structure.</p>
-</div>
-<p><img alt="alt text" src="../../../assets/images/asset_var_hierarchy.png" />
-    <figcaption>Entities overview in <abbr title="Industrial Information Hub">IIH</abbr> Essentials</figcaption></p>
+<p><img alt="alt text" src="../../../assets/images/topic_gen_mqtt.png" />
+    <figcaption>Sample hierarchy for "Eclipse TCP" Generic MQTT Data Destination</figcaption></p>
 <h4 id="further-topic-guidelines">Further topic guidelines</h4>
 <p>The following details about the topic should be considered:</p>
 <ul>
@@ -1904,13 +1900,9 @@
 <p>When header elements are defined in the configuration file, they are sent out one time per MQTT package. If no header elements should be included in the package, only define the data points element. Dynamic attributes can be used as one of the values of the object containing key-value pairs. To use a dynamic value, prepend a dollar sign ($) in front of the json value. Only one keyword per value of the key-value pair can be used. The following keywords are supported as dynamic attributes for the header:</p>
 <ul>
 <li><code class="highlight">$topic</code>: This keyword refers to the MQTT topic defined in the configuration file. Before sending the value, the keywords are replaced by their respective value and casted as a string.</li>
-<li><code class="highlight">$attributeName</code>: This keyword refers to the attribute name (string) that was assigned in <abbr title="Industrial Information Hub">IIH</abbr> Essentials. For instance, for the entity overview shown in the picture above, when synchronizing the attribute, this keyword would be replaced by the string <code class="highlight">StressTest1_1</code>.</li>
-<li><code class="highlight">$path</code>: This keyword refers to the hierarchy to which the attribute belongs. As an illustration, for the entities overview shown above, when synchronizing the attribute, this keyword would be replaced by the string <code class="highlight">StressTest_grpc/StressTest_1</code>. If the attribute belongs to an entity of type aspect it will also be included in the path.</li>
+<li><code class="highlight">$attributeName</code>: This keyword refers to the attribute name (string) that was assigned in <abbr title="Industrial Information Hub">IIH</abbr> Essentials. For instance, for the hierarchy created for the data destination <code class="highlight">Eclipse TCP</code> shown above: for the attribute <code class="highlight">Produced Cars</code>, this keyword would be replaced by the string <code class="highlight">Produced Cars</code>.</li>
+<li><code class="highlight">$path</code>: This keyword refers to the hierarchy to which the attribute belongs. For instance, for the hierarchy created for the data destination <code class="highlight">Eclipse TCP</code> shown above: for the attribute <code class="highlight">Produced Cars</code>, this keyword would be replaced by the string <code class="highlight">Factory 1/Line 1/Sensors</code>. If the attribute belongs to an entity of type aspect it will also be included in the path.</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The base entity, i.e., <strong><code class="highlight">edge</code></strong>, will not be included in the path. In case this is desired, the entity name can be manually typed into the topic structure.</p>
-</div>
 <h4 id="data-points">Data points</h4>
 <p>The data points field specifies how each one of the elements of the data points array will look like in the MQTT package. In case no data points are desired in the package, please write the data points as an array containing an empty object. Dynamic keywords can be used as one of the values of the object containing key-value pairs. To use a dynamic keyword, append a dollar sign ($) in front of the keyword name. Only one keyword per value of the key-value pair can be used. The following keywords are supported as dynamic attributes for the data points:</p>
 <ul>
@@ -1926,14 +1918,8 @@
 <li>
 <p><code class="highlight">$topic</code>: This keyword refers to the MQTT topic defined in the configuration file. Before sending the value, the keywords are replaced by their respective value and casted as a string.</p>
 </li>
-<li><code class="highlight">$attributeName</code>: This keyword refers to the attribute name (string) that was assigned in <abbr title="Industrial Information Hub">IIH</abbr> Essentials. For instance, for the entities overview shown in the picture above, when synchronizing the attribute, this keyword would be replaced by the string <code class="highlight">StressTest1_1</code>.</li>
-<li><code class="highlight">$path</code>: This keyword refers to the hierarchy to which the attribute belongs. For instance, for the entities overview shown above, when synchronizing the attribute, this keyword would be replaced by the string <code class="highlight">StressTest_grpc/StressTest_1</code>. If the attribute belongs to an entity of type aspect it will also be included in the path.</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The base entity, i. e., <strong><code class="highlight">edge</code></strong>, will not be included in the path. In case this is desired, the entity name can be manually typed into the topic structure.</p>
-</div>
-<ul>
+<li><code class="highlight">$attributeName</code>: This keyword refers to the attribute name (string) that was assigned in <abbr title="Industrial Information Hub">IIH</abbr> Essentials. For instance, for the hierarchy created for the data destination <code class="highlight">Eclipse TCP</code> shown above: for the attribute <code class="highlight">Produced Cars</code>, this keyword would be replaced by the string <code class="highlight">Produced Cars</code>.</li>
+<li><code class="highlight">$path</code>: TThis keyword refers to the hierarchy to which the attribute belongs. For instance, for the hierarchy created for the data destination <code class="highlight">Eclipse TCP</code> shown above: for the attribute <code class="highlight">Produced Cars</code>, this keyword would be replaced by the string <code class="highlight">Factory 1/Line 1/Sensors</code>. If the attribute belongs to an entity of type aspect it will also be included in the path.</li>
 <li><code class="highlight">$qualityCode</code>: This keyword refers to the quality code of the value in <abbr title="Industrial Information Hub">IIH</abbr> Essentials.</li>
 </ul>
 <h4 id="further-payload-guidelines">Further payload guidelines</h4>

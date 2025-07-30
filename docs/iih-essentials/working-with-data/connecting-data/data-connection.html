@@ -874,8 +874,8 @@
         
           
 <li class="md-nav__item">
-  <a href="#creating-an-attribute-with-default-tag-values" title="Creating an attribute with default tag values" class="md-nav__link">
-    Creating an attribute with default tag values
+  <a href="#bulk-creating-attributes-from-tags" title="Bulk-creating attributes from tags" class="md-nav__link">
+    Bulk-creating attributes from tags
   </a>
 
   
@@ -884,8 +884,18 @@
         
           
 <li class="md-nav__item">
-  <a href="#mapping-an-attribute-with-a-tag" title="Mapping an attribute with a tag" class="md-nav__link">
-    Mapping an attribute with a tag
+  <a href="#mapping-a-tag-to-an-attribute" title="Mapping a tag to an attribute" class="md-nav__link">
+    Mapping a tag to an attribute
+  </a>
+
+  
+  
+</li>
+        
+          
+<li class="md-nav__item">
+  <a href="#presets" title="Presets" class="md-nav__link">
+    Presets
   </a>
 
   
@@ -1662,11 +1672,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../synchronizing-data/defining-the-data-synchronization.html" class="md-nav__link">
+      <a href="../synchronizing-data/building-a-destination-hierarchy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Defining the data synchronization
+    Building a Destination Hierarchy
   </span>
   
 
@@ -1755,8 +1765,8 @@
         
           
 <li class="md-nav__item">
-  <a href="#creating-an-attribute-with-default-tag-values" title="Creating an attribute with default tag values" class="md-nav__link">
-    Creating an attribute with default tag values
+  <a href="#bulk-creating-attributes-from-tags" title="Bulk-creating attributes from tags" class="md-nav__link">
+    Bulk-creating attributes from tags
   </a>
 
   
@@ -1765,8 +1775,18 @@
         
           
 <li class="md-nav__item">
-  <a href="#mapping-an-attribute-with-a-tag" title="Mapping an attribute with a tag" class="md-nav__link">
-    Mapping an attribute with a tag
+  <a href="#mapping-a-tag-to-an-attribute" title="Mapping a tag to an attribute" class="md-nav__link">
+    Mapping a tag to an attribute
+  </a>
+
+  
+  
+</li>
+        
+          
+<li class="md-nav__item">
+  <a href="#presets" title="Presets" class="md-nav__link">
+    Presets
   </a>
 
   
@@ -1855,13 +1875,27 @@
 <h3 id="fast-mapping-via-tag-sidebar">Fast mapping via tag sidebar</h3>
 <p>For quick mapping, use the tag sidebar, which is available when no other sidebar is open. Expand it by clicking the <img alt="expand-icon" src="../assets/images/expand-icon.png" /> icon on the right side. To find the desired tag, select a connected connector and browse its connections and tags. The second section in the sidebar displays the connection names and the number of tags for each. When you click on a connection, the last section will display the available tags.</p>
 <p><img alt="tag-sidebar" src="../assets/images/tag-sidebar.png" /></p>
-<h4 id="creating-an-attribute-with-default-tag-values">Creating an attribute with default tag values</h4>
+<h4 id="bulk-creating-attributes-from-tags">Bulk-creating attributes from tags</h4>
 <p>You can either drag and drop the selected tags to the "Add Attribute" button or use the "Create" button at the top to create attributes from the selected tags. The tag information will determine the properties of the created attribute. You can also drag and drop tags onto an asset or aspect in the navigation sidebar to create attributes there. It is possible to select multiple tags and create them in the same way. There is also a "Select All" button at the top to select all tags of a connection.</p>
 <p>To add all tags of a connection, you can drag and drop the entire connection to the "Add Attribute" button or to an asset or aspect in the navigation sidebar.</p>
 <p><img alt="drag-and-drop_multiple-add" src="../assets/images/drag-and-drop_multiple-add.png" /></p>
-<h4 id="mapping-an-attribute-with-a-tag">Mapping an attribute with a tag</h4>
+<h4 id="mapping-a-tag-to-an-attribute">Mapping a tag to an attribute</h4>
 <p>You can drag and drop a selected tag onto an attribute to set it as its new source. This action sets the source type to connector and updates the mapped tag for that attribute. The data type is not changed.</p>
 <p><img alt="drag-and-drop_single-on-attribute" src="../assets/images/drag-and-drop_single-on-attribute.png" /></p>
+<h4 id="presets">Presets</h4>
+<p>When using the mapping sidebar, some settings are set to preset values to minimize the configuration effort.
+These presets affect all tags mapped through the mapping sidebar. They can be changed via the "Preset" button in the top right corner of the mapping sidebar.</p>
+<p><img alt="mapping-sidebar-presets" src="../assets/images/mapping-sidebar-presets.png" /></p>
+<ul>
+<li>
+<p>Store mapped tags:<br />
+This preset controls, whether attributes are storing the data of the tag or not. If enabled, the attribute can be used in all features, like northbound sync, and client apps like Performance Insight. If disabled, only the mapping information is stored, through which other components and apps, e.g. <abbr title="Industrial Information Hub">IIH</abbr> Semantics, can subscribe the data.</p>
+</li>
+<li>
+<p>Display name replacement rule:<br />
+Using this regex the attribute display name can be created out of original tag name, with the possibility to transform and e.g. replace unsupported characters.</p>
+</li>
+</ul>
 <h2 id="defining-a-transformation">Defining a transformation</h2>
 <p>Transformations can be used to manipulate or combine data from tags before they are stored in an attribute. This is done via a code editor where the transformation syntax is written.</p>
 <p>The transformation syntax supports basic mathematical operations as well as more complex code blocks and functions. The editor includes syntax highlighting, syntax checking and autocomplete. It also browses connectors and shows the available tags, provided the connector is connected.</p>

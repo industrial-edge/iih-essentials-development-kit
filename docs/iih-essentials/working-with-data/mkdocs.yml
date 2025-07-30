@@ -1,4 +1,5 @@
-# !!! The navigation is imported into the main navigation from here. Therefore, update the navigation for "Working with data" in this file. The navigation is also imported into the Common Configurator documentation. !!!
+# !!! The navigation is imported into the main navigation from here. Therefore, update the navigation for "Working with data" in this file. After updating the navigation here, run the scripts "update_mkdocs_nav.py" and "update_mkdocs_nav-offline.py" in the root folder to update the main navigation. !!!
+# The navigation is also imported into the Common Configurator documentation from this file.
 # All images required by these files must be in assets/images/ folder.
 
 edit_uri: edit/main/
@@ -7,36 +8,36 @@ use_directory_urls: false
 
 nav:
   - Setting up data structures:
-    - Model overview: setting-up-data-structure/model-overview.md
-    - Setting up a data structure: setting-up-data-structure/quick-start.md
-    - Working with types: setting-up-data-structure/types-concept.md
+      - Model overview: setting-up-data-structure/model-overview.md
+      - Setting up a data structure: setting-up-data-structure/quick-start.md
+      - Working with types: setting-up-data-structure/types-concept.md
   - Connecting data:
-    - Overview: connecting-data/overview.md
-    - Working with connectors: connecting-data/connectors.md
-    - Connecting data to an attribute: connecting-data/data-connection.md
-    - Storing alarms: 
-      - Overview: connecting-data/store-alarms/overview.md
-      - Working with alarm channels: connecting-data/store-alarms/store-alarms.md
+      - Overview: connecting-data/overview.md
+      - Working with connectors: connecting-data/connectors.md
+      - Connecting data to an attribute: connecting-data/data-connection.md
+      - Storing alarms:
+          - Overview: connecting-data/store-alarms/overview.md
+          - Working with alarm channels: connecting-data/store-alarms/store-alarms.md
   - Managing data:
-    - Aggregating data:
-      - Defining aggregations for an attribute: managing-data/aggregating-data/aggregate-data.md
-      - Aggregation functions: managing-data/aggregating-data/aggregation-functions.md
-    - Backing up data: managing-data/backup-data.md
-    - Restoring data: managing-data/restore-data.md
+      - Aggregating data:
+          - Defining aggregations for an attribute: managing-data/aggregating-data/aggregate-data.md
+          - Aggregation functions: managing-data/aggregating-data/aggregation-functions.md
+      - Backing up data: managing-data/backup-data.md
+      - Restoring data: managing-data/restore-data.md
   - Synchronizing data:
-    - Overview: synchronizing-data/overview-sync-data.md
-    - Setting up data destinations:
-      - Overview: synchronizing-data/setting-up-destination/setting-up-destination-overview.md
-      - Synchronizing data with Insights Hub:
-        - Overview: synchronizing-data/setting-up-destination/insights-hub/insights-hub-overview.md
-        - Setting up Insights Hub as a synchronization destination: synchronizing-data/setting-up-destination/insights-hub/setting-up-insights-hub-as-a-synchronization-destination.md
-        - Creating a client certificate: synchronizing-data/setting-up-destination/insights-hub/creating-a-client-certificate.md
-        - Downloading a broker certificate: synchronizing-data/setting-up-destination/insights-hub/downloading-a-broker-certificate.md
-      - Setting up Senseye as a synchronization destination: synchronizing-data/setting-up-destination/senseye/setting-up-senseye-as-a-synchronization-destination.md
-      - Synchronizing data to a generic MQTT broker:
-        - Overview: synchronizing-data/setting-up-destination/generic-mqtt/overview-gen-mqtt.md
-        - Setting up a generic MQTT broker as a synchronization destination: synchronizing-data/setting-up-destination/generic-mqtt/setting-up-gen-mqtt-as-a-synchronization-destination.md
-        - Creating a configuration file: synchronizing-data/setting-up-destination/generic-mqtt/creating-a-config-file.md
-        - Outgoing MQTT packages: synchronizing-data/setting-up-destination/generic-mqtt/outgoing-mqtt-packages.md
-        - Connecting to popular MQTT-brokers: synchronizing-data/setting-up-destination/generic-mqtt/connecting-to-popular-mqtt-brokers.md
-    - Defining the data synchronization: synchronizing-data/defining-the-data-synchronization.md
+      - Overview: synchronizing-data/overview-sync-data.md
+      - Setting up data destinations:
+          - Overview: synchronizing-data/setting-up-destination/setting-up-destination-overview.md
+          - Synchronizing data with Insights Hub:
+              - Overview: synchronizing-data/setting-up-destination/insights-hub/insights-hub-overview.md
+              - Setting up Insights Hub as a synchronization destination: synchronizing-data/setting-up-destination/insights-hub/setting-up-insights-hub-as-a-synchronization-destination.md
+              - Creating a client certificate: synchronizing-data/setting-up-destination/insights-hub/creating-a-client-certificate.md
+              - Downloading a broker certificate: synchronizing-data/setting-up-destination/insights-hub/downloading-a-broker-certificate.md
+          - Setting up Senseye as a synchronization destination: synchronizing-data/setting-up-destination/senseye/setting-up-senseye-as-a-synchronization-destination.md
+          - Synchronizing data to a generic MQTT broker:
+              - Overview: synchronizing-data/setting-up-destination/generic-mqtt/overview-gen-mqtt.md
+              - Setting up a generic MQTT broker as a synchronization destination: synchronizing-data/setting-up-destination/generic-mqtt/setting-up-gen-mqtt-as-a-synchronization-destination.md
+              - Creating a configuration file: synchronizing-data/setting-up-destination/generic-mqtt/creating-a-config-file.md
+              - Outgoing MQTT packages: synchronizing-data/setting-up-destination/generic-mqtt/outgoing-mqtt-packages.md
+              - Connecting to popular MQTT-brokers: synchronizing-data/setting-up-destination/generic-mqtt/connecting-to-popular-mqtt-brokers.md
+      - Building a Destination Hierarchy: synchronizing-data/building-a-destination-hierarchy.md

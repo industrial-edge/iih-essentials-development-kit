@@ -1293,16 +1293,6 @@
       
         
 <li class="md-nav__item">
-  <a href="#possible-hierarchy" title="Possible hierarchy" class="md-nav__link md-nav__link--primary">
-    Possible hierarchy
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
   <a href="#firewall-settings" title="Firewall settings" class="md-nav__link md-nav__link--primary">
     Firewall settings
   </a>
@@ -1578,11 +1568,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../defining-the-data-synchronization.html" class="md-nav__link">
+      <a href="../../building-a-destination-hierarchy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Defining the data synchronization
+    Building a Destination Hierarchy
   </span>
   
 
@@ -1639,16 +1629,6 @@
       
         
 <li class="md-nav__item">
-  <a href="#possible-hierarchy" title="Possible hierarchy" class="md-nav__link md-nav__link--primary">
-    Possible hierarchy
-  </a>
-
-  
-  
-</li>
-      
-        
-<li class="md-nav__item">
   <a href="#firewall-settings" title="Firewall settings" class="md-nav__link md-nav__link--primary">
     Firewall settings
   </a>
@@ -1682,177 +1662,15 @@
 </ul>
 <p>Consider the following aspects about synchronization from <abbr title="Industrial Information Hub">IIH</abbr> Essentials to Insights Hub:</p>
 <ul>
-<li>For every entity of type <code class="highlight">anchor.asset-base</code> (or inherited children) an asset with its own asset type is created in Insights Hub.</li>
-<li>For every entity of type <code class="highlight">anchor.aspect-base</code> an aspect type is created in Insights Hub and added as an aspect to its according asset-type.</li>
-<li>For every attribute a dynamic variable is created and added to its according aspect type in Insights Hub.</li>
-<li>Attributes with the data type <code class="highlight">composition</code> or <code class="highlight"><span class="n">aggregation</span></code> are not created in Insights Hub, as there is no according object, but their aspect value is created as aspect type (see entity of type <code class="highlight">anchor.aspect-base</code>)</li>
-<li>If no attribute has been linked with an entity in the hierarchy, no asset or according types are created in Insights Hub.</li>
-<li>If an attribute has been linked directly with an entity of type anchor.asset-base, an implicit aspect type is created in Insights Hub.</li>
-<li>If an entity has a child entity, but no attribute, an empty asset type and asset is created in Insights Hub.</li>
-<li>An entity of type <code class="highlight">anchor.aspect-base</code> which is a child of an entity of type <code class="highlight">anchor.aspect-base</code> cannot be synced to Insights Hub as this hierarchy is not possible in Insights Hub.</li>
-<li>An entity of type <code class="highlight">anchor.asset-base</code> which is connected via composition is not synced to Insights Hub.</li>
+<li>When building a destination hierarchy, attributes can only be added under an aspect. If you try to add an attribute outside of an aspect - either by dragging it or using the "Create" button in the model tab - an error message will appear. However, if you use the preset "Include -&gt; Attributes", an aspect will automatically be created as the parent of the attribute.</li>
+<li>For each asset in the destination hierarchy, a corresponding asset and asset type are created in Insights Hub.</li>
+<li>For each aspect in the destination hierarchy, a corresponding aspect type is created in Insights Hub and added as an aspect to its related asset type.</li>
+<li>For each attribute in the destination hierarchy, a dynamic variable is created and added to its corresponding aspect type in Insights Hub.</li>
+<li>If an asset in the destination hierarchy has a child asset but no attributes, an empty asset type and asset are created in Insights Hub.</li>
+<li>If an aspect in the destination hierarchy has no attributes, neither an aspect type nor an aspect will be created in Insights Hub.</li>
+<li>Moving attributes is not supported by Insights Hub. If you move an attribute in the destination hierarchy, the old attribute will be deleted and a new one created at the new location. All data for this attribute, from the synchronization start point onward, must be synchronized again to Insights Hub, as long as it is still available locally in <abbr title="Industrial Information Hub">IIH</abbr> Essentials.</li>
+<li>Moving aspects is also not supported by Insights Hub. If you move an aspect in the destination hierarchy, the old aspect will be deleted and a new one created at the new location. Any child attributes will also be deleted and recreated, and their data will need to be synchronized again as described above.</li>
 </ul>
-<h2 id="possible-hierarchy">Possible hierarchy</h2>
-<p>This tables shows different hierarchy structures and if they are able to sync with Insights Hub:</p>
-<table>
-<thead>
-<tr>
-<th>Top element</th>
-<th>Link to parent</th>
-<th>Subelement<br>(with attribute)</th>
-<th>Link to parent</th>
-<th>Allowed in <abbr title="Industrial Information Hub">IIH</abbr></th>
-<th>Sync with Insights Hub</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Relation</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Relation</td>
-<td>Yes</td>
-<td><strong>Yes</strong></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Composition</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Aspect</td>
-<td>Relation/Composition</td>
-<td>Yes</td>
-<td><strong>Yes</strong></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-<tr>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Composition</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Relation</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Composition</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-<tr>
-<td>Aspect</td>
-<td>Relation</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Relation/Composition</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Aspect</td>
-<td>Relation/Composition</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-<tr>
-<td>Aspect</td>
-<td>Composition</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr></td>
-<td>Relation/Composition</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Aspect</td>
-<td>Relation</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Aspect</td>
-<td>Composition</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><abbr title="An asset is a digital representation of a machine or automation system with one or more automation devices (e.g. PLC). The data that describes an asset is acquired and transmitted. The data is then made available for further processing and evaluation.">Asset</abbr>/Aspect</td>
-<td>Aggregation</td>
-<td>Yes</td>
-<td><strong>Yes</strong> *</td>
-</tr>
-</tbody>
-</table>
-<p>*: The subelement will be synced via the Relation/Composition hierarchy.</p>
 <h2 id="firewall-settings">Firewall settings</h2>
 <p>The firewall must be opened for two ports</p>
 <ul>
