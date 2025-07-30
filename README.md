@@ -114,8 +114,6 @@ It shows how to create a user, request a token and get assets, tags and time ser
 
 [SIOS IIH Essentials for Industrial Edge](https://support.industry.siemens.com/cs/document/109784426)
 
-[SIOS IIH Essentials Development Kit for Industrial Edge](https://support.industry.siemens.com/cs/document/109792717)
-
 For support requests contact your regional contact person.
 They take care of your concerns and give you feedback.
 
