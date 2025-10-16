@@ -2,10 +2,9 @@
 
 <br>
 <div align="center">
-    <img src="./docs/graphics/IndustrialEdgeApp_DataService_Gradient.svg" alt="data-service-development-kit-logo" width="120px" height="120px"/>
+    <img src="./docs/graphics/IE_DataService.svg" alt="data-service-development-kit-logo" width="120px" height="120px"/>
     <br>
-    <i>IIH Essentials is a central data storage for Industrial Edge, connecting you with many
-        <br> data sources available on the platform.</i>
+    <i>Industrial Information Hub (IIH) is an industrial data operations solution. It serves as an integration layer for industrial data and bridges the gap from the shop floor, through other levels, up to the cloud. Using the collected data from shop floor devices it provides information to other services and systems with its capabilities in structuring, transforming, storing and synchronizing the data. This enables access to data on all levels in a multitude of possibilities.</i>
     <br>
 </div>
 <br><hr><br>
@@ -34,10 +33,10 @@ Using the IIH Essentials Development Kit​ you can develop apps based on the II
 
 In this repository you can find the following components:
 - [​Docker file: docker-compose.example.yml](docker-compose.example.yml)
-- [Documentation](https://industrial-edge.github.io/iih-essentials-development-kit/iih-essentials/)
 - [Examples](./examples)
+- [Grafana Plugin](./grafana%20plugin/)
 
-By running the docker compose configuration, an API instance of the IIH Essentials will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](https://industrial-edge.github.io/iih-essentials-development-kit/iih-essentials/for-developers/api/openapi.html). This file needs to be opened locally in a browser.
+By running the docker compose configuration, an API instance of the IIH Essentials will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](https://docs.industrial-operations-x.siemens.cloud/access?ft:title=IIH+Essentials+API&Product=Industrial+Information+Hub)T This file needs to be opened locally in a browser.
 
 An image is loaded from Docker Hub, containing these components:
 
@@ -47,7 +46,7 @@ An image is loaded from Docker Hub, containing these components:
 
 ## Documentation & Community
 
-In the [online documentation](https://docs.industrial-operations-x.siemens.cloud/access?ft:title=Industrial%20Information%20Hub%20Essentials) you can find the release notes, what's new and an option to provide feedback.
+In the [online documentation](https://docs.industrial-operations-x.siemens.cloud/access?ft:title=Industrial+Information+Hub&Product=Industrial+Information+Hub) you can find the release notes, what's new and an option to provide feedback.
 
 You can ask questions in the [Industrial Edge support forum](https://forum.industrial-edge.siemens.cloud/).
 
