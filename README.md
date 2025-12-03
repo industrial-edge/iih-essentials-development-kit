@@ -29,19 +29,18 @@
 
 ## Features
 
-Using the IIH Essentials Development Kit​ you can develop apps based on the IIH Essentials and integrate them into Siemens Industrial Edge.
+Using the IIH Essentials Development Kit you can develop apps based on the IIH Essentials and integrate them into Siemens Industrial Edge.
 
 In this repository you can find the following components:
-- [​Docker file: docker-compose.example.yml](docker-compose.example.yml)
+- [Docker file: docker-compose.example.yml](docker-compose.example.yml)
 - [Examples](./examples)
-- [Grafana Plugin](./grafana%20plugin/)
 
 By running the docker compose configuration, an API instance of the IIH Essentials will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](https://docs.industrial-operations-x.siemens.cloud/access?ft:title=IIH+Essentials+API&Product=Industrial+Information+Hub)T This file needs to be opened locally in a browser.
 
 An image is loaded from Docker Hub, containing these components:
 
 - IIH Essentials -> provides the external interface (REST API) for non-Siemens applications
-- ​MQTT Broker -> used to transfer data from the simulator to the IIH Essentials
+- MQTT Broker -> used to transfer data from the simulator to the IIH Essentials
 - Data simulator -> simulate simple data like sinus, inc/dec or custom data sequences
 
 ## Documentation & Community
@@ -76,12 +75,12 @@ Run the docker compose start command:
 docker-compose up
 ```
 
-​All service images are downloaded from Docker Hub and launched as defined in the ```​docker-compose.yml​``` file.
+​All service images are downloaded from Docker Hub and launched as defined in the ```docker-compose.yml``` file.
 
 Use the IIH Essentials UI to configure data connections and structure your data. You can connect simulated tags to variables. This will store the data and offer it through the API, making it available for 3rd party apps to use. To access the IIH Essentials UI open this address in a browser:
 
 ``` browser
-http://localhost:4203​
+http://localhost:4203
 ```
 
 ### Simulate data
@@ -100,14 +99,14 @@ To use the configured tags, the simulation connector needs to be added to IIH Es
 
 The IIH Essentials in the Development Kit is a limited version of the IIH Essentials:
 
-- Data retention: ​By default, the data is kept for one week. This cannot be changed.
+- Data retention: By default, the data is kept for one week. This cannot be changed.
 
 ## Examples
 
 ### Example Client
 
-​This application example is intended to show how to get access to the IIH Essentials API as an external app.
-It shows how to create a user, request a token and get assets, tags and time series data from the the IIH Essentials. ​It is available [here: ExampleClient](./examples/ExampleClient). More details can be found inside the ExampleClient folder.
+This application example is intended to show how to get access to the IIH Essentials API as an external app.
+It shows how to create a user, request a token and get assets, tags and time series data from the the IIH Essentials. It is available [here: ExampleClient](./examples/ExampleClient). More details can be found inside the ExampleClient folder.
 
 ## Contact us
 
