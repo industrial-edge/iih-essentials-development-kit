@@ -14,15 +14,15 @@
 <br><hr><br>
 
 - [IIH Essentials Development Kit](#iih-essentials-development-kit)
-  - [Documentation](#documentation)
+  - [Features](#features)
+  - [Documentation & Community](#documentation--community)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Setting up](#setting-up)
+    - [Simulate data](#simulate-data)
     - [Limitations](#limitations)
   - [Examples](#examples)
     - [Example Client](#example-client)
-  - [What's new](#whats-new)
-  - [Community](#community)
   - [Contact us](#contact-us)
   - [Contribution](#contribution)
   - [Licence and Legal Information](#licence-and-legal-information)
