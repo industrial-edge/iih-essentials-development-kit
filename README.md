@@ -127,6 +127,11 @@ If you haven't previously signed the [Siemens Contributor License Agreement](htt
 
 Please read the [Legal information](LICENSE.md).
 
-<img align="right" width="400px" src="docs/graphics/funding-logo.png">
-
-**Funding Acknowledgment:** Funded by the Federal Ministry for Economic Affairs and Energy based on a decision by the German Bundestag | Your funding provider: Kicks for Edge as part of the EU funding program IPCEI-CIS (FKZ:13IPC008).
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;">
+    <div style="flex: 1 1 auto;">
+        <strong>Funding Acknowledgment:</strong> Funded by the Federal Ministry for Economic Affairs and Energy based on a decision by the German Bundestag | Your funding provider: Kicks for Edge as part of the EU funding program IPCEI-CIS (FKZ:13IPC008)
+    </div>
+    <div style="flex: 0 0 25%; max-width: 25%; text-align: right;">
+        <img src="./docs/graphics/funding-logo.png" alt="Funding Logo" style="width: 100%; height: auto;">
+    </div>
+</div>
