@@ -1,6 +1,6 @@
 # IIH Essentials Development Kit
 <br>
-Important information: The docker image is temporarily under maintenance and will be back online in March.
+Important information: The docker image is temporarily under maintenance and will be back online in May 2026
 <br>
 <div align="center">
     <img src="./docs/graphics/IE_DataService.svg" alt="data-service-development-kit-logo" width="120px" height="120px"/>
