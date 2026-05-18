@@ -1,7 +1,5 @@
 # IIH Essentials Development Kit
-<br>
-Important information: The docker image is temporarily under maintenance and will be back online in May 2026
-<br>
+
 <div align="center">
     <img src="./docs/graphics/IE_DataService.svg" alt="data-service-development-kit-logo" width="120px" height="120px"/>
     <br>
@@ -20,7 +18,6 @@ Important information: The docker image is temporarily under maintenance and wil
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Setting up](#setting-up)
-    - [Simulate data](#simulate-data)
     - [Limitations](#limitations)
   - [Examples](#examples)
     - [Example Client](#example-client)
@@ -41,8 +38,7 @@ By running the docker compose configuration, an API instance of the IIH Essentia
 An image is loaded from Docker Hub, containing these components:
 
 - IIH Essentials -> provides the external interface (REST API) for non-Siemens applications
-- MQTT Broker -> used to transfer data from the simulator to the IIH Essentials
-- Data simulator -> simulate simple data like sinus, inc/dec or custom data sequences
+- MQTT Broker -> replacement for the IE Databus to transfer data to IIH Essentials
 
 ## Documentation & Community
 
@@ -78,23 +74,11 @@ docker-compose up
 
 ​All service images are downloaded from Docker Hub and launched as defined in the ```docker-compose.yml``` file.
 
-Use the IIH Essentials UI to configure data connections and structure your data. You can connect simulated tags to variables. This will store the data and offer it through the API, making it available for 3rd party apps to use. To access the IIH Essentials UI open this address in a browser:
+Use the IIH Essentials UI to configure data connections and structure your data. You can connect tags to variables. This will store the data and offer it through the API, making it available for 3rd party apps to use. To access the IIH Essentials UI open this address in a browser:
 
 ``` browser
 http://localhost:4203
 ```
-
-### Simulate data
-
-Use the Simulation UI to create tags with simulated data that can be connected to IIH Essentials variables. To access the Simulation UI open this address in a browser:
-
-``` browser
-http://localhost:4519
-```
-
-To use the configured tags, the simulation connector needs to be added to IIH Essentials:
-
-<img src="./docs/graphics/add-simulation-connector.png" alt="add-simulation-connector" width="1000px" />
 
 ### Limitations
 
