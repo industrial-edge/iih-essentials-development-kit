@@ -5,7 +5,7 @@
 
 ## Supported Tags
 
-- `2.5.0`, `2.4.1`
+- `2.6.0`, `2.5.0`, `2.4.1`
 
 ## Quick reference (cont.)
 
