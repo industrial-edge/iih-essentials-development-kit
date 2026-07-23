@@ -63,16 +63,16 @@ The IIH Essentials in the Development Kit is a limited version of the IIH Essent
 
 ### Steps
 
-1. Pull the image (choose desired tag version. e.g. 2.4.1):
+1. Pull the image (choose desired tag version. e.g. 2.6.0):
 
    ```bash
-   docker pull siemensindustrialedge/dataservicedevelopmentkit:2.4.1
+   docker pull siemensindustrialedge/dataservicedevelopmentkit:2.6.0
    ```
 
 2. Create a container:
 
    ```bash
-   docker create --name developmentkit siemensindustrialedge/dataservicedevelopmentkit:2.4.1
+   docker create --name developmentkit siemensindustrialedge/dataservicedevelopmentkit:2.6.0
    ```
 
 3. Copy files:
