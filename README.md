@@ -107,6 +107,9 @@ Additionally everybody is free to propose any changes to this repository using P
 
 If you haven't previously signed the [Siemens Contributor License Agreement](https://cla-assistant.io/industrial-edge/) (CLA), the system will automatically prompt you to do so when you submit your Pull Request. This can be conveniently done through the CLA Assistant's online platform. Once the CLA is signed, your Pull Request will automatically be cleared and made ready for merging if all other test stages succeed.
 
+## Open Source files
+To access and extract the open source files (OpenSourceSoftware.zip and ReadMe_OSS.htm), please follow the instructions in the following guide: [Extract Open Source Files](open-source-files.md)
+
 ## Licence and Legal Information
 
 Please read the [Legal information](LICENSE.md).
