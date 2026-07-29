@@ -5,12 +5,12 @@ This example is intended to demonstrate how to access the REST API of the Data S
 from an external application.
 
 ## Development
-This example is developed based on node-js. The used programing language is typescript.
+This example is developed based on node-js. The used programming language is typescript.
 
 ## Features
 The application provides its own REST API. This REST API demonstrate the following operations
 on the REST API of the Data Service.
->- Access the configuration data like assets and variables.
+>- Access the configuration data like assets and attributes.
 >- Access timeseries data.
 >- Calculate aggregated values.
 >- Calculate trends of aggregated values.
@@ -68,22 +68,19 @@ The application displays an html page describing the REST API endpoints it suppo
 
 ## Implementation
 
-### server.ts
+The source code is organized into two folders:
+
+- `backend` contains the Node.js/TypeScript server code.
+- `frontend` contains the static `index.html` page that is served by the backend.
+
+### backend/server.ts
 This file is the entry point of the application. This is defined in the webpack.config.js file.
 
-### feature.ts
-In this file the class Feature is implemened. The endpoints of the REST API are implemented in this class.
+### backend/feature.ts
+In this file the class Feature is implemented. The endpoints of the REST API are implemented in this class.
 
-### dataservice-client
-In this file the class DataServiceClient is implemened. This class implements the access to the REST API of
-the Data Service. It manages the authorization of the communication.
+### backend/dataservice-client.ts
+In this file the class DataServiceClient is implemented. This class implements the access to the REST API of the Data Service.
 
-#### Interactive user authentication
-If you provide the request object to the DataServiceClient constructor the object uses the authorization information of the interactive user. It takes the cookie authToken and delegates it to the Data Service.
-
-#### Technical user authentication
-If you dont provide the request object to the DataServiceClient constructor the object uses the AuthService class to get a valid token. This option is only required if you need to call the REST API of the Data Service from a background task where you dont have an interactive user available.
-
-### authservice.ts
-In this file the class AuthService is implemented. If installed on the edge device this class reads the appsecrets.json file and generates an authorization token from it. In the local case it uses hardcoded authorization informations accepted only by the Data Service Development Kit.
- 
+### frontend/index.html
+This file is the landing page. It lists the supported REST API endpoints and shows a status box with the current counts of assets, aspects and attributes.

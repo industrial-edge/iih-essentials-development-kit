@@ -1,0 +1,180 @@
+:root {
+    --brand: #009999;
+    --brand-dark: #005159;
+    --brand-light: #e6f4f4;
+    --bg: #f4f6f8;
+    --card-bg: #ffffff;
+    --text: #1b1f23;
+    --text-muted: #5a6672;
+    --border: #e2e7ec;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Siemens Sans", Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 64px;
+}
+
+header.hero {
+    background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 32px 36px;
+    box-shadow: var(--shadow);
+}
+
+header.hero h1 {
+    margin: 0 0 8px;
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+header.hero p {
+    margin: 8px 0 0;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 68ch;
+}
+
+/* Status box */
+.status {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: -28px 12px 40px;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.stat-card .stat-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.stat-card .stat-value {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--brand-dark);
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-card .stat-value.loading {
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.stat-card .stat-value.error {
+    color: #c0392b;
+}
+
+/* Routes */
+h2.section-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin: 0 4px 16px;
+}
+
+.intro-note {
+    background: var(--brand-light);
+    border-left: 4px solid var(--brand);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 0 4px 28px;
+    font-size: 0.98rem;
+    color: var(--brand-dark);
+}
+
+.intro-note code {
+    background: rgba(0, 0, 0, 0.06);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.route-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.route-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-1px);
+}
+
+.route-card a {
+    display: inline-block;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--brand-dark);
+    text-decoration: none;
+    font-family: "Consolas", "Courier New", monospace;
+    word-break: break-all;
+}
+
+.route-card a:hover {
+    color: var(--brand);
+    text-decoration: underline;
+}
+
+.route-card .route-desc {
+    margin: 8px 0 0;
+    font-size: 0.96rem;
+    color: var(--text-muted);
+}
+
+footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+    .status {
+        grid-template-columns: 1fr;
+        margin: -20px 0 32px;
+    }
+    header.hero {
+        padding: 24px 22px;
+    }
+    header.hero h1 {
+        font-size: 1.5rem;
+    }
+}

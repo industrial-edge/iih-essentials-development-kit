@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ExampleClient - Data Service Development Kit</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="page">
+        <header class="hero">
+            <h1>ExampleClient - Data Service Development Kit</h1>
+            <p>
+                This example implements the REST API listed below. Access an endpoint directly by
+                clicking its route name and inspect the JSON response in your browser.
+            </p>
+        </header>
+
+        <section class="status" aria-label="Configuration overview">
+            <div class="stat-card">
+                <span class="stat-label">Assets</span>
+                <span class="stat-value loading" id="count-assets">…</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Aspects</span>
+                <span class="stat-value loading" id="count-aspects">…</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Attributes</span>
+                <span class="stat-value loading" id="count-attributes">…</span>
+            </div>
+        </section>
+
+        <h2 class="section-title">Endpoints</h2>
+
+        <div class="intro-note">
+            Routes that require an <code>:assetId</code> or <code>:attributeId</code> in the path first
+            return an error response. Replace the placeholder in the browser's address bar with the id
+            of an existing object and execute the endpoint again.
+        </div>
+
+        <div class="route-card">
+            <a href="./Assets">Assets</a>
+            <p class="route-desc">Read the configuration of all existing assets.</p>
+        </div>
+        <div class="route-card">
+            <a href="./Assets/:assetId">Assets/:assetId</a>
+            <p class="route-desc">Read the configuration of a single asset selected via its id.</p>
+        </div>
+        <div class="route-card">
+            <a href="./Attributes">Attributes</a>
+            <p class="route-desc">Read the configuration of all existing attributes.</p>
+        </div>
+        <div class="route-card">
+            <a href="./Attributes/:attributeId">Attributes/:attributeId</a>
+            <p class="route-desc">Read the configuration of a single attribute selected via its id.</p>
+        </div>
+        <div class="route-card">
+            <a href="./Attributes/:attributeId/DataOfLastHour">Attributes/:attributeId/DataOfLastHour</a>
+            <p class="route-desc">
+                Read the raw timeseries data of a single attribute selected via its id. The data
+                is read from the last hour. This example demonstrates the usage of the Data API of
+                the Data Service.
+            </p>
+        </div>
+        <div class="route-card">
+            <a href="./Attributes/:attributeId/AverageOfLastHour">Attributes/:attributeId/AverageOfLastHour</a>
+            <p class="route-desc">
+                Calculate the average of a single attribute selected via its id. The average is
+                calculated over the last hour. The requested timerange is aligned to full minutes.
+                This example demonstrates the usage of the Calculate API of the Data Service.
+            </p>
+        </div>
+        <div class="route-card">
+            <a href="./Attributes/:attributeId/AverageTrendOfLastHour">Attributes/:attributeId/AverageTrendOfLastHour</a>
+            <p class="route-desc">
+                Calculate the average trend of a single attribute selected via its id. The average trend
+                is calculated over the last hour. The requested timerange is aligned to full minutes. The
+                calculation period is 10 minutes. This example demonstrates the usage of the CalculateTrend
+                API of the Data Service.
+            </p>
+        </div>
+        <div class="route-card">
+            <a href="./Attributes/:attributeId/LatestValue">Attributes/:attributeId/LatestValue</a>
+            <p class="route-desc">
+                Read the latest value of a single attribute selected via its id. This example demonstrates
+                the usage of the Data/Delta API of the Data Service.
+            </p>
+        </div>
+        <div class="route-card">
+            <a href="./Attributes/:attributeId/Monitor">Attributes/:attributeId/Monitor</a>
+            <p class="route-desc">
+                Read cyclically each 5 seconds all new values of a single attribute selected via its id.
+                The execution is running in the background and the values are logged to the console. This
+                example demonstrates how to run background tasks and how to call the API of the Data Service.
+            </p>
+        </div>
+        <div class="route-card">
+            <a href="./Attributes/StopMonitor">Attributes/StopMonitor</a>
+            <p class="route-desc">Stop the background task started with Monitor.</p>
+        </div>
+
+        <footer>Data Service Development Kit &middot; ExampleClient</footer>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
