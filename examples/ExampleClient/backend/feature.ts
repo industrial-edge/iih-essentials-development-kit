@@ -1,69 +1,25 @@
 import { Request, Response, Router } from 'express';
+import * as express from 'express';
 import { DataServiceClient } from './dataservice-client';
+import {
+    Value,
+    Data,
+    DataResult,
+    DataSourceReference,
+    CalculateParams,
+    CalculateResult,
+    CalculateResults,
+    CalculateTrendParams,
+    CalculateTrendResult,
+    CalculateTrendResults,
+    DeltaRequest
+} from './interfaces';
 
-import * as fs from 'fs';
 import * as path from 'path';
 import { setInterval } from 'timers';
-import { AppUser, TokenManager } from './token-manager';
 
 const ONE_MINUTE = 60 * 1000;
 const ONE_HOUR = 60 * ONE_MINUTE;
-
-interface Value {
-    timestamp: string;
-    value: string | number | boolean;
-    qualitycode?: number;
-}
-
-interface Data {
-    variableId: string;
-    values: Value[];
-    lastRequestTime?: string;
-    error: unknown;
-}
-
-interface DataResult {
-    data: Data[];
-    hasMoreData?: {
-        from: string;
-        to: string;
-    }
-}
-
-interface DataSourceReference {
-    id: string;
-    type: string;
-    aggregation: string;
-}
-
-interface CalculateParams {
-    from: string;
-    to: string;
-    dataSources: DataSourceReference[];
-}
-
-interface CalculateResult {
-    dataSource: DataSourceReference;
-    value: number;
-}
-
-type CalculateResults = CalculateResult[];
-
-interface CalculateTrendParams extends CalculateParams {
-    calculationTimeRange: number;
-}
-
-interface CalculateTrendResult {
-    dataSource: DataSourceReference;
-    values: Value[];
-}
-
-type CalculateTrendResults = CalculateTrendResult[];
-
-interface DeltaRequest {
-    variableId: string;
-    lastRequestTime?: string;
-}
 
 /**
  * This class implements the REST API of the application.
@@ -76,15 +32,14 @@ export class Feature {
      * @param router
      */
     public setRoutes(router: Router) {
+        // Return the number of configured assets, aspects and attributes.
+        this.get(router, '/Status', this.getStatus);
 
-        // Return the home page of the application.
-        this.get(router, '/', this.getInfo);
+        // Start cyclically retrieving of new attribute values.
+        this.get(router, '/Attributes/:id/Monitor', this.startDataMonitor);
 
-        // Start cyclically retrieving of new varaible values.
-        this.get(router, '/Variables/:id/Monitor', this.startDataMonitor);
-
-        // Stop cyclically retrieving of new varaible values.
-        this.get(router, '/Variables/StopMonitor', this.stopDataMonitor);
+        // Stop cyclically retrieving of new attribute values.
+        this.get(router, '/Attributes/StopMonitor', this.stopDataMonitor);
 
         // Retrieves all configured assets. 
         this.get(router, '/Assets', this.getAssets);
@@ -92,78 +47,73 @@ export class Feature {
         // Retrieves the configuration of a specific asset. 
         this.get(router, '/Assets/:id', this.getAssetById);
 
-        // Retrieves all configured variables. 
-        this.get(router, '/Variables', this.getVariables);
+        // Retrieves all configured attributes. 
+        this.get(router, '/Attributes', this.getAttributes);
 
-        // Retrieves the configuration of a specific variable. 
-        this.get(router, '/Variables/:id', this.getVariable);
+        // Retrieves the configuration of a specific attribute. 
+        this.get(router, '/Attributes/:id', this.getAttribute);
 
-        // Retrieves the data of a specific variable from the last hour.
-        this.get(router, '/Variables/:id/DataOfLastHour', this.getDataOfLastHour);
+        // Retrieves the data of a specific attribute from the last hour.
+        this.get(router, '/Attributes/:id/DataOfLastHour', this.getDataOfLastHour);
 
-        // Retrieves the average of a specific variable from the last hour.
-        this.get(router, '/Variables/:id/AverageOfLastHour', this.getAverageOfLastHour);
+        // Retrieves the average of a specific attribute from the last hour.
+        this.get(router, '/Attributes/:id/AverageOfLastHour', this.getAverageOfLastHour);
 
-        // Retrieves the average trend of a specific variable from the last hour.
-        this.get(router, '/Variables/:id/AverageTrendOfLastHour', this.getAverageTrendOfLastHour);
+        // Retrieves the average trend of a specific attribute from the last hour.
+        this.get(router, '/Attributes/:id/AverageTrendOfLastHour', this.getAverageTrendOfLastHour);
 
-        // Retrieves the newest value of a specified variable.
-        this.get(router, '/Variables/:id/LatestValue', this.getLatestValue);
+        // Retrieves the newest value of a specified attribute.
+        this.get(router, '/Attributes/:id/LatestValue', this.getLatestValue);
 
-        // Compatibility tests for the deprecated authentication method ...
-        this.get(router, '/User/Create', this.createUser);
-        this.get(router, '/User/Token', this.getUserToken);
-        this.get(router, '/User', this.getUser);
-        this.get(router, '/User/Delete', this.deleteUser);
-
-        // Test how the api reacts for an unauthorized call.
-        this.get(router, '/NoAuth', this.onNoAuth);
+        // Serve the static frontend files. On the root '/' the 'index.html' is returned.
+        router.use(express.static(path.join(__dirname, 'static'), { index: 'index.html' }));
     }
 
-    private async getInfo(_request: Request, response: Response) {
-        response.writeHead(200, { 'Content-Type': 'text/html' });
-        response.end(this.readIndexHtml());
+    /**
+     * Return the number of configured assets, aspects and attributes.
+     * The counts are read from the 'x-anchor-count' header of the anchor
+     * collection endpoints without transferring the whole collections.
+     * @param _request
+     * @param response
+     */
+    private async getStatus(_request: Request, response: Response) {
+        const api = new DataServiceClient();
+        const [assets, aspects, attributes] = await Promise.all([
+            api.getCount('DataService/anchor/v1/assets?take=1'),
+            api.getCount('DataService/anchor/v1/aspects?take=1'),
+            api.getCount('DataService/anchor-ex/v1/attributes?take=1')
+        ]);
+        this.returnSuccess(response, { assets, aspects, attributes });
     }
 
-    private readIndexHtml(): string {
-        try {
-            const filePath = path.join(__dirname, 'index.html');
-            const fileContent = fs.readFileSync(filePath, 'utf8').replace(/^\uFEFF/, '');
-            return fileContent;
-        }
-        catch (ex) {
-            return ex.message;
-        }
-    }
-
-    private async getAssets(request: Request, response: Response) {
-        const api = new DataServiceClient(request);
-        const assets = await api.doRequest('AssetService/Assets');
+    private async getAssets(_request: Request, response: Response) {
+        const api = new DataServiceClient();
+        const assets = await api.doRequest('DataService/anchor/v1/assets');
         this.returnSuccess(response, assets);
     }
 
     private async getAssetById(request: Request, response: Response) {
         const assetId = this.getPathParameter(request, 'id');
-        const api = new DataServiceClient(request);
-        const asset = await api.doRequest(`AssetService/Assets/${assetId}`);
+        const api = new DataServiceClient();
+        const asset = await api.doRequest(`DataService/anchor/v1/assets/${assetId}`);
         this.returnSuccess(response, asset);
     }
 
-    private async getVariables(request: Request, response: Response) {
-        const api = new DataServiceClient(request);
-        const variables = await api.doRequest(`DataService/Variables`);
-        this.returnSuccess(response, variables);
+    private async getAttributes(_request: Request, response: Response) {
+        const api = new DataServiceClient();
+        const attributes = await api.doRequest(`DataService/anchor-ex/v1/attributes`);
+        this.returnSuccess(response, attributes);
     }
 
-    private async getVariable(request: Request, response: Response) {
-        const variableId = this.getPathParameter(request, 'id');
-        const api = new DataServiceClient(request);
-        const variable = await api.doRequest(`DataService/Variables/${variableId}`);
-        this.returnSuccess(response, variable);
+    private async getAttribute(request: Request, response: Response) {
+        const attributeId = this.getPathParameter(request, 'id');
+        const api = new DataServiceClient();
+        const attribute = await api.doRequest(`DataService/anchor-ex/v1/attributes/${attributeId}`);
+        this.returnSuccess(response, attribute);
     }
 
     /**
-     * Read the raw timeseries data of a single variable selected via its id. The data
+     * Read the raw timeseries data of a single attribute selected via its id. The data
      * is read from the last hour.
      *
      * This example demonstrates the usage of the Data API of the Data Service.
@@ -171,15 +121,15 @@ export class Feature {
      * @param response 
      */
     private async getDataOfLastHour(request: Request, response: Response) {
-        const variableId = this.getPathParameter(request, 'id');
+        const attributeId = this.getPathParameter(request, 'id');
         const now = Date.now();
         const range = {
             from: (new Date(now - ONE_HOUR)).toISOString(),
             to: (new Date(now)).toISOString()
         };
-        const api = new DataServiceClient(request);
+        const api = new DataServiceClient();
         const dataResult = await api.doRequest<DataResult>(
-            `DataService/Data/${variableId}?from=${range.from}&to=${range.to}&order=Descending`);
+            `DataService/Data/${attributeId}?from=${range.from}&to=${range.to}&order=Descending`);
         this.returnSuccess(response, dataResult);
     }
 
@@ -198,7 +148,7 @@ export class Feature {
     }
 
     /**
-     * Calculate the average of a single variable selected via its id. The average is
+     * Calculate the average of a single attribute selected via its id. The average is
      * calculated over the last hour. The requested timerange is aligned to full minutes.
      *
      * This example demonstrates the usage of the Calculate API of the Data Service.
@@ -206,26 +156,26 @@ export class Feature {
      * @param response 
      */
     private async getAverageOfLastHour(request: Request, response: Response) {
-        const variableId = this.getPathParameter(request, 'id');
+        const attributeId = this.getPathParameter(request, 'id');
         const range = this.getAggregateTimeRange();
         const body: CalculateParams = {
             from: range.from,
             to: range.to,
             dataSources: [
                 {
-                    id: variableId,
+                    id: attributeId,
                     type: 'Variable',
                     aggregation: 'Average'
                 }
             ]
         };
-        const api = new DataServiceClient(request);
+        const api = new DataServiceClient();
         const calculateResult = await api.doRequest<CalculateResults>('DataService/Calculate', 'POST', body);
         this.returnSuccess(response, calculateResult);
     }    
 
     /**
-     * Calculate the average trend of a single variable selected via its id. The average trend is
+     * Calculate the average trend of a single attribute selected via its id. The average trend is
      * calculated over the last hour. The requested timerange is aligned to full minutes. The
      * calculation period is 10 minutes.
      *
@@ -234,7 +184,7 @@ export class Feature {
      * @param response 
      */
     private async getAverageTrendOfLastHour(request: Request, response: Response) {
-        const variableId = this.getPathParameter(request, 'id');
+        const attributeId = this.getPathParameter(request, 'id');
         const range = this.getAggregateTimeRange();
         const body: CalculateTrendParams = {
             calculationTimeRange: 10 * ONE_MINUTE,
@@ -242,30 +192,30 @@ export class Feature {
             to: range.to,
             dataSources: [
                 {
-                    id: variableId,
+                    id: attributeId,
                     type: 'Variable',
                     aggregation: 'Average'
                 }
             ]
         };
-        const api = new DataServiceClient(request);
+        const api = new DataServiceClient();
         const calculateTrendResult = await api.doRequest<CalculateTrendResults>('DataService/CalculateTrend', 'POST', body);
         this.returnSuccess(response, calculateTrendResult);
     } 
 
     /**
-     * Read the latest value of a single variable selected via its id.
+     * Read the latest value of a single attribute selected via its id.
      * 
      * This example demonstrates the usage of the Data/Delta API of the Data Service. 
      * @param request 
      * @param response 
      */
     private async getLatestValue(request: Request, response: Response) {
-        const variableId = this.getPathParameter(request, 'id');
+        const attributeId = this.getPathParameter(request, 'id');
         const body = [{
-            variableId
+            variableId: attributeId
         }];
-        const api = new DataServiceClient(request);
+        const api = new DataServiceClient();
         const dataResult = await api.doRequest<DataResult>(`DataService/Data/Delta`, 'POST', body);
         this.returnSuccess(response, dataResult);
     }
@@ -274,21 +224,20 @@ export class Feature {
     private dataMonitor: NodeJS.Timeout | null = null;
 
     /**
-     * Read cyclically each 5 seconds all new values of a single variable selected via its id.
+     * Read cyclically each 5 seconds all new values of a single attribute selected via its id.
      * The execution is running in the background and the values are logged to the console.
      * 
-     * This example demonstrates how to run background tasks and how to call the API of the Data Service
-     * without the credentials of the interactive user. 
+     * This example demonstrates how to run background tasks and how to call the API of the Data Service.
      */
     private async startDataMonitor(request: Request, response: Response) {
         if (this.dataMonitor !== null){
             throw new Error('Data monitoring is already started.');
         }
-        const variableId = this.getPathParameter(request, 'id');
+        const attributeId = this.getPathParameter(request, 'id');
         const body: DeltaRequest[] = [{
-            variableId
+            variableId: attributeId
         }];
-        const api = new DataServiceClient(null);
+        const api = new DataServiceClient();
         const dataResult = await api.doRequest<DataResult>(`DataService/Data/Delta`, 'POST', body);
         const data = dataResult.data[0];
         if (data.error){
@@ -325,7 +274,7 @@ export class Feature {
         console.log(`Monitor - started.`);
         this.returnSuccess(response, {
             success: true,
-            info: `New variable values will be requested each ${this.MONITOR_CYCLE/1000} seconds.`,
+            info: `New attribute values will be requested each ${this.MONITOR_CYCLE/1000} seconds.`,
             where: 'See log output of the application.'
         });
     }
@@ -437,66 +386,6 @@ export class Feature {
     private returnSuccess(response: Response, result: unknown): void {
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(result, undefined, 2));
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    // Deprecated authentication method.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * Create the AppUser.
-     * Needs to be called with the interactive user credentials.
-     * @param request 
-     * @param response 
-     */
-    private async createUser(request: Request, response: Response) {
-        const api = new DataServiceClient(request);
-        const appUser = AppUser;
-        const createdUser = await api.doRequest('TokenManagerService/Users', 'POST', appUser);
-        this.returnSuccess(response, createdUser);
-    }
-
-    private async getUserToken(_request: Request, response: Response) {
-        const tokenManager = new TokenManager();
-        const userToken = await tokenManager.getUserToken();
-        this.returnSuccess(response, userToken);
-    }
-
-    private async getUser(_request: Request, response: Response) {
-        const api = new DataServiceClient(null);
-        api.setNoAuthentication();
-        const tokenManager = new TokenManager();
-        const token = await tokenManager.getUserToken();
-        api.setHeader('Authorization', `Bearer ${token.access_token}`);
-        const user = await api.doRequest('TokenManagerService/Users/Me');
-        this.returnSuccess(response, user);
-    }
-
-    private async deleteUser(_request: Request, response: Response) {
-        const api = new DataServiceClient(null);
-        api.setNoAuthentication();
-        const tokenManager = new TokenManager();
-        const token = await tokenManager.getUserToken();
-        api.setHeader('Authorization', `Bearer ${token.access_token}`);
-        const user = await api.doRequest<{id: string}>('TokenManagerService/Users/Me');
-        const deletedUser = await api.doRequest('TokenManagerService/Users/' + user.id, 'DELETE');
-        tokenManager.reset();
-        this.returnSuccess(response, deletedUser);
-    }
-
-    /**
-     * Test how the REST API of the Data Service reacts if it called without
-     * authorization.
-     * @param request
-     * @param response 
-     */
-    private async onNoAuth(request: Request, response: Response) {
-        const api = new DataServiceClient(request);
-        api.setNoAuthentication();
-        const assets = await api.doRequest('AssetService/Assets');
-        this.returnSuccess(response, assets);
     }
 
 }

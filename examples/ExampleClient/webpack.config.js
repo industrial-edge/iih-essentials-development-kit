@@ -3,7 +3,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = env => ({
-    entry: './server.ts',
+    entry: './backend/server.ts',
     target: 'node',
     mode: 'production',
     output: {
@@ -28,6 +28,6 @@ module.exports = env => ({
     },    
     plugins: [
         new CopyWebpackPlugin({ patterns: [
-            {from: './index.html', to: './index.html'}]})
+            {from: './frontend', to: './static'}]})
     ]
 });
