@@ -24,6 +24,8 @@
   - [Contact us](#contact-us)
   - [Contribution](#contribution)
   - [Licence and Legal Information](#licence-and-legal-information)
+  - [Disclaimer third-party software](#disclaimer-third-party software)
+    
 
 ## Features
 
@@ -120,7 +122,7 @@ Please read the [Legal information](LICENSE.md).
     </div>
 </div>
 
-## Disclaimer
+## Disclaimer third-party software
 
 IMPORTANT - PLEASE READ CAREFULLY:
 
