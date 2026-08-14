@@ -24,7 +24,7 @@
   - [Contact us](#contact-us)
   - [Contribution](#contribution)
   - [Licence and Legal Information](#licence-and-legal-information)
-  - [Disclaimer third-party software](#disclaimer-third-party software)
+  - [Disclaimer third-party software](#disclaimer-third-party-software)
     
 
 ## Features
