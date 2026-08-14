@@ -30,7 +30,7 @@
 Using the IIH Essentials Development Kit you can develop apps based on the IIH Essentials and integrate them into Siemens Industrial Edge.
 
 In this repository you can find the following components:
-- [Docker file: docker-compose.example.yml](docker-compose.example.yml)
+- [Docker file: docker-compose.yml](docker-compose.yml)
 - [Examples](./examples)
 
 By running the docker compose configuration, an API instance of the IIH Essentials will be started on your machine. This can be used to easily develop and test your application during development. The API specification is available [here: API specification](https://docs.industrial-operations-x.siemens.cloud/access?ft:title=IIH+Essentials+API&Product=Industrial+Information+Hub)T This file needs to be opened locally in a browser.
@@ -53,9 +53,6 @@ You can ask questions in the [Industrial Edge support forum](https://forum.indus
 - Install Docker
 - Install NodeJS (only for running examples)
 - Create Docker-Compose file
-
-In order to run the IIH Essentials development kit you need  to define and execute a Docker-Compose file.
-The docker-compose.example.yml is an example Docker-Compose file that can be used to download and run the required docker image(s) of the service(s) that runs in this application example. If you choose to use these, rename the file to docker-compose.yml before proceeding
 
 ### Setting up
 
@@ -122,3 +119,9 @@ Please read the [Legal information](LICENSE.md).
         <img src="./docs/graphics/funding-logo.png" alt="Funding Logo" style="width: 100%; height: auto;">
     </div>
 </div>
+
+## Disclaimer
+
+IMPORTANT - PLEASE READ CAREFULLY:
+
+This documentation describes how you can download and set up containers which consist of or contain third-party software. By following this documentation you agree that using such third-party software is done at your own discretion and risk. No advice or information, whether oral or written, obtained by you from us or from this documentation shall create any warranty for the third-party software. Additionally, by following these descriptions or using the contents of this documentation, you agree that you are responsible for complying with all third party licenses applicable to such third-party software. All product names, logos, and brands are property of their respective owners. All third-party company, product and service names used in this documentation are for identification purposes only. Use of these names, logos, and brands does not imply endorsement.
